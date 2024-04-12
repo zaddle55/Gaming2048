@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="Update main UI">
-      <change afterPath="$PROJECT_DIR$/src.main.java/MainApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src.main.java/com/AL1S/ui/CustomGraphics.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gaming2048.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Gaming2048.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src.main.java/TestMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestSava.java" beforeDir="false" afterPath="$PROJECT_DIR$/src.main.java/TestSava.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AL1S/ui/MainInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src.main.java/com/AL1S/ui/MainInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AL1S/util/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src.main.java/com/AL1S/util/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AL1S/util/Save.java" beforeDir="false" afterPath="$PROJECT_DIR$/src.main.java/com/AL1S/util/Save.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src.main.java/com/AL1S/ui/MainInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src.main.java/com/AL1S/ui/MainInterface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

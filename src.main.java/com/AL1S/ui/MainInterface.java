@@ -13,10 +13,10 @@ import java.awt.event.MouseEvent;
  * @Date: 2024/4/11 10:00
  * @Version: 1.0
  * @Description: TODO {
- *                1. 实现游戏主界面的绘制,水平居中放置两个Button "New Game" 和 "Load Game" [ ]
+ *                1. 实现游戏主界面的绘制,水平居中放置两个Button "New Game" 和 "Load Game" [√]
  *                点击"New Game"按钮后,显示cardPanel"Game",隐藏cardPanel"Start"
  *                点击"Load Game"按钮后,显示cardPanel"Panel",隐藏startPanel"Start"
- *                2. 实现游戏界面的绘制,左侧为控制面板,右侧为游戏板 [ ]
+ *                2. 实现游戏界面的绘制,左侧为控制面板,右侧为游戏板 [√]
  *                控制面板上侧为游戏板大小选择按钮,选择后调用drawBoard方法生成对应大小的游戏板
  *                同时使下方的上下左右按钮，“Undo”按钮“Save and Exit”按钮可用，替换掉原有的按钮
  *                点击上下左右按钮后,调用对应方法移动游戏板
@@ -278,6 +278,7 @@ public class MainInterface extends JFrame {
         setVisible(true);
 
         /* 游戏逻辑 */
+        // TODO： 迁移至主程序MainApplication.java
         int size = 4; // 游戏板大小,后删
         drawBoard.addMouseListener(new MouseAdapter() {
             @Override
@@ -297,6 +298,10 @@ public class MainInterface extends JFrame {
         upButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
+                gameBoard.repaint();
+            }
+
+            public void mouseReleased(MouseEvent e) {
                 board.addToHistory();
                 board.slip(0);
                 draw(board.getBoard(), size);
@@ -305,6 +310,9 @@ public class MainInterface extends JFrame {
         downButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
+                gameBoard.repaint();
+            }
+            public void mouseReleased(MouseEvent e) {
                 board.addToHistory();
                 board.slip(1);
                 draw(board.getBoard(), size);
@@ -313,6 +321,9 @@ public class MainInterface extends JFrame {
         leftButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
+                gameBoard.repaint();
+            }
+            public void mouseReleased(MouseEvent e) {
                 board.addToHistory();
                 board.slip(2);
                 draw(board.getBoard(), size);
@@ -321,6 +332,9 @@ public class MainInterface extends JFrame {
         rightButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
+                gameBoard.repaint();
+            }
+            public void mouseReleased(MouseEvent e) {
                 board.addToHistory();
                 board.slip(3);
                 draw(board.getBoard(), size);
@@ -339,6 +353,7 @@ public class MainInterface extends JFrame {
     }
 
     // 在游戏板界面实时绘制游戏板
+    // TODO: 实现数字自适应居中
     public void draw(int[][] board, int size) {
 
         // 获取绘图对象

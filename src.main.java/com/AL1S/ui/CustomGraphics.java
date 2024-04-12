@@ -7,6 +7,8 @@ import java.awt.event.MouseEvent;
 
 /*
  * @description: 静态素材类，用来自定义按钮与形状
+ * @Author: Zaddle
+ * TODO 拆分为 public class 使awt方法能够在主程序调用
  */
 public class CustomGraphics {
 
