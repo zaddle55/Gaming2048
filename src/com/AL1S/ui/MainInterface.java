@@ -314,6 +314,7 @@ public class MainInterface extends JFrame {
         setBackground(Color.PINK);
         setLocationRelativeTo(null);
         setVisible(true);
+        setIconImage(new ImageIcon("./resource/titleIcon/android-chrome-512x512.png").getImage());
     }
 
 

@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="update" />
+    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="upload resource img">
+      <change beforePath="$PROJECT_DIR$/src/com/AL1S/ui/MainInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AL1S/ui/MainInterface.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,7 +43,8 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+    "vue.rearranger.settings.migration": "true",
+    "应用程序.MainApplication.executor": "Run"
   }
 }]]></component>
   <component name="RunManager">
@@ -73,7 +79,7 @@
       <workItem from="1713019044366" duration="126000" />
       <workItem from="1713019177239" duration="48000" />
       <workItem from="1713019233249" duration="9000" />
-      <workItem from="1713019259302" duration="333000" />
+      <workItem from="1713019259302" duration="1646000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
@@ -83,7 +89,23 @@
       <option name="project" value="LOCAL" />
       <updated>1713019587469</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="update">
+      <option name="closed" value="true" />
+      <created>1713019625402</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1713019625402</updated>
+    </task>
+    <task id="LOCAL-00003" summary="upload resource img">
+      <option name="closed" value="true" />
+      <created>1713021392122</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1713021392122</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -100,7 +122,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="dev" />
+                        <option value="origin/master" />
                       </list>
                     </value>
                   </entry>
@@ -114,6 +136,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="upload resource img" />
+    <option name="LAST_COMMIT_MESSAGE" value="upload resource img" />
   </component>
 </project>
