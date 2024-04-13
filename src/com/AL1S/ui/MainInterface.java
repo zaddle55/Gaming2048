@@ -314,6 +314,7 @@ public class MainInterface extends JFrame {
         setBackground(Color.PINK);
         setLocationRelativeTo(null);
         setVisible(true);
+        setIconImage(new TitleIcon("./resource/titleIcon/mstile-150x150.png").getImage().getScaledInstance(5, 5, 1));
     }
 
 
