@@ -18,6 +18,7 @@ import java.util.Random;
  *     4.实现游戏板的撤销功能
  *     5.实现游戏板的基本逻辑（判断游戏是否结束）
  *     6.继承Serializable接口，实现游戏板的序列化以存档
+ *     7.计算游戏板的得分
  * }
  * @History:
  */
@@ -27,6 +28,7 @@ public class Board implements Serializable {
     private int[][] board;
     private int ID;
     private Stack<int[][]> history;
+    private int score;
 
     // 通过初始ID与大小初始化游戏板
     public Board(int ID, int size) {
@@ -290,5 +292,16 @@ public class Board implements Serializable {
             sb.append("\n");
         }
         return sb.toString();
+    }
+
+    // 计算游戏板目前得分
+    public int getScore() {
+        score = 0;
+        for (int[] ints : board) {
+            for (int j = 0; j < size; j++) {
+                score += ints[j];
+            }
+        }
+        return score;
     }
 }
