@@ -286,6 +286,7 @@ public class MainApplication extends MainInterface {
         gameWinFlag = false;
         gameOverFlag = false;
         gameBoard.repaint();
+        board = null;
         initGameDisplay();
     }
 

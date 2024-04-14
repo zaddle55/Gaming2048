@@ -26,7 +26,7 @@ public class Board implements Serializable {
     private static final long serialVersionUID = 1L;
     private final int size;
     private int[][] board;
-    private int ID;
+    private static int ID; // 游戏板ID
     private Stack<int[][]> history;
     private int score;
 
@@ -36,6 +36,7 @@ public class Board implements Serializable {
         this.size = size;
         this.board = new int[size][size];
         this.history = new Stack<>();
+        // ID++;
     }
 
     //通过二维数组初始化游戏板
