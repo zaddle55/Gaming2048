@@ -19,7 +19,7 @@ import java.util.Random;
  *     5.实现游戏板的基本逻辑（判断游戏是否结束）
  *     6.继承Serializable接口，实现游戏板的序列化以存档
  *     7.计算游戏板的得分
- * }
+ * } TODO {1.设置障碍物 }
  * @History:
  */
 public class Board implements Serializable {

@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="revise Board class constructor">
-      <change afterPath="$PROJECT_DIR$/src/com/AL1S/ai/AlphaDuo.java" afterDir="false" />
+    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="revise game logic">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/AL1S/util/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/AL1S/util/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/TestMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TestMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/TestSava.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TestSava.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,6 +112,7 @@
       <workItem from="1713099724031" duration="669000" />
       <workItem from="1713268016373" duration="5882000" />
       <workItem from="1713275037413" duration="45000" />
+      <workItem from="1713275088832" duration="1628000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
@@ -149,7 +146,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713100323191</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="revise game logic">
+      <option name="closed" value="true" />
+      <created>1713275272163</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1713275272163</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -182,6 +187,7 @@
     <MESSAGE value="update" />
     <MESSAGE value="upload resource img" />
     <MESSAGE value="revise Board class constructor" />
-    <option name="LAST_COMMIT_MESSAGE" value="revise Board class constructor" />
+    <MESSAGE value="revise game logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="revise game logic" />
   </component>
 </project>
