@@ -32,7 +32,7 @@ public class MainApplication extends MainInterface {
         drawBoard.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                board = new Board(0, size);
+                board = new Board(0, size, 0);
                 board.init();
                 draw(board.getBoard(), size);
             }

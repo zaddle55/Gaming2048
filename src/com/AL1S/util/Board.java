@@ -29,13 +29,15 @@ public class Board implements Serializable {
     private static int ID; // 游戏板ID
     private Stack<int[][]> history;
     private int score;
+    private int mode; // 游戏模式, 用于后续扩展
 
-    // 通过初始ID与大小初始化游戏板
-    public Board(int ID, int size) {
+    // 通过初始ID与大小,模式初始化游戏板
+    public Board(int ID, int size, int mode) {
         this.ID = ID;
         this.size = size;
         this.board = new int[size][size];
         this.history = new Stack<>();
+        this.mode = mode;
         // ID++;
     }
 
@@ -58,10 +60,11 @@ public class Board implements Serializable {
     }
 
     // 初始化游戏板
-    // 随机生成两个“2”放在游戏板上
+    // 随机生成一个“2”或"4"放在游戏板上
     public void init() {
-        generateRandomTwo(2);
-    }
+        Random random = new Random();
+        generateRandomGrid((random.nextInt(2) + 1) * 2, 1);
+    } // 后改，使用GameModeFactory的map
 
     // 读取用户操作，移动游戏板
     // 0: 上  1: 下  2: 左  3: 右
@@ -82,7 +85,8 @@ public class Board implements Serializable {
             default:
                 break;
         }
-        generateRandomTwo(1);
+        Random random = new Random();
+        generateRandomGrid((random.nextInt(2) + 1) * 2, 1);
     }
 
     public void slipUp() {
@@ -262,9 +266,9 @@ public class Board implements Serializable {
         return true;
     }
 
-    // 在游戏板空余处上随机生成指定数目num个“2”
+    // 在游戏板空余处上随机生成指定数目times个“tarNum”
     // 若无空余位置则不生成
-    public void generateRandomTwo(int num) {
+    public void generateRandomGrid(int tarNum, int times) {
 
         if (isFull()) {
             return;
@@ -272,11 +276,11 @@ public class Board implements Serializable {
 
         Random random = new Random();
         int count = 0;
-        while (count < num) {
+        while (count < times) {
             int x = random.nextInt(size);
             int y = random.nextInt(size);
             if (board[x][y] == 0) {
-                board[x][y] = 2;
+                board[x][y] = tarNum;
                 count++;
             }
         }
@@ -304,5 +308,14 @@ public class Board implements Serializable {
             }
         }
         return score;
+    }
+
+    // 游戏模式的getter和setter
+    public int getMode() {
+        return mode;
+    }
+
+    public void setMode(int mode) {
+        this.mode = mode;
     }
 }
