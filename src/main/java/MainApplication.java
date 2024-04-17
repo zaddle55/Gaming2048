@@ -39,6 +39,7 @@ public class MainApplication extends MainInterface {
             // 隐藏下拉列表和绘制按钮
             public void mouseReleased(MouseEvent e) {
                 gameStartFlag = true;
+                setScore(board.getScore(), size); // 显示初始分数
                 startGameDisplay();
             }
         });

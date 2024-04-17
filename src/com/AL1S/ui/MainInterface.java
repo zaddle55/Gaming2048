@@ -413,6 +413,10 @@ public class MainInterface extends JFrame {
         // Game界面控件可见性改变
         public void startGameDisplay () {
 
+            // 重设gameScoreLabel和gameStateLabel
+            gameScoreLabel.setText("");
+            gameStateLabel.setText("");
+
             // 不可见控件
             drawBoard.setVisible(false);
             sizeBox.setVisible(false);
