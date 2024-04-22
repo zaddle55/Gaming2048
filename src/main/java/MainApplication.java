@@ -155,6 +155,9 @@ public class MainApplication extends MainInterface {
         undoButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
+                gameBoard.repaint();
+            }
+            public void mouseReleased(MouseEvent e) {
                 board.undo();
                 board.undo();
                 draw(board.getBoard(), size);
