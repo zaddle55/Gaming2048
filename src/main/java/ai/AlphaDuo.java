@@ -1,6 +1,6 @@
-package com.AL1S.ai;
+package ai;
 
-import com.AL1S.util.Board;
+import util.Board;
 /**
  * AlphaDuo
  * @version: 1.0.0

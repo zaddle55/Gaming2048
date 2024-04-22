@@ -1,4 +1,4 @@
-package com.AL1S.ui.CustomGraphics;
+package ui.CustomGraphics;
 
 import javax.swing.*;
 import java.awt.*;

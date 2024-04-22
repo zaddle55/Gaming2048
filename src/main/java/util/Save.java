@@ -1,4 +1,4 @@
-package com.AL1S.util;
+package util;
 
 /*
  * @description: 保存游戏板的存档

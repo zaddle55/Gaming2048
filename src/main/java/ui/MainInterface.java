@@ -1,6 +1,6 @@
-package com.AL1S.ui;
+package ui;
 
-import com.AL1S.ui.CustomGraphics.*;
+import ui.CustomGraphics.*;
 
 import javax.swing.*;
 import java.awt.*;

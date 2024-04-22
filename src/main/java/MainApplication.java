@@ -1,9 +1,8 @@
-package main.java;
 
-import com.AL1S.ui.CustomGraphics.CustomButton;
-import com.AL1S.ui.CustomGraphics.CustomDialog;
-import com.AL1S.ui.MainInterface;
-import com.AL1S.util.*;
+import ui.CustomGraphics.CustomButton;
+import ui.CustomGraphics.CustomDialog;
+import ui.MainInterface;
+import util.*;
 
 import javax.swing.*;
 import java.awt.*;

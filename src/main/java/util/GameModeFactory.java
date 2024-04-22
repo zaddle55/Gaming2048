@@ -1,4 +1,4 @@
-package com.AL1S.util;
+package util;
 
 import java.util.HashMap;
 import java.util.Map;
