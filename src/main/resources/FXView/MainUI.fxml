@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MainUI">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.Controller.MainUI">
 <children>
     <Button fx:id="button" layoutX="126.0" layoutY="90.0" onAction="#handleButtonAction" text="Say 'Hello World'" />
       <SubScene height="250.0" layoutY="150.0" width="310.0">
