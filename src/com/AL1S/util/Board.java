@@ -27,6 +27,8 @@ public class Board implements Serializable {
     private static final int[] dirX = {-1, 1, 0, 0};
     private static final int[] dirY = {0, 0, -1, 1};
     private final int size;
+    private final int[] dirX = {1, -1, 0, 0};
+    private final int[] dirY = {0, 0, -1, 1};
     private int[][] board;
     private static int ID; // 游戏板ID
     private Stack<int[][]> history;
@@ -87,6 +89,53 @@ public class Board implements Serializable {
             default:
                 break;
         }
+        Random random = new Random();
+        generateRandomGrid((random.nextInt(2) + 1) * 2, 1);
+    }
+
+    // 待修改
+    public void _slip(int direction) {
+
+        //
+        for (int i = 0; i < size; i++) {
+
+            List<ArrayList<Integer>> elementList = new ArrayList<>();
+            List<Integer> barrierList = new ArrayList<>();
+
+            int count = 0;
+
+            //
+            for (int j = 0; j < size; j++) {
+
+                if (board[i][j] != 0 && isEven(board[i][j])) {
+                    elementList.get(count).add(board[i][j]);
+                }
+                if (!isEven(board[i][j])) {
+                    barrierList.add(board[i][j]);
+                    count++;
+                }
+            }
+
+            for (List<Integer> splitList : elementList) {
+                for (int j = 0; j < splitList.size() - 1; j++) {
+                    if (splitList.get(j).equals(splitList.get(j + 1))) {
+                        splitList.set(j, splitList.get(j) * 2);
+                        splitList.remove(j + 1);
+                    }
+                }
+            }
+
+            count = 0;
+            //
+            for (int j = 0; j < size; j++) {
+                if (j != barrierList.get(count)) {
+                    board[i][j] = elementList.get(count).get(j);
+                } else {
+                    count++;
+                }
+            }
+        }
+
         Random random = new Random();
         generateRandomGrid((random.nextInt(2) + 1) * 2, 1);
     }
