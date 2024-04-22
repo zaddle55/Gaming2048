@@ -4,30 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="revise game logic">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Reach2048.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AL1S/ai/AlphaDuo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ai/AlphaDuo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AL1S/ui/CustomGraphics/CustomButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/CustomGraphics/CustomButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AL1S/ui/CustomGraphics/CustomDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/CustomGraphics/CustomDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AL1S/ui/CustomGraphics/CustomLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/CustomGraphics/CustomLabel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AL1S/ui/CustomGraphics/ScoreLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/CustomGraphics/ScoreLabel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AL1S/ui/CustomGraphics/TitleIcon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/CustomGraphics/TitleIcon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AL1S/ui/CustomGraphics/TitleLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/CustomGraphics/TitleLabel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AL1S/ui/CustomGraphics/dirSelectButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/CustomGraphics/dirSelectButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AL1S/ui/CustomGraphics/gameBoardBorder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/CustomGraphics/gameBoardBorder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AL1S/ui/MainInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/MainInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AL1S/util/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AL1S/util/GameModeFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/GameModeFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/AL1S/util/Save.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Save.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainApplication.java" afterDir="false" />
-    </list>
+    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="rebuild with maven(3.9.5) javafx(21) fxgl(21.1)" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -79,7 +56,7 @@
     "project.structure.last.edited": "模块",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.importing",
+    "settings.editor.selected.configurable": "MavenSettings",
     "vue.rearranger.settings.migration": "true",
     "应用程序.MainApplication.executor": "Run"
   }
@@ -222,7 +199,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713778064114</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="rebuild with maven(3.9.5) javafx(21) fxgl(21.1)">
+      <option name="closed" value="true" />
+      <created>1713783332218</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1713783332218</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -257,6 +242,7 @@
     <MESSAGE value="revise Board class constructor" />
     <MESSAGE value="fix action of  &quot;undo&quot; button" />
     <MESSAGE value="revise game logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="revise game logic" />
+    <MESSAGE value="rebuild with maven(3.9.5) javafx(21) fxgl(21.1)" />
+    <option name="LAST_COMMIT_MESSAGE" value="rebuild with maven(3.9.5) javafx(21) fxgl(21.1)" />
   </component>
 </project>
