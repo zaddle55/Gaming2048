@@ -53,9 +53,6 @@ public class MainApplication extends MainInterface {
 
             public void mouseReleased(MouseEvent e) {
 
-                setScore(board.getScore(), size);
-                setGameState(board.isWin(), board.isOver());
-
                 if (board.isWin()) {
                     gameWinFlag = true;
                     // gameWinDisplay();
@@ -70,6 +67,9 @@ public class MainApplication extends MainInterface {
 
                 }
                 draw(board.getBoard(), size);
+
+                setScore(board.getScore(), size);
+                setGameState(board.isWin(), board.isOver());
             }
         });
         downButton.addMouseListener(new MouseAdapter() {
@@ -78,9 +78,6 @@ public class MainApplication extends MainInterface {
                 gameBoard.repaint();
             }
             public void mouseReleased(MouseEvent e) {
-
-                setScore(board.getScore(), size);
-                setGameState(board.isWin(), board.isOver());
 
                 if (board.isWin()) {
                     gameWinFlag = true;
@@ -96,6 +93,9 @@ public class MainApplication extends MainInterface {
 
                 }
                 draw(board.getBoard(), size);
+
+                setScore(board.getScore(), size);
+                setGameState(board.isWin(), board.isOver());
             }
         });
         leftButton.addMouseListener(new MouseAdapter() {
@@ -104,9 +104,6 @@ public class MainApplication extends MainInterface {
                 gameBoard.repaint();
             }
             public void mouseReleased(MouseEvent e) {
-
-                setScore(board.getScore(), size);
-                setGameState(board.isWin(), board.isOver());
 
                 if (board.isWin()) {
                     gameWinFlag = true;
@@ -122,6 +119,9 @@ public class MainApplication extends MainInterface {
 
                 }
                 draw(board.getBoard(), size);
+
+                setScore(board.getScore(), size);
+                setGameState(board.isWin(), board.isOver());
             }
         });
         rightButton.addMouseListener(new MouseAdapter() {
@@ -130,9 +130,6 @@ public class MainApplication extends MainInterface {
                 gameBoard.repaint();
             }
             public void mouseReleased(MouseEvent e) {
-
-                setScore(board.getScore(), size);
-                setGameState(board.isWin(), board.isOver());
 
                 if (board.isWin()) {
                     gameWinFlag = true;
@@ -148,6 +145,9 @@ public class MainApplication extends MainInterface {
 
                 }
                 draw(board.getBoard(), size);
+
+                setScore(board.getScore(), size);
+                setGameState(board.isWin(), board.isOver());
             }
         });
 
@@ -158,7 +158,6 @@ public class MainApplication extends MainInterface {
                 gameBoard.repaint();
             }
             public void mouseReleased(MouseEvent e) {
-                board.undo();
                 board.undo();
                 draw(board.getBoard(), size);
                 setScore(board.getScore(), size);

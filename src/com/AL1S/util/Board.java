@@ -24,6 +24,8 @@ import java.util.Random;
  */
 public class Board implements Serializable {
     private static final long serialVersionUID = 1L;
+    private static final int[] dirX = {-1, 1, 0, 0};
+    private static final int[] dirY = {0, 0, -1, 1};
     private final int size;
     private int[][] board;
     private static int ID; // 游戏板ID
@@ -33,7 +35,7 @@ public class Board implements Serializable {
 
     // 通过初始ID与大小,模式初始化游戏板
     public Board(int ID, int size, int mode) {
-        this.ID = ID;
+        Board.ID = ID;
         this.size = size;
         this.board = new int[size][size];
         this.history = new Stack<>();
@@ -43,7 +45,7 @@ public class Board implements Serializable {
 
     //通过二维数组初始化游戏板
     public Board(int ID, int[][] board) {
-        this.ID = ID;
+        Board.ID = ID;
         this.size = board.length;
         this.board = board;
         this.history = new Stack<>();
@@ -204,6 +206,15 @@ public class Board implements Serializable {
         }
     }
 
+
+
+    // 交换指定索引的两个格子
+    public void swapGrid(int x1, int y1, int x2, int y2) {
+        int temp = board[x2][y2];
+        board[x2][y2] = board[x1][y1];
+        board[x1][y1] = temp;
+    }
+
     // 保存游戏板历史
     public void addToHistory() {
         int[][] newBoard = new int[size][size];
@@ -308,6 +319,12 @@ public class Board implements Serializable {
             }
         }
         return score;
+    }
+
+    // 判断数字是否为偶数
+    public static boolean isEven(int num) {
+        if (num % 2 ==0) return true;
+        else return false;
     }
 
     // 游戏模式的getter和setter
