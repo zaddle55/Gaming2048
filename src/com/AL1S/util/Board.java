@@ -27,8 +27,6 @@ public class Board implements Serializable {
     private static final int[] dirX = {-1, 1, 0, 0};
     private static final int[] dirY = {0, 0, -1, 1};
     private final int size;
-    private final int[] dirX = {1, -1, 0, 0};
-    private final int[] dirY = {0, 0, -1, 1};
     private int[][] board;
     private static int ID; // 游戏板ID
     private Stack<int[][]> history;
