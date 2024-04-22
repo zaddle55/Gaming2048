@@ -71,6 +71,28 @@ public class Board implements Serializable {
     // 读取用户操作，移动游戏板
     // 0: 上  1: 下  2: 左  3: 右
     public void slip(int direction) {
+        switch (direction) {
+            case 0:
+                slipUp();
+                break;
+            case 1:
+                slipDown();
+                break;
+            case 2:
+                slipLeft();
+                break;
+            case 3:
+                slipRight();
+                break;
+            default:
+                break;
+        }
+        Random random = new Random();
+        generateRandomGrid((random.nextInt(2) + 1) * 2, 1);
+    }
+
+    // 待修改
+    public void _slip(int direction) {
 
         //
         for (int i = 0; i < size; i++) {
@@ -111,8 +133,6 @@ public class Board implements Serializable {
                 }
             }
         }
-
-        
 
         Random random = new Random();
         generateRandomGrid((random.nextInt(2) + 1) * 2, 1);
