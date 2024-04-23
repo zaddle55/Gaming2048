@@ -4,7 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="modify project structure" />
+    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="modify project structure">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/buttonIcon/down.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/buttonIcon/down.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/buttonIcon/left.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/buttonIcon/left.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/buttonIcon/right.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/buttonIcon/right.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/buttonIcon/up.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/buttonIcon/up.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/titleIcon/android-chrome-512x512.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/titleIcon/android-chrome-512x512.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/titleIcon/favicon-16x16.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/titleIcon/favicon-16x16.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/titleIcon/favicon-32x32.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/titleIcon/favicon-32x32.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/titleIcon/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/titleIcon/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/titleIcon/mstile-150x150.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/titleIcon/mstile-150x150.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/Controller/MainUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/Controller/MainUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/FXView/MainUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXView/MainUI.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/css/mainUI.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/mainUI.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/TestMainUIApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestMainUIApplication.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,35 +57,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Maven.Unknown [package].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "zaddle",
-    "kotlin-language-version-configured": "true",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "模块",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "MavenSettings",
-    "vue.rearranger.settings.migration": "true",
-    "应用程序.MainApplication.executor": "Run",
-    "应用程序.TestJavaFXBootstrap.executor": "Run",
-    "应用程序.TestMainUIApplication.executor": "Run"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Maven.Unknown [package].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;zaddle&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
+    &quot;应用程序.MainApplication.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.TestJavaFXBootstrap.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.TestMainUIApplication.executor&quot;: &quot;Run&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\IdeaProjects\Reach2048\src\main\resources\assets\" />
+      <recent name="C:\Users\Administrator\IdeaProjects\Reach2048\src\main\resources\assets\titleIcon" />
+      <recent name="C:\Users\Administrator\IdeaProjects\Reach2048\src\main\resources\assets" />
       <recent name="C:\Users\Administrator\IdeaProjects\Reach2048\src\main\resources" />
       <recent name="C:\Users\Administrator\IdeaProjects\Reach2048\src\main\java" />
-      <recent name="C:\Users\Administrator\IdeaProjects\Reach2048\src\com\AL1S" />
     </key>
   </component>
   <component name="RunManager" selected="应用程序.TestMainUIApplication">
@@ -152,6 +169,7 @@
       <workItem from="1713268016373" duration="5882000" />
       <workItem from="1713275037413" duration="45000" />
       <workItem from="1713275088832" duration="1628000" />
+      <workItem from="1713864716583" duration="11751000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
@@ -257,7 +275,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713796485610</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="modify project structure">
+      <option name="closed" value="true" />
+      <created>1713796790224</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1713796790224</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

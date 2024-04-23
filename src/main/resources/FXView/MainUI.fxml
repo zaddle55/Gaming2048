@@ -1,21 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.Controller.MainUI">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" stylesheets="@../css/mainUI.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.Controller.MainUI">
 <children>
-    <Button fx:id="button" layoutX="126.0" layoutY="90.0" onAction="#handleButtonAction" text="Say 'Hello World'" />
-      <SubScene height="250.0" layoutY="150.0" width="310.0">
-        <root>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="250.0" prefWidth="310.0">
-                <children>
-                    <Label layoutX="126.0" layoutY="90.0" mnemonicParsing="false" onMouseEntered="#MouseEnterLabelAction" text="New Game" />
-                </children>
-            </AnchorPane>
-        </root>
-      </SubScene>
-
+      <TilePane layoutX="219.0" layoutY="26.0" prefHeight="51.0" prefWidth="221.0" />
+    <VBox layoutX="54.0" layoutY="164.0" prefHeight="403.0" prefWidth="221.0">
+        <children>
+            <Label fx:id="startButton" mnemonicParsing="false" onMousePressed="#startAction" prefHeight="51.0" prefWidth="221.0" alignment="CENTER" text="New Game" styleClass="button-default-style"/>
+            <Label fx:id="loadButton" mnemonicParsing="false" onMousePressed="#loadAction" prefHeight="51.0" prefWidth="221.0" alignment="CENTER" text="Load" styleClass="button-default-style"/>
+            <Label fx:id="achieveButton" mnemonicParsing="false" onMousePressed="#achieveAction" prefHeight="51.0" prefWidth="221.0" alignment="CENTER" text="Achievement" styleClass="button-default-style"/>
+            <Label fx:id="settingButton" mnemonicParsing="false" onMousePressed="#settingAction" prefHeight="51.0" prefWidth="221.0" alignment="CENTER" text="Setting" styleClass="button-default-style"/>
+            <Label fx:id="exitButton" mnemonicParsing="false" onMousePressed="#exitAction" prefHeight="51.0" prefWidth="221.0" alignment="CENTER" text="Exit" styleClass="button-default-style"/>
+        </children>
+    </VBox>
+      <Label fx:id="tilteLabel" alignment="CENTER" layoutX="207.0" layoutY="46.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="287.0" text="Reach 2048">
+          <graphic>
+              <ImageView fitHeight="72.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                      <Image url="@../assets/titleIcon/mstile-150x150.png" />
+                  </image>
+              </ImageView>
+          </graphic>
+      </Label>
 </children>
 </AnchorPane>

@@ -11,7 +11,7 @@ public class TestMainUIApplication extends Application {
 
         Parent root = FXMLLoader.load(getClass().getResource("/FXView/MainUI.fxml"));
         primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setScene(new Scene(root, 700, 500));
         primaryStage.show();
     }
 
