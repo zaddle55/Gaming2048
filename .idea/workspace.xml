@@ -4,17 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="modify project structure">
+    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="modify mainui with fx">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ui/Controller/GameUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/FXView/GameUI.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource/buttonIcon/down.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/buttonIcon/down.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource/buttonIcon/left.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/buttonIcon/left.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource/buttonIcon/right.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/buttonIcon/right.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource/buttonIcon/up.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/buttonIcon/up.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource/titleIcon/android-chrome-512x512.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/titleIcon/android-chrome-512x512.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource/titleIcon/favicon-16x16.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/titleIcon/favicon-16x16.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource/titleIcon/favicon-32x32.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/titleIcon/favicon-32x32.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource/titleIcon/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/titleIcon/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource/titleIcon/mstile-150x150.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/titleIcon/mstile-150x150.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/Controller/MainUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/Controller/MainUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/FXView/MainUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXView/MainUI.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/css/mainUI.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/mainUI.css" afterDir="false" />
@@ -28,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="CSS File" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -83,11 +76,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\IdeaProjects\Reach2048\src\main\java\ui" />
       <recent name="C:\Users\Administrator\IdeaProjects\Reach2048\src\main\resources\assets\" />
       <recent name="C:\Users\Administrator\IdeaProjects\Reach2048\src\main\resources\assets\titleIcon" />
       <recent name="C:\Users\Administrator\IdeaProjects\Reach2048\src\main\resources\assets" />
       <recent name="C:\Users\Administrator\IdeaProjects\Reach2048\src\main\resources" />
-      <recent name="C:\Users\Administrator\IdeaProjects\Reach2048\src\main\java" />
     </key>
   </component>
   <component name="RunManager" selected="应用程序.TestMainUIApplication">
@@ -138,8 +131,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="应用程序.TestMainUIApplication" />
-        <item itemvalue="应用程序.TestJavaFXBootstrap" />
         <item itemvalue="应用程序.MainApplication" />
+        <item itemvalue="应用程序.TestJavaFXBootstrap" />
         <item itemvalue="应用程序.MainApplication" />
         <item itemvalue="应用程序.MainApplication" />
       </list>
@@ -169,7 +162,8 @@
       <workItem from="1713268016373" duration="5882000" />
       <workItem from="1713275037413" duration="45000" />
       <workItem from="1713275088832" duration="1628000" />
-      <workItem from="1713864716583" duration="11751000" />
+      <workItem from="1713864716583" duration="13510000" />
+      <workItem from="1713958844009" duration="13288000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
@@ -283,7 +277,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713796790224</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="modify mainui with fx">
+      <option name="closed" value="true" />
+      <created>1713882624026</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1713882624026</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -321,6 +323,7 @@
     <MESSAGE value="rebuild with maven(3.9.5) javafx(21) fxgl(21.1)" />
     <MESSAGE value="test javafx" />
     <MESSAGE value="modify project structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="modify project structure" />
+    <MESSAGE value="modify mainui with fx" />
+    <option name="LAST_COMMIT_MESSAGE" value="modify mainui with fx" />
   </component>
 </project>

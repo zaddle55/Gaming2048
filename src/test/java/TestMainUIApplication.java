@@ -2,7 +2,9 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class TestMainUIApplication extends Application {
 
@@ -10,8 +12,21 @@ public class TestMainUIApplication extends Application {
     public void start(Stage primaryStage) throws Exception{
 
         Parent root = FXMLLoader.load(getClass().getResource("/FXView/MainUI.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 700, 500));
+
+//        primaryStage.setTitle("Reach 2048");
+        Scene scene = new Scene(root, 700, 500);
+        scene.setFill(Color.TRANSPARENT);
+
+        primaryStage.setScene(scene);
+
+        primaryStage.getIcons().add(new javafx.scene.image.Image("assets/titleIcon/favicon-32x32.png"));
+
+        primaryStage.initStyle(StageStyle.UNIFIED);
+
+        primaryStage.setMaximized(false);
+
+        primaryStage.setResizable(false);
+
         primaryStage.show();
     }
 

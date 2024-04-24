@@ -15,17 +15,24 @@
 }
 
 .button-default-style {
-    -fx-text-fill: rgba(236, 137, 67, 0.94);
-    -fx-font-size: 16px;
+    -fx-text-fill: rgba(255, 255, 255, 0.94);
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
     -fx-font-family: 'fantasy', cursive;
+    -fx-effect: innershadow(three-pass-box, #8e7965, 2.5, 0.5, 1, 1);
 
 }
 
 .button-default-style:hover {
     -fx-text-fill: rgb(255, 255, 255);
-    -fx-font-size: 16px;
+    -fx-font-size: 18px;
     -fx-font-family: 'fantasy', cursive;
-    -fx-background-color: rgba(236, 137, 67, 0.94);
+    -fx-border-color: rgb(186, 172, 159);
+    -fx-border-width: 7px;
+    -fx-border-radius: 2px;
+    -fx-background-color: rgb(203, 191, 179);
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(gaussian, #FFFFFF, 5, 1.0, 0, 0);
 }
 
 
