@@ -5,6 +5,7 @@
 
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
+
 <AnchorPane prefHeight="1000.0" prefWidth="1000.0" stylesheets="@../css/gameUI.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.Controller.GameUI">
 <children>
     <!--显示板-->
@@ -31,7 +32,7 @@
             <graphic>
                 <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                 <image>
-                    <Image url="@../assets/Timer.png" />
+                    <Image url="@../assets/Timer-regular.png" />
                 </image>
                 </ImageView>
             </graphic>
