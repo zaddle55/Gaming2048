@@ -4,30 +4,22 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 <AnchorPane prefHeight="500.0" prefWidth="700.0" stylesheets="@../css/mainUI.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.Controller.MainUI">
 <children>
-      <TilePane layoutX="219.0" layoutY="26.0" prefHeight="51.0" prefWidth="221.0" />
+      <TilePane layoutX="154" layoutY="20.0" prefHeight="72.0" prefWidth="423.0" >
+         <children>
+            <Label fx:id="tilteLabel" alignment="CENTER" mnemonicParsing="false" prefHeight="72.0" prefWidth="423.0">
+      </Label>
+         </children></TilePane>
     <VBox layoutX="54.0" layoutY="164.0" prefHeight="403.0" prefWidth="184.0">
         <children>
-            <Label fx:id="startButton" alignment="CENTER" mnemonicParsing="false" onMousePressed="#startAction" onMouseEntered="#enterStartAction" onMouseExited="#exitSartction" prefHeight="51.0" prefWidth="221.0" styleClass="button-default-style" text="NewGame"/>
-            <Label fx:id="loadButton" alignment="CENTER" mnemonicParsing="false" onMousePressed="#loadAction" onMouseEntered="#enterLoadAction" onMouseExited="#exitLoadAction" prefHeight="51.0" prefWidth="221.0" styleClass="button-default-style" text="Load"/>
-            <Label fx:id="achieveButton" alignment="CENTER" mnemonicParsing="false" onMousePressed="#achieveAction" onMouseEntered="#enterAchieveAction" onMouseExited="#exitAchieveAction" prefHeight="51.0" prefWidth="221.0" styleClass="button-default-style" text="Achievement"/>
-            <Label fx:id="settingButton" alignment="CENTER" mnemonicParsing="false" onMousePressed="#settingAction" onMouseEntered="#enterSettingAction" onMouseExited="#exitSettingAction" prefHeight="51.0" prefWidth="221.0" styleClass="button-default-style" text="Setting"/>
-            <Label fx:id="exitButton" alignment="CENTER" mnemonicParsing="false" onMousePressed="#exitAction" onMouseEntered="#enterExitAction" onMouseExited="#exitExitAction" prefHeight="51.0" prefWidth="221.0" styleClass="button-default-style" text="Exit"/>
+            <Label fx:id="startButton" alignment="CENTER" mnemonicParsing="false" onMouseEntered="#enterStartAction" onMouseExited="#exitSartction" onMousePressed="#startAction" prefHeight="51.0" prefWidth="221.0" styleClass="button-default-style" text="NewGame" />
+            <Label fx:id="loadButton" alignment="CENTER" mnemonicParsing="false" onMouseEntered="#enterLoadAction" onMouseExited="#exitLoadAction" onMousePressed="#loadAction" prefHeight="51.0" prefWidth="221.0" styleClass="button-default-style" text="Load" />
+            <Label fx:id="achieveButton" alignment="CENTER" mnemonicParsing="false" onMouseEntered="#enterAchieveAction" onMouseExited="#exitAchieveAction" onMousePressed="#achieveAction" prefHeight="51.0" prefWidth="221.0" styleClass="button-default-style" text="Achievement" />
+            <Label fx:id="settingButton" alignment="CENTER" mnemonicParsing="false" onMouseEntered="#enterSettingAction" onMouseExited="#exitSettingAction" onMousePressed="#settingAction" prefHeight="51.0" prefWidth="221.0" styleClass="button-default-style" text="Setting" />
+            <Label fx:id="exitButton" alignment="CENTER" mnemonicParsing="false" onMouseEntered="#enterExitAction" onMouseExited="#exitExitAction" onMousePressed="#exitAction" prefHeight="51.0" prefWidth="221.0" styleClass="button-default-style" text="Exit" />
         </children>
     </VBox>
-      <Label fx:id="tilteLabel" alignment="CENTER" layoutX="207.0" layoutY="46.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="287.0" text="Reach 2048">
-          <graphic>
-              <ImageView fitHeight="72.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                      <Image url="@../assets/titleIcon/mstile-150x150.png" />
-                  </image>
-              </ImageView>
-          </graphic>
-      </Label>
       <Pane layoutX="238.0" layoutY="107.0" prefHeight="430.0" prefWidth="430.0">
           <children>
               <ImageView fitHeight="430.0" fitWidth="430.0" pickOnBounds="true" preserveRatio="true">

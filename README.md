@@ -5,7 +5,10 @@
 -->
 
 <div align="center">
-    <h1>Reach 2048</h1>
+    <h1>
+    Reach 2048 |
+    <img src="src/main/resources/assets/logo.png" alt="t" width="520" align="center">
+    </h1>
 </div>
 
 <!-------------------Put tag here------------------->
