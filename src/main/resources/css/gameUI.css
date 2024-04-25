@@ -1,0 +1,60 @@
+.custom-pane {
+    -fx-background-color: #baac9f;
+    -fx-background-radius: 3px;
+    -fx-background-size: cover;
+    -fx-background-position: center;
+}
+
+.font-regular {
+    -fx-font-size: 13px;
+    -fx-font-family: "Arial", sans-serif;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ece2d8;
+}
+
+.number-regular {
+    -fx-font-size: 20px;
+    -fx-font-family: "Nirmala UI", sans-serif;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+}
+
+.time-display-style {
+    -fx-font-size: 20px;
+    -fx-font-family: "Nirmala UI", sans-serif;
+    -fx-font-weight: bold;
+    -fx-text-fill: #000000;
+}
+
+.button {
+    -fx-background-color: #8e7965;
+    -fx-background-radius: 3px;
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-font-size: 16px;
+    -fx-font-family: "JetBrains Mono Medium", sans-serif;
+    -fx-text-fill: #f7f4e7;
+    -fx-text-alignment: center;
+}
+
+.button:hover {
+    -fx-background-color: #baafa2;
+    -fx-background-radius: 3px;
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-font-size: 16px;
+    -fx-font-family: "JetBrains Mono Medium", sans-serif;
+    -fx-text-fill: #6a5a46;
+    -fx-text-alignment: center;
+}
+
+.button:pressed {
+    -fx-background-color: #baafa2;
+    -fx-background-radius: 4px;
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-font-size: 16px;
+    -fx-font-family: "JetBrains Mono Medium", sans-serif;
+    -fx-text-fill: #ece2d8;
+    -fx-text-alignment: center;
+}

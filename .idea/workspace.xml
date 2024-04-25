@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="modify mainui with fx">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/css/gameUI.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/TestGameUIApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/FXView/MainUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXView/MainUI.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/css/mainUI.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/mainUI.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/FXView/GameUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXView/GameUI.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,9 +18,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="FxmlFile" />
         <option value="Class" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -67,6 +67,7 @@
     "settings.editor.selected.configurable": "MavenSettings",
     "vue.rearranger.settings.migration": "true",
     "应用程序.MainApplication.executor": "Run",
+    "应用程序.TestGameUIApplication.executor": "Run",
     "应用程序.TestJavaFXBootstrap.executor": "Run",
     "应用程序.TestMainUIApplication.executor": "Run"
   }
@@ -80,7 +81,7 @@
       <recent name="C:\Users\Administrator\IdeaProjects\Reach2048\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.TestMainUIApplication">
+  <component name="RunManager" selected="应用程序.TestGameUIApplication">
     <configuration name="MainApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="MainApplication" />
       <module name="Reach2048" />
@@ -90,6 +91,14 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestGameUIApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TestGameUIApplication" />
+      <module name="Reach2048" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\lib\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -121,16 +130,17 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="应用程序.TestGameUIApplication" />
       <item itemvalue="应用程序.MainApplication" />
       <item itemvalue="应用程序.TestJavaFXBootstrap" />
       <item itemvalue="应用程序.TestMainUIApplication" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="应用程序.TestGameUIApplication" />
         <item itemvalue="应用程序.TestMainUIApplication" />
         <item itemvalue="应用程序.MainApplication" />
         <item itemvalue="应用程序.TestJavaFXBootstrap" />
-        <item itemvalue="应用程序.MainApplication" />
         <item itemvalue="应用程序.MainApplication" />
       </list>
     </recent_temporary>
@@ -161,7 +171,7 @@
       <workItem from="1713275088832" duration="1628000" />
       <workItem from="1713864716583" duration="13510000" />
       <workItem from="1713958844009" duration="15415000" />
-      <workItem from="1714033839882" duration="2393000" />
+      <workItem from="1714033839882" duration="11606000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
@@ -299,7 +309,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713975112613</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="modify mainui with fx">
+      <option name="closed" value="true" />
+      <created>1714044198395</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1714044198395</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -1,64 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="ui.Controller.GameUI"
-            prefHeight="1000.0" prefWidth="1000.0">
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<AnchorPane prefHeight="1000.0" prefWidth="1000.0" stylesheets="@../css/gameUI.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.Controller.GameUI">
 <children>
     <!--显示板-->
-    <AnchorPane fx:id="displayPane" layoutX="0.0" layoutY="0.0" prefHeight="400.0" prefWidth="600.0">
+    <AnchorPane fx:id="displayPane" layoutX="0.0" layoutY="10.0" maxHeight="400.0" maxWidth="300.0" minHeight="400.0" prefHeight="400.0" prefWidth="300.0">
     <children>
         <!--分数显示-->
-        <VBox fx:id="scorePane" layoutX="0.0" layoutY="0.0" prefHeight="400.0" prefWidth="600.0">
+        <VBox fx:id="scorePane" alignment="CENTER" layoutX="107.0" layoutY="14.0" prefHeight="50.0" prefWidth="87.0" styleClass="custom-pane">
         <children>
-            <Label fx:id="scoreTitle" text="SCORE" />
-            <Label fx:id="score" text="0" />
+            <Label fx:id="scoreTitle" alignment="CENTER" styleClass="font-regular" text="SCORE" />
+            <Label fx:id="score" alignment="CENTER" styleClass="number-regular" text="0" />
         </children>
         </VBox>
         <!--步数显示-->
-        <VBox fx:id="stepPane" layoutX="0.0" layoutY="0.0" prefHeight="400.0" prefWidth="600.0">
+        <VBox fx:id="stepPane" alignment="CENTER" layoutX="107.0" layoutY="73.0" prefHeight="50.0" prefWidth="87.0" styleClass="custom-pane">
         <children>
-            <Label fx:id="stepTitle" text="STEP" />
-            <Label fx:id="step" text="0" />
+            <Label fx:id="stepTitle" alignment="CENTER" layoutY="5.0" styleClass="font-regular" text="STEP" />
+            <Label fx:id="step" styleClass="number-regular" text="0" />
         </children>
         </VBox>
         <!--时间显示-->
-        <GridPane fx:id="timePane" layoutX="0.0" layoutY="0.0" prefHeight="400.0" prefWidth="600.0">
+        <HBox fx:id="timePane" alignment="CENTER" layoutX="14.0" layoutY="161.0" prefHeight="100.0" prefWidth="273.0">
         <children>
-            <Label fx:id="timeTitle" text="TIME" />
-            <Label fx:id="time" text="0" />
+            <Label fx:id="timeTitle" styleClass="timer-style" prefWidth="20.0" prefHeight="20.0">
+            <graphic>
+                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../assets/Timer.png" />
+                </image>
+                </ImageView>
+            </graphic>
+            </Label>
+            <Label fx:id="time" text="00:00:00" styleClass="time-display-style"/>
         </children>
-        </GridPane>
+        </HBox>
         <!--胜利/失败显示-->
-        <Pane fx:id="statePane" layoutX="0.0" layoutY="0.0" prefHeight="400.0" prefWidth="600.0" visible="false"/>
+        <Pane fx:id="statePane" layoutY="310.0" prefHeight="100.0" prefWidth="300.0" visible="false" />
     </children>
     </AnchorPane>
     <!--控制板-->
-    <AnchorPane fx:id="controlPane" layoutX="600.0" layoutY="0.0" prefHeight="400.0" prefWidth="400.0">
+    <AnchorPane fx:id="controlPane" layoutX="0.0" layoutY="400.0" maxWidth="300.0" prefHeight="600.0" prefWidth="300.0">
     <children>
-        <!--重新开始按钮-->
-        <Button fx:id="restartButton" layoutX="0.0" layoutY="0.0" mnemonicParsing="false" text="RESTART" />
-        <!--悔棋按钮-->
-        <Button fx:id="undoButton" layoutX="0.0" layoutY="0.0" mnemonicParsing="false" text="UNDO" />
-        <!--提示按钮-->
-        <Button fx:id="hintButton" layoutX="0.0" layoutY="0.0" mnemonicParsing="false" text="HINT" />
-        <!--退出按钮-->
-        <Button fx:id="exitButton" layoutX="0.0" layoutY="0.0" mnemonicParsing="false" text="EXIT" />
-        <!--方向控制按钮-->
-        <Button fx:id="upButton" layoutX="0.0" layoutY="0.0" mnemonicParsing="false" text="UP" />
-        <Button fx:id="downButton" layoutX="0.0" layoutY="0.0" mnemonicParsing="false" text="DOWN" />
-        <Button fx:id="leftButton" layoutX="0.0" layoutY="0.0" mnemonicParsing="false" text="LEFT" />
-        <Button fx:id="rightButton" layoutX="0.0" layoutY="0.0" mnemonicParsing="false" text="RIGHT" />
+        <VBox fx:id="upControlPane" alignment="CENTER" layoutX="13.0" prefHeight="200.0" prefWidth="287.0" spacing="20.0">
+        <children>
+            <!--重新开始按钮-->
+            <Button fx:id="restartButton" layoutX="180.0" layoutY="0.0" mnemonicParsing="false" text="RESTART" />
+            <!--悔棋按钮-->
+            <Button fx:id="undoButton" layoutX="180.0" layoutY="80.0" mnemonicParsing="false" text="UNDO" />
+            <!--提示按钮-->
+            <Button fx:id="hintButton" layoutX="180.0" layoutY="160.0" mnemonicParsing="false" text="HINT" />
+            <!--退出按钮-->
+            <Button fx:id="exitButton" layoutX="180.0" layoutY="320.0" mnemonicParsing="false" text="EXIT" />
+        </children>
+        </VBox>
+        <AnchorPane fx:id="downControlPane" layoutX="44.0" layoutY="250.0" prefHeight="200.0" prefWidth="200.0">
+        <children>
+            <!--方向控制按钮-->
+            <Button fx:id="upButton" layoutX="90.0" layoutY="3.0" mnemonicParsing="false" text="UP" />
+            <Button fx:id="downButton" layoutX="0.0" layoutY="90.0" mnemonicParsing="false" text="UP" />
+            <Button fx:id="leftButton" layoutX="180" layoutY="90.0" mnemonicParsing="false" text="UP" />
+            <Button fx:id="rightButton" layoutX="90.0" layoutY="176.0" mnemonicParsing="false" text="UP" />
+        </children>
+        </AnchorPane>
     </children>
     </AnchorPane>
     <!--游戏板-->
-    <AnchorPane fx:id="gamePane" layoutX="0.0" layoutY="400.0" prefHeight="600.0" prefWidth="1000.0"/>
-    </AnchorPane>
+    <AnchorPane fx:id="gamePane" layoutX="300.0" layoutY="157.0" prefHeight="700.0" prefWidth="700.0" />
 </children>
 </AnchorPane>
