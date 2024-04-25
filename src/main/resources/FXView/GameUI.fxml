@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
 
 <AnchorPane prefHeight="1000.0" prefWidth="1000.0" stylesheets="@../css/gameUI.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.Controller.GameUI">
 <children>
     <!--显示板-->
-    <AnchorPane fx:id="displayPane" layoutX="0.0" layoutY="10.0" maxHeight="400.0" maxWidth="300.0" minHeight="400.0" prefHeight="400.0" prefWidth="300.0">
+    <AnchorPane fx:id="displayPane" layoutY="51.0" maxHeight="400.0" maxWidth="300.0" minHeight="400.0" prefHeight="400.0" prefWidth="300.0">
     <children>
         <!--分数显示-->
         <VBox fx:id="scorePane" alignment="CENTER" layoutX="107.0" layoutY="14.0" prefHeight="50.0" prefWidth="87.0" styleClass="custom-pane">
@@ -28,7 +26,7 @@
         <!--时间显示-->
         <HBox fx:id="timePane" alignment="CENTER" layoutX="14.0" layoutY="161.0" prefHeight="100.0" prefWidth="273.0">
         <children>
-            <Label fx:id="timeTitle" styleClass="timer-style" prefWidth="20.0" prefHeight="20.0">
+            <Label fx:id="timeTitle" prefHeight="20.0" prefWidth="20.0" styleClass="timer-style">
             <graphic>
                 <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                 <image>
@@ -37,17 +35,17 @@
                 </ImageView>
             </graphic>
             </Label>
-            <Label fx:id="time" text="00:00:00" styleClass="time-display-style"/>
+            <Label fx:id="time" styleClass="time-display-style" text="00:00:00" />
         </children>
         </HBox>
         <!--胜利/失败显示-->
-        <Pane fx:id="statePane" layoutY="310.0" prefHeight="100.0" prefWidth="300.0" visible="false" />
+        <Pane fx:id="statePane" layoutY="310.0" prefHeight="100.0" prefWidth="300.0" visible="true" />
     </children>
     </AnchorPane>
     <!--控制板-->
-    <AnchorPane fx:id="controlPane" layoutX="0.0" layoutY="400.0" maxWidth="300.0" prefHeight="600.0" prefWidth="300.0">
+    <AnchorPane fx:id="controlPane" layoutY="454.0" maxWidth="300.0" prefHeight="533.0" prefWidth="300.0">
     <children>
-        <VBox fx:id="upControlPane" alignment="CENTER" layoutX="13.0" prefHeight="200.0" prefWidth="287.0" spacing="20.0">
+        <VBox fx:id="upControlPane" alignment="CENTER" layoutX="13.0" layoutY="11.0" prefHeight="200.0" prefWidth="287.0" spacing="20.0">
         <children>
             <!--重新开始按钮-->
             <Button fx:id="restartButton" layoutX="180.0" layoutY="0.0" mnemonicParsing="false" text="RESTART" />
@@ -71,6 +69,6 @@
     </children>
     </AnchorPane>
     <!--游戏板-->
-    <AnchorPane fx:id="gamePane" layoutX="300.0" layoutY="157.0" prefHeight="700.0" prefWidth="700.0" />
+    <AnchorPane fx:id="gamePane" layoutX="320.0" layoutY="192.0" prefHeight="650.0" prefWidth="650.0" styleClass="board-style" />
 </children>
 </AnchorPane>
