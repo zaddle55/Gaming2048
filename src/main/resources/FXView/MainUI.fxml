@@ -6,7 +6,7 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="700.0" stylesheets="@../css/mainUI.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.Controller.MainUI">
 <children>
-      <TilePane layoutX="154" layoutY="20.0" prefHeight="72.0" prefWidth="423.0" >
+      <TilePane layoutX="134" layoutY="20.0" prefHeight="72.0" prefWidth="423.0" >
          <children>
             <Label fx:id="tilteLabel" alignment="CENTER" mnemonicParsing="false" prefHeight="72.0" prefWidth="423.0">
       </Label>

@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="modify gameui with fx">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/FXView/GameUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXView/GameUI.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/css/gameUI.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/gameUI.css" afterDir="false" />
-    </list>
+    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="modify gameui with fx" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -80,7 +76,7 @@
       <recent name="C:\Users\Administrator\IdeaProjects\Reach2048\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.TestGameUIApplication">
+  <component name="RunManager" selected="应用程序.TestMainUIApplication">
     <configuration name="MainApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="MainApplication" />
       <module name="Reach2048" />
@@ -136,9 +132,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="应用程序.TestGameUIApplication" />
         <item itemvalue="应用程序.TestMainUIApplication" />
         <item itemvalue="应用程序.MainApplication" />
+        <item itemvalue="应用程序.TestGameUIApplication" />
         <item itemvalue="应用程序.TestJavaFXBootstrap" />
         <item itemvalue="应用程序.MainApplication" />
       </list>
@@ -170,7 +166,7 @@
       <workItem from="1713275088832" duration="1628000" />
       <workItem from="1713864716583" duration="13510000" />
       <workItem from="1713958844009" duration="15415000" />
-      <workItem from="1714033839882" duration="12950000" />
+      <workItem from="1714033839882" duration="13270000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
@@ -340,7 +336,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714054053848</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="modify gameui with fx">
+      <option name="closed" value="true" />
+      <created>1714054824855</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1714054824855</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
