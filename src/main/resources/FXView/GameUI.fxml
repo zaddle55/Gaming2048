@@ -9,6 +9,56 @@
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="ui.Controller.GameUI"
-            prefHeight="400.0" prefWidth="600.0">
-
+            prefHeight="1000.0" prefWidth="1000.0">
+<children>
+    <!--显示板-->
+    <AnchorPane fx:id="displayPane" layoutX="0.0" layoutY="0.0" prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <!--分数显示-->
+        <VBox fx:id="scorePane" layoutX="0.0" layoutY="0.0" prefHeight="400.0" prefWidth="600.0">
+        <children>
+            <Label fx:id="scoreTitle" text="SCORE" />
+            <Label fx:id="score" text="0" />
+        </children>
+        </VBox>
+        <!--步数显示-->
+        <VBox fx:id="stepPane" layoutX="0.0" layoutY="0.0" prefHeight="400.0" prefWidth="600.0">
+        <children>
+            <Label fx:id="stepTitle" text="STEP" />
+            <Label fx:id="step" text="0" />
+        </children>
+        </VBox>
+        <!--时间显示-->
+        <GridPane fx:id="timePane" layoutX="0.0" layoutY="0.0" prefHeight="400.0" prefWidth="600.0">
+        <children>
+            <Label fx:id="timeTitle" text="TIME" />
+            <Label fx:id="time" text="0" />
+        </children>
+        </GridPane>
+        <!--胜利/失败显示-->
+        <Pane fx:id="statePane" layoutX="0.0" layoutY="0.0" prefHeight="400.0" prefWidth="600.0" visible="false"/>
+    </children>
+    </AnchorPane>
+    <!--控制板-->
+    <AnchorPane fx:id="controlPane" layoutX="600.0" layoutY="0.0" prefHeight="400.0" prefWidth="400.0">
+    <children>
+        <!--重新开始按钮-->
+        <Button fx:id="restartButton" layoutX="0.0" layoutY="0.0" mnemonicParsing="false" text="RESTART" />
+        <!--悔棋按钮-->
+        <Button fx:id="undoButton" layoutX="0.0" layoutY="0.0" mnemonicParsing="false" text="UNDO" />
+        <!--提示按钮-->
+        <Button fx:id="hintButton" layoutX="0.0" layoutY="0.0" mnemonicParsing="false" text="HINT" />
+        <!--退出按钮-->
+        <Button fx:id="exitButton" layoutX="0.0" layoutY="0.0" mnemonicParsing="false" text="EXIT" />
+        <!--方向控制按钮-->
+        <Button fx:id="upButton" layoutX="0.0" layoutY="0.0" mnemonicParsing="false" text="UP" />
+        <Button fx:id="downButton" layoutX="0.0" layoutY="0.0" mnemonicParsing="false" text="DOWN" />
+        <Button fx:id="leftButton" layoutX="0.0" layoutY="0.0" mnemonicParsing="false" text="LEFT" />
+        <Button fx:id="rightButton" layoutX="0.0" layoutY="0.0" mnemonicParsing="false" text="RIGHT" />
+    </children>
+    </AnchorPane>
+    <!--游戏板-->
+    <AnchorPane fx:id="gamePane" layoutX="0.0" layoutY="400.0" prefHeight="600.0" prefWidth="1000.0"/>
+    </AnchorPane>
+</children>
 </AnchorPane>
