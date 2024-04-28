@@ -48,7 +48,7 @@
         <VBox fx:id="upControlPane" alignment="CENTER" layoutX="13.0" layoutY="11.0" prefHeight="200.0" prefWidth="287.0" spacing="20.0">
         <children>
             <!--重新开始按钮-->
-            <Button fx:id="restartButton" layoutX="180.0" layoutY="0.0" mnemonicParsing="false" text="RESTART" />
+            <Button fx:id="restartButton" layoutX="180.0" layoutY="0.0" mnemonicParsing="false" text="RESTART" onMousePressed="#restartAction"/>
             <!--悔棋按钮-->
             <Button fx:id="undoButton" layoutX="180.0" layoutY="80.0" mnemonicParsing="false" text="UNDO" />
             <!--提示按钮-->
@@ -69,6 +69,6 @@
     </children>
     </AnchorPane>
     <!--游戏板-->
-    <AnchorPane fx:id="gamePane" layoutX="320.0" layoutY="192.0" prefHeight="650.0" prefWidth="650.0" styleClass="board-style" />
+    <AnchorPane fx:id="gamePane" layoutX="320.0" layoutY="192.0" prefHeight="650.0" prefWidth="650.0" maxHeight="650.0" maxWidth="650.0"/>
 </children>
 </AnchorPane>

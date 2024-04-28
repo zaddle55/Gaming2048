@@ -13,7 +13,7 @@
          </children></TilePane>
     <VBox layoutX="54.0" layoutY="164.0" prefHeight="403.0" prefWidth="184.0">
         <children>
-            <Label fx:id="startButton" alignment="CENTER" mnemonicParsing="false" onMouseEntered="#enterStartAction" onMouseExited="#exitSartction" onMousePressed="#startAction" prefHeight="51.0" prefWidth="221.0" styleClass="button-default-style" text="NewGame" />
+            <Label fx:id="startButton" alignment="CENTER" mnemonicParsing="false" onMouseEntered="#enterStartAction" onMouseExited="#exitStartAction" onMousePressed="#startAction" prefHeight="51.0" prefWidth="221.0" styleClass="button-default-style" text="NewGame" />
             <Label fx:id="loadButton" alignment="CENTER" mnemonicParsing="false" onMouseEntered="#enterLoadAction" onMouseExited="#exitLoadAction" onMousePressed="#loadAction" prefHeight="51.0" prefWidth="221.0" styleClass="button-default-style" text="Load" />
             <Label fx:id="achieveButton" alignment="CENTER" mnemonicParsing="false" onMouseEntered="#enterAchieveAction" onMouseExited="#exitAchieveAction" onMousePressed="#achieveAction" prefHeight="51.0" prefWidth="221.0" styleClass="button-default-style" text="Achievement" />
             <Label fx:id="settingButton" alignment="CENTER" mnemonicParsing="false" onMouseEntered="#enterSettingAction" onMouseExited="#exitSettingAction" onMousePressed="#settingAction" prefHeight="51.0" prefWidth="221.0" styleClass="button-default-style" text="Setting" />
