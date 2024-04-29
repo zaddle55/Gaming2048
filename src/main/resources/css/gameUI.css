@@ -68,3 +68,51 @@
     -fx-border-width: 11px;
     -fx-border-radius: 3px;
 }
+
+#upButton {
+    -fx-background-image: url("/assets/buttonIcon/up-custom.png");
+    -fx-background-position: center;
+    -fx-background-size: cover;
+}
+
+#upButton:pressed {
+    -fx-background-image: url("/assets/buttonIcon/up.png");
+    -fx-background-position: center;
+    -fx-background-size: cover;
+}
+
+#downButton {
+    -fx-background-image: url("/assets/buttonIcon/down-custom.png");
+    -fx-background-position: center;
+    -fx-background-size: cover;
+}
+
+#downButton:pressed {
+    -fx-background-image: url("/assets/buttonIcon/down.png");
+    -fx-background-position: center;
+    -fx-background-size: cover;
+}
+
+#leftButton {
+    -fx-background-image: url("/assets/buttonIcon/left-custom.png");
+    -fx-background-position: center;
+    -fx-background-size: cover;
+}
+
+#leftButton:pressed {
+    -fx-background-image: url("/assets/buttonIcon/left.png");
+    -fx-background-position: center;
+    -fx-background-size: cover;
+}
+
+#rightButton {
+    -fx-background-image: url("/assets/buttonIcon/right-custom.png");
+    -fx-background-position: center;
+    -fx-background-size: cover;
+}
+
+#rightButton:pressed {
+    -fx-background-image: url("/assets/buttonIcon/right.png");
+    -fx-background-position: center;
+    -fx-background-size: cover;
+}

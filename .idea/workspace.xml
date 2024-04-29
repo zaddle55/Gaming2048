@@ -5,16 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="modify gameui with fx">
-      <change afterPath="$PROJECT_DIR$/src/main/java/GameApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/ColorMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/Coordination.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/TestGridPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ui/Animation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ui/MoveAnimation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ui/Tile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ui/TileList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/Direction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/EntityType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GameApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/Controller/GameUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/Controller/GameUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/Controller/MainUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/Controller/MainUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/Coordination.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Coordination.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/FXView/GameUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXView/GameUI.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/FXView/MainUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXView/MainUI.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/css/gameUI.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/gameUI.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/TestGameUIApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestGameUIApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,6 +78,8 @@
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true",
+    "应用程序.GameApplication.executor": "Run",
+    "应用程序.GameUI.executor": "Run",
     "应用程序.MainApplication.executor": "Run",
     "应用程序.TestGameUIApplication.executor": "Run",
     "应用程序.TestGridPanel.executor": "Run",
@@ -89,13 +96,22 @@
       <recent name="C:\Users\Administrator\IdeaProjects\Reach2048\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.TestGameUIApplication">
-    <configuration name="MainApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="MainApplication" />
+  <component name="RunManager" selected="应用程序.GameApplication">
+    <configuration name="GameApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GameApplication" />
       <module name="Reach2048" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\lib\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ui.Controller.GameUI" />
+      <module name="Reach2048" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\lib\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="main.java.*" />
+          <option name="PATTERN" value="ui.Controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -115,13 +131,6 @@
       <option name="MAIN_CLASS_NAME" value="TestGridPanel" />
       <module name="Reach2048" />
       <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\lib\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestJavaFXBootstrap" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="TestJavaFXBootstrap" />
-      <module name="Reach2048" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -146,19 +155,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="应用程序.GameApplication" />
+      <item itemvalue="应用程序.GameUI" />
       <item itemvalue="应用程序.TestGridPanel" />
       <item itemvalue="应用程序.TestGameUIApplication" />
-      <item itemvalue="应用程序.MainApplication" />
-      <item itemvalue="应用程序.TestJavaFXBootstrap" />
       <item itemvalue="应用程序.TestMainUIApplication" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="应用程序.TestGameUIApplication" />
+        <item itemvalue="应用程序.GameApplication" />
         <item itemvalue="应用程序.TestMainUIApplication" />
+        <item itemvalue="应用程序.GameUI" />
+        <item itemvalue="应用程序.TestGameUIApplication" />
         <item itemvalue="应用程序.TestGridPanel" />
-        <item itemvalue="应用程序.MainApplication" />
-        <item itemvalue="应用程序.TestJavaFXBootstrap" />
       </list>
     </recent_temporary>
   </component>
@@ -192,7 +201,8 @@
       <workItem from="1714119002840" duration="4352000" />
       <workItem from="1714192650484" duration="1502000" />
       <workItem from="1714196224414" duration="4382000" />
-      <workItem from="1714287677501" duration="23569000" />
+      <workItem from="1714287677501" duration="24998000" />
+      <workItem from="1714356789263" duration="29100000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
@@ -378,15 +388,33 @@
       <option name="project" value="LOCAL" />
       <updated>1714055366487</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="modify gameui with fx">
+      <option name="closed" value="true" />
+      <created>1714316624757</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1714316624758</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="5130ff8c-4522-468b-b028-e110b136e680" value="TOOL_WINDOW" />
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
+        <entry key="5130ff8c-4522-468b-b028-e110b136e680">
+          <value>
+            <State />
+          </value>
+        </entry>
         <entry key="MAIN">
           <value>
             <State>
@@ -420,31 +448,5 @@
     <MESSAGE value="modify gamenui with fx" />
     <MESSAGE value="modify gameui with fx" />
     <option name="LAST_COMMIT_MESSAGE" value="modify gameui with fx" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ui/Controller/MainUI.java</url>
-          <line>62</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ui/Controller/GameUI.java</url>
-          <line>152</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ui/Controller/GameUI.java</url>
-          <line>153</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/util/Coordination.java</url>
-          <line>28</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

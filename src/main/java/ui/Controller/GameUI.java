@@ -1,39 +1,244 @@
 package ui.Controller;
 
 
+import javafx.animation.ParallelTransition;
+import javafx.animation.TranslateTransition;
+import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
-import util.ColorMap;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.util.Duration;
+import ui.Tile;
 import util.Coordination;
 import util.Board;
+import util.Direction;
 
-public class GameUI {
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class GameUI extends Application {
 
     @FXML
     private AnchorPane gamePane;
     @FXML
     private Button restartButton;
+    @FXML
+    private AnchorPane gameInterface;
+
+    private static int size;
+    private static int mode;
+    private static Board board;
+    private static AnchorPane curBlockPane;
+    public static int getSize() {
+        return size;
+    }
+
+    public static void setSize(int size) {
+        GameUI.size = size;
+    }
+
+    public static int getMode() {
+        return mode;
+    }
+
+    public static void setMode(int mode) {
+        GameUI.mode = mode;
+    }
+
+    public static Board getBoard() {
+        return board;
+    }
+
+    public static void setBoard(Board board) {
+        GameUI.board = board;
+    }
+
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("/FXView/GameUI.fxml"));
+        Scene scene = new Scene(root, 1000, 1000);
+
+        primaryStage.setTitle("2048");
+        primaryStage.setResizable(false);
+        primaryStage.getIcons().add(new javafx.scene.image.Image("/assets/titleIcon/favicon-32x32.png"));
+        primaryStage.initStyle(StageStyle.UNIFIED);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
+        scene.getRoot().requestFocus();
+
+        gamePane = (AnchorPane) scene.lookup("#gamePane");
+
+        GameUI.initGamePane(gamePane, size);
+
+        board = new Board(0, size, mode);
+        board.init();
+
+        curBlockPane = GameUI.draw(board, gamePane, size);
+
+        scene.setOnKeyPressed(event -> {
+            if        (event.getCode() == KeyCode.UP    || event.getCode() == KeyCode.W) {
+                upAction();
+            } else if (event.getCode() == KeyCode.DOWN  || event.getCode() == KeyCode.S) {
+                downAction();
+            } else if (event.getCode() == KeyCode.LEFT  || event.getCode() == KeyCode.A) {
+                leftAction();
+            } else if (event.getCode() == KeyCode.RIGHT || event.getCode() == KeyCode.D) {
+                rightAction();
+            }
+        });
+
+    }
+
 
     @FXML
     public void restartAction() {
+        board = new Board(0, size, mode);
+        board.init();
+        GameUI.draw(board, gamePane, size);
+    }
 
+    @FXML
+    public void undoAction() {
+        board.undo();
+        GameUI.draw(board, gamePane, size);
     }
 
     @FXML
     public void upAction() {
 
+        List<TranslateTransition> transitions = new ArrayList();
+
+        for (Node tile : curBlockPane.getChildren()){
+            Tile t = (Tile) tile;
+            Coordination coordination = new Coordination(t.gethIndex(), t.getvIndex(), gamePane, size);
+            TranslateTransition tt = new TranslateTransition(Duration.millis(100), tile);
+            tt.setByY(-coordination.getBlockWidth() * (size - t.getvIndex() - 1));
+            transitions.add(tt);
+        }
         // Animation here
 
-        // Update the board
+
+        ParallelTransition pt = new ParallelTransition(transitions.toArray(new TranslateTransition[0]));
+        pt.play();
+
+        new Thread(() -> {
+            try {
+                Thread.sleep(100);
+                Platform.runLater(() -> {
+                    board.slip(Direction.UP);
+                    curBlockPane = GameUI.draw(board, gamePane, size);
+                });
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
+
+    }
+
+    @FXML
+    public void downAction() {
+
+        // Animation here
+        List<TranslateTransition> transitions = new ArrayList();
+
+        for (Node tile : curBlockPane.getChildren()){
+            Tile t = (Tile) tile;
+            Coordination coordination = new Coordination(t.gethIndex(), t.getvIndex(), gamePane, size);
+            TranslateTransition tt = new TranslateTransition(Duration.millis(100), tile);
+            tt.setByY(coordination.getBlockWidth() * (size - t.getvIndex() - 1));
+            transitions.add(tt);
+        }
+
+        ParallelTransition pt = new ParallelTransition(transitions.toArray(new TranslateTransition[0]));
+        pt.play();
+
+        new Thread(() -> {
+            try {
+                Thread.sleep(100);
+                Platform.runLater(() -> {
+                    board.slip(Direction.DOWN);
+                    curBlockPane = GameUI.draw(board, gamePane, size);
+                });
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
+    }
+
+    @FXML
+    public void leftAction() {
+
+        // Animation here
+        List<TranslateTransition> transitions = new ArrayList();
+
+        for (Node tile : curBlockPane.getChildren()){
+            Tile t = (Tile) tile;
+            Coordination coordination = new Coordination(t.gethIndex(), t.getvIndex(), gamePane, size);
+            TranslateTransition tt = new TranslateTransition(Duration.millis(100), tile);
+            tt.setByX(-coordination.getBlockWidth() * (size - t.gethIndex() - 1));
+            transitions.add(tt);
+        }
+
+        ParallelTransition pt = new ParallelTransition(transitions.toArray(new TranslateTransition[0]));
+        pt.play();
+
+        new Thread(() -> {
+            try {
+                Thread.sleep(100);
+                Platform.runLater(() -> {
+                    board.slip(Direction.LEFT);
+                    curBlockPane = GameUI.draw(board, gamePane, size);
+                });
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
+    }
+
+    @FXML
+    public void rightAction() {
+
+        // Animation here
+        List<TranslateTransition> transitions = new ArrayList();
+
+        for (Node tile : curBlockPane.getChildren()){
+            Tile t = (Tile) tile;
+            Coordination coordination = new Coordination(t.gethIndex(), t.getvIndex(), gamePane, size);
+            TranslateTransition tt = new TranslateTransition(Duration.millis(100), tile);
+            tt.setByX(coordination.getBlockWidth() * (size - t.gethIndex() - 1));
+            transitions.add(tt);
+        }
+
+        ParallelTransition pt = new ParallelTransition(transitions.toArray(new TranslateTransition[0]));
+        pt.play();
+
+        new Thread(() -> {
+            try {
+                Thread.sleep(100);
+                Platform.runLater(() -> {
+                    board.slip(Direction.RIGHT);
+                    curBlockPane = GameUI.draw(board, gamePane, size);
+                });
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
     }
 
     // 获取gamePane参数
@@ -50,14 +255,47 @@ public class GameUI {
     }
 
     // 初始化gamePane网格
-    public static void initGamePane(AnchorPane gamePane) {
+    public static void initGamePane(AnchorPane gamePane, int size) {
 
+        gamePane.getChildren().clear();
 
-        int size = 4;
-        double space = 11.0;
-        double strokeWidth = 11.0;
+        drawBackground(gamePane, size);
+        drawGrid(gamePane, size);
+    }
 
-        double blockWidth = (gamePane.getWidth() - space * (size + 1)) / size;
+    public static AnchorPane draw(Board board, AnchorPane gamePane, int size) {
+
+        gamePane.getChildren().clear();
+
+        drawBackground(gamePane, size);
+        AnchorPane blockPane = new AnchorPane();
+
+        int[][] grid = board.getBoard();
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[i].length; j++) {
+                if (grid[i][j] != 0) {
+                    blockPane.getChildren().add(new Tile(grid[i][j], j, i, gamePane, size));
+                }
+            }
+        }
+
+        blockPane.setLayoutX(0);
+        blockPane.setLayoutY(0);
+
+        gamePane.getChildren().add(blockPane);
+
+        drawGrid(gamePane, size);
+
+        return blockPane;
+
+    }
+
+    private static StackPane createEntity(int val, int x, int y, AnchorPane gamePane, int size) {
+
+        return null;
+    }
+
+    private static void drawBackground(AnchorPane gamePane, int size) {
 
         Pane backgroundPane = new Pane();
         backgroundPane.setLayoutX(0);
@@ -66,11 +304,17 @@ public class GameUI {
         backgroundPane.setStyle("-fx-background-color: #cbbfb3;\n" +
                 "-fx-background-radius: 3px;\n" +
                 "-fx-background-size: cover;\n" +
-                "-fx-background-position: center;\n" +
-                "-fx-border-color: #baac9f;\n" +
-                "-fx-border-width: 11px;\n" +
-                "-fx-border-radius: 3px;");
+                "-fx-background-position: center;\n");
         gamePane.getChildren().add(backgroundPane);
+
+    }
+
+    private static void drawGrid(AnchorPane gamePane, int size) {
+
+        double space = 11.0;
+        double strokeWidth = 11.0;
+
+        double blockWidth = (gamePane.getWidth() - space * (size + 1)) / size;
 
         for (int i = 1; i < size; i++) {
             Line hLine = new Line();
@@ -92,80 +336,35 @@ public class GameUI {
             gamePane.getChildren().add(vLine);
 
         }
-    }
 
-    public static void draw(Board board, AnchorPane gamePane) {
-
-        gamePane.getChildren().clear();
-
-        initGamePane(gamePane);
-        AnchorPane blockPane = new AnchorPane();
-
-        int[][] grid = board.getBoard();
-        for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid[i].length; j++) {
-                if (grid[i][j] != 0) {
-                    blockPane.getChildren().add(createEntity(grid[i][j], i, j, gamePane));
-                }
-            }
-        }
-
-        blockPane.setLayoutX(0);
-        blockPane.setLayoutY(0);
-
-
-        gamePane.getChildren().add(blockPane);
-
+        Pane borderPane = new Pane();
+        borderPane.setLayoutX(0);
+        borderPane.setLayoutY(0);
+        borderPane.setPrefSize(gamePane.getWidth(), gamePane.getHeight());
+        borderPane.setStyle("-fx-border-color: #baac9f;\n" +
+                "-fx-border-width: 11px;\n" +
+                "-fx-border-radius: 3px;");
+        gamePane.getChildren().add(borderPane);
 
     }
 
-    private static StackPane createEntity(int val, int x, int y, AnchorPane gamePane) {
-
-        int size = 4;
-
-        StackPane blockPane = new StackPane();
-        // 坐标转换
-        Coordination coordination = new Coordination(x, y, gamePane, size);
-        double layoutX = coordination.getLayoutX();
-        double layoutY = coordination.getLayoutY();
-
-        int blockWidth = (int) coordination.getBlockWidth();
-
-        // 创建方块
-        Rectangle blockRect = new Rectangle(blockWidth, blockWidth);
-        blockRect.setArcWidth(3);
-        blockRect.setFill(ColorMap.getColor(val));
-
-
-        switch (val % 2) {
-            case 0:
-                // 数字显示
-                Text blockText = new Text(String.valueOf(val));
-                // 设置字体大小为方格宽度的1/3
-                blockText.setFont(javafx.scene.text.Font.font(blockWidth / 2.32));
-                // 设置字体颜色
-                blockText.setFill(ColorMap.getTextColor(val));
-                // 设置字体
-                blockText.setStyle("-fx-font-family: 'Arial';");
-
-                blockPane.getChildren().addAll(blockRect, blockText);
-
-                blockPane.setLayoutX(layoutX);
-                blockPane.setLayoutY(layoutY);
-
-                return blockPane;
-
-            case 1:
-                blockPane.getChildren().add(blockRect);
-
-                blockPane.setLayoutX(layoutX);
-                blockPane.setLayoutY(layoutY);
-
-                return blockPane;
-
-            default:
-                return null;
+    class Animation {
+        private TranslateTransition tt;
+        private Tile tile;
+        public Animation(TranslateTransition tt, Tile tile) {
+            this.tt = tt;
+            this.tile = tile;
         }
+    }
+
+
+    public static void init(int size, int mode) {
+        GameUI.setSize(size);
+        GameUI.setMode(mode);
+    }
+
+    public static void run(String[] args) {
+        launch(args);
     }
 
 }

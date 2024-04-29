@@ -31,11 +31,11 @@ public class Coordination {
     }
 
     private double gridToLayoutY() {
-        return space + gridY * (blockWidth + space) + 2.6;
+        return space + gridY * (blockWidth + space) - 1.0;
     }
 
     private double gridToLayoutX() {
-        return space + gridX * (blockWidth + space) + 3.1;
+        return space + gridX * (blockWidth + space) - 1.0;
     }
 
     public double getLayoutX() {

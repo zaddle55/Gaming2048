@@ -70,18 +70,18 @@ public class Board implements Serializable {
 
     // 读取用户操作，移动游戏板
     // 0: 上  1: 下  2: 左  3: 右
-    public void slip(int direction) {
-        switch (direction) {
-            case 0:
+    public void slip(Direction dir) {
+        switch (dir) {
+            case UP:
                 slipUp();
                 break;
-            case 1:
+            case DOWN:
                 slipDown();
                 break;
-            case 2:
+            case LEFT:
                 slipLeft();
                 break;
-            case 3:
+            case RIGHT:
                 slipRight();
                 break;
             default:

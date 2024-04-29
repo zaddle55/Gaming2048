@@ -37,26 +37,26 @@ public class TestGameUIApplication extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        GameUI gameUI = new GameUI();
-
-        gameUI.initGamePane((AnchorPane) scene.lookup("#gamePane"));
-
-        board = new Board(0, 4, 0);
-        board.init();
-        gameUI.draw(board, (AnchorPane) scene.lookup("#gamePane"));
-        new Thread(() -> {
-            while (true) {
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                Platform.runLater(() -> {
-                    board.slip(0);
-                    gameUI.draw(board, (AnchorPane) scene.lookup("#gamePane"));
-                });
-            }
-        }).start();
+//        GameUI gameUI = new GameUI();
+//
+//        gameUI.initGamePane((AnchorPane) scene.lookup("#gamePane"));
+//
+//        board = new Board(0, 4, 0);
+//        board.init();
+//        gameUI.draw(board, (AnchorPane) scene.lookup("#gamePane"), 4);
+//        new Thread(() -> {
+//            while (true) {
+//                try {
+//                    Thread.sleep(1000);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//                Platform.runLater(() -> {
+//                    board.slip(0);
+//                    gameUI.draw(board, (AnchorPane) scene.lookup("#gamePane"), 4);
+//                });
+//            }
+//        }).start();
 
     }
 

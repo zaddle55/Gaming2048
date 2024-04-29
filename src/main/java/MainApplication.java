@@ -62,7 +62,7 @@ public class MainApplication extends MainInterface {
                     // gameOverDisplay();
                 } else {
                     board.addToHistory();
-                    board.slip(0);
+                    board.slip(Direction.UP);
 
                 }
                 draw(board.getBoard(), size);
@@ -88,7 +88,7 @@ public class MainApplication extends MainInterface {
                     // gameOverDisplay();
                 } else {
                     board.addToHistory();
-                    board.slip(1);
+                    board.slip(Direction.DOWN);
 
                 }
                 draw(board.getBoard(), size);
@@ -114,7 +114,7 @@ public class MainApplication extends MainInterface {
                     // gameOverDisplay();
                 } else {
                     board.addToHistory();
-                    board.slip(2);
+                    board.slip(Direction.LEFT);
 
                 }
                 draw(board.getBoard(), size);
@@ -140,7 +140,7 @@ public class MainApplication extends MainInterface {
                     // gameOverDisplay();
                 } else {
                     board.addToHistory();
-                    board.slip(3);
+                    board.slip(Direction.RIGHT);
 
                 }
                 draw(board.getBoard(), size);
