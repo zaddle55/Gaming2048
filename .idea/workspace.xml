@@ -4,23 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="modify gameui with fx">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ui/Animation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ui/MoveAnimation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ui/Tile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ui/TileList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/Direction.java" afterDir="false" />
+    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="modify gameui and keybindings | todo: add animation effect">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GameApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/Controller/GameUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/Controller/GameUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/Controller/MainUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/Controller/MainUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/Coordination.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Coordination.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/MoveAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/MoveAnimation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/Direction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Direction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/FXView/GameUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXView/GameUI.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/css/gameUI.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/gameUI.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/TestGameUIApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestGameUIApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/TestMainUIApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestMainUIApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +89,7 @@
       <recent name="C:\Users\Administrator\IdeaProjects\Reach2048\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.GameApplication">
+  <component name="RunManager" selected="应用程序.TestMainUIApplication">
     <configuration name="GameApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GameApplication" />
       <module name="Reach2048" />
@@ -163,10 +156,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="应用程序.GameApplication" />
         <item itemvalue="应用程序.TestMainUIApplication" />
-        <item itemvalue="应用程序.GameUI" />
         <item itemvalue="应用程序.TestGameUIApplication" />
+        <item itemvalue="应用程序.GameApplication" />
+        <item itemvalue="应用程序.GameUI" />
         <item itemvalue="应用程序.TestGridPanel" />
       </list>
     </recent_temporary>
@@ -202,7 +195,7 @@
       <workItem from="1714192650484" duration="1502000" />
       <workItem from="1714196224414" duration="4382000" />
       <workItem from="1714287677501" duration="24998000" />
-      <workItem from="1714356789263" duration="29100000" />
+      <workItem from="1714356789263" duration="31583000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
@@ -396,7 +389,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714316624758</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="modify gameui and keybindings | todo: add animation effect">
+      <option name="closed" value="true" />
+      <created>1714396488538</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1714396488538</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -447,6 +448,18 @@
     <MESSAGE value="modify mainui with fx" />
     <MESSAGE value="modify gamenui with fx" />
     <MESSAGE value="modify gameui with fx" />
-    <option name="LAST_COMMIT_MESSAGE" value="modify gameui with fx" />
+    <MESSAGE value="modify gameui and keybindings | todo: add animation effect" />
+    <option name="LAST_COMMIT_MESSAGE" value="modify gameui and keybindings | todo: add animation effect" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ui/Controller/GameUI.java</url>
+          <line>94</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

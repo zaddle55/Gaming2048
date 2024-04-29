@@ -1,12 +1,15 @@
 package util;
 
 public enum Direction {
-    UP, DOWN, LEFT, RIGHT;
-    public static int incrementI;
-    public static int incrementJ;
+    UP(-1,0),
+    DOWN(1,0),
+    LEFT(1,-1),
+    RIGHT(1,1);
+    public final int incrementI;
+    public final int incrementJ;
 
-    static {
-        UP.incrementI = 0;
-        incrementJ = 0;
+    private Direction(int incrementI, int incrementJ) {
+        this.incrementI = incrementI;
+        this.incrementJ = incrementJ;
     }
 }

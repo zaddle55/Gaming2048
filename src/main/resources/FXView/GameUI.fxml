@@ -13,14 +13,14 @@
         <VBox fx:id="scorePane" alignment="CENTER" layoutX="107.0" layoutY="14.0" prefHeight="50.0" prefWidth="87.0" styleClass="custom-pane">
         <children>
             <Label fx:id="scoreTitle" alignment="CENTER" styleClass="font-regular" text="SCORE" />
-            <Label fx:id="score" alignment="CENTER" styleClass="number-regular" text="0" />
+            <Label fx:id="scoreLabel" alignment="CENTER" styleClass="number-regular" text="0" />
         </children>
         </VBox>
         <!--步数显示-->
         <VBox fx:id="stepPane" alignment="CENTER" layoutX="107.0" layoutY="73.0" prefHeight="50.0" prefWidth="87.0" styleClass="custom-pane">
         <children>
             <Label fx:id="stepTitle" alignment="CENTER" layoutY="5.0" styleClass="font-regular" text="STEP" />
-            <Label fx:id="step" styleClass="number-regular" text="0" />
+            <Label fx:id="stepLabel" styleClass="number-regular" text="0" />
         </children>
         </VBox>
         <!--时间显示-->
@@ -35,7 +35,7 @@
                 </ImageView>
             </graphic>
             </Label>
-            <Label fx:id="time" styleClass="time-display-style" text="00:00:00" />
+            <Label fx:id="timeLabel" styleClass="time-display-style" text="00:00:00" />
         </children>
         </HBox>
         <!--胜利/失败显示-->

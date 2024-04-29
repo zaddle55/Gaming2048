@@ -11,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -28,6 +29,7 @@ import util.Direction;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Executors;
 
 
 public class GameUI extends Application {
@@ -38,11 +40,17 @@ public class GameUI extends Application {
     private Button restartButton;
     @FXML
     private AnchorPane gameInterface;
+    @FXML
+    private Label scoreLabel;
+    @FXML
+    private Label stepLabel;
 
     private static int size;
     private static int mode;
     private static Board board;
     private static AnchorPane curBlockPane;
+    private static int score = 0;
+    private static int bestScore = 0;
     public static int getSize() {
         return size;
     }
@@ -348,23 +356,23 @@ public class GameUI extends Application {
 
     }
 
-    class Animation {
-        private TranslateTransition tt;
-        private Tile tile;
-        public Animation(TranslateTransition tt, Tile tile) {
-            this.tt = tt;
-            this.tile = tile;
-        }
-    }
-
 
     public static void init(int size, int mode) {
         GameUI.setSize(size);
         GameUI.setMode(mode);
     }
 
-    public static void run(String[] args) {
-        launch(args);
+    public static void run() {
+        Platform.runLater(() -> {
+            GameUI gameUI = new GameUI();
+            Stage primaryStage = new Stage();
+            try {
+                gameUI.start(primaryStage);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
     }
+
 
 }

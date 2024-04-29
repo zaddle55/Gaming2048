@@ -36,7 +36,15 @@ public class MainUI {
 
     @FXML
     public void startAction(MouseEvent mouseEvent) {
-
+        try {
+            GameUI.init(4, 0);
+            GameUI.run();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            Stage stage = (Stage) startButton.getScene().getWindow();
+            stage.close();
+        }
     }
 
     public void loadAction(MouseEvent mouseEvent) {

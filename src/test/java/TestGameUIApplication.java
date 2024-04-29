@@ -17,6 +17,9 @@ import ui.Controller.GameUI;
 import util.Board;
 import util.Coordination;
 
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+
 public class TestGameUIApplication extends Application {
 
     public Board board;
@@ -61,6 +64,8 @@ public class TestGameUIApplication extends Application {
     }
 
     public static void main(String[] args) {
-        launch(args);
+        Executors.newSingleThreadExecutor().execute(() -> {
+            launch(args);
+        });
     }
 }

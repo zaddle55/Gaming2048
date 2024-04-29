@@ -6,6 +6,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.util.concurrent.Executors;
+
 public class TestMainUIApplication extends Application {
 
     @Override
@@ -31,6 +33,8 @@ public class TestMainUIApplication extends Application {
     }
 
     public static void main(String[] args) {
-        launch(args);
+        Executors.newSingleThreadExecutor().submit(() -> {
+            launch(args);
+        });
     }
 }

@@ -22,6 +22,11 @@ public class MoveAnimation extends Animation{
 
 
     private boolean isMerge(Tile tile) {
+        for (Tile t : tiles) {
+            if (t != tile && t.gethIndex() == tile.gethIndex() && t.getvIndex() == tile.getvIndex()) {
+                return true;
+            }
+        }
         return false;
     }
 }
