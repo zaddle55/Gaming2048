@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="add &quot;New Game&quot; button action binding" />
+    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="add gitignore" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -186,7 +186,7 @@
       <workItem from="1714196224414" duration="4382000" />
       <workItem from="1714287677501" duration="24998000" />
       <workItem from="1714356789263" duration="32987000" />
-      <workItem from="1714453673914" duration="333000" />
+      <workItem from="1714453673914" duration="687000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
@@ -412,7 +412,31 @@
       <option name="project" value="LOCAL" />
       <updated>1714454005063</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="add &quot;New Game&quot; button action binding">
+      <option name="closed" value="true" />
+      <created>1714454071519</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1714454071519</updated>
+    </task>
+    <task id="LOCAL-00030" summary="add gitignore">
+      <option name="closed" value="true" />
+      <created>1714454273694</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1714454273694</updated>
+    </task>
+    <task id="LOCAL-00031" summary="add gitignore">
+      <option name="closed" value="true" />
+      <created>1714454328228</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1714454328228</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -465,7 +489,8 @@
     <MESSAGE value="modify gameui with fx" />
     <MESSAGE value="modify gameui and keybindings | todo: add animation effect" />
     <MESSAGE value="add &quot;New Game&quot; button action binding" />
-    <option name="LAST_COMMIT_MESSAGE" value="add &quot;New Game&quot; button action binding" />
+    <MESSAGE value="add gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="add gitignore" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
