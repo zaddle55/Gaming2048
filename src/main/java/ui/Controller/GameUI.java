@@ -405,5 +405,9 @@ public class GameUI extends Application {
         });
     }
 
+    public static void start() {
+        launch();
+    }
+
 
 }

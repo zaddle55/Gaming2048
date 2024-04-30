@@ -69,9 +69,17 @@ public abstract class Animation {
         return tile;
     }
 
-    private static List<Node> tilesToNodes(List<Tile> tiles) {
+    protected static List<Node> tilesToNodes(List<Tile> tiles) {
         List<Node> nodes = new ArrayList<>();
         for (Tile tile : tiles) {
+            nodes.add(tileToNode(tile));
+        }
+        return nodes;
+    }
+
+    protected static List<Node> tilesToNodes(TileList tiles) {
+        List<Node> nodes = new ArrayList<>();
+        for (Tile tile : tiles.getTiles()) {
             nodes.add(tileToNode(tile));
         }
         return nodes;

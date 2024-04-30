@@ -32,6 +32,10 @@ public class TileList {
         return null;
     }
 
+    public List<Tile> getTiles() {
+        return tiles;
+    }
+
     public int size() {
         return tiles.size();
     }

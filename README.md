@@ -7,9 +7,9 @@
 <div align="center">
     <h1>
     Reach 2048 |
-    <img src="src/main/resources/assets/logo.png" alt="t" width="520" align="center">
+    <img src="src/main/resources/assets/logo.png" alt="Reach 2048" width="520" align="center">
     </h1>
-</div>
+</div> 
 
 <!-------------------Put tag here------------------->
 <div>

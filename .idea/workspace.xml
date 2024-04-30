@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="add gitignore" />
+    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="add gitignore">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/Animation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/Animation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/MoveAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/MoveAnimation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/TileList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/TileList.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -79,7 +85,7 @@
       <recent name="C:\Users\Administrator\IdeaProjects\Reach2048\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.TestMainUIApplication">
+  <component name="RunManager" selected="应用程序.GameApplication">
     <configuration name="GameApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GameApplication" />
       <module name="Reach2048" />
@@ -146,9 +152,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="应用程序.GameApplication" />
         <item itemvalue="应用程序.TestMainUIApplication" />
         <item itemvalue="应用程序.TestGameUIApplication" />
-        <item itemvalue="应用程序.GameApplication" />
         <item itemvalue="应用程序.GameUI" />
         <item itemvalue="应用程序.TestGridPanel" />
       </list>
@@ -186,7 +192,8 @@
       <workItem from="1714196224414" duration="4382000" />
       <workItem from="1714287677501" duration="24998000" />
       <workItem from="1714356789263" duration="32987000" />
-      <workItem from="1714453673914" duration="687000" />
+      <workItem from="1714453673914" duration="1394000" />
+      <workItem from="1714478016936" duration="2252000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
@@ -436,7 +443,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714454328228</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="add gitignore">
+      <option name="closed" value="true" />
+      <created>1714455044237</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1714455044237</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

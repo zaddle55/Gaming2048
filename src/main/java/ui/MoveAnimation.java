@@ -16,17 +16,28 @@ public class MoveAnimation extends Animation{
     }
 
     public void makeTransition() {
-        // TODO
+        TileList tileList = toTileList(tiles);
+        switch (direction) {
+            case UP:
+
+                break;
+        }
     }
 
-
-
-    private boolean isMerge(Tile tile) {
-        for (Tile t : tiles) {
-            if (t != tile && t.gethIndex() == tile.gethIndex() && t.getvIndex() == tile.getvIndex()) {
-                return true;
-            }
+    private static TileList toTileList(List<Tile> tiles) {
+        TileList tileList = new TileList(tiles.size());
+        for (Tile tile : tiles) {
+            tileList.add(tile);
         }
+        return tileList;
+    }
+
+    private boolean isMerge(Tile tile, TileList tiles) {
+//        for (Tile t : tiles.getTiles()) {
+//            if (t.gethIndex() == tile.gethIndex() && t.getvIndex() == tile.getvIndex()) {
+//                return true;
+//            }
+//        }
         return false;
     }
 }
