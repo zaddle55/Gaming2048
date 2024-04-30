@@ -32,5 +32,6 @@ bin/
 ### Project ###
 system/
 logs/
+.idea/shelf/
 *.log
 *.exe
