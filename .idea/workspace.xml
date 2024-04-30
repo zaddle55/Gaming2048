@@ -4,16 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="modify gameui and keybindings | todo: add animation effect">
+    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="add &quot;New Game&quot; button action binding">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/Controller/GameUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/Controller/GameUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/Controller/MainUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/Controller/MainUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/MoveAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/MoveAnimation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/Direction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Direction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/FXView/GameUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXView/GameUI.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/TestGameUIApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestGameUIApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/TestMainUIApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestMainUIApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,7 +188,7 @@
       <workItem from="1714192650484" duration="1502000" />
       <workItem from="1714196224414" duration="4382000" />
       <workItem from="1714287677501" duration="24998000" />
-      <workItem from="1714356789263" duration="31583000" />
+      <workItem from="1714356789263" duration="32987000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
@@ -397,7 +390,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714396488538</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="add &quot;New Game&quot; button action binding">
+      <option name="closed" value="true" />
+      <created>1714398825903</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1714398825903</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -424,7 +425,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/master" />
+                        <option value="origin/zaddle" />
                       </list>
                     </value>
                   </entry>
@@ -449,7 +450,8 @@
     <MESSAGE value="modify gamenui with fx" />
     <MESSAGE value="modify gameui with fx" />
     <MESSAGE value="modify gameui and keybindings | todo: add animation effect" />
-    <option name="LAST_COMMIT_MESSAGE" value="modify gameui and keybindings | todo: add animation effect" />
+    <MESSAGE value="add &quot;New Game&quot; button action binding" />
+    <option name="LAST_COMMIT_MESSAGE" value="add &quot;New Game&quot; button action binding" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

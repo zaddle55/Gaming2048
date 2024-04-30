@@ -29,7 +29,6 @@ import util.Direction;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Executors;
 
 
 public class GameUI extends Application {
@@ -50,7 +49,7 @@ public class GameUI extends Application {
     private static Board board;
     private static AnchorPane curBlockPane;
     private static int score = 0;
-    private static int bestScore = 0;
+    private static int step = 0;
     public static int getSize() {
         return size;
     }
@@ -119,12 +118,18 @@ public class GameUI extends Application {
         board = new Board(0, size, mode);
         board.init();
         GameUI.draw(board, gamePane, size);
+        upDateScore(scoreLabel, board);
+        step = 0;
+        upDateStep(stepLabel, board);
     }
 
     @FXML
     public void undoAction() {
         board.undo();
         GameUI.draw(board, gamePane, size);
+        upDateScore(scoreLabel, board);
+        step--;
+        upDateStep(stepLabel, board);
     }
 
     @FXML
@@ -157,6 +162,10 @@ public class GameUI extends Application {
             }
         }).start();
 
+        upDateScore(scoreLabel, board);
+        step++;
+        upDateStep(stepLabel, board);
+
     }
 
     @FXML
@@ -187,6 +196,10 @@ public class GameUI extends Application {
                 e.printStackTrace();
             }
         }).start();
+
+        upDateScore(scoreLabel, board);
+        step++;
+        upDateStep(stepLabel, board);
     }
 
     @FXML
@@ -217,6 +230,10 @@ public class GameUI extends Application {
                 e.printStackTrace();
             }
         }).start();
+
+        upDateScore(scoreLabel, board);
+        step++;
+        upDateStep(stepLabel, board);
     }
 
     @FXML
@@ -247,6 +264,10 @@ public class GameUI extends Application {
                 e.printStackTrace();
             }
         }).start();
+
+        upDateScore(scoreLabel, board);
+        step++;
+        upDateStep(stepLabel, board);
     }
 
     // 获取gamePane参数
@@ -355,6 +376,16 @@ public class GameUI extends Application {
         gamePane.getChildren().add(borderPane);
 
     }
+
+    private static void upDateScore(Label scoreLabel, Board board) {
+        score = board.getScore();
+        scoreLabel.setText("" + score);
+    }
+
+    private static void upDateStep(Label stepLabel, Board board) {
+        stepLabel.setText("" + step);
+    }
+
 
 
     public static void init(int size, int mode) {
