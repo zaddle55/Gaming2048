@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="Implement move animation effect">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ui/CombineType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/Timer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/Animation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/Animation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/Controller/GameUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/Controller/GameUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/MoveAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/MoveAnimation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/Tile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/ColorMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/ColorMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/Coordination.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Coordination.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/FXView/GameUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXView/GameUI.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="Complete move animation effect" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -203,7 +192,7 @@
       <workItem from="1714356789263" duration="32987000" />
       <workItem from="1714453673914" duration="1394000" />
       <workItem from="1714478016936" duration="3418000" />
-      <workItem from="1714994600941" duration="12440000" />
+      <workItem from="1714994600941" duration="12909000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
@@ -469,7 +458,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714484873436</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Complete move animation effect">
+      <option name="closed" value="true" />
+      <created>1715011885225</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1715011885225</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -524,22 +521,10 @@
     <MESSAGE value="add &quot;New Game&quot; button action binding" />
     <MESSAGE value="add gitignore" />
     <MESSAGE value="Implement move animation effect" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement move animation effect" />
+    <MESSAGE value="Complete move animation effect" />
+    <option name="LAST_COMMIT_MESSAGE" value="Complete move animation effect" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/ui/MoveAnimation.java</url>
-          <line>23</line>
-          <properties class="ui.MoveAnimation" method="makeTransition">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="coordinationTool.gridToLayoutY(preEndPoint) - coordinationTool.gridToLayoutY(j)" language="JAVA" />
