@@ -3,42 +3,54 @@ package ui;
 import javafx.animation.ParallelTransition;
 import javafx.animation.Transition;
 import javafx.scene.Node;
+import util.Coordination;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Animation {
-    private static double duration = 200;
-    private static double delay = 0;
+    protected static double duration = 100;
+    protected static double delay = 0;
     protected Node node;
     protected Tile tile;
     protected List<Node> nodes;
     protected List<Tile> tiles;
+    protected Coordination coordinationTool;
     protected Transition monoTransition;
     protected List<Transition> transitions;
     protected ParallelTransition groupTransition;
 
-    public Animation(List<Node> nodes, List<Tile> tiles) {
+    public Animation(List<Node> nodes, List<Tile> tiles, Coordination coordinationTool) {
         this.nodes = nodes;
         this.tiles = tiles;
+        this.coordinationTool = coordinationTool;
+        this.transitions = new ArrayList<>();
     }
 
-    public Animation(List<Tile> tiles) {
-        this.nodes = tilesToNodes(tiles);
-        this.tiles = tiles;
+
+    public Animation(List<Node> nodes, Coordination coordinationTool) {
+        this.nodes = nodes;
+        this.tiles = nodesToTiles(nodes);
+        this.coordinationTool = coordinationTool;
+        this.transitions = new ArrayList<>();
     }
 
-    public Animation(Node node) {
+    public Animation(Node node, Coordination coordinationTool) {
         this.node = node;
+        this.coordinationTool = coordinationTool;
+        this.transitions = new ArrayList<>();
     }
 
-    public Animation(Tile tile) {
+    public Animation(Tile tile, Coordination coordinationTool) {
         this.tile = tile;
+        this.coordinationTool = coordinationTool;
+        this.transitions = new ArrayList<>();
     }
 
     public Animation() {
         this.nodes = new ArrayList<>();
         this.tiles = new ArrayList<>();
+        this.transitions = new ArrayList<>();
     }
 
     public static double getDelay() {
@@ -77,6 +89,14 @@ public abstract class Animation {
         return nodes;
     }
 
+    protected static List<Tile> nodesToTiles(List<Node> nodes) {
+        List<Tile> tiles = new ArrayList<>();
+        for (Node node : nodes) {
+            tiles.add((Tile) node);
+        }
+        return tiles;
+    }
+
     protected static List<Node> tilesToNodes(TileList tiles) {
         List<Node> nodes = new ArrayList<>();
         for (Tile tile : tiles.getTiles()) {
@@ -99,7 +119,5 @@ public abstract class Animation {
         }
     }
 
-    static enum CombineType {
-        MONO, GROUP
-    }
 }
+

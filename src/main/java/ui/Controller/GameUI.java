@@ -21,6 +21,9 @@ import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
+import ui.Animation;
+import ui.CombineType;
+import ui.MoveAnimation;
 import ui.Tile;
 import util.Coordination;
 import util.Board;
@@ -90,6 +93,8 @@ public class GameUI extends Application {
         scene.getRoot().requestFocus();
 
         gamePane = (AnchorPane) scene.lookup("#gamePane");
+        scoreLabel = (Label) scene.lookup("#scoreLabel");
+        stepLabel = (Label) scene.lookup("#stepLabel");
 
         GameUI.initGamePane(gamePane, size);
 
@@ -128,27 +133,31 @@ public class GameUI extends Application {
         board.undo();
         GameUI.draw(board, gamePane, size);
         upDateScore(scoreLabel, board);
-        step--;
+        step -= (step > 0) ? 1 : 0;
         upDateStep(stepLabel, board);
     }
 
     @FXML
     public void upAction() {
 
-        List<TranslateTransition> transitions = new ArrayList();
+//        List<TranslateTransition> transitions = new ArrayList();
+//
+//        for (Node tile : curBlockPane.getChildren()){
+//            Tile t = (Tile) tile;
+//            Coordination coordination = new Coordination(t.gethIndex(), t.getvIndex(), gamePane, size);
+//            TranslateTransition tt = new TranslateTransition(Duration.millis(100), tile);
+//            tt.setByY(-coordination.getBlockWidth() * (size - t.getvIndex() - 1));
+//            transitions.add(tt);
+//        }
+//        // Animation here
+//
+//
+//        ParallelTransition pt = new ParallelTransition(transitions.toArray(new TranslateTransition[0]));
+//        pt.play();
 
-        for (Node tile : curBlockPane.getChildren()){
-            Tile t = (Tile) tile;
-            Coordination coordination = new Coordination(t.gethIndex(), t.getvIndex(), gamePane, size);
-            TranslateTransition tt = new TranslateTransition(Duration.millis(100), tile);
-            tt.setByY(-coordination.getBlockWidth() * (size - t.getvIndex() - 1));
-            transitions.add(tt);
-        }
-        // Animation here
 
-
-        ParallelTransition pt = new ParallelTransition(transitions.toArray(new TranslateTransition[0]));
-        pt.play();
+        Animation slide = new MoveAnimation(curBlockPane.getChildren(), Direction.UP, board, new Coordination(size, gamePane));
+        slide.play(CombineType.GROUP);
 
         new Thread(() -> {
             try {
@@ -165,6 +174,7 @@ public class GameUI extends Application {
         upDateScore(scoreLabel, board);
         step++;
         upDateStep(stepLabel, board);
+        board.addToHistory();
 
     }
 
@@ -172,18 +182,21 @@ public class GameUI extends Application {
     public void downAction() {
 
         // Animation here
-        List<TranslateTransition> transitions = new ArrayList();
+//        List<TranslateTransition> transitions = new ArrayList();
+//
+//        for (Node tile : curBlockPane.getChildren()){
+//            Tile t = (Tile) tile;
+//            Coordination coordination = new Coordination(t.gethIndex(), t.getvIndex(), gamePane, size);
+//            TranslateTransition tt = new TranslateTransition(Duration.millis(100), tile);
+//            tt.setByY(coordination.getBlockWidth() * (size - t.getvIndex() - 1));
+//            transitions.add(tt);
+//        }
+//
+//        ParallelTransition pt = new ParallelTransition(transitions.toArray(new TranslateTransition[0]));
+//        pt.play();
 
-        for (Node tile : curBlockPane.getChildren()){
-            Tile t = (Tile) tile;
-            Coordination coordination = new Coordination(t.gethIndex(), t.getvIndex(), gamePane, size);
-            TranslateTransition tt = new TranslateTransition(Duration.millis(100), tile);
-            tt.setByY(coordination.getBlockWidth() * (size - t.getvIndex() - 1));
-            transitions.add(tt);
-        }
-
-        ParallelTransition pt = new ParallelTransition(transitions.toArray(new TranslateTransition[0]));
-        pt.play();
+        Animation slide = new MoveAnimation(curBlockPane.getChildren(), Direction.DOWN, board, new Coordination(size, gamePane));
+        slide.play(CombineType.GROUP);
 
         new Thread(() -> {
             try {
@@ -200,24 +213,28 @@ public class GameUI extends Application {
         upDateScore(scoreLabel, board);
         step++;
         upDateStep(stepLabel, board);
+        board.addToHistory();
     }
 
     @FXML
     public void leftAction() {
 
         // Animation here
-        List<TranslateTransition> transitions = new ArrayList();
+//        List<TranslateTransition> transitions = new ArrayList();
+//
+//        for (Node tile : curBlockPane.getChildren()){
+//            Tile t = (Tile) tile;
+//            Coordination coordination = new Coordination(t.gethIndex(), t.getvIndex(), gamePane, size);
+//            TranslateTransition tt = new TranslateTransition(Duration.millis(100), tile);
+//            tt.setByX(-coordination.getBlockWidth() * (size - t.gethIndex() - 1));
+//            transitions.add(tt);
+//        }
+//
+//        ParallelTransition pt = new ParallelTransition(transitions.toArray(new TranslateTransition[0]));
+//        pt.play();
 
-        for (Node tile : curBlockPane.getChildren()){
-            Tile t = (Tile) tile;
-            Coordination coordination = new Coordination(t.gethIndex(), t.getvIndex(), gamePane, size);
-            TranslateTransition tt = new TranslateTransition(Duration.millis(100), tile);
-            tt.setByX(-coordination.getBlockWidth() * (size - t.gethIndex() - 1));
-            transitions.add(tt);
-        }
-
-        ParallelTransition pt = new ParallelTransition(transitions.toArray(new TranslateTransition[0]));
-        pt.play();
+        Animation slide = new MoveAnimation(curBlockPane.getChildren(), Direction.LEFT, board, new Coordination(size, gamePane));
+        slide.play(CombineType.GROUP);
 
         new Thread(() -> {
             try {
@@ -234,6 +251,7 @@ public class GameUI extends Application {
         upDateScore(scoreLabel, board);
         step++;
         upDateStep(stepLabel, board);
+        board.addToHistory();
     }
 
     @FXML
@@ -242,16 +260,19 @@ public class GameUI extends Application {
         // Animation here
         List<TranslateTransition> transitions = new ArrayList();
 
-        for (Node tile : curBlockPane.getChildren()){
-            Tile t = (Tile) tile;
-            Coordination coordination = new Coordination(t.gethIndex(), t.getvIndex(), gamePane, size);
-            TranslateTransition tt = new TranslateTransition(Duration.millis(100), tile);
-            tt.setByX(coordination.getBlockWidth() * (size - t.gethIndex() - 1));
-            transitions.add(tt);
-        }
+//        for (Node tile : curBlockPane.getChildren()){
+//            Tile t = (Tile) tile;
+//            Coordination coordination = new Coordination(t.gethIndex(), t.getvIndex(), gamePane, size);
+//            TranslateTransition tt = new TranslateTransition(Duration.millis(100), tile);
+//            tt.setByX(coordination.getBlockWidth() * (size - t.gethIndex() - 1));
+//            transitions.add(tt);
+//        }
+//
+//        ParallelTransition pt = new ParallelTransition(transitions.toArray(new TranslateTransition[0]));
+//        pt.play();
 
-        ParallelTransition pt = new ParallelTransition(transitions.toArray(new TranslateTransition[0]));
-        pt.play();
+        Animation slide = new MoveAnimation(curBlockPane.getChildren(), Direction.RIGHT, board, new Coordination(size, gamePane));
+        slide.play(CombineType.GROUP);
 
         new Thread(() -> {
             try {
@@ -268,6 +289,7 @@ public class GameUI extends Application {
         upDateScore(scoreLabel, board);
         step++;
         upDateStep(stepLabel, board);
+        board.addToHistory();
     }
 
     // 获取gamePane参数

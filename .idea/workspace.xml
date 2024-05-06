@@ -4,12 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="add gitignore">
+    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="Implement move animation effect">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ui/CombineType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/Timer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/Animation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/Animation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/Controller/GameUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/Controller/GameUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/MoveAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/MoveAnimation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/TileList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/TileList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/Tile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/ColorMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/ColorMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/Coordination.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Coordination.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/FXView/GameUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXView/GameUI.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,35 +53,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Maven.Unknown [package].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;zaddle&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
-    &quot;应用程序.GameApplication.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.GameUI.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.MainApplication.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.TestGameUIApplication.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.TestGridPanel.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.TestJavaFXBootstrap.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.TestMainUIApplication.executor&quot;: &quot;Run&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven.Unknown [package].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "zaddle",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Administrator/IdeaProjects/Reach2048/target/classes/assets/buttonIcon",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "模块",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true",
+    "应用程序.GameApplication.executor": "Run",
+    "应用程序.GameUI.executor": "Run",
+    "应用程序.MainApplication.executor": "Run",
+    "应用程序.TestGameUIApplication.executor": "Run",
+    "应用程序.TestGridPanel.executor": "Run",
+    "应用程序.TestJavaFXBootstrap.executor": "Run",
+    "应用程序.TestMainUIApplication.executor": "Run"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\IdeaProjects\Reach2048\target\classes\assets\buttonIcon" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Administrator\IdeaProjects\Reach2048\src\main\java\ui" />
       <recent name="C:\Users\Administrator\IdeaProjects\Reach2048\src\main\resources\assets\" />
@@ -193,7 +202,8 @@
       <workItem from="1714287677501" duration="24998000" />
       <workItem from="1714356789263" duration="32987000" />
       <workItem from="1714453673914" duration="1394000" />
-      <workItem from="1714478016936" duration="2252000" />
+      <workItem from="1714478016936" duration="3418000" />
+      <workItem from="1714994600941" duration="12440000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
@@ -451,7 +461,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714455044237</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Implement move animation effect">
+      <option name="closed" value="true" />
+      <created>1714484873436</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1714484873436</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -505,17 +523,27 @@
     <MESSAGE value="modify gameui and keybindings | todo: add animation effect" />
     <MESSAGE value="add &quot;New Game&quot; button action binding" />
     <MESSAGE value="add gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="add gitignore" />
+    <MESSAGE value="Implement move animation effect" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement move animation effect" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ui/Controller/GameUI.java</url>
-          <line>93</line>
-          <option name="timeStamp" value="19" />
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/ui/MoveAnimation.java</url>
+          <line>23</line>
+          <properties class="ui.MoveAnimation" method="makeTransition">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="20" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="coordinationTool.gridToLayoutY(preEndPoint) - coordinationTool.gridToLayoutY(j)" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

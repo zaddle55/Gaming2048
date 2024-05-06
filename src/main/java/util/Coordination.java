@@ -25,6 +25,14 @@ public class Coordination {
         this.layoutY = gridToLayoutY();
     }
 
+    public Coordination (int size, AnchorPane gamePane)
+    {
+        this.space = 11.0;
+        this.size = size;
+        this.gamePane = gamePane;
+        this.blockWidth = getBlockWidth();
+    }
+
     public double getBlockWidth() {
         double boardWidth = gamePane.getWidth();
         return (boardWidth - space * (size + 1)) / size;
@@ -34,7 +42,15 @@ public class Coordination {
         return space + gridY * (blockWidth + space) - 1.0;
     }
 
+    public double gridToLayoutY(int gridY) {
+        return space + gridY * (blockWidth + space) - 1.0;
+    }
+
     private double gridToLayoutX() {
+        return space + gridX * (blockWidth + space) - 1.0;
+    }
+
+    public double gridToLayoutX(int gridX) {
         return space + gridX * (blockWidth + space) - 1.0;
     }
 

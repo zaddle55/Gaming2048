@@ -10,6 +10,8 @@ import util.Coordination;
 
 public class Tile extends StackPane {
 
+
+
     private int value;
     private int hIndex;
     private int vIndex;
@@ -26,6 +28,14 @@ public class Tile extends StackPane {
         this.coordinationTool = new Coordination(hIndex, vIndex, parentPane, boardSize);
         this.tileSize = calcTileSize();
         createTile();
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
     }
 
     private void createTile() {

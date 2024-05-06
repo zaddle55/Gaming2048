@@ -50,7 +50,7 @@
             <!--重新开始按钮-->
             <Button fx:id="restartButton" layoutX="180.0" layoutY="0.0" mnemonicParsing="false" text="RESTART" onMousePressed="#restartAction"/>
             <!--悔棋按钮-->
-            <Button fx:id="undoButton" layoutX="180.0" layoutY="80.0" mnemonicParsing="false" text="UNDO" />
+            <Button fx:id="undoButton" layoutX="180.0" layoutY="80.0" mnemonicParsing="false" text="UNDO" onMousePressed="#undoAction"/>
             <!--提示按钮-->
             <Button fx:id="hintButton" layoutX="180.0" layoutY="160.0" mnemonicParsing="false" text="HINT" />
             <!--退出按钮-->
