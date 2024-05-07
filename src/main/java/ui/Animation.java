@@ -105,7 +105,7 @@ public abstract class Animation {
         return nodes;
     }
 
-    public abstract void makeTransition();
+    protected abstract void makeTransition();
 
     public void play(CombineType type) {
         makeTransition();
