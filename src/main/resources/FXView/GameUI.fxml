@@ -4,7 +4,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="gameInterface" prefHeight="1000.0" prefWidth="1000.0" stylesheets="@../css/gameUI.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.Controller.GameUI">
+<AnchorPane fx:id="gameInterface" prefHeight="1000.0" prefWidth="1000.0" stylesheets="@../css/gameUI.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GameUI">
 <children>
     <!--显示板-->
     <AnchorPane fx:id="displayPane" layoutY="51.0" maxHeight="400.0" maxWidth="300.0" minHeight="400.0" prefHeight="400.0" prefWidth="300.0">
@@ -53,11 +53,13 @@
             <Button fx:id="undoButton" layoutX="180.0" layoutY="80.0" mnemonicParsing="false" text="UNDO" onMousePressed="#undoAction"/>
             <!--提示按钮-->
             <Button fx:id="hintButton" layoutX="180.0" layoutY="160.0" mnemonicParsing="false" text="HINT" />
+            <!--自动完成按钮-->
+            <Button fx:id="autoButton" layoutX="180.0" layoutY="240.0" mnemonicParsing="false" text="AUTO" />
             <!--退出按钮-->
             <Button fx:id="exitButton" layoutX="180.0" layoutY="320.0" mnemonicParsing="false" text="EXIT" />
         </children>
         </VBox>
-        <AnchorPane fx:id="downControlPane" layoutX="44.0" layoutY="250.0" prefHeight="200.0" prefWidth="200.0">
+        <AnchorPane fx:id="downControlPane" layoutX="44.0" layoutY="280.0" prefHeight="200.0" prefWidth="200.0">
         <children>
             <!--方向控制按钮-->
             <Label fx:id="upButton" layoutX="90.0" layoutY="3.0" mnemonicParsing="false"  onMousePressed="#upAction" prefWidth="40.0" prefHeight="40.0"/>

@@ -1,5 +1,7 @@
 package util;
 
+import model.Grid;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Consumer;
@@ -20,16 +22,16 @@ public class GameModeFactory {
     public static final int ENDLESS = 1;
     public static final int CHALLENGE = 2;
 
-    public static final Map<Integer, Consumer<Board>> gameModes = new HashMap<>();
+    public static final Map<Integer, Consumer<Grid>> gameModes = new HashMap<>();
 
     static {
-        gameModes.put(CLASSIC, (Board board) -> {
+        gameModes.put(CLASSIC, (Grid grid) -> {
             // do something
         });
-        gameModes.put(ENDLESS, (Board board) -> {
+        gameModes.put(ENDLESS, (Grid grid) -> {
             // do something
         });
-        gameModes.put(CHALLENGE, (Board board) -> {
+        gameModes.put(CHALLENGE, (Grid grid) -> {
             // do something
         });
     }

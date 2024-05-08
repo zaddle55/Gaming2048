@@ -1,28 +1,19 @@
 
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Line;
-import javafx.scene.shape.VLineTo;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import ui.Controller.GameUI;
-import util.Board;
-import util.Coordination;
+import model.Grid;
 
-import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 public class TestGameUIApplication extends Application {
 
-    public Board board;
+    public Grid grid;
 
     @Override
     public void start(Stage primaryStage) throws Exception{

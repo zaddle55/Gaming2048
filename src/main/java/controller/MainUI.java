@@ -1,25 +1,14 @@
-package ui.Controller;
+package controller;
 
+import javafx.animation.ParallelTransition;
 import javafx.animation.Timeline;
-import javafx.application.Platform;
+import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.CycleMethod;
-import javafx.scene.paint.LinearGradient;
-import javafx.scene.paint.Stop;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
-import java.io.IOException;
+import util.GameModeFactory;
 
 public class MainUI {
 
@@ -33,11 +22,17 @@ public class MainUI {
     private Label achieveButton;
     @FXML
     private Label exitButton;
+    @FXML
+    private AnchorPane loginInterface;
+    @FXML
+    private AnchorPane mainInterface;
+    @FXML
+    private AnchorPane optionInterface;
 
     @FXML
     public void startAction(MouseEvent mouseEvent) {
         try {
-            GameUI.init(4, 0);
+            GameUI.init(4, GameModeFactory.CLASSIC);
             GameUI.run();
         } catch (Exception e) {
             e.printStackTrace();
@@ -93,8 +88,17 @@ public class MainUI {
     public void exitExitAction(MouseEvent mouseEvent) {
     }
 
-    private void slideInAnimation() {
-        Timeline timeline = new Timeline();
 
+    public void enterAction(MouseEvent mouseEvent) {
+        TranslateTransition transition1 = new TranslateTransition();
+        transition1.setNode(loginInterface);
+        transition1.setByX(-700.0);
+        transition1.setDuration(javafx.util.Duration.millis(400));
+        TranslateTransition transition2 = new TranslateTransition();
+        transition2.setNode(mainInterface);
+        transition2.setByX(-700.0);
+        transition2.setDuration(javafx.util.Duration.millis(400));
+        ParallelTransition groupTransition = new ParallelTransition(transition1, transition2);
+        groupTransition.play();
     }
 }

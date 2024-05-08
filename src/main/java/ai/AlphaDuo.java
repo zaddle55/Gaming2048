@@ -1,6 +1,6 @@
 package ai;
 
-import util.Board;
+import model.Grid;
 /**
  * AlphaDuo
  * @version: 1.0.0
@@ -9,17 +9,17 @@ import util.Board;
  * @Implementation: AlphaDuo uses the Minimax and Alpha-Beta algorithms to simulate the game and make decisions.
  */
 public class AlphaDuo {
-    public static int[] DFS(Board board, int curDepth, int finDepth, int alpha, int beta) {
+    public static int[] DFS(Grid grid, int curDepth, int finDepth, int alpha, int beta) {
         // do something...
         return null;
     }
 
-    public static int generateMove(Board board) {
+    public static int generateMove(Grid grid) {
         // do something...
         return 0;
     }
 
-    public static int evaluate(Board board) {
+    public static int evaluate(Grid grid) {
         // do something...
         return 0;
     }

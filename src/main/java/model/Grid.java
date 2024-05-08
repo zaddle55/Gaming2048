@@ -1,4 +1,6 @@
-package util;
+package model;
+
+import util.Direction;
 
 import java.io.Serializable;
 import java.util.List;
@@ -22,7 +24,7 @@ import java.util.Random;
  * } TODO {1.设置障碍物 }
  * @History:
  */
-public class Board implements Serializable {
+public class Grid implements Serializable {
     private static final long serialVersionUID = 1L;
     private static final int[] dirX = {-1, 1, 0, 0};
     private static final int[] dirY = {0, 0, -1, 1};
@@ -32,22 +34,28 @@ public class Board implements Serializable {
     private Stack<int[][]> history;
     private int score;
     private int mode; // 游戏模式, 用于后续扩展
+    private boolean[][] isMerged; // 用于记录格子是否已经合并过
+    private boolean[][] isNew; // 用于记录格子是否是新生成的
 
     // 通过初始ID与大小,模式初始化游戏板
-    public Board(int ID, int size, int mode) {
-        Board.ID = ID;
+    public Grid(int ID, int size, int mode) {
+        Grid.ID = ID;
         this.size = size;
         this.board = new int[size][size];
         this.history = new Stack<>();
         this.mode = mode;
+        this.isMerged = new boolean[size][size];
+        this.isNew = new boolean[size][size];
         // ID++;
     }
 
     //通过二维数组初始化游戏板
-    public Board(int ID, int[][] board) {
-        Board.ID = ID;
+    public Grid(int ID, int[][] board) {
+        Grid.ID = ID;
         this.size = board.length;
         this.board = board;
+        this.isMerged = new boolean[size][size];
+        this.isNew = new boolean[size][size];
         this.history = new Stack<>();
     }
 
@@ -66,6 +74,7 @@ public class Board implements Serializable {
     public void init() {
         Random random = new Random();
         generateRandomGrid((random.nextInt(2) + 1) * 2, 1);
+        addToHistory();
     } // 后改，使用GameModeFactory的map
 
     // 读取用户操作，移动游戏板

@@ -1,4 +1,6 @@
-package ui;
+package model;
+
+import model.Tile;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,11 +1,12 @@
 .root {
-    -fx-background-image: url("/assets/bg2048.png");
+
     -fx-background-size: cover;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
+    -fx-background-color: rgba(255, 255, 255);
 }
 
-#tilteLabel {
+.title-label-style {
     -fx-font-size: 32px;
     -fx-text-align: center;
     -fx-background-image: url("/assets/logo.png");

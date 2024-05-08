@@ -4,30 +4,78 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" stylesheets="@../css/mainUI.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.Controller.MainUI">
+<AnchorPane prefHeight="500.0" prefWidth="2100.0" stylesheets="@../css/mainUI.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainUI">
 <children>
-      <TilePane layoutX="134" layoutY="20.0" prefHeight="72.0" prefWidth="423.0" >
-         <children>
-            <Label fx:id="tilteLabel" alignment="CENTER" mnemonicParsing="false" prefHeight="72.0" prefWidth="423.0">
-      </Label>
-         </children></TilePane>
-    <VBox layoutX="54.0" layoutY="164.0" prefHeight="403.0" prefWidth="184.0">
+    <AnchorPane fx:id="loginInterface" prefHeight="500.0" prefWidth="700.0" layoutX="0.0" layoutY="0.0">
         <children>
-            <Label fx:id="startButton" alignment="CENTER" mnemonicParsing="false" onMouseEntered="#enterStartAction" onMouseExited="#exitStartAction" onMousePressed="#startAction" prefHeight="51.0" prefWidth="221.0" styleClass="button-default-style" text="NewGame" />
-            <Label fx:id="loadButton" alignment="CENTER" mnemonicParsing="false" onMouseEntered="#enterLoadAction" onMouseExited="#exitLoadAction" onMousePressed="#loadAction" prefHeight="51.0" prefWidth="221.0" styleClass="button-default-style" text="Load" />
-            <Label fx:id="achieveButton" alignment="CENTER" mnemonicParsing="false" onMouseEntered="#enterAchieveAction" onMouseExited="#exitAchieveAction" onMousePressed="#achieveAction" prefHeight="51.0" prefWidth="221.0" styleClass="button-default-style" text="Achievement" />
-            <Label fx:id="settingButton" alignment="CENTER" mnemonicParsing="false" onMouseEntered="#enterSettingAction" onMouseExited="#exitSettingAction" onMousePressed="#settingAction" prefHeight="51.0" prefWidth="221.0" styleClass="button-default-style" text="Setting" />
-            <Label fx:id="exitButton" alignment="CENTER" mnemonicParsing="false" onMouseEntered="#enterExitAction" onMouseExited="#exitExitAction" onMousePressed="#exitAction" prefHeight="51.0" prefWidth="221.0" styleClass="button-default-style" text="Exit" />
+            <TilePane layoutX="134" layoutY="20.0" prefHeight="72.0" prefWidth="423.0" >
+                <children>
+                    <Label fx:id="tilteLabel1" alignment="CENTER" mnemonicParsing="false" prefHeight="72.0" prefWidth="423.0" styleClass="title-label-style">
+                    </Label>
+                </children>
+            </TilePane>
+            <VBox layoutX="54.0" layoutY="164.0" prefHeight="403.0" prefWidth="184.0">
+                <children>
+                    <Label fx:id="enterButton" alignment="CENTER" mnemonicParsing="false" onMouseEntered="#enterStartAction" onMouseExited="#exitStartAction" onMousePressed="#enterAction" prefHeight="51.0" prefWidth="221.0" styleClass="button-default-style" text="Enter" />
+                </children>
+            </VBox>
+            <Pane layoutX="238.0" layoutY="107.0" prefHeight="430.0" prefWidth="430.0">
+                <children>
+                    <ImageView fitHeight="430.0" fitWidth="430.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../assets/2048.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </Pane>
         </children>
-    </VBox>
-      <Pane layoutX="238.0" layoutY="107.0" prefHeight="430.0" prefWidth="430.0">
-          <children>
-              <ImageView fitHeight="430.0" fitWidth="430.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                      <Image url="@../assets/2048.png" />
-                  </image>
-              </ImageView>
-          </children>
-      </Pane>
+    </AnchorPane>
+    <AnchorPane fx:id="mainInterface" prefHeight="500.0" prefWidth="700.0" layoutX="700.0" layoutY="0.0">
+        <children>
+            <TilePane layoutX="134" layoutY="20.0" prefHeight="72.0" prefWidth="423.0" >
+                <children>
+                    <Label fx:id="tilteLabel2" alignment="CENTER" mnemonicParsing="false" prefHeight="72.0" prefWidth="423.0" styleClass="title-label-style">
+                    </Label>
+                </children>
+            </TilePane>
+            <VBox layoutX="54.0" layoutY="164.0" prefHeight="403.0" prefWidth="184.0">
+                <children>
+                    <Label fx:id="startButton" alignment="CENTER" mnemonicParsing="false" onMouseEntered="#enterStartAction" onMouseExited="#exitStartAction" onMousePressed="#startAction" prefHeight="51.0" prefWidth="221.0" styleClass="button-default-style" text="NewGame" />
+                    <Label fx:id="loadButton" alignment="CENTER" mnemonicParsing="false" onMouseEntered="#enterLoadAction" onMouseExited="#exitLoadAction" onMousePressed="#loadAction" prefHeight="51.0" prefWidth="221.0" styleClass="button-default-style" text="Load" />
+                    <Label fx:id="achieveButton" alignment="CENTER" mnemonicParsing="false" onMouseEntered="#enterAchieveAction" onMouseExited="#exitAchieveAction" onMousePressed="#achieveAction" prefHeight="51.0" prefWidth="221.0" styleClass="button-default-style" text="Achievement" />
+                    <Label fx:id="settingButton" alignment="CENTER" mnemonicParsing="false" onMouseEntered="#enterSettingAction" onMouseExited="#exitSettingAction" onMousePressed="#settingAction" prefHeight="51.0" prefWidth="221.0" styleClass="button-default-style" text="Setting" />
+                    <Label fx:id="exitButton" alignment="CENTER" mnemonicParsing="false" onMouseEntered="#enterExitAction" onMouseExited="#exitExitAction" onMousePressed="#exitAction" prefHeight="51.0" prefWidth="221.0" styleClass="button-default-style" text="Exit" />
+                </children>
+            </VBox>
+            <Pane layoutX="238.0" layoutY="107.0" prefHeight="430.0" prefWidth="430.0">
+                <children>
+                    <ImageView fitHeight="430.0" fitWidth="430.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../assets/2048.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </Pane>
+        </children>
+    </AnchorPane>
+    <AnchorPane fx:id="optionInterface" prefWidth="700.0" prefHeight="500.0" layoutX="1400.0" layoutY="0.0">
+        <children>
+            <TilePane layoutX="134" layoutY="20.0" prefHeight="72.0" prefWidth="423.0" >
+                <children>
+                    <Label fx:id="tilteLabel3" alignment="CENTER" mnemonicParsing="false" prefHeight="72.0" prefWidth="423.0" styleClass="title-label-style">
+                    </Label>
+                </children>
+            </TilePane>
+            <Pane layoutX="238.0" layoutY="107.0" prefHeight="430.0" prefWidth="430.0">
+                <children>
+                    <ImageView fitHeight="430.0" fitWidth="430.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../assets/2048.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </Pane>
+        </children>
+    </AnchorPane>
 </children>
 </AnchorPane>

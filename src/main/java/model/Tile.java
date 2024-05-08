@@ -1,4 +1,4 @@
-package ui;
+package model;
 
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;

@@ -1,23 +1,41 @@
-package ui;
+package controller;
 
 import javafx.animation.ParallelTransition;
 import javafx.animation.Transition;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.scene.Node;
+import model.Tile;
+import model.TileList;
 import util.Coordination;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
+/**
+ * @Description:
+ *
+ */
 public abstract class Animation {
-    protected static double duration = 100;
+
+    // 动画默认持续时间
+    protected static double duration = 90;
+    // 动画默认延迟
     protected static double delay = 0;
     protected Node node;
     protected Tile tile;
     protected List<Node> nodes;
     protected List<Tile> tiles;
+
+    // 坐标转换工具
     protected Coordination coordinationTool;
+    // 单动画
     protected Transition monoTransition;
+    // 动画组List
     protected List<Transition> transitions;
+    // 组合动画
     protected ParallelTransition groupTransition;
 
     public Animation(List<Node> nodes, List<Tile> tiles, Coordination coordinationTool) {
@@ -105,18 +123,37 @@ public abstract class Animation {
         return nodes;
     }
 
+    // 动画实现
     public abstract void makeTransition();
 
+    // 动画播放
     public void play(CombineType type) {
-        makeTransition();
+
         switch (type) {
-            case MONO:
+            case MONO: // 单动画模式
                 monoTransition.play();
                 break;
-            case GROUP:
+            case GROUP: // 组合动画模式
                 groupTransition.play();
                 break;
         }
+    }
+
+    public void setOnFinished(EventHandler<ActionEvent> finishEvent) {
+
+        if (groupTransition != null) {
+            groupTransition.setOnFinished(finishEvent);
+        }
+
+        if (monoTransition != null) {
+            monoTransition.setOnFinished(finishEvent);
+        }
+
+    }
+
+    // 静态枚举类，用于区分不同动画组合模式
+    static enum CombineType {
+        MONO, GROUP
     }
 
 }

@@ -1,13 +1,12 @@
-package ui.Controller;
+package controller;
 
 
-import javafx.animation.ParallelTransition;
+import ai.AIThread;
 import javafx.animation.TranslateTransition;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -20,15 +19,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.util.Duration;
-import ui.Animation;
-import ui.CombineType;
-import ui.MoveAnimation;
-import ui.Tile;
+import model.Tile;
 import util.Coordination;
-import util.Board;
+import model.Grid;
 import util.Direction;
-
+import controller.Animation.CombineType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +31,7 @@ import java.util.List;
 
 public class GameUI extends Application {
 
+    // 节点域
     @FXML
     private AnchorPane gamePane;
     @FXML
@@ -46,13 +42,30 @@ public class GameUI extends Application {
     private Label scoreLabel;
     @FXML
     private Label stepLabel;
+    private static AnchorPane curBlockPane;
+    private static Scene scene;
 
+    // 游戏参数
     private static int size;
     private static int mode;
-    private static Board board;
-    private static AnchorPane curBlockPane;
+    private static Grid grid;
+
+    /** 运行时参数 **/
+    // 分数
     private static int score = 0;
+    // 步数
     private static int step = 0;
+    // 胜利标志
+    public static boolean isWin = false;
+    // 失败标志
+    public static boolean isLose = false;
+    // 游戏结束标志
+    private static boolean isEnd = false;
+    // AI运行标志
+    public static boolean isAuto = false;
+    // AI线程
+    private static AIThread aiThread;
+
     public static int getSize() {
         return size;
     }
@@ -69,20 +82,22 @@ public class GameUI extends Application {
         GameUI.mode = mode;
     }
 
-    public static Board getBoard() {
-        return board;
+    public static Grid getBoard() {
+        return grid;
     }
 
-    public static void setBoard(Board board) {
-        GameUI.board = board;
+    public static void setBoard(Grid grid) {
+        GameUI.grid = grid;
     }
 
 
+    // 游戏界面初始化
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/FXView/GameUI.fxml"));
-        Scene scene = new Scene(root, 1000, 1000);
+        scene = new Scene(root, 1000, 1000);
 
+        // stage设置
         primaryStage.setTitle("2048");
         primaryStage.setResizable(false);
         primaryStage.getIcons().add(new javafx.scene.image.Image("/assets/titleIcon/favicon-32x32.png"));
@@ -90,19 +105,22 @@ public class GameUI extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
+        // 设置焦点
         scene.getRoot().requestFocus();
 
+        // 获取节点
         gamePane = (AnchorPane) scene.lookup("#gamePane");
         scoreLabel = (Label) scene.lookup("#scoreLabel");
         stepLabel = (Label) scene.lookup("#stepLabel");
 
         GameUI.initGamePane(gamePane, size);
 
-        board = new Board(0, size, mode);
-        board.init();
+        // 游戏板初始化
+        grid = new Grid(0, size, mode);
+        grid.init();
+        curBlockPane = GameUI.draw(grid, gamePane, size);
 
-        curBlockPane = GameUI.draw(board, gamePane, size);
-
+        // 设置键盘监听
         scene.setOnKeyPressed(event -> {
             if        (event.getCode() == KeyCode.UP    || event.getCode() == KeyCode.W) {
                 upAction();
@@ -117,179 +135,100 @@ public class GameUI extends Application {
 
     }
 
-
+    // restart按钮事件
     @FXML
     public void restartAction() {
-        board = new Board(0, size, mode);
-        board.init();
-        GameUI.draw(board, gamePane, size);
-        upDateScore(scoreLabel, board);
+
+        grid = new Grid(0, size, mode);
+        grid.init();
+        GameUI.draw(grid, gamePane, size);
+        upDateScore(scoreLabel, grid);
         step = 0;
-        upDateStep(stepLabel, board);
+        upDateStep(stepLabel, grid);
+        scene.getRoot().requestFocus();
+
     }
 
+    // undo按钮事件
     @FXML
     public void undoAction() {
-        board.undo();
-        GameUI.draw(board, gamePane, size);
-        upDateScore(scoreLabel, board);
+        grid.undo();
+        grid.undo();
+        GameUI.draw(grid, gamePane, size);
+        upDateScore(scoreLabel, grid);
         step -= (step > 0) ? 1 : 0;
-        upDateStep(stepLabel, board);
+        upDateStep(stepLabel, grid);
+        scene.getRoot().requestFocus();
     }
 
+    // 按键事件
     @FXML
     public void upAction() {
 
-//        List<TranslateTransition> transitions = new ArrayList();
-//
-//        for (Node tile : curBlockPane.getChildren()){
-//            Tile t = (Tile) tile;
-//            Coordination coordination = new Coordination(t.gethIndex(), t.getvIndex(), gamePane, size);
-//            TranslateTransition tt = new TranslateTransition(Duration.millis(100), tile);
-//            tt.setByY(-coordination.getBlockWidth() * (size - t.getvIndex() - 1));
-//            transitions.add(tt);
-//        }
-//        // Animation here
-//
-//
-//        ParallelTransition pt = new ParallelTransition(transitions.toArray(new TranslateTransition[0]));
-//        pt.play();
+        Animation slide = new MoveAnimation(curBlockPane.getChildren(), Direction.UP, grid, new Coordination(size, gamePane));
+        slide.makeTransition();
+        slide.setOnFinished(event -> {
+            grid.slip(Direction.UP);
+            curBlockPane = GameUI.draw(grid, gamePane, size);
+            upDateScore(scoreLabel, grid);
+            step++;
+            upDateStep(stepLabel, grid);
+            grid.addToHistory();
+        });
 
-
-        Animation slide = new MoveAnimation(curBlockPane.getChildren(), Direction.UP, board, new Coordination(size, gamePane));
         slide.play(CombineType.GROUP);
-
-        new Thread(() -> {
-            try {
-                Thread.sleep(100);
-                Platform.runLater(() -> {
-                    board.slip(Direction.UP);
-                    curBlockPane = GameUI.draw(board, gamePane, size);
-                });
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }).start();
-
-        upDateScore(scoreLabel, board);
-        step++;
-        upDateStep(stepLabel, board);
-        board.addToHistory();
 
     }
 
     @FXML
     public void downAction() {
 
-        // Animation here
-//        List<TranslateTransition> transitions = new ArrayList();
-//
-//        for (Node tile : curBlockPane.getChildren()){
-//            Tile t = (Tile) tile;
-//            Coordination coordination = new Coordination(t.gethIndex(), t.getvIndex(), gamePane, size);
-//            TranslateTransition tt = new TranslateTransition(Duration.millis(100), tile);
-//            tt.setByY(coordination.getBlockWidth() * (size - t.getvIndex() - 1));
-//            transitions.add(tt);
-//        }
-//
-//        ParallelTransition pt = new ParallelTransition(transitions.toArray(new TranslateTransition[0]));
-//        pt.play();
-
-        Animation slide = new MoveAnimation(curBlockPane.getChildren(), Direction.DOWN, board, new Coordination(size, gamePane));
+        Animation slide = new MoveAnimation(curBlockPane.getChildren(), Direction.DOWN, grid, new Coordination(size, gamePane));
+        slide.makeTransition();
+        slide.setOnFinished(event -> {
+            grid.slip(Direction.DOWN);
+            curBlockPane = GameUI.draw(grid, gamePane, size);
+            upDateScore(scoreLabel, grid);
+            step++;
+            upDateStep(stepLabel, grid);
+            grid.addToHistory();
+        });
         slide.play(CombineType.GROUP);
 
-        new Thread(() -> {
-            try {
-                Thread.sleep(100);
-                Platform.runLater(() -> {
-                    board.slip(Direction.DOWN);
-                    curBlockPane = GameUI.draw(board, gamePane, size);
-                });
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }).start();
-
-        upDateScore(scoreLabel, board);
-        step++;
-        upDateStep(stepLabel, board);
-        board.addToHistory();
     }
 
     @FXML
     public void leftAction() {
 
-        // Animation here
-//        List<TranslateTransition> transitions = new ArrayList();
-//
-//        for (Node tile : curBlockPane.getChildren()){
-//            Tile t = (Tile) tile;
-//            Coordination coordination = new Coordination(t.gethIndex(), t.getvIndex(), gamePane, size);
-//            TranslateTransition tt = new TranslateTransition(Duration.millis(100), tile);
-//            tt.setByX(-coordination.getBlockWidth() * (size - t.gethIndex() - 1));
-//            transitions.add(tt);
-//        }
-//
-//        ParallelTransition pt = new ParallelTransition(transitions.toArray(new TranslateTransition[0]));
-//        pt.play();
-
-        Animation slide = new MoveAnimation(curBlockPane.getChildren(), Direction.LEFT, board, new Coordination(size, gamePane));
+        Animation slide = new MoveAnimation(curBlockPane.getChildren(), Direction.LEFT, grid, new Coordination(size, gamePane));
+        slide.makeTransition();
+        slide.setOnFinished(event -> {
+            grid.slip(Direction.LEFT);
+            curBlockPane = GameUI.draw(grid, gamePane, size);
+            upDateScore(scoreLabel, grid);
+            step++;
+            upDateStep(stepLabel, grid);
+            grid.addToHistory();
+        });
         slide.play(CombineType.GROUP);
 
-        new Thread(() -> {
-            try {
-                Thread.sleep(100);
-                Platform.runLater(() -> {
-                    board.slip(Direction.LEFT);
-                    curBlockPane = GameUI.draw(board, gamePane, size);
-                });
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }).start();
-
-        upDateScore(scoreLabel, board);
-        step++;
-        upDateStep(stepLabel, board);
-        board.addToHistory();
     }
 
     @FXML
     public void rightAction() {
 
-        // Animation here
-        List<TranslateTransition> transitions = new ArrayList();
-
-//        for (Node tile : curBlockPane.getChildren()){
-//            Tile t = (Tile) tile;
-//            Coordination coordination = new Coordination(t.gethIndex(), t.getvIndex(), gamePane, size);
-//            TranslateTransition tt = new TranslateTransition(Duration.millis(100), tile);
-//            tt.setByX(coordination.getBlockWidth() * (size - t.gethIndex() - 1));
-//            transitions.add(tt);
-//        }
-//
-//        ParallelTransition pt = new ParallelTransition(transitions.toArray(new TranslateTransition[0]));
-//        pt.play();
-
-        Animation slide = new MoveAnimation(curBlockPane.getChildren(), Direction.RIGHT, board, new Coordination(size, gamePane));
+        Animation slide = new MoveAnimation(curBlockPane.getChildren(), Direction.RIGHT, grid, new Coordination(size, gamePane));
+        slide.makeTransition();
+        slide.setOnFinished(event -> {
+            grid.slip(Direction.RIGHT);
+            curBlockPane = GameUI.draw(grid, gamePane, size);
+            upDateScore(scoreLabel, grid);
+            step++;
+            upDateStep(stepLabel, grid);
+            grid.addToHistory();
+        });
         slide.play(CombineType.GROUP);
 
-        new Thread(() -> {
-            try {
-                Thread.sleep(100);
-                Platform.runLater(() -> {
-                    board.slip(Direction.RIGHT);
-                    curBlockPane = GameUI.draw(board, gamePane, size);
-                });
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }).start();
-
-        upDateScore(scoreLabel, board);
-        step++;
-        upDateStep(stepLabel, board);
-        board.addToHistory();
     }
 
     // 获取gamePane参数
@@ -305,7 +244,12 @@ public class GameUI extends Application {
         return gamePane.getLayoutY();
     }
 
-    // 初始化gamePane网格
+    /**
+     * @description: 初始化游戏板方法
+     * @param gamePane 游戏板
+     * @param size 游戏板大小
+     * @return void
+     */
     public static void initGamePane(AnchorPane gamePane, int size) {
 
         gamePane.getChildren().clear();
@@ -314,7 +258,14 @@ public class GameUI extends Application {
         drawGrid(gamePane, size);
     }
 
-    public static AnchorPane draw(Board board, AnchorPane gamePane, int size) {
+    /**
+     * @description: 绘制游戏板方法
+     * @param board 游戏板
+     * @param gamePane 游戏板
+     * @param size 游戏板大小
+     * @return javafx.scene.layout.AnchorPane
+     */
+    public static AnchorPane draw(Grid board, AnchorPane gamePane, int size) {
 
         gamePane.getChildren().clear();
 
@@ -341,11 +292,13 @@ public class GameUI extends Application {
 
     }
 
-    private static StackPane createEntity(int val, int x, int y, AnchorPane gamePane, int size) {
 
-        return null;
-    }
-
+    /**
+     * @description: 绘制游戏板背景填充方法
+     * @param gamePane 游戏板
+     * @param size 游戏板大小
+     * @return void
+     */
     private static void drawBackground(AnchorPane gamePane, int size) {
 
         Pane backgroundPane = new Pane();
@@ -360,6 +313,12 @@ public class GameUI extends Application {
 
     }
 
+    /**
+     * @description: 绘制游戏板网格方法
+     * @param gamePane 游戏板
+     * @param size 游戏板大小
+     * @return void
+     */
     private static void drawGrid(AnchorPane gamePane, int size) {
 
         double space = 11.0;
@@ -399,22 +358,51 @@ public class GameUI extends Application {
 
     }
 
-    private static void upDateScore(Label scoreLabel, Board board) {
-        score = board.getScore();
+    //
+    public void simulateMove(Direction direction) {
+        switch (direction) {
+            case UP:
+                upAction();
+                break;
+            case DOWN:
+                downAction();
+                break;
+            case LEFT:
+                leftAction();
+                break;
+            case RIGHT:
+                rightAction();
+                break;
+        }
+    }
+
+    // 更新分数
+    private static void upDateScore(Label scoreLabel, Grid grid) {
+        score = grid.getScore();
         scoreLabel.setText("" + score);
     }
 
-    private static void upDateStep(Label stepLabel, Board board) {
+    // 更新步数
+    private static void upDateStep(Label stepLabel, Grid grid) {
         stepLabel.setText("" + step);
     }
 
+    private void winAction() {
+        // TODO
+    }
 
+    private void loseAction() {
+        // TODO
+    }
 
+    // 初始化GameUI
     public static void init(int size, int mode) {
         GameUI.setSize(size);
         GameUI.setMode(mode);
+        GameUI.setBoard(new Grid(0, size, mode));
     }
 
+    // 运行GameUI
     public static void run() {
         Platform.runLater(() -> {
             GameUI gameUI = new GameUI();
@@ -432,4 +420,7 @@ public class GameUI extends Application {
     }
 
 
+    public Grid getGrid() {
+        return grid;
+    }
 }
