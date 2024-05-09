@@ -15,8 +15,12 @@ import java.util.List;
 import java.util.function.Consumer;
 
 /**
- * @Description:
- *
+ * @Description: javafx动画基类，封装了动画的基本属性和方法
+ * @Author: Zaddle
+ * @Date: 2024/5/9 15:00
+ * @Child: PopUpAnimation: 用于方格弹出动画
+ *         MoveAnimation： 用于方格移动动画
+ *         SwitchInterfaceAnimation： 用于界面切换动画
  */
 public abstract class Animation {
 

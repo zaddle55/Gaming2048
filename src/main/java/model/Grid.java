@@ -3,10 +3,7 @@ package model;
 import util.Direction;
 
 import java.io.Serializable;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Stack;
-import java.util.Random;
+import java.util.*;
 
 /**
  * @description: 用于2048的游戏板
@@ -276,6 +273,10 @@ public class Grid implements Serializable {
         int[][] newBoard = new int[size][size];
         for (int i = 0; i < size; i++) {
             System.arraycopy(board[i], 0, newBoard[i], 0, size);
+        }
+        // 校验是否有重复的历史
+        if (!history.isEmpty() && Arrays.deepEquals(history.peek(), newBoard)) {
+            return;
         }
         history.push(newBoard);
     }

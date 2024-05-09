@@ -2,11 +2,15 @@
 package util;
 
 import javafx.animation.AnimationTimer;
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
 
-public abstract class Timer {
+public class Timer extends Service<Void> {
     private long startTime;
     private long endTime;
+    private int mode;
     private boolean isRunning;
+    private static final int SECOND_PER_MILLIS = 1000;
 
     // 模式选择
     public static int COUNT_UP = 0;
@@ -14,17 +18,32 @@ public abstract class Timer {
 
     // 计时器模式
     public Timer(int mode, Time var) {
+        this.mode = mode;
         if (mode == COUNT_UP) {
-            this.startTime = System.currentTimeMillis();
+            this.endTime = var.getTime();
         } else {
-            this.startTime = 0;
+            this.startTime = var.getTime();
         }
     }
 
-    public abstract void start();
+    @Override
+    protected Task<Void> createTask() {
+        return new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                if (mode == COUNT_UP) {
+//                    countUp();
+                } else {
+//                    countDown();
+                }
+                return null;
+            }
+        };
+    }
+
 
     public void stop() {
-        this.endTime = System.currentTimeMillis();
+        this.isRunning = false;
     }
 
     public long getElapsedTime() {

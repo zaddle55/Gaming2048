@@ -15,6 +15,7 @@ public class Time {
             throw new IllegalArgumentException("Invalid time format");
         }
 
+        this.timeFormat = timeFormat;
         // 解析时间
         String[] timeArray = timeFormat.split(":");
         this.hour = Integer.parseInt(timeArray[0]);
