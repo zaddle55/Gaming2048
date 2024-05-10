@@ -8,7 +8,10 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import util.Direction;
 import util.GameModeFactory;
+
+import java.util.ArrayList;
 
 public class MainUI {
 
@@ -90,15 +93,15 @@ public class MainUI {
 
 
     public void enterAction(MouseEvent mouseEvent) {
-        TranslateTransition transition1 = new TranslateTransition();
-        transition1.setNode(loginInterface);
-        transition1.setByX(-700.0);
-        transition1.setDuration(javafx.util.Duration.millis(400));
-        TranslateTransition transition2 = new TranslateTransition();
-        transition2.setNode(mainInterface);
-        transition2.setByX(-700.0);
-        transition2.setDuration(javafx.util.Duration.millis(400));
-        ParallelTransition groupTransition = new ParallelTransition(transition1, transition2);
-        groupTransition.play();
+        Animation switchAnimation = new SwitchInterfaceAnimation(new ArrayList<>(){{
+            add(loginInterface);
+            add(mainInterface);
+        }}, Direction.LEFT);
+        switchAnimation.makeTransition();
+        switchAnimation.setOnFinished(event -> {
+            loginInterface.setVisible(false);
+            mainInterface.setVisible(true);
+        });
+        switchAnimation.play(Animation.CombineType.GROUP);
     }
 }

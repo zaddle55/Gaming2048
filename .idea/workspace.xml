@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="Some revision" />
+    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="Some revision">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MainUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MainUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/SwitchInterfaceAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/SwitchInterfaceAnimation.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,36 +47,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Maven.Unknown [package].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "zaddle",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Administrator/IdeaProjects/Reach2048/target/classes/assets/buttonIcon",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "模块",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true",
-    "应用程序.GameApplication.executor": "Run",
-    "应用程序.GameUI.executor": "Run",
-    "应用程序.MainApplication.executor": "Run",
-    "应用程序.MainFrame.executor": "Run",
-    "应用程序.TestGameUIApplication.executor": "Run",
-    "应用程序.TestGridPanel.executor": "Run",
-    "应用程序.TestJavaFXBootstrap.executor": "Run",
-    "应用程序.TestMainUIApplication.executor": "Run"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Maven.Unknown [package].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;zaddle&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Administrator/IdeaProjects/Reach2048/target/classes/assets/buttonIcon&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
+    &quot;应用程序.GameApplication.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.GameUI.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.MainApplication.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.MainFrame.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.TestGameUIApplication.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.TestGridPanel.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.TestJavaFXBootstrap.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.TestMainUIApplication.executor&quot;: &quot;Run&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Administrator\IdeaProjects\Reach2048\target\classes\assets\buttonIcon" />
@@ -85,7 +89,7 @@
       <recent name="C:\Users\Administrator\IdeaProjects\Reach2048\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.GameApplication">
+  <component name="RunManager" selected="应用程序.TestMainUIApplication">
     <configuration name="GameApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GameApplication" />
       <module name="Reach2048" />
@@ -152,8 +156,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="应用程序.GameApplication" />
         <item itemvalue="应用程序.TestMainUIApplication" />
+        <item itemvalue="应用程序.GameApplication" />
         <item itemvalue="应用程序.TestGameUIApplication" />
         <item itemvalue="应用程序.TestGridPanel" />
         <item itemvalue="应用程序.GameUI" />
@@ -197,7 +201,9 @@
       <workItem from="1714994600941" duration="12909000" />
       <workItem from="1715081518739" duration="11684000" />
       <workItem from="1715156301565" duration="13426000" />
-      <workItem from="1715234420593" duration="10601000" />
+      <workItem from="1715234420593" duration="10693000" />
+      <workItem from="1715321616478" duration="6164000" />
+      <workItem from="1715352174313" duration="617000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
@@ -479,7 +485,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715266060975</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Some revision">
+      <option name="closed" value="true" />
+      <created>1715266121935</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1715266121935</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
