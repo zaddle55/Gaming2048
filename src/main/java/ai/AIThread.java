@@ -4,10 +4,12 @@ import controller.GameUI;
 import model.Grid;
 import util.Direction;
 
-public class AIThread implements Runnable{
+import static java.lang.Thread.sleep;
+
+public class AIThread implements Runnable {
     protected Grid grid;
     protected GameUI gameThread;
-    protected boolean endFlag = false;
+    public boolean endFlag = false;
 
     public AIThread(Grid grid, GameUI gameThread) {
         this.grid = grid;
@@ -15,9 +17,22 @@ public class AIThread implements Runnable{
     }
 
     protected Direction getDirection() {
-//      return nextDirection(Grid grid);
-        return null;
+        // 随机生成方向
+        int direction = (int) (Math.random() * 4);
+        switch (direction) {
+            case 0:
+                return Direction.UP;
+            case 1:
+                return Direction.DOWN;
+            case 2:
+                return Direction.LEFT;
+            case 3:
+                return Direction.RIGHT;
+            default:
+                return null;
+        }
     }
+
 
     protected void move(Direction direction) {
         gameThread.simulateMove(direction);
@@ -35,9 +50,16 @@ public class AIThread implements Runnable{
     public void run() {
 
         while (!endFlag) {
-            move(getDirection());
-            updateGrid();
-            updateEndFlag();
+
+            try {
+                sleep(100);
+                move(getDirection());
+                updateGrid();
+                updateEndFlag();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
         }
     }
 }

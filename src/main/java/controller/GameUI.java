@@ -12,9 +12,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
@@ -27,6 +29,7 @@ import controller.Animation.CombineType;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 
 public class GameUI extends Application {
@@ -36,6 +39,8 @@ public class GameUI extends Application {
     private AnchorPane gamePane;
     @FXML
     private Button restartButton;
+    @FXML
+    private Button autoButton;
     @FXML
     private AnchorPane gameInterface;
     @FXML
@@ -55,6 +60,8 @@ public class GameUI extends Application {
     private static int score = 0;
     // 步数
     private static int step = 0;
+    //
+    private static boolean isLoad = false;
     // 胜利标志
     public static boolean isWin = false;
     // 失败标志
@@ -116,8 +123,10 @@ public class GameUI extends Application {
         GameUI.initGamePane(gamePane, size);
 
         // 游戏板初始化
-        grid = new Grid(0, size, mode);
-        grid.init();
+        if (!isLoad) {
+            grid = new Grid(0, size, mode);
+            grid.init();
+        }
         curBlockPane = GameUI.draw(grid, gamePane, size);
 
         // 设置键盘监听
@@ -139,6 +148,10 @@ public class GameUI extends Application {
     @FXML
     public void restartAction() {
 
+        if (isAuto) {
+            return;
+        }
+
         grid = new Grid(0, size, mode);
         grid.init();
         GameUI.draw(grid, gamePane, size);
@@ -147,11 +160,20 @@ public class GameUI extends Application {
         upDateStep(stepLabel, grid);
         scene.getRoot().requestFocus();
 
+        isEnd = false;
+        isWin = false;
+        isLose = false;
+
     }
 
     // undo按钮事件
     @FXML
     public void undoAction() {
+
+        if (isAuto) {
+            return;
+        }
+
         grid.undo();
         grid.undo();
         GameUI.draw(grid, gamePane, size);
@@ -159,21 +181,26 @@ public class GameUI extends Application {
         step -= (step > 0) ? 1 : 0;
         upDateStep(stepLabel, grid);
         scene.getRoot().requestFocus();
+
+        isEnd = false;
+        isWin = false;
+        isLose = false;
     }
 
     // 按键事件
     @FXML
     public void upAction() {
 
+        if (isEnd) {
+            return;
+        }
+
         Animation slide = new MoveAnimation(curBlockPane.getChildren(), Direction.UP, grid, new Coordination(size, gamePane));
         slide.makeTransition();
         slide.setOnFinished(event -> {
             grid.slip(Direction.UP);
             curBlockPane = GameUI.draw(grid, gamePane, size);
-            upDateScore(scoreLabel, grid);
-            step++;
-            upDateStep(stepLabel, grid);
-            grid.addToHistory();
+            updateState();
         });
 
         slide.play(CombineType.GROUP);
@@ -183,15 +210,16 @@ public class GameUI extends Application {
     @FXML
     public void downAction() {
 
+        if (isEnd) {
+            return;
+        }
+
         Animation slide = new MoveAnimation(curBlockPane.getChildren(), Direction.DOWN, grid, new Coordination(size, gamePane));
         slide.makeTransition();
         slide.setOnFinished(event -> {
             grid.slip(Direction.DOWN);
             curBlockPane = GameUI.draw(grid, gamePane, size);
-            upDateScore(scoreLabel, grid);
-            step++;
-            upDateStep(stepLabel, grid);
-            grid.addToHistory();
+            updateState();
         });
         slide.play(CombineType.GROUP);
 
@@ -200,15 +228,16 @@ public class GameUI extends Application {
     @FXML
     public void leftAction() {
 
+        if (isEnd) {
+            return;
+        }
+
         Animation slide = new MoveAnimation(curBlockPane.getChildren(), Direction.LEFT, grid, new Coordination(size, gamePane));
         slide.makeTransition();
         slide.setOnFinished(event -> {
             grid.slip(Direction.LEFT);
             curBlockPane = GameUI.draw(grid, gamePane, size);
-            upDateScore(scoreLabel, grid);
-            step++;
-            upDateStep(stepLabel, grid);
-            grid.addToHistory();
+            updateState();
         });
         slide.play(CombineType.GROUP);
 
@@ -217,15 +246,16 @@ public class GameUI extends Application {
     @FXML
     public void rightAction() {
 
+        if (isEnd) {
+            return;
+        }
+
         Animation slide = new MoveAnimation(curBlockPane.getChildren(), Direction.RIGHT, grid, new Coordination(size, gamePane));
         slide.makeTransition();
         slide.setOnFinished(event -> {
             grid.slip(Direction.RIGHT);
             curBlockPane = GameUI.draw(grid, gamePane, size);
-            upDateScore(scoreLabel, grid);
-            step++;
-            upDateStep(stepLabel, grid);
-            grid.addToHistory();
+            updateState();
         });
         slide.play(CombineType.GROUP);
 
@@ -256,6 +286,26 @@ public class GameUI extends Application {
 
         drawBackground(gamePane, size);
         drawGrid(gamePane, size);
+    }
+
+    public void updateState() {
+        upDateScore(scoreLabel, grid);
+        step++;
+        upDateStep(stepLabel, grid);
+        grid.addToHistory();
+        if (grid.isWin()) {
+            isWin = true;
+
+            isAuto = false;
+            autoButton.setText("Auto");
+            winAction();
+        } else if (grid.isOver()) {
+            isLose = true;
+
+            isAuto = false;
+            autoButton.setText("Auto");
+            loseAction();
+        }
     }
 
     /**
@@ -388,11 +438,73 @@ public class GameUI extends Application {
     }
 
     private void winAction() {
-        // TODO
+
+        isEnd = true;
+        // 绘制胜利界面
+        StackPane winPane = new StackPane();
+        winPane.setLayoutX(0);
+        winPane.setLayoutY(0);
+        winPane.setPrefSize(gamePane.getWidth(), gamePane.getHeight());
+        winPane.setStyle("-fx-background-color: rgba(255,220,80,0.73);\n" +
+                "-fx-background-radius: 3px;\n" +
+                "-fx-background-size: cover;\n" +
+                "-fx-background-position: center;\n");
+        winPane.toFront();
+        winPane.setOpacity(0.6);
+
+        VBox winBox = new VBox();
+        winBox.setAlignment(javafx.geometry.Pos.CENTER);
+        // 显示“YOU WIN”标签
+        Label winLabel = new Label("YOU WIN");
+        winLabel.setStyle("-fx-font-size: 50px;\n" +
+                "-fx-font-weight: bold;\n" +
+                "-fx-text-fill: #ffffff;\n" +
+                "-fx-effect: dropshadow(three-pass-box, #776e65, 10, 0, 0, 0);");
+        // 显示分数
+        Label scoreLabel = new Label("Score: " + score);
+        scoreLabel.setStyle("-fx-font-size: 30px;\n" +
+                "-fx-font-weight: bold;\n" +
+                "-fx-text-fill: #776e65;");
+        // 添加到父节点
+        winBox.getChildren().addAll(winLabel, scoreLabel);
+        winPane.getChildren().add(winBox);
+
+        gamePane.getChildren().add(winPane);
     }
 
     private void loseAction() {
-        // TODO
+
+        isEnd = true;
+        // 绘制失败界面
+        StackPane losePane = new StackPane();
+        losePane.setLayoutX(0);
+        losePane.setLayoutY(0);
+        losePane.setPrefSize(gamePane.getWidth(), gamePane.getHeight());
+        losePane.setStyle("-fx-background-color: rgba(113,113,113,0.94);\n" +
+                "-fx-background-radius: 3px;\n" +
+                "-fx-background-size: cover;\n" +
+                "-fx-background-position: center;\n");
+        losePane.toFront();
+        losePane.setOpacity(0.6);
+
+        VBox loseBox = new VBox();
+        loseBox.setAlignment(javafx.geometry.Pos.CENTER);
+        // 显示“YOU LOSE”标签
+        Label loseLabel = new Label("YOU LOSE");
+        loseLabel.setStyle("-fx-font-size: 50px;\n" +
+                "-fx-font-weight: bold;\n" +
+                "-fx-text-fill: #1e1d1d;\n" +
+                "-fx-effect: dropshadow(three-pass-box, #776e65, 10, 0, 0, 0);");
+        // 显示分数
+        Label scoreLabel = new Label("Score: " + score);
+        scoreLabel.setStyle("-fx-font-size: 30px;\n" +
+                "-fx-font-weight: bold;\n" +
+                "-fx-text-fill: #3a3a3a;");
+        // 添加到父节点
+        loseBox.getChildren().addAll(loseLabel, scoreLabel);
+        losePane.getChildren().add(loseBox);
+
+        gamePane.getChildren().add(losePane);
     }
 
     // 初始化GameUI
@@ -400,6 +512,13 @@ public class GameUI extends Application {
         GameUI.setSize(size);
         GameUI.setMode(mode);
         GameUI.setBoard(new Grid(0, size, mode));
+    }
+
+    public static void init(int mode, int[][] board) {
+        GameUI.setSize(board.length);
+        GameUI.setMode(mode);
+        GameUI.setBoard(new Grid(0, board));
+        GameUI.isLoad = true;
     }
 
     // 运行GameUI
@@ -422,5 +541,22 @@ public class GameUI extends Application {
 
     public Grid getGrid() {
         return grid;
+    }
+
+    public void autoAction(MouseEvent mouseEvent) {
+        if (isAuto) {
+            isAuto = false;
+            aiThread.endFlag = true;
+            autoButton.setText("Auto");
+        } else {
+            isAuto = true;
+            if (aiThread == null) {
+                aiThread = new AIThread(grid, this);
+            } else {
+                aiThread.endFlag = false;
+            }
+            autoButton.setText("Stop");
+            new Thread(aiThread).start();
+        }
     }
 }

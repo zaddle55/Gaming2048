@@ -6,38 +6,83 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="2100.0" stylesheets="@../css/mainUI.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainUI">
 <children>
-    <AnchorPane fx:id="loginInterface" prefHeight="500.0" prefWidth="700.0" layoutX="0.0" layoutY="0.0">
+    <TilePane layoutX="134" layoutY="20.0" prefHeight="72.0" prefWidth="423.0">
         <children>
-            <TilePane layoutX="134" layoutY="20.0" prefHeight="72.0" prefWidth="423.0" >
-                <children>
-                    <Label fx:id="tilteLabel1" alignment="CENTER" mnemonicParsing="false" prefHeight="72.0" prefWidth="423.0" styleClass="title-label-style">
-                    </Label>
-                </children>
-            </TilePane>
-            <VBox layoutX="54.0" layoutY="164.0" prefHeight="403.0" prefWidth="184.0">
-                <children>
-                    <Label fx:id="enterButton" alignment="CENTER" mnemonicParsing="false" onMouseEntered="#enterStartAction" onMouseExited="#exitStartAction" onMousePressed="#enterAction" prefHeight="51.0" prefWidth="221.0" styleClass="button-default-style" text="Enter" />
+            <Label fx:id="tilteLabel1" alignment="CENTER" mnemonicParsing="false" prefHeight="72.0" prefWidth="423.0" styleClass="title-label-style">
+            </Label>
+        </children>
+    </TilePane>
+    <!--**************************登录界面**************************-->
+    <AnchorPane fx:id="loginInterface" layoutX="0.0" layoutY="100.0" prefHeight="400.0" prefWidth="700.0">
+        <children>
+            <VBox layoutX="150.0" layoutY="56.0" prefHeight="169.0" prefWidth="400.0" spacing="20.0">
+            <children>
+                   <HBox alignment="CENTER" spacing="10.0">
+                        <Label fx:id="usernameLabel" alignment="CENTER">
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../assets/loginIcon/玩家.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Label>
+                        <TextField fx:id="usernameField" prefHeight="51.0" prefWidth="221.0" promptText="Username" styleClass="text-field-default-style">
+                        </TextField>
+                    </HBox>
+                    <HBox alignment="CENTER" spacing="10.0">
+                        <Label fx:id="passwordLabel" alignment="CENTER">
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../assets/loginIcon/密码.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Label>
+                        <PasswordField fx:id="passwordField" prefHeight="51.0" prefWidth="221.0" promptText="Password" styleClass="text-field-default-style" />
+                    </HBox>
+                    <HBox spacing="50.0" alignment="CENTER">
+                        <Button fx:id="loginButton" alignment="CENTER" mnemonicParsing="false" prefHeight="51.0" prefWidth="160.0" styleClass="login-button-style" text="Login">
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../assets/loginIcon/登录.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button fx:id="registerButton" alignment="CENTER" mnemonicParsing="false" prefHeight="51.0" prefWidth="160.0" styleClass="register-button-style" text="Register">
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../assets/loginIcon/注册 (1).png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </HBox>
+                    <HBox alignment="CENTER">
+                        <Label alignment="CENTER" mnemonicParsing="false" prefHeight="51.0" prefWidth="221.0" text="OR" styleClass="font-awesome-icon"/>
+                    </HBox>
+                    <HBox alignment="CENTER">
+                        <Button fx:id="privateButton" alignment="CENTER" onMousePressed="#enterAction" styleClass="guest-button-style" text="Guest login" prefWidth="230.0">
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../assets/loginIcon/老访客.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </HBox>
                 </children>
             </VBox>
-            <Pane layoutX="238.0" layoutY="107.0" prefHeight="430.0" prefWidth="430.0">
-                <children>
-                    <ImageView fitHeight="430.0" fitWidth="430.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                            <Image url="@../assets/2048.png" />
-                        </image>
-                    </ImageView>
-                </children>
-            </Pane>
         </children>
     </AnchorPane>
-    <AnchorPane fx:id="mainInterface" prefHeight="500.0" prefWidth="700.0" layoutX="700.0" layoutY="0.0">
+    <!--**************************主界面**************************-->
+    <AnchorPane fx:id="mainInterface" layoutX="700.0" layoutY="0.0" prefHeight="400.0" prefWidth="700.0">
         <children>
-            <TilePane layoutX="134" layoutY="20.0" prefHeight="72.0" prefWidth="423.0" >
-                <children>
-                    <Label fx:id="tilteLabel2" alignment="CENTER" mnemonicParsing="false" prefHeight="72.0" prefWidth="423.0" styleClass="title-label-style">
-                    </Label>
-                </children>
-            </TilePane>
             <VBox layoutX="54.0" layoutY="164.0" prefHeight="403.0" prefWidth="184.0">
                 <children>
                     <Label fx:id="startButton" alignment="CENTER" mnemonicParsing="false" onMouseEntered="#enterStartAction" onMouseExited="#exitStartAction" onMousePressed="#startAction" prefHeight="51.0" prefWidth="221.0" styleClass="button-default-style" text="NewGame" />
@@ -58,14 +103,9 @@
             </Pane>
         </children>
     </AnchorPane>
-    <AnchorPane fx:id="optionInterface" prefWidth="700.0" prefHeight="500.0" layoutX="1400.0" layoutY="0.0">
+    <!--**************************选项界面**************************-->
+    <AnchorPane fx:id="optionInterface" layoutX="1400.0" layoutY="0.0" prefHeight="500.0" prefWidth="700.0">
         <children>
-            <TilePane layoutX="134" layoutY="20.0" prefHeight="72.0" prefWidth="423.0" >
-                <children>
-                    <Label fx:id="tilteLabel3" alignment="CENTER" mnemonicParsing="false" prefHeight="72.0" prefWidth="423.0" styleClass="title-label-style">
-                    </Label>
-                </children>
-            </TilePane>
             <Pane layoutX="238.0" layoutY="107.0" prefHeight="430.0" prefWidth="430.0">
                 <children>
                     <ImageView fitHeight="430.0" fitWidth="430.0" pickOnBounds="true" preserveRatio="true">

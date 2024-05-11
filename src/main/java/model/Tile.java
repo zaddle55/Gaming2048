@@ -10,14 +10,16 @@ import util.Coordination;
 
 public class Tile extends StackPane {
 
-
-
     private int value;
     private int hIndex;
     private int vIndex;
     private AnchorPane parentPane;
     private double tileSize;
     private Coordination coordinationTool;
+
+    // 用于记录移动过程中的父子关系
+    private Tile[] parentTile;
+    private Tile childTile;
 
     public Tile(int value, int hIndex, int vIndex, AnchorPane parentPane, int boardSize) {
         super();
@@ -51,8 +53,9 @@ public class Tile extends StackPane {
             case 0:
                 // 数字显示
                 Text blockText = new Text(String.valueOf(value));
-                // 设置字体大小为方格宽度的1/3
-                blockText.setFont(new Font("PingFang SC", tileSize / 2.0));
+                // 若val为两位，设置字体大小为方格宽度的1/3
+                // 若val超过两位，设置所有字体总宽度为方格宽度的2/3
+                blockText.setFont(Font.font("Arial", tileSize / (value > 99 ? 3 : 2)));
                 // 设置字体颜色
                 blockText.setFill(ColorMap.getTextColor(value));
                 // 设置字体

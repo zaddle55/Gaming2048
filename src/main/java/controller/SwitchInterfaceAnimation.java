@@ -11,6 +11,7 @@ import java.util.List;
 public class SwitchInterfaceAnimation extends Animation{
 
     private static double duration = 200;
+    private static double delay = 70;
 
     private Direction direction;
 
@@ -26,8 +27,9 @@ public class SwitchInterfaceAnimation extends Animation{
             double distance = node.getBoundsInLocal().getWidth() * (direction == Direction.LEFT ? 1 : -1);
             TranslateTransition transition = new TranslateTransition(Duration.millis(duration), node);
             transition.setByX(-distance);
+            transition.setDelay(Duration.millis(delay));
             transitions.add(transition);
         }
-        groupTransition = new ParallelTransition(transitions.toArray(new TranslateTransition[0]));
+        groupTransition = new ParallelTransition(transitions.toArray(new javafx.animation.Transition[0]));
     }
 }

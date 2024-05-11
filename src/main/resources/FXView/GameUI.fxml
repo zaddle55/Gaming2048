@@ -54,7 +54,7 @@
             <!--提示按钮-->
             <Button fx:id="hintButton" layoutX="180.0" layoutY="160.0" mnemonicParsing="false" text="HINT" />
             <!--自动完成按钮-->
-            <Button fx:id="autoButton" layoutX="180.0" layoutY="240.0" mnemonicParsing="false" text="AUTO" />
+            <Button fx:id="autoButton" layoutX="180.0" layoutY="240.0" mnemonicParsing="false" text="AUTO" onMousePressed="#autoAction"/>
             <!--退出按钮-->
             <Button fx:id="exitButton" layoutX="180.0" layoutY="320.0" mnemonicParsing="false" text="EXIT" />
         </children>
