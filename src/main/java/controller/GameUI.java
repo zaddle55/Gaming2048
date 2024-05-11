@@ -119,6 +119,7 @@ public class GameUI extends Application {
         gamePane = (AnchorPane) scene.lookup("#gamePane");
         scoreLabel = (Label) scene.lookup("#scoreLabel");
         stepLabel = (Label) scene.lookup("#stepLabel");
+        autoButton = (Button) scene.lookup("#autoButton");
 
         GameUI.initGamePane(gamePane, size);
 
@@ -544,6 +545,7 @@ public class GameUI extends Application {
     }
 
     public void autoAction(MouseEvent mouseEvent) {
+        if (isEnd) return;
         if (isAuto) {
             isAuto = false;
             aiThread.endFlag = true;
