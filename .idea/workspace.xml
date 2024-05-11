@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="Implement auto function and login interface">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GameUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GameUI.java" afterDir="false" />
-    </list>
+    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="Implement auto function and login interface" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -204,7 +200,7 @@
       <workItem from="1715234420593" duration="10693000" />
       <workItem from="1715321616478" duration="6164000" />
       <workItem from="1715352174313" duration="854000" />
-      <workItem from="1715415413619" duration="17242000" />
+      <workItem from="1715415413619" duration="17572000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
@@ -510,7 +506,23 @@
       <option name="project" value="LOCAL" />
       <updated>1715439749890</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Implement auto function and login interface">
+      <option name="closed" value="true" />
+      <created>1715440787982</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1715440787982</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Implement auto function and login interface">
+      <option name="closed" value="true" />
+      <created>1715440802716</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1715440802716</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
