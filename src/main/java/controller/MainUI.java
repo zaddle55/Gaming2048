@@ -59,7 +59,6 @@ public class MainUI {
             loadingPane.setVisible(true);
             LoadingAnimation loadingAnimation = new LoadingAnimation();
             optionInterface.getChildren().add(loadingAnimation.getNode());
-            System.out.println(loadingAnimation.getNode().getLayoutX());
             loadingAnimation.makeTransition();
 
             loadingAnimation.setOnFinished(event1 -> {

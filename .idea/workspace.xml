@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="Implement LoadingAnimation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/LoadingAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/LoadingAnimation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +87,7 @@
       <recent name="C:\Users\Administrator\IdeaProjects\Reach2048\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.TestGameUIApplication">
+  <component name="RunManager" selected="应用程序.TestMainUIApplication">
     <configuration name="GameApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GameApplication" />
       <module name="Reach2048" />
@@ -155,9 +154,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="应用程序.TestMainUIApplication" />
         <item itemvalue="应用程序.TestGameUIApplication" />
         <item itemvalue="应用程序.GameApplication" />
-        <item itemvalue="应用程序.TestMainUIApplication" />
         <item itemvalue="应用程序.TestGridPanel" />
         <item itemvalue="应用程序.GameUI" />
       </list>
@@ -206,7 +205,7 @@
       <workItem from="1715415413619" duration="19066000" />
       <workItem from="1715442447883" duration="120000" />
       <workItem from="1715494637722" duration="18825000" />
-      <workItem from="1715588042701" duration="5567000" />
+      <workItem from="1715588042701" duration="6313000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
@@ -544,7 +543,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715592901353</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Implement LoadingAnimation">
+      <option name="closed" value="true" />
+      <created>1715593652099</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1715593652099</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
