@@ -112,7 +112,7 @@ public class LoadingAnimation extends Animation{
                 parallelTransition.getChildren().addAll(translateTransition, fillTransition);
                 transition.getChildren().add(parallelTransition);
             }
-            transition.setCycleCount(3);
+            transition.setCycleCount(2);
             transition.setDelay(Duration.millis(delay));
             monoTransition = transition;
 
