@@ -1,19 +1,18 @@
 
 package util;
 
-import javafx.animation.AnimationTimer;
+
 import javafx.application.Platform;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
-import javafx.event.EventHandler;
 
-import java.util.function.Consumer;
+import static java.lang.Thread.sleep;
 
 public class Timer extends Service<Void> {
     private long startTime;
     private volatile long currentTime;
     private long endTime;
-    private int mode;
+    private final int mode;
     private volatile boolean isRunning;
     private static final int SECOND_PER_MILLIS = 1000;
     // 结束事件
@@ -45,7 +44,7 @@ public class Timer extends Service<Void> {
 
     @Override
     protected Task<Void> createTask() {
-        return new Task<Void>() {
+        return new Task<>() {
             @Override
             protected Void call() throws Exception {
                 currentTime = startTime;
@@ -61,8 +60,8 @@ public class Timer extends Service<Void> {
 
                         Time time = new Time(currentTime);
                         updateMessage(time.getTimeFormat());
-                        currentTime += 1;
-                        Thread.sleep(SECOND_PER_MILLIS);
+                        ++currentTime;
+                        sleep(SECOND_PER_MILLIS);
                     }
                 } else {
 
@@ -77,8 +76,8 @@ public class Timer extends Service<Void> {
 
                         Time time = new Time(currentTime);
                         updateMessage(time.getTimeFormat());
-                        currentTime -= 1;
-                        Thread.sleep(SECOND_PER_MILLIS);
+                        --currentTime;
+                        sleep(SECOND_PER_MILLIS);
                     }
                 }
 
@@ -101,11 +100,10 @@ public class Timer extends Service<Void> {
         if (this.mode == COUNT_UP) {
             this.startTime = 0;
             this.currentTime = 0;
-            this.isRunning = true;
         } else {
             this.currentTime = this.startTime;
-            this.isRunning = true;
         }
+        this.isRunning = true;
     }
 
     public void continueTimer() {

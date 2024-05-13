@@ -16,7 +16,7 @@ public enum Direction {
         return incrementJ;
     }
 
-    private Direction(int incrementI, int incrementJ) {
+    Direction(int incrementI, int incrementJ) {
         this.incrementI = incrementI;
         this.incrementJ = incrementJ;
     }

@@ -2,7 +2,6 @@ package controller;
 
 
 import ai.AIThread;
-import javafx.animation.TranslateTransition;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -12,7 +11,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -29,9 +27,7 @@ import controller.Animation.CombineType;
 import util.Time;
 import util.Timer;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.Objects;
 
 
 public class GameUI extends Application {
@@ -106,7 +102,7 @@ public class GameUI extends Application {
     // 游戏界面初始化
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/FXView/GameUI.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/FXView/GameUI.fxml")));
         scene = new Scene(root, 1000, 1000);
 
         // stage设置
@@ -302,7 +298,7 @@ public class GameUI extends Application {
 
         gamePane.getChildren().clear();
 
-        drawBackground(gamePane, size);
+        drawBackground(gamePane);
         drawGrid(gamePane, size, 11.0, 11.0);
     }
 
@@ -339,7 +335,7 @@ public class GameUI extends Application {
 
         gamePane.getChildren().clear();
 
-        drawBackground(gamePane, size);
+        drawBackground(gamePane);
         AnchorPane blockPane = new AnchorPane();
 
         int[][] grid = board.getBoard();
@@ -366,19 +362,20 @@ public class GameUI extends Application {
     /**
      * @description: 绘制游戏板背景填充方法
      * @param gamePane 游戏板
-     * @param size 游戏板大小
      * @return void
      */
-    static void drawBackground(AnchorPane gamePane, int size) {
+    static void drawBackground(AnchorPane gamePane) {
 
         Pane backgroundPane = new Pane();
         backgroundPane.setLayoutX(0);
         backgroundPane.setLayoutY(0);
         backgroundPane.setPrefSize(gamePane.getPrefWidth(), gamePane.getPrefHeight());
-        backgroundPane.setStyle("-fx-background-color: #cbbfb3;\n" +
-                "-fx-background-radius: 3px;\n" +
-                "-fx-background-size: cover;\n" +
-                "-fx-background-position: center;\n");
+        backgroundPane.setStyle("""
+                -fx-background-color: #cbbfb3;
+                -fx-background-radius: 3px;
+                -fx-background-size: cover;
+                -fx-background-position: center;
+                """);
         gamePane.getChildren().add(backgroundPane);
 
     }
@@ -462,10 +459,12 @@ public class GameUI extends Application {
         winPane.setLayoutX(0);
         winPane.setLayoutY(0);
         winPane.setPrefSize(gamePane.getWidth(), gamePane.getHeight());
-        winPane.setStyle("-fx-background-color: rgba(255,220,80,0.73);\n" +
-                "-fx-background-radius: 3px;\n" +
-                "-fx-background-size: cover;\n" +
-                "-fx-background-position: center;\n");
+        winPane.setStyle("""
+                -fx-background-color: rgba(255,220,80,0.73);
+                -fx-background-radius: 3px;
+                -fx-background-size: cover;
+                -fx-background-position: center;
+                """);
         winPane.toFront();
         winPane.setOpacity(0.6);
 
@@ -473,15 +472,17 @@ public class GameUI extends Application {
         winBox.setAlignment(javafx.geometry.Pos.CENTER);
         // 显示“YOU WIN”标签
         Label winLabel = new Label("YOU WIN");
-        winLabel.setStyle("-fx-font-size: 50px;\n" +
-                "-fx-font-weight: bold;\n" +
-                "-fx-text-fill: #ffffff;\n" +
-                "-fx-effect: dropshadow(three-pass-box, #776e65, 10, 0, 0, 0);");
+        winLabel.setStyle("""
+                -fx-font-size: 50px;
+                -fx-font-weight: bold;
+                -fx-text-fill: #ffffff;
+                -fx-effect: dropshadow(three-pass-box, #776e65, 10, 0, 0, 0);""");
         // 显示分数
         Label scoreLabel = new Label("Score: " + score);
-        scoreLabel.setStyle("-fx-font-size: 30px;\n" +
-                "-fx-font-weight: bold;\n" +
-                "-fx-text-fill: #776e65;");
+        scoreLabel.setStyle("""
+                -fx-font-size: 30px;
+                -fx-font-weight: bold;
+                -fx-text-fill: #776e65;""");
         // 添加到父节点
         winBox.getChildren().addAll(winLabel, scoreLabel);
         winPane.getChildren().add(winBox);
@@ -497,10 +498,12 @@ public class GameUI extends Application {
         losePane.setLayoutX(0);
         losePane.setLayoutY(0);
         losePane.setPrefSize(gamePane.getWidth(), gamePane.getHeight());
-        losePane.setStyle("-fx-background-color: rgba(113,113,113,0.94);\n" +
-                "-fx-background-radius: 3px;\n" +
-                "-fx-background-size: cover;\n" +
-                "-fx-background-position: center;\n");
+        losePane.setStyle("""
+                -fx-background-color: rgba(113,113,113,0.94);
+                -fx-background-radius: 3px;
+                -fx-background-size: cover;
+                -fx-background-position: center;
+                """);
         losePane.toFront();
         losePane.setOpacity(0.6);
 
@@ -508,15 +511,18 @@ public class GameUI extends Application {
         loseBox.setAlignment(javafx.geometry.Pos.CENTER);
         // 显示“YOU LOSE”标签
         Label loseLabel = new Label("YOU LOSE");
-        loseLabel.setStyle("-fx-font-size: 50px;\n" +
-                "-fx-font-weight: bold;\n" +
-                "-fx-text-fill: #1e1d1d;\n" +
-                "-fx-effect: dropshadow(three-pass-box, #776e65, 10, 0, 0, 0);");
+        loseLabel.setStyle("""
+                -fx-font-size: 50px;
+                -fx-font-weight: bold;
+                -fx-text-fill: #1e1d1d;
+                -fx-effect: dropshadow(three-pass-box, #776e65, 10, 0, 0, 0);""");
         // 显示分数
         Label scoreLabel = new Label("Score: " + score);
-        scoreLabel.setStyle("-fx-font-size: 30px;\n" +
-                "-fx-font-weight: bold;\n" +
-                "-fx-text-fill: #3a3a3a;");
+        scoreLabel.setStyle("""
+                -fx-font-size: 30px;
+                -fx-font-weight: bold;
+                -fx-text-fill: #3a3a3a;
+                """);
         // 添加到父节点
         loseBox.getChildren().addAll(loseLabel, scoreLabel);
         losePane.getChildren().add(loseBox);
@@ -560,7 +566,7 @@ public class GameUI extends Application {
         return grid;
     }
 
-    public void autoAction(MouseEvent mouseEvent) {
+    public void autoAction() {
         if (isEnd) return;
         if (isAuto) {
             isAuto = false;
@@ -581,7 +587,7 @@ public class GameUI extends Application {
         }
     }
 
-    public void exitAction(MouseEvent mouseEvent) {
+    public void exitAction() {
         if (isAuto) return;
         timer.stop();
     }

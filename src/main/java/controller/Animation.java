@@ -3,17 +3,14 @@ package controller;
 import javafx.animation.ParallelTransition;
 import javafx.animation.Transition;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
-import javafx.scene.layout.VBox;
 import model.Tile;
 import model.TileList;
 import util.Coordination;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 
 /**
  * @Description: javafx动画基类，封装了动画的基本属性和方法
@@ -22,6 +19,7 @@ import java.util.function.Consumer;
  * @Child: PopUpAnimation: 用于方格弹出动画
  *         MoveAnimation： 用于方格移动动画
  *         SwitchInterfaceAnimation： 用于界面切换动画
+ *         LoadAnimation： 用于加载动画
  */
 public abstract class Animation {
 

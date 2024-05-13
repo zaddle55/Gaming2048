@@ -1,15 +1,11 @@
 package controller;
 
-import com.sun.javafx.geom.Shape;
 import javafx.animation.*;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.util.Duration;
 import model.Tile;
 import util.ColorMap;
@@ -54,7 +50,7 @@ public class LoadingAnimation extends Animation{
         stage.setMinWidth(100);
         stage.setLayoutX(200);
         stage.setLayoutY(200);
-        drawBackground(stage, SIZE);
+        drawBackground(stage);
         this.tile = new Tile(5, 0, 0, stage, SIZE){
             @Override
             protected double calcTileSize() {

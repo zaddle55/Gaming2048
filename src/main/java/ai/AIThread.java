@@ -19,18 +19,16 @@ public class AIThread implements Runnable {
     protected Direction getDirection() {
         // 随机生成方向
         int direction = (int) (Math.random() * 4);
-        switch (direction) {
-            case 0:
-                return Direction.UP;
-            case 1:
-                return Direction.DOWN;
-            case 2:
-                return Direction.LEFT;
-            case 3:
-                return Direction.RIGHT;
-            default:
-                return null;
+        if (direction == 0) {
+            return Direction.UP;
+        } else if (direction == 1) {
+            return Direction.DOWN;
+        } else if (direction == 2) {
+            return Direction.LEFT;
+        } else if (direction == 3) {
+            return Direction.RIGHT;
         }
+        return null;
     }
 
 

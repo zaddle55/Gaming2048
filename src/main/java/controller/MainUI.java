@@ -1,14 +1,10 @@
 package controller;
 
-import javafx.animation.ParallelTransition;
-import javafx.animation.Timeline;
-import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import util.Direction;
 import util.GameModeFactory;
@@ -37,7 +33,7 @@ public class MainUI {
     private StackPane loadingPane;
 
     @FXML
-    public void startAction(MouseEvent mouseEvent) {
+    public void startAction() {
 //        try {
 //            GameUI.init(4, GameModeFactory.CLASSIC);
 //            GameUI.run();
