@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="Implement LoadingAnimation">
+    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="Implement timer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GameApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GameUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GameUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/Time.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Time.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/Timer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Timer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/FXView/GameUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXView/GameUI.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Tile.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +89,7 @@
       <recent name="C:\Users\Administrator\IdeaProjects\Reach2048\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.TestMainUIApplication">
+  <component name="RunManager" selected="应用程序.GameApplication">
     <configuration name="GameApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GameApplication" />
       <module name="Reach2048" />
@@ -159,8 +156,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="应用程序.TestMainUIApplication" />
         <item itemvalue="应用程序.GameApplication" />
+        <item itemvalue="应用程序.TestMainUIApplication" />
         <item itemvalue="应用程序.TestGameUIApplication" />
         <item itemvalue="应用程序.TestGridPanel" />
         <item itemvalue="应用程序.GameUI" />
@@ -210,7 +207,7 @@
       <workItem from="1715415413619" duration="19066000" />
       <workItem from="1715442447883" duration="120000" />
       <workItem from="1715494637722" duration="18825000" />
-      <workItem from="1715588042701" duration="19064000" />
+      <workItem from="1715588042701" duration="20413000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
@@ -572,7 +569,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715595894409</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Implement timer">
+      <option name="closed" value="true" />
+      <created>1715612709412</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1715612709412</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -631,7 +636,8 @@
     <MESSAGE value="Some revision" />
     <MESSAGE value="Implement auto function and login interface" />
     <MESSAGE value="Implement LoadingAnimation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement LoadingAnimation" />
+    <MESSAGE value="Implement timer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement timer" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

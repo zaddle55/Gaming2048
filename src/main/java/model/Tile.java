@@ -61,10 +61,10 @@ public class Tile extends StackPane {
                 Text blockText = new Text(String.valueOf(value));
                 // 若val为两位，设置字体大小为方格宽度的1/3
                 // 若val超过两位，设置所有字体总宽度为方格宽度的2/3
-                blockText.setFont(Font.font("Arial", tileSize / (value > 99 ? 3 : 2)));
+                blockText.setFont(Font.font("Arial", tileSize / (value > 999 ? 0.9 * Math.floor(Math.log10(value)) : 2)));
+//                blockText.setFont(Font.font("Arial", tileSize / 2.5));
                 // 设置字体颜色
                 blockText.setFill(ColorMap.getTextColor(value));
-                // 设置字体
 
                 getChildren().addAll(blockRect, blockText);
 
