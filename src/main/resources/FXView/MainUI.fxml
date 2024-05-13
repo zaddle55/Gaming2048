@@ -104,17 +104,10 @@
         </children>
     </AnchorPane>
     <!--**************************选项界面**************************-->
-    <AnchorPane fx:id="optionInterface" layoutX="1400.0" layoutY="0.0" prefHeight="500.0" prefWidth="700.0">
+    <AnchorPane fx:id="optionInterface" layoutX="1400.0" layoutY="100.0" prefHeight="400.0" prefWidth="700.0">
         <children>
-            <Pane layoutX="238.0" layoutY="107.0" prefHeight="430.0" prefWidth="430.0">
-                <children>
-                    <ImageView fitHeight="430.0" fitWidth="430.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                            <Image url="@../assets/2048.png" />
-                        </image>
-                    </ImageView>
-                </children>
-            </Pane>
+            <StackPane fx:id="loadingPane" layoutX="0.0" layoutY="0.0" prefHeight="500.0" prefWidth="700.0">
+            </StackPane>
         </children>
     </AnchorPane>
 </children>

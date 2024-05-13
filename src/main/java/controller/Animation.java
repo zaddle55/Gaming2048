@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
+import javafx.scene.layout.VBox;
 import model.Tile;
 import model.TileList;
 import util.Coordination;
@@ -29,6 +30,7 @@ public abstract class Animation {
     // 动画默认延迟
     protected static double delay = 0;
     protected Node node;
+
     protected Tile tile;
     protected List<Node> nodes;
     protected List<Tile> tiles;
@@ -73,6 +75,10 @@ public abstract class Animation {
         this.nodes = new ArrayList<>();
         this.tiles = new ArrayList<>();
         this.transitions = new ArrayList<>();
+    }
+
+    public Node getNode() {
+        return this.node;
     }
 
     public static double getDelay() {

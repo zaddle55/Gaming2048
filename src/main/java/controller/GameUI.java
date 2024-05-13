@@ -60,7 +60,7 @@ public class GameUI extends Application {
     private static int score = 0;
     // 步数
     private static int step = 0;
-    //
+    // 是否加载
     private static boolean isLoad = false;
     // 胜利标志
     public static boolean isWin = false;
@@ -286,7 +286,7 @@ public class GameUI extends Application {
         gamePane.getChildren().clear();
 
         drawBackground(gamePane, size);
-        drawGrid(gamePane, size);
+        drawGrid(gamePane, size, 11.0, 11.0);
     }
 
     public void updateState() {
@@ -337,7 +337,7 @@ public class GameUI extends Application {
 
         gamePane.getChildren().add(blockPane);
 
-        drawGrid(gamePane, size);
+        drawGrid(gamePane, size, 11.0, 11.0);
 
         return blockPane;
 
@@ -350,12 +350,12 @@ public class GameUI extends Application {
      * @param size 游戏板大小
      * @return void
      */
-    private static void drawBackground(AnchorPane gamePane, int size) {
+    static void drawBackground(AnchorPane gamePane, int size) {
 
         Pane backgroundPane = new Pane();
         backgroundPane.setLayoutX(0);
         backgroundPane.setLayoutY(0);
-        backgroundPane.setPrefSize(gamePane.getWidth(), gamePane.getHeight());
+        backgroundPane.setPrefSize(gamePane.getPrefWidth(), gamePane.getPrefHeight());
         backgroundPane.setStyle("-fx-background-color: #cbbfb3;\n" +
                 "-fx-background-radius: 3px;\n" +
                 "-fx-background-size: cover;\n" +
@@ -370,17 +370,14 @@ public class GameUI extends Application {
      * @param size 游戏板大小
      * @return void
      */
-    private static void drawGrid(AnchorPane gamePane, int size) {
+    static void drawGrid(AnchorPane gamePane, int size, double space, double strokeWidth) {
 
-        double space = 11.0;
-        double strokeWidth = 11.0;
-
-        double blockWidth = (gamePane.getWidth() - space * (size + 1)) / size;
+        double blockWidth = (gamePane.getPrefWidth() - space * (size + 1)) / size;
 
         for (int i = 1; i < size; i++) {
             Line hLine = new Line();
             hLine.setStartX(space);
-            hLine.setEndX(gamePane.getWidth() - space);
+            hLine.setEndX(gamePane.getPrefWidth() - space);
             hLine.setStartY(space + i * (blockWidth + space));
             hLine.setEndY(space + i * (blockWidth + space));
             hLine.setStrokeWidth(strokeWidth);
@@ -391,7 +388,7 @@ public class GameUI extends Application {
             vLine.setStartX(space + i * (blockWidth + space));
             vLine.setEndX(space + i * (blockWidth + space));
             vLine.setStartY(space);
-            vLine.setEndY(gamePane.getHeight() - space);
+            vLine.setEndY(gamePane.getPrefHeight() - space);
             vLine.setStrokeWidth(strokeWidth);
             vLine.setStroke(Color.rgb(187, 173, 160));
             gamePane.getChildren().add(vLine);
@@ -401,9 +398,9 @@ public class GameUI extends Application {
         Pane borderPane = new Pane();
         borderPane.setLayoutX(0);
         borderPane.setLayoutY(0);
-        borderPane.setPrefSize(gamePane.getWidth(), gamePane.getHeight());
+        borderPane.setPrefSize(gamePane.getPrefWidth(), gamePane.getPrefHeight());
         borderPane.setStyle("-fx-border-color: #baac9f;\n" +
-                "-fx-border-width: 11px;\n" +
+                String.format("-fx-border-width: %fpx;\n", strokeWidth) +
                 "-fx-border-radius: 3px;");
         gamePane.getChildren().add(borderPane);
 
@@ -550,6 +547,7 @@ public class GameUI extends Application {
             isAuto = false;
             aiThread.endFlag = true;
             autoButton.setText("Auto");
+            scene.getRoot().requestFocus();
         } else {
             isAuto = true;
             if (aiThread == null) {

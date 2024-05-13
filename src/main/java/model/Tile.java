@@ -10,12 +10,18 @@ import util.Coordination;
 
 public class Tile extends StackPane {
 
-    private int value;
+    protected int value;
     private int hIndex;
     private int vIndex;
+
+    public Rectangle getBlockRect() {
+        return blockRect;
+    }
+
+    protected Rectangle blockRect;
     private AnchorPane parentPane;
-    private double tileSize;
-    private Coordination coordinationTool;
+    protected double tileSize;
+    protected Coordination coordinationTool;
 
     // 用于记录移动过程中的父子关系
     private Tile[] parentTile;
@@ -40,12 +46,12 @@ public class Tile extends StackPane {
         this.value = value;
     }
 
-    private void createTile() {
+    protected void createTile() {
         double layoutX = coordinationTool.getLayoutX();
         double layoutY = coordinationTool.getLayoutY();
 
         // 创建方块
-        Rectangle blockRect = new Rectangle(tileSize, tileSize);
+        blockRect = new Rectangle(tileSize, tileSize);
         blockRect.setArcWidth(3);
         blockRect.setFill(ColorMap.getColor(value));
 
@@ -81,7 +87,7 @@ public class Tile extends StackPane {
         }
     }
 
-    private double calcTileSize() {
+    protected double calcTileSize() {
         return coordinationTool.getBlockWidth() + 6.0;
     }
 

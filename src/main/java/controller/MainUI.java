@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import util.Direction;
 import util.GameModeFactory;
@@ -31,18 +33,49 @@ public class MainUI {
     private AnchorPane mainInterface;
     @FXML
     private AnchorPane optionInterface;
+    @FXML
+    private StackPane loadingPane;
 
     @FXML
     public void startAction(MouseEvent mouseEvent) {
-        try {
-            GameUI.init(4, GameModeFactory.CLASSIC);
-            GameUI.run();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            Stage stage = (Stage) startButton.getScene().getWindow();
-            stage.close();
-        }
+//        try {
+//            GameUI.init(4, GameModeFactory.CLASSIC);
+//            GameUI.run();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        } finally {
+//            Stage stage = (Stage) startButton.getScene().getWindow();
+//            stage.close();
+//        }
+        Animation switchAnimation = new SwitchInterfaceAnimation(new ArrayList<>(){{
+            add(loginInterface);
+            add(mainInterface);
+            add(optionInterface);
+        }}, Direction.LEFT);
+        switchAnimation.makeTransition();
+        switchAnimation.setOnFinished(event -> {
+            loginInterface.setVisible(false);
+            optionInterface.setVisible(true);
+            loadingPane.setVisible(true);
+            LoadingAnimation loadingAnimation = new LoadingAnimation();
+            optionInterface.getChildren().add(loadingAnimation.getNode());
+            System.out.println(loadingAnimation.getNode().getLayoutX());
+            loadingAnimation.makeTransition();
+
+            loadingAnimation.setOnFinished(event1 -> {
+                try {
+                    GameUI.init(4, GameModeFactory.CLASSIC);
+                    GameUI.run();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    Stage stage = (Stage) startButton.getScene().getWindow();
+                    stage.close();
+                }
+            });
+            loadingAnimation.play();
+        });
+        switchAnimation.play(Animation.CombineType.GROUP);
     }
 
     public void loadAction(MouseEvent mouseEvent) {
@@ -96,6 +129,7 @@ public class MainUI {
         Animation switchAnimation = new SwitchInterfaceAnimation(new ArrayList<>(){{
             add(loginInterface);
             add(mainInterface);
+            add(optionInterface);
         }}, Direction.LEFT);
         switchAnimation.makeTransition();
         switchAnimation.setOnFinished(event -> {
