@@ -26,6 +26,8 @@ import util.Coordination;
 import model.Grid;
 import util.Direction;
 import controller.Animation.CombineType;
+import util.Time;
+import util.Timer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +49,8 @@ public class GameUI extends Application {
     private Label scoreLabel;
     @FXML
     private Label stepLabel;
+    @FXML
+    private Label timeLabel;
     private static AnchorPane curBlockPane;
     private static Scene scene;
 
@@ -72,6 +76,7 @@ public class GameUI extends Application {
     public static boolean isAuto = false;
     // AI线程
     private static AIThread aiThread;
+    private static Timer timer;
 
     public static int getSize() {
         return size;
@@ -119,6 +124,7 @@ public class GameUI extends Application {
         gamePane = (AnchorPane) scene.lookup("#gamePane");
         scoreLabel = (Label) scene.lookup("#scoreLabel");
         stepLabel = (Label) scene.lookup("#stepLabel");
+        timeLabel = (Label) scene.lookup("#timeLabel");
         autoButton = (Button) scene.lookup("#autoButton");
 
         GameUI.initGamePane(gamePane, size);
@@ -129,6 +135,15 @@ public class GameUI extends Application {
             grid.init();
         }
         curBlockPane = GameUI.draw(grid, gamePane, size);
+        // 计时器
+        timer = new Timer(Time.ZERO, Time.INFINITE);
+        timer.begin();
+//        timer.setEndEvent(() -> {
+//            isAuto = false;
+//            autoButton.setText("Auto");
+//            winAction();
+//        });
+        timeLabel.textProperty().bind(timer.messageProperty());
 
         // 设置键盘监听
         scene.setOnKeyPressed(event -> {
@@ -164,6 +179,8 @@ public class GameUI extends Application {
         isEnd = false;
         isWin = false;
         isLose = false;
+        timeLabel.textProperty().bind(timer.messageProperty());
+        timer.reset();
 
     }
 
@@ -299,12 +316,14 @@ public class GameUI extends Application {
 
             isAuto = false;
             autoButton.setText("Auto");
+            timer.stop();
             winAction();
         } else if (grid.isOver()) {
             isLose = true;
 
             isAuto = false;
             autoButton.setText("Auto");
+            timer.stop();
             loseAction();
         }
     }
@@ -548,6 +567,7 @@ public class GameUI extends Application {
             aiThread.endFlag = true;
             autoButton.setText("Auto");
             scene.getRoot().requestFocus();
+            timer.stop();
         } else {
             isAuto = true;
             if (aiThread == null) {
@@ -557,6 +577,12 @@ public class GameUI extends Application {
             }
             autoButton.setText("Stop");
             new Thread(aiThread).start();
+            timer.reset();
         }
+    }
+
+    public void exitAction(MouseEvent mouseEvent) {
+        if (isAuto) return;
+        timer.stop();
     }
 }

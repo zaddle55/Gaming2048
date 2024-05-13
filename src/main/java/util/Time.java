@@ -1,12 +1,15 @@
 package util;
 
-public class Time {
+public class Time implements Comparable<Time>{
 
     private String timeFormat;
     private long time;
     private int hour;
     private int minute;
     private int second;
+
+    public final static Time INFINITE = new Time(Long.MAX_VALUE);
+    public final static Time ZERO = new Time(0);
 
     public Time(String timeFormat) {
 
@@ -85,6 +88,11 @@ public class Time {
         this.minute = 0;
         this.second = 0;
         this.timeFormat = "00:00:00";
+    }
+
+    @Override
+    public int compareTo(Time time) {
+        return Long.compare(this.time, time.getTime());
     }
 
     public int getHour() {

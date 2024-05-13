@@ -56,7 +56,7 @@
             <!--自动完成按钮-->
             <Button fx:id="autoButton" layoutX="180.0" layoutY="240.0" mnemonicParsing="false" text="AUTO" onMousePressed="#autoAction"/>
             <!--退出按钮-->
-            <Button fx:id="exitButton" layoutX="180.0" layoutY="320.0" mnemonicParsing="false" text="EXIT" />
+            <Button fx:id="exitButton" layoutX="180.0" layoutY="320.0" mnemonicParsing="false" text="EXIT" onMousePressed="#exitAction"/>
         </children>
         </VBox>
         <AnchorPane fx:id="downControlPane" layoutX="44.0" layoutY="280.0" prefHeight="200.0" prefWidth="200.0">

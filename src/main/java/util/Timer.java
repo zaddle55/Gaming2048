@@ -2,28 +2,45 @@
 package util;
 
 import javafx.animation.AnimationTimer;
+import javafx.application.Platform;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
+import javafx.event.EventHandler;
+
+import java.util.function.Consumer;
 
 public class Timer extends Service<Void> {
     private long startTime;
+    private volatile long currentTime;
     private long endTime;
     private int mode;
-    private boolean isRunning;
+    private volatile boolean isRunning;
     private static final int SECOND_PER_MILLIS = 1000;
+    // 结束事件
+    private volatile Runnable endEvent;
 
     // 模式选择
     public static int COUNT_UP = 0;
     public static int COUNT_DOWN = 1;
 
     // 计时器模式
-    public Timer(int mode, Time var) {
-        this.mode = mode;
-        if (mode == COUNT_UP) {
-            this.endTime = var.getTime();
-        } else {
-            this.startTime = var.getTime();
+    public Timer(Time var1, Time var2) {
+
+        if (var1 == null || var2 == null) {
+            throw new IllegalArgumentException("Time can not be null");
         }
+        if (var1.compareTo(var2) > 0) {
+            this.mode = COUNT_DOWN;
+        } else {
+            this.mode = COUNT_UP;
+        }
+        this.startTime = var1.getTime();
+        this.endTime = var2.getTime();
+
+    }
+
+    public void setEndEvent(Runnable endEvent) {
+        this.endEvent = endEvent;
     }
 
     @Override
@@ -31,14 +48,68 @@ public class Timer extends Service<Void> {
         return new Task<Void>() {
             @Override
             protected Void call() throws Exception {
+                currentTime = startTime;
                 if (mode == COUNT_UP) {
-//                    countUp();
+                    while (true) {
+                        if (!isRunning) {
+                            continue;
+                        }
+
+                        if (currentTime > endTime) {
+                            break;
+                        }
+
+                        Time time = new Time(currentTime);
+                        updateMessage(time.getTimeFormat());
+                        currentTime += 1;
+                        Thread.sleep(SECOND_PER_MILLIS);
+                    }
                 } else {
-//                    countDown();
+
+                    while (true) {
+                        if (!isRunning) {
+                            continue;
+                        }
+
+                        if (currentTime < 0) {
+                            break;
+                        }
+
+                        Time time = new Time(currentTime);
+                        updateMessage(time.getTimeFormat());
+                        currentTime -= 1;
+                        Thread.sleep(SECOND_PER_MILLIS);
+                    }
                 }
+
+                if (endEvent != null) Platform.runLater(endEvent);
+
                 return null;
             }
         };
+    }
+
+    public void begin() {
+        if (this.isRunning) {
+            return;
+        }
+        this.isRunning = true;
+        this.restart();
+    }
+
+    public void reset() {
+        if (this.mode == COUNT_UP) {
+            this.startTime = 0;
+            this.currentTime = 0;
+            this.isRunning = true;
+        } else {
+            this.currentTime = this.startTime;
+            this.isRunning = true;
+        }
+    }
+
+    public void continueTimer() {
+        this.isRunning = true;
     }
 
 
