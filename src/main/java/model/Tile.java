@@ -18,7 +18,9 @@ public class Tile extends StackPane {
         return blockRect;
     }
 
+    // 方块图形
     protected Rectangle blockRect;
+    // 父容器
     private AnchorPane parentPane;
     protected double tileSize;
     protected Coordination coordinationTool;
@@ -46,7 +48,8 @@ public class Tile extends StackPane {
         this.value = value;
     }
 
-    protected void createTile() {
+    // 创建方块
+    private void createTile() {
         double layoutX = coordinationTool.getLayoutX();
         double layoutY = coordinationTool.getLayoutY();
 
@@ -56,37 +59,37 @@ public class Tile extends StackPane {
         blockRect.setFill(ColorMap.getColor(value));
 
         switch (value % 2) {
-            case 0:
-                // 数字显示
-                Text blockText = new Text(String.valueOf(value));
-                // 若val为两位，设置字体大小为方格宽度的1/3
-                // 若val超过两位，设置所有字体总宽度为方格宽度的2/3
+
+            case 0: // 方块
+
+                Text blockText = new Text(String.valueOf(value)); // 数字显示
+
+                // 若val为小于三位，设置字体大小为方格宽度的1/3
+                // 若val超过三位，设置字体大小自适应
                 blockText.setFont(Font.font("Arial", tileSize / (value > 999 ? 0.9 * Math.floor(Math.log10(value)) : 2)));
-//                blockText.setFont(Font.font("Arial", tileSize / 2.5));
-                // 设置字体颜色
-                blockText.setFill(ColorMap.getTextColor(value));
+
+                blockText.setFill(ColorMap.getTextColor(value)); // 设置字体颜色
 
                 getChildren().addAll(blockRect, blockText);
 
+                // 设置方块位置
                 setLayoutX(layoutX);
                 setLayoutY(layoutY);
-
                 break;
 
-            case 1:
+            case 1: // 障碍物
 
                 getChildren().add(blockRect);
                 setLayoutX(layoutX);
                 setLayoutY(layoutY);
-
                 break;
 
             default:
-
                 break;
         }
     }
 
+    // 计算方块大小
     protected double calcTileSize() {
         return coordinationTool.getBlockWidth() + 6.0;
     }

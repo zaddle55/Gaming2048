@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="Implement timer">
+    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="Refine code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Tile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/LoadingAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/LoadingAnimation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +88,7 @@
       <recent name="C:\Users\Administrator\IdeaProjects\Reach2048\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.GameApplication">
+  <component name="RunManager" selected="应用程序.TestMainUIApplication">
     <configuration name="GameApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GameApplication" />
       <module name="Reach2048" />
@@ -156,8 +155,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="应用程序.GameApplication" />
         <item itemvalue="应用程序.TestMainUIApplication" />
+        <item itemvalue="应用程序.GameApplication" />
         <item itemvalue="应用程序.TestGameUIApplication" />
         <item itemvalue="应用程序.TestGridPanel" />
         <item itemvalue="应用程序.GameUI" />
@@ -207,7 +206,7 @@
       <workItem from="1715415413619" duration="19066000" />
       <workItem from="1715442447883" duration="120000" />
       <workItem from="1715494637722" duration="18825000" />
-      <workItem from="1715588042701" duration="20413000" />
+      <workItem from="1715588042701" duration="21983000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
@@ -577,7 +576,23 @@
       <option name="project" value="LOCAL" />
       <updated>1715612709412</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Revise calculation of number size on tiles">
+      <option name="closed" value="true" />
+      <created>1715613885745</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1715613885745</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Refine code">
+      <option name="closed" value="true" />
+      <created>1715614937583</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1715614937583</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -637,29 +652,31 @@
     <MESSAGE value="Implement auto function and login interface" />
     <MESSAGE value="Implement LoadingAnimation" />
     <MESSAGE value="Implement timer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement timer" />
+    <MESSAGE value="Revise calculation of number size on tiles" />
+    <MESSAGE value="Refine code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refine code" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/controller/LoadingAnimation.java</url>
-          <line>57</line>
+          <line>66</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/util/Timer.java</url>
-          <line>52</line>
+          <line>51</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/util/Timer.java</url>
-          <line>53</line>
+          <line>52</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/util/Timer.java</url>
-          <line>84</line>
+          <line>83</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
