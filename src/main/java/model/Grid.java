@@ -78,7 +78,7 @@ public class Grid implements Serializable {
         switch (dir) {
             case UP:
                 slipUp();
-                break;
+                break; 
             case DOWN:
                 slipDown();
                 break;

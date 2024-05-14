@@ -89,6 +89,16 @@ public class Tile extends StackPane {
         }
     }
 
+    public void transVertical(int vIndex) {
+        this.vIndex = vIndex;
+        setLayoutY(coordinationTool.gridToLayoutY(vIndex));
+    }
+
+    public void transHorizontal(int hIndex) {
+        this.hIndex = hIndex;
+        setLayoutX(coordinationTool.gridToLayoutX(hIndex));
+    }
+
     // 计算方块大小
     protected double calcTileSize() {
         return coordinationTool.getBlockWidth() + 6.0;
@@ -100,5 +110,21 @@ public class Tile extends StackPane {
 
     public int getvIndex() {
         return vIndex;
+    }
+
+    public void setParentTile(Tile[] parentTile) {
+        this.parentTile = parentTile;
+    }
+
+    public Tile[] getParentTile() {
+        return parentTile;
+    }
+
+    public void setChildTile(Tile childTile) {
+        this.childTile = childTile;
+    }
+
+    public Tile getChildTile() {
+        return childTile;
     }
 }
