@@ -23,10 +23,10 @@ import model.Tile;
 import util.Coordination;
 import model.Grid;
 import util.Direction;
-import controller.Animation.CombineType;
 import util.Time;
 import util.Timer;
 
+import java.util.Map;
 import java.util.Objects;
 
 
@@ -127,8 +127,8 @@ public class GameUI extends Application {
 
         // 游戏板初始化
         if (!isLoad) {
-            grid = new Grid(0, size, mode);
-            grid.init();
+            grid = new Grid(size, mode);
+            grid.init(gamePane);
         }
         curBlockPane = GameUI.draw(grid, gamePane, size);
         // 计时器
@@ -164,8 +164,8 @@ public class GameUI extends Application {
             return;
         }
 
-        grid = new Grid(0, size, mode);
-        grid.init();
+        grid = new Grid(size, mode);
+        grid.init(gamePane);
         GameUI.draw(grid, gamePane, size);
         upDateScore(scoreLabel, grid);
         step = 0;
@@ -189,7 +189,6 @@ public class GameUI extends Application {
         }
 
         grid.undo();
-        grid.undo();
         GameUI.draw(grid, gamePane, size);
         upDateScore(scoreLabel, grid);
         step -= (step > 0) ? 1 : 0;
@@ -209,7 +208,16 @@ public class GameUI extends Application {
             return;
         }
 
-        Animation slide = new MoveAnimation(curBlockPane.getChildren(), Direction.UP, grid, new Coordination(size, gamePane));
+        if (isAuto) {
+            return;
+        }
+
+        Map<Tile, Double> distanceMap = grid.move(Direction.UP);
+
+        if (distanceMap == null) {
+            return;
+        }
+        Animation slide = new MoveAnimation(Direction.UP, distanceMap);
         slide.makeTransition();
         slide.setOnFinished(event -> {
             grid.slip(Direction.UP);
@@ -228,7 +236,17 @@ public class GameUI extends Application {
             return;
         }
 
-        Animation slide = new MoveAnimation(curBlockPane.getChildren(), Direction.DOWN, grid, new Coordination(size, gamePane));
+        if (isAuto) {
+            return;
+        }
+
+        Map<Tile, Double> distanceMap = grid.move(Direction.DOWN);
+
+        if (distanceMap == null) {
+            return;
+        }
+
+        Animation slide = new MoveAnimation(Direction.DOWN, distanceMap);
         slide.makeTransition();
         slide.setOnFinished(event -> {
             grid.slip(Direction.DOWN);
@@ -246,7 +264,18 @@ public class GameUI extends Application {
             return;
         }
 
-        Animation slide = new MoveAnimation(curBlockPane.getChildren(), Direction.LEFT, grid, new Coordination(size, gamePane));
+        if (isAuto) {
+            return;
+        }
+
+        Map<Tile, Double> distanceMap = grid.move(Direction.LEFT);
+
+        if (distanceMap == null) {
+            return;
+        }
+
+        Animation slide = new MoveAnimation(Direction.LEFT, distanceMap);
+
         slide.makeTransition();
         slide.setOnFinished(event -> {
             grid.slip(Direction.LEFT);
@@ -264,10 +293,20 @@ public class GameUI extends Application {
             return;
         }
 
-        Animation slide = new MoveAnimation(curBlockPane.getChildren(), Direction.RIGHT, grid, new Coordination(size, gamePane));
+        if (isAuto) {
+            return;
+        }
+
+        Map<Tile, Double> distanceMap = grid.move(Direction.RIGHT);
+
+        if (distanceMap == null) {
+            return;
+        }
+
+        Animation slide = new MoveAnimation(Direction.RIGHT, distanceMap);
         slide.makeTransition();
         slide.setOnFinished(event -> {
-            grid.slip(Direction.RIGHT);
+
             curBlockPane = GameUI.draw(grid, gamePane, size);
             updateState();
         });
@@ -304,9 +343,9 @@ public class GameUI extends Application {
 
     public void updateState() {
         upDateScore(scoreLabel, grid);
-        step++;
+
         upDateStep(stepLabel, grid);
-        grid.addToHistory();
+
         if (grid.isWin()) {
             isWin = true;
 
@@ -338,11 +377,10 @@ public class GameUI extends Application {
         drawBackground(gamePane);
         AnchorPane blockPane = new AnchorPane();
 
-        int[][] grid = board.getBoard();
-        for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid[i].length; j++) {
-                if (grid[i][j] != 0) {
-                    blockPane.getChildren().add(new Tile(grid[i][j], j, i, gamePane, size));
+        for (Tile[] line : grid.getTileGrid()) {
+            for (Tile tile : line) {
+                if (tile != null) {
+                    blockPane.getChildren().add(tile);
                 }
             }
         }
@@ -442,13 +480,14 @@ public class GameUI extends Application {
 
     // 更新分数
     private static void upDateScore(Label scoreLabel, Grid grid) {
+        // int incScore = grid.getScore() - score;
         score = grid.getScore();
         scoreLabel.setText("" + score);
     }
 
     // 更新步数
     private static void upDateStep(Label stepLabel, Grid grid) {
-        stepLabel.setText("" + step);
+        stepLabel.setText("" + grid.getStep());
     }
 
     private void winAction() {
@@ -534,15 +573,15 @@ public class GameUI extends Application {
     public static void init(int size, int mode) {
         GameUI.setSize(size);
         GameUI.setMode(mode);
-        GameUI.setBoard(new Grid(0, size, mode));
+        GameUI.setBoard(new Grid(size, mode));
     }
 
-    public static void init(int mode, int[][] board) {
-        GameUI.setSize(board.length);
-        GameUI.setMode(mode);
-        GameUI.setBoard(new Grid(0, board));
-        GameUI.isLoad = true;
-    }
+//    public static void init(int mode, int[][] board) {
+//        GameUI.setSize(board.length);
+//        GameUI.setMode(mode);
+//        GameUI.setBoard(new Grid(board));
+//        GameUI.isLoad = true;
+//    }
 
     // 运行GameUI
     public static void run() {

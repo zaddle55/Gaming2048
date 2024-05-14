@@ -7,9 +7,9 @@ import java.util.List;
 
 public class TileList {
     private List<Tile> tiles;
-    private int size;
-    public TileList(int size) {
-        this.size = size;
+
+    public TileList() {
+
         tiles = new ArrayList<>();
     }
 
@@ -25,14 +25,6 @@ public class TileList {
         return tiles.get(index);
     }
 
-    public Tile get(int hIndex, int vIndex) {
-        for (Tile tile : tiles) {
-            if (tile.gethIndex() == hIndex && tile.getvIndex() == vIndex) {
-                return tile;
-            }
-        }
-        return null;
-    }
 
     public List<Tile> getTiles() {
         return tiles;

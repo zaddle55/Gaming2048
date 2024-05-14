@@ -17,17 +17,17 @@ import java.io.*;
 
 public class Save {
     public static void saveBoard(Grid grid) {
-        try {
-            makeDir();
-            FileOutputStream fileOut = new FileOutputStream(String.format("./savedata/board%d.ser", grid.getID()));
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(grid);
-            out.close();
-            fileOut.close();
-            System.out.printf("Serialized data is saved in ./savedate/board%d.ser\n", grid.getID());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            makeDir();
+//            FileOutputStream fileOut = new FileOutputStream(String.format("./savedata/board%d.ser", grid.getID()));
+//            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+//            out.writeObject(grid);
+//            out.close();
+//            fileOut.close();
+//            System.out.printf("Serialized data is saved in ./savedate/board%d.ser\n", grid.getID());
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     public static Grid loadBoard(int ID) {

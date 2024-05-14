@@ -1,8 +1,13 @@
 package model;
 
+import controller.Animation;
+import controller.CombineType;
+import controller.MoveAnimation;
+import javafx.animation.TranslateTransition;
+import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 import util.Direction;
 
-import java.io.Serializable;
 import java.util.*;
 
 /**
@@ -21,54 +26,79 @@ import java.util.*;
  * } TODO {1.设置障碍物 }
  * @History:
  */
-public class Grid implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Grid {
+
+    private final int mode;
     private final int size;
+    private Tile[][] tileGrid;
     private int[][] board;
-    private static int ID; // 游戏板ID
-    private Stack<int[][]> history;
+
+    public AnchorPane getGamePane() {
+        return gamePane;
+    }
+
+    public void setGamePane(AnchorPane gamePane) {
+        this.gamePane = gamePane;
+    }
+
+    private AnchorPane gamePane;
+    private Stack<Status> history;
     private int score;
-    private int mode; // 游戏模式, 用于后续扩展
+    private int step;
+
     private boolean[][] isMerged; // 用于记录格子是否已经合并过
     private boolean[][] isNew; // 用于记录格子是否是新生成的
 
     // 通过初始ID与大小,模式初始化游戏板
-    public Grid(int ID, int size, int mode) {
-        Grid.ID = ID;
+    public Grid(int size, int mode) {
         this.size = size;
         this.board = new int[size][size];
+        this.tileGrid = new Tile[size][size];
         this.history = new Stack<>();
         this.mode = mode;
         this.isMerged = new boolean[size][size];
         this.isNew = new boolean[size][size];
-        // ID++;
+
     }
 
-    //通过二维数组初始化游戏板
-    public Grid(int ID, int[][] board) {
-        Grid.ID = ID;
+
+    public Grid(int[][] board) {
         this.size = board.length;
         this.board = board;
+        fillTileGrid();
         this.isMerged = new boolean[size][size];
         this.isNew = new boolean[size][size];
         this.history = new Stack<>();
+        this.mode = 0;
     }
 
-    public int[][] getBoard() {
-        return board;
+    private void fillTileGrid() {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                if (board[i][j] != 0) {
+                    tileGrid[i][j] = new Tile(board[i][j], j, i, gamePane, size);
+                }
+            }
+        }
     }
-    public int getID() {
-        return ID;
+
+    public Tile[][] getTileGrid() {
+        return tileGrid;
     }
+    public void setTileGrid(Tile[][] tileGrid) {
+        this.tileGrid = tileGrid;
+    }
+
     public int getSize() {
         return size;
     }
 
     // 初始化游戏板
     // 随机生成一个“2”或"4"放在游戏板上
-    public void init() {
+    public void init(AnchorPane gamePane) {
+        this.gamePane = gamePane;
         Random random = new Random();
-        generateRandomGrid((random.nextInt(2) + 1) * 2, 1);
+        generateRandomTile((random.nextInt(2) + 1) * 2, 1);
         addToHistory();
     } // 后改，使用GameModeFactory的map
 
@@ -92,54 +122,242 @@ public class Grid implements Serializable {
                 break;
         }
         Random random = new Random();
-        generateRandomGrid((random.nextInt(2) + 1) * 2, 1);
+        generateRandomTile((random.nextInt(2) + 1) * 2, 1);
+    }
+
+    public Map<Tile, Double> move(Direction direction) {
+        Tile[][] temp = new Tile[size][size];
+        Map<Tile, Double> distanceMap = new HashMap<>();
+        _slip(direction, distanceMap);
+        merge(direction, distanceMap);
+        Random random = new Random();
+        // 随机生成2或4
+        generateRandomTile((random.nextInt(2) + 1) * 2, 1);
+        // 判断是否为有效移动
+        if (isMatrixEqual(temp, tileGrid)) {
+            return null;
+        } else {
+            step++;
+            updateBoard();
+            addToHistory();
+
+            return distanceMap;
+        }
+
     }
 
     // 待修改
-    public void _slip(int direction) {
+    public void _slip(Direction direction, Map<Tile, Double> distanceMap) {
 
-        //
-        for (int i = 0; i < size; i++) {
-
-            List<ArrayList<Integer>> elementList = new ArrayList<>();
-            List<Integer> barrierList = new ArrayList<>();
-
-            int count = 0;
-
-            //
-            for (int j = 0; j < size; j++) {
-
-                if (board[i][j] != 0 && isEven(board[i][j])) {
-                    elementList.get(count).add(board[i][j]);
-                }
-                if (!isEven(board[i][j])) {
-                    barrierList.add(board[i][j]);
-                    count++;
-                }
-            }
-
-            for (List<Integer> splitList : elementList) {
-                for (int j = 0; j < splitList.size() - 1; j++) {
-                    if (splitList.get(j).equals(splitList.get(j + 1))) {
-                        splitList.set(j, splitList.get(j) * 2);
-                        splitList.remove(j + 1);
+        switch (direction) {
+            case DOWN:
+                for (int i = 0; i < size; i++) {
+                    int preEndPoint = size - 1;
+                    for (int j = size - 1; j >= 0; j--) {
+                        Tile tile = tileGrid[j][i];
+                        if (tile == null) {
+                            continue;
+                        }
+                        if (tile.getValue() % 2 == 1) {
+                            preEndPoint = j - 1;
+                        } else {
+                            distanceMap.put(tile, tile.coordinationTool.gridToLayoutY(preEndPoint) - tile.coordinationTool.gridToLayoutY(j));
+                            swapTile(j, i, preEndPoint, i);
+                            preEndPoint--;
+                        }
                     }
                 }
-            }
+                break;
 
-            count = 0;
-            //
-            for (int j = 0; j < size; j++) {
-                if (j != barrierList.get(count)) {
-                    board[i][j] = elementList.get(count).get(j);
-                } else {
-                    count++;
+            case UP:
+                for (int i = 0; i < size; i++) {
+                    int preEndPoint = 0;
+                    for (int j = 0; j < size; j++) {
+                        Tile tile = tileGrid[j][i];
+                        if (tile == null) {
+                            continue;
+                        }
+                        if (tile.getValue() % 2 == 1) {
+                            preEndPoint = j + 1;
+                        } else {
+                            distanceMap.put(tile, tile.coordinationTool.gridToLayoutY(preEndPoint) - tile.coordinationTool.gridToLayoutY(j));
+                            swapTile(j, i, preEndPoint, i);
+                            preEndPoint++;
+                        }
+                    }
                 }
-            }
-        }
+                break;
 
-        Random random = new Random();
-        generateRandomGrid((random.nextInt(2) + 1) * 2, 1);
+            case RIGHT:
+                for (int i = 0; i < size; i++) {
+                    int preEndPoint = size - 1;
+                    for (int j = size - 1; j >= 0; j--) {
+                        Tile tile = tileGrid[i][j];
+                        if (tile == null) {
+                            continue;
+                        }
+                        if (tile.getValue() % 2 == 1) {
+                            preEndPoint = j - 1;
+                        } else {
+                            distanceMap.put(tile, tile.coordinationTool.gridToLayoutX(preEndPoint) - tile.coordinationTool.gridToLayoutX(j));
+                            swapTile(i, j, i, preEndPoint);
+                            preEndPoint--;
+                        }
+                    }
+                }
+                break;
+
+            case LEFT:
+                for (int i = 0; i < size; i++) {
+                    int preEndPoint = 0;
+                    for (int j = 0; j < size; j++) {
+                        Tile tile = tileGrid[i][j];
+                        if (tile == null) {
+                            continue;
+                        }
+                        if (tile.getValue() % 2 == 1) {
+                            preEndPoint = j + 1;
+                        } else {
+                            distanceMap.put(tile, tile.coordinationTool.gridToLayoutX(preEndPoint) - tile.coordinationTool.gridToLayoutX(j));
+                            swapTile(i, j, i, preEndPoint);
+                            preEndPoint++;
+                        }
+                    }
+                }
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    public void merge(Direction direction, Map<Tile, Double> distanceMap) {
+        memSet(isMerged);
+        switch (direction) {
+            case UP:
+                int rear = 0;
+                int head = 1;
+                for (int i = 0; i < size; i++) {
+                    while (head < size) {
+                        if (tileGrid[head][i] == null || !isEven(tileGrid[head][i].getValue())) {
+
+                        } else if (tileGrid[rear][i] == null) {
+
+                            distanceMap.put(tileGrid[head][i], distanceMap.get(tileGrid[head][i]) + tileGrid[head][i].coordinationTool.getBlockWidth() + tileGrid[head][i].coordinationTool.getSpace());
+                            swapTile(rear, i, head, i);
+
+                        } else if (tileGrid[rear][i].getValue() == tileGrid[head][i].getValue() && !isMerged[rear][i] && !isMerged[head][i]) {
+
+                            distanceMap.put(tileGrid[head][i], distanceMap.get(tileGrid[head][i]) + tileGrid[head][i].coordinationTool.getBlockWidth() + tileGrid[head][i].coordinationTool.getSpace());
+                            tileGrid[head][i] = null;
+                            tileGrid[rear][i] = new Tile(tileGrid[rear][i].getValue() * 2, i, rear, gamePane, size);
+                            score += tileGrid[rear][i].getValue();
+                            isMerged[rear][i] = true;
+                            head++;
+                        }
+
+                        rear++;
+                        head++;
+                    }
+                    rear = 0;
+                    head = 1;
+                }
+
+                break;
+
+            case DOWN:
+                rear = size - 1;
+                head = size - 2;
+                for (int i = 0; i < size; i++) {
+                    while (head >= 0) {
+                        if (tileGrid[head][i] == null || !isEven(tileGrid[head][i].getValue())) {
+
+                        } else if (tileGrid[rear][i] == null) {
+
+                            distanceMap.put(tileGrid[head][i], distanceMap.get(tileGrid[head][i]) - tileGrid[head][i].coordinationTool.getBlockWidth() - tileGrid[head][i].coordinationTool.getSpace());
+                            swapTile(rear, i, head, i);
+
+                        } else if (tileGrid[rear][i].getValue() == tileGrid[head][i].getValue() && !isMerged[rear][i] && !isMerged[head][i]) {
+                            tileGrid[rear][i] = new Tile(tileGrid[rear][i].getValue() * 2, i, rear, gamePane, size);
+                            score += tileGrid[rear][i].getValue();
+                            distanceMap.put(tileGrid[head][i], distanceMap.get(tileGrid[head][i]) - tileGrid[head][i].coordinationTool.getBlockWidth() - tileGrid[head][i].coordinationTool.getSpace());
+                            tileGrid[head][i] = null;
+                            isMerged[rear][i] = true;
+                            head--;
+                        }
+
+                        rear--;
+                        head--;
+                    }
+                    rear = size - 1;
+                    head = size - 2;
+                }
+
+                break;
+
+                case LEFT:
+                rear = 0;
+                head = 1;
+                for (int i = 0; i < size; i++) {
+                    while (head < size) {
+                        if (tileGrid[i][head] == null || !isEven(tileGrid[i][head].getValue())) {
+
+                        } else if (tileGrid[i][rear] == null) {
+
+                            distanceMap.put(tileGrid[i][head], distanceMap.get(tileGrid[i][head]) + tileGrid[i][head].coordinationTool.getBlockWidth() + tileGrid[i][head].coordinationTool.getSpace());
+                            swapTile(i, rear, i, head);
+
+                        } else if (tileGrid[i][rear].getValue() == tileGrid[i][head].getValue() && !isMerged[i][rear] && !isMerged[i][head]) {
+                            tileGrid[i][rear] = new Tile(tileGrid[i][rear].getValue() * 2, rear, i, gamePane, size);
+                            score += tileGrid[i][rear].getValue();
+                            distanceMap.put(tileGrid[i][head], distanceMap.get(tileGrid[i][head]) + tileGrid[i][head].coordinationTool.getBlockWidth() + tileGrid[i][head].coordinationTool.getSpace());
+                            tileGrid[i][head] = null;
+                            isMerged[i][rear] = true;
+                            head++;
+                        }
+
+                        rear++;
+                        head++;
+                    }
+                    rear = 0;
+                    head = 1;
+                }
+
+                break;
+
+                case RIGHT:
+                rear = size - 1;
+                head = size - 2;
+                for (int i = 0; i < size; i++) {
+                    while (head >= 0) {
+                        if (tileGrid[i][head] == null || !isEven(tileGrid[i][head].getValue())) {
+
+                        } else if (tileGrid[i][rear] == null) {
+
+                            distanceMap.put(tileGrid[i][head], distanceMap.get(tileGrid[i][head]) - tileGrid[i][head].coordinationTool.getBlockWidth() - tileGrid[i][head].coordinationTool.getSpace());
+                            swapTile(i, rear, i, head);
+
+                        } else if (tileGrid[i][rear].getValue() == tileGrid[i][head].getValue() && !isMerged[i][rear] && !isMerged[i][head]) {
+                            tileGrid[i][rear] = new Tile(tileGrid[i][rear].getValue() * 2, rear, i, gamePane, size);
+                            score += tileGrid[i][rear].getValue();
+                            distanceMap.put(tileGrid[i][head], distanceMap.get(tileGrid[i][head]) - tileGrid[i][head].coordinationTool.getBlockWidth() - tileGrid[i][head].coordinationTool.getSpace());
+                            tileGrid[i][head] = null;
+                            isMerged[i][rear] = true;
+                            head--;
+                        }
+
+                        rear--;
+                        head--;
+                    }
+                    rear = size - 1;
+                    head = size - 2;
+                }
+
+                break;
+
+            default:
+                break;
+        }
     }
 
     public void slipUp() {
@@ -258,31 +476,20 @@ public class Grid implements Serializable {
     }
 
 
-
-    // 交换指定索引的两个格子
-    public void swapGrid(int x1, int y1, int x2, int y2) {
-        int temp = board[x2][y2];
-        board[x2][y2] = board[x1][y1];
-        board[x1][y1] = temp;
-    }
-
     // 保存游戏板历史
-    public void addToHistory() {
-        int[][] newBoard = new int[size][size];
-        for (int i = 0; i < size; i++) {
-            System.arraycopy(board[i], 0, newBoard[i], 0, size);
-        }
-        // 校验是否有重复的历史
-        if (!history.isEmpty() && Arrays.deepEquals(history.peek(), newBoard)) {
-            return;
-        }
-        history.push(newBoard);
+    private void addToHistory() {
+        history.push(new Status(board, score, step, tileGrid));
     }
 
     // 撤销上一步操作
     public void undo() {
+        history.pop();
         if (!history.isEmpty()) {
-            board = history.pop();
+            Status status = history.pop();
+            board = status.getBoard();
+            score = status.getScore();
+            step = status.getStep();
+            tileGrid = status.getTileGrid();
         }
     }
 
@@ -322,9 +529,10 @@ public class Grid implements Serializable {
 
     // 判断游戏板是否已满
     public boolean isFull() {
+
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if (board[i][j] == 0) {
+                if (tileGrid[i][j] == null) {
                     return false;
                 }
             }
@@ -334,7 +542,10 @@ public class Grid implements Serializable {
 
     // 在游戏板空余处上随机生成指定数目times个“tarNum”
     // 若无空余位置则不生成
-    public void generateRandomGrid(int tarNum, int times) {
+    // 更新isNew用于记录新生成的格子
+    public void generateRandomTile(int tarNum, int times) {
+
+        memSet(isNew);
 
         if (isFull()) {
             return;
@@ -345,34 +556,48 @@ public class Grid implements Serializable {
         while (count < times) {
             int x = random.nextInt(size);
             int y = random.nextInt(size);
-            if (board[x][y] == 0) {
-                board[x][y] = tarNum;
+            if (tileGrid[x][y] == null) {
+                tileGrid[x][y] = new Tile(tarNum, y, x, gamePane, size);
+                isNew[x][y] = true;
                 count++;
             }
         }
     }
 
-    // 重载toString方法，用于输出游戏板
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
+    private void updateBoard() {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                sb.append(board[i][j]).append(" ");
+                board[i][j] = tileGrid[i][j] == null ? 0 : tileGrid[i][j].getValue();
             }
-            sb.append("\n");
         }
-        return sb.toString();
+    }
+
+    private boolean isMatrixEqual(Tile[][] g1, Tile[][] g2) {
+        for (int i = 0; i < g1.length; i++) {
+            for (int j = 0; j < g1[0].length; j++) {
+                if (g1[i][j] == null && g2[i][j] != null) {
+                    return false;
+                }
+                if (g1[i][j] != null && g2[i][j] == null) {
+                    return false;
+                }
+                if (g1[i][j] != null && g2[i][j] != null && g1[i][j].getValue() != g2[i][j].getValue()) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    private void swapTile(int v1, int h1, int v2, int h2) {
+        Tile temp = tileGrid[v1][h1];
+        tileGrid[v1][h1] = tileGrid[v2][h2];
+        tileGrid[v2][h2] = temp;
     }
 
     // 计算游戏板目前得分
     public int getScore() {
-        score = 0;
-        for (int[] ints : board) {
-            for (int j = 0; j < size; j++) {
-                score += ints[j];
-            }
-        }
+
         return score;
     }
 
@@ -381,12 +606,52 @@ public class Grid implements Serializable {
         return num % 2 == 0;
     }
 
+    private static void memSet(boolean[][] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            Arrays.fill(arr[i], false);
+        }
+    }
+
     // 游戏模式的getter和setter
     public int getMode() {
         return mode;
     }
 
-    public void setMode(int mode) {
-        this.mode = mode;
+    public int[][] getBoard() {
+        return board;
+    }
+
+    public int getStep() {
+        return step;
+    }
+}
+
+class Status {
+    private final int[][] board;
+    private final int score;
+    private final int step;
+    private final Tile[][] tileGrid;
+
+    public Status(int[][] board, int score, int step, Tile[][] tileGrid) {
+        this.board = board;
+        this.score = score;
+        this.step = step;
+        this.tileGrid = tileGrid;
+    }
+
+    public int[][] getBoard() {
+        return board;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public int getStep() {
+        return step;
+    }
+
+    public Tile[][] getTileGrid() {
+        return tileGrid;
     }
 }

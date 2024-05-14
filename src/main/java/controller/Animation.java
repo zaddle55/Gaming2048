@@ -159,10 +159,5 @@ public abstract class Animation {
 
     }
 
-    // 静态枚举类，用于区分不同动画组合模式
-    static enum CombineType {
-        MONO, GROUP
-    }
-
 }
 

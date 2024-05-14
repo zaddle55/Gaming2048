@@ -11,8 +11,6 @@ import util.Coordination;
 public class Tile extends StackPane {
 
     protected int value;
-    private int hIndex;
-    private int vIndex;
 
     public Rectangle getBlockRect() {
         return blockRect;
@@ -20,6 +18,7 @@ public class Tile extends StackPane {
 
     // 方块图形
     protected Rectangle blockRect;
+    protected Text blockText;
     // 父容器
     private AnchorPane parentPane;
     protected double tileSize;
@@ -32,8 +31,6 @@ public class Tile extends StackPane {
     public Tile(int value, int hIndex, int vIndex, AnchorPane parentPane, int boardSize) {
         super();
         this.value = value;
-        this.hIndex = hIndex;
-        this.vIndex = vIndex;
         this.parentPane = parentPane;
         this.coordinationTool = new Coordination(hIndex, vIndex, parentPane, boardSize);
         this.tileSize = calcTileSize();
@@ -46,6 +43,8 @@ public class Tile extends StackPane {
 
     public void setValue(int value) {
         this.value = value;
+        blockRect.setFill(ColorMap.getColor(value));
+        blockText.setText(String.valueOf(value));
     }
 
     // 创建方块
@@ -62,7 +61,7 @@ public class Tile extends StackPane {
 
             case 0: // 方块
 
-                Text blockText = new Text(String.valueOf(value)); // 数字显示
+                blockText = new Text(String.valueOf(value)); // 数字显示
 
                 // 若val为小于三位，设置字体大小为方格宽度的1/3
                 // 若val超过三位，设置字体大小自适应
@@ -89,28 +88,11 @@ public class Tile extends StackPane {
         }
     }
 
-    public void transVertical(int vIndex) {
-        this.vIndex = vIndex;
-        setLayoutY(coordinationTool.gridToLayoutY(vIndex));
-    }
-
-    public void transHorizontal(int hIndex) {
-        this.hIndex = hIndex;
-        setLayoutX(coordinationTool.gridToLayoutX(hIndex));
-    }
-
     // 计算方块大小
     protected double calcTileSize() {
         return coordinationTool.getBlockWidth() + 6.0;
     }
 
-    public int gethIndex() {
-        return hIndex;
-    }
-
-    public int getvIndex() {
-        return vIndex;
-    }
 
     public void setParentTile(Tile[] parentTile) {
         this.parentTile = parentTile;

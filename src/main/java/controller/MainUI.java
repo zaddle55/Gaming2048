@@ -70,7 +70,7 @@ public class MainUI {
             });
             loadingAnimation.play();
         });
-        switchAnimation.play(Animation.CombineType.GROUP);
+        switchAnimation.play(CombineType.GROUP);
     }
 
     public void loadAction(MouseEvent mouseEvent) {
@@ -131,6 +131,6 @@ public class MainUI {
             loginInterface.setVisible(false);
             mainInterface.setVisible(true);
         });
-        switchAnimation.play(Animation.CombineType.GROUP);
+        switchAnimation.play(CombineType.GROUP);
     }
 }
