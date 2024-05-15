@@ -47,7 +47,6 @@ public class GameUI extends Application {
     private Label stepLabel;
     @FXML
     private Label timeLabel;
-    private static AnchorPane curBlockPane;
     private static Scene scene;
 
     // 游戏参数
@@ -134,7 +133,7 @@ public class GameUI extends Application {
             grid.load(gamePane);
         }
 
-        curBlockPane = GameUI.draw(grid, gamePane, size);
+        GameUI.draw(grid, gamePane, size);
         // 计时器
         timer = new Timer(Time.ZERO, Time.INFINITE);
         timer.begin();
@@ -358,7 +357,7 @@ public class GameUI extends Application {
      * @param size 游戏板大小
      * @return javafx.scene.layout.AnchorPane
      */
-    public static AnchorPane draw(Grid board, AnchorPane gamePane, int size) {
+    public static void draw(Grid board, AnchorPane gamePane, int size) {
 
         gamePane.getChildren().clear();
 
@@ -380,7 +379,6 @@ public class GameUI extends Application {
 
         drawGrid(gamePane, size, 11.0, 11.0);
 
-        return blockPane;
 
     }
 

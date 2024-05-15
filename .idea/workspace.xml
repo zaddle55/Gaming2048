@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="Refine code">
+    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="Revise Grid and MoveAnimation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/GameUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GameUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Grid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/ColorMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/ColorMap.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -595,7 +593,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715614937583</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Revise Grid and MoveAnimation">
+      <option name="closed" value="true" />
+      <created>1715745099899</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1715745099899</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -657,7 +663,8 @@
     <MESSAGE value="Implement timer" />
     <MESSAGE value="Revise calculation of number size on tiles" />
     <MESSAGE value="Refine code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refine code" />
+    <MESSAGE value="Revise Grid and MoveAnimation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Revise Grid and MoveAnimation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -674,27 +681,27 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/model/Grid.java</url>
-          <line>255</line>
+          <line>259</line>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/model/Grid.java</url>
-          <line>286</line>
+          <line>290</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/model/Grid.java</url>
-          <line>316</line>
+          <line>320</line>
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/model/Grid.java</url>
-          <line>346</line>
+          <line>350</line>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/model/Grid.java</url>
-          <line>136</line>
+          <line>140</line>
           <properties class="model.Grid" method="move">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -703,7 +710,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/model/Grid.java</url>
-          <line>560</line>
+          <line>564</line>
           <properties class="model.Grid" method="generateRandomTile">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />

@@ -15,7 +15,7 @@ import java.util.*;
  * @description: 用于2048的游戏板
  * @Author: zaddle
  * @Date: 2024/4/11 10:00
- * @Version: 1.0
+ * @Version: 2.0
  * @Description: Complete {
  *     1. 实现游戏板的初始化（可重载）
  *     2.实现游戏板四个方向上的移动
@@ -24,7 +24,8 @@ import java.util.*;
  *     5.实现游戏板的基本逻辑（判断游戏是否结束）
  *     6.继承Serializable接口，实现游戏板的序列化以存档
  *     7.计算游戏板的得分
- * } TODO {1.设置障碍物 }
+ *     8.设置障碍物
+ * }
  * @History:
  */
 public class Grid {
