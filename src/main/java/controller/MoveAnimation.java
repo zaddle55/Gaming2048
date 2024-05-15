@@ -5,7 +5,6 @@ import javafx.animation.TranslateTransition;
 import javafx.scene.Node;
 import javafx.util.Duration;
 import model.Tile;
-import model.TileList;
 import model.Grid;
 import util.Coordination;
 import util.Direction;
@@ -52,6 +51,10 @@ public class MoveAnimation extends Animation {
         }
 
         groupTransition = new ParallelTransition(transitions.toArray(new TranslateTransition[0]));
+    }
+
+    public ParallelTransition getGroupTransition() {
+        return groupTransition;
     }
 
 }

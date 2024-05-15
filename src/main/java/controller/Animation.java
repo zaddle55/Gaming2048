@@ -6,7 +6,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import model.Tile;
-import model.TileList;
 import util.Coordination;
 
 import java.util.ArrayList;
@@ -69,6 +68,12 @@ public abstract class Animation {
         this.transitions = new ArrayList<>();
     }
 
+    protected Animation(List<Tile> tiles) {
+        this.tiles = tiles;
+        this.nodes = tilesToNodes(tiles);
+        this.transitions = new ArrayList<>();
+    }
+
     public Animation() {
         this.nodes = new ArrayList<>();
         this.tiles = new ArrayList<>();
@@ -123,13 +128,6 @@ public abstract class Animation {
         return tiles;
     }
 
-    protected static List<Node> tilesToNodes(TileList tiles) {
-        List<Node> nodes = new ArrayList<>();
-        for (Tile tile : tiles.getTiles()) {
-            nodes.add(tileToNode(tile));
-        }
-        return nodes;
-    }
 
     // 动画实现
     public abstract void makeTransition();

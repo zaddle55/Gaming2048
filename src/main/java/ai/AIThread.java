@@ -51,9 +51,10 @@ public class AIThread implements Runnable {
 
             try {
                 sleep(100);
-                move(getDirection());
                 updateGrid();
                 updateEndFlag();
+                move(getDirection());
+
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

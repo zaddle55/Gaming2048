@@ -2,8 +2,11 @@ package controller;
 
 
 import ai.AIThread;
+import javafx.animation.ParallelTransition;
+import javafx.animation.SequentialTransition;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -127,13 +130,19 @@ public class GameUI extends Application {
         // 游戏板初始化
         if (!isLoad) {
             grid = new Grid(size, mode);
+
             grid.init(gamePane);
-            grid.fillTileGrid();
+            GameUI.draw(grid, gamePane, size);
+            PopUpAnimation appear = new PopUpAnimation(grid);
+            appear.makeTransition();
+
+            appear.play(CombineType.GROUP);
+//            grid.fillTileGrid();
         } else {
             grid.load(gamePane);
         }
 
-        GameUI.draw(grid, gamePane, size);
+        
         // 计时器
         timer = new Timer(Time.ZERO, Time.INFINITE);
         timer.begin();
@@ -216,15 +225,14 @@ public class GameUI extends Application {
         if (distanceMap == null) {
             return;
         }
-        Animation slide = new MoveAnimation(Direction.UP, distanceMap);
-        slide.makeTransition();
-        slide.setOnFinished(event -> {
-
-            GameUI.draw(grid, gamePane, size);
-            updateState();
-        });
-
-        slide.play(CombineType.GROUP);
+        extracted(Direction.UP, distanceMap);
+//        slide.setOnFinished(event -> {
+//
+//            GameUI.draw(grid, gamePane, size);
+//            updateState();
+//        });
+//
+//        slide.play(CombineType.GROUP);
 
     }
 
@@ -241,14 +249,27 @@ public class GameUI extends Application {
             return;
         }
 
-        Animation slide = new MoveAnimation(Direction.DOWN, distanceMap);
+        extracted(Direction.DOWN, distanceMap);
+
+    }
+
+    private void extracted(Direction down, Map<Tile, Double> distanceMap) {
+        MoveAnimation slide = new MoveAnimation(down, distanceMap);
         slide.makeTransition();
         slide.setOnFinished(event -> {
-
             GameUI.draw(grid, gamePane, size);
+            PopUpAnimation appear = new PopUpAnimation(grid);
+            appear.makeTransition();
+            BounceAnimation bounce = new BounceAnimation(grid);
+            bounce.makeTransition();
+            ParallelTransition group1 = new ParallelTransition(bounce.getGroupTransition(), appear.getGroupTransition());
+            group1.play();
             updateState();
         });
         slide.play(CombineType.GROUP);
+
+
+
 
     }
 
@@ -265,15 +286,7 @@ public class GameUI extends Application {
             return;
         }
 
-        Animation slide = new MoveAnimation(Direction.LEFT, distanceMap);
-
-        slide.makeTransition();
-        slide.setOnFinished(event -> {
-
-            GameUI.draw(grid, gamePane, size);
-            updateState();
-        });
-        slide.play(CombineType.GROUP);
+        extracted(Direction.LEFT, distanceMap);
 
     }
 
@@ -290,14 +303,7 @@ public class GameUI extends Application {
             return;
         }
 
-        Animation slide = new MoveAnimation(Direction.RIGHT, distanceMap);
-        slide.makeTransition();
-        slide.setOnFinished(event -> {
-
-            GameUI.draw(grid, gamePane, size);
-            updateState();
-        });
-        slide.play(CombineType.GROUP);
+        extracted(Direction.RIGHT, distanceMap);
 
     }
 

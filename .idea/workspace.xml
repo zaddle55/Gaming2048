@@ -4,12 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="Revise Grid and MoveAnimation">
+    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="Revise logic of Coordination calculation and tiles drawing">
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/BounceAnimation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/TestScaleTransition.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ai/AIThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ai/AIThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Animation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Animation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/GameUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GameUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Tile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/Coordination.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Coordination.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MoveAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MoveAnimation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/PopUpAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/PopUpAnimation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Grid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/TileList.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,36 +54,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Maven.Unknown [package].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;zaddle&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Administrator/IdeaProjects/Reach2048/target/classes/assets/buttonIcon&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
-    &quot;应用程序.GameApplication.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.GameUI.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.MainApplication.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.MainFrame.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.TestGameUIApplication.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.TestGridPanel.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.TestJavaFXBootstrap.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.TestMainUIApplication.executor&quot;: &quot;Run&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven.Unknown [package].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "extract.method.default.visibility": "private",
+    "git-widget-placeholder": "zaddle",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Administrator/IdeaProjects/Reach2048/target/classes/assets/buttonIcon",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "模块",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true",
+    "应用程序.GameApplication.executor": "Run",
+    "应用程序.GameUI.executor": "Run",
+    "应用程序.MainApplication.executor": "Run",
+    "应用程序.MainFrame.executor": "Run",
+    "应用程序.TestGameUIApplication.executor": "Run",
+    "应用程序.TestGridPanel.executor": "Run",
+    "应用程序.TestJavaFXBootstrap.executor": "Run",
+    "应用程序.TestMainUIApplication.executor": "Run",
+    "应用程序.TestScaleTransition.executor": "Run"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Administrator\IdeaProjects\Reach2048\target\classes\assets\buttonIcon" />
@@ -96,20 +103,6 @@
       <option name="MAIN_CLASS_NAME" value="GameApplication" />
       <module name="Reach2048" />
       <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\lib\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GameUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ui.Controller.GameUI" />
-      <module name="Reach2048" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\lib\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ui.Controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -138,6 +131,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestScaleTransition" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TestScaleTransition" />
+      <module name="Reach2048" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\lib\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -150,8 +151,8 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="应用程序.TestScaleTransition" />
       <item itemvalue="应用程序.GameApplication" />
-      <item itemvalue="应用程序.GameUI" />
       <item itemvalue="应用程序.TestGridPanel" />
       <item itemvalue="应用程序.TestGameUIApplication" />
       <item itemvalue="应用程序.TestMainUIApplication" />
@@ -159,10 +160,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="应用程序.GameApplication" />
+        <item itemvalue="应用程序.TestScaleTransition" />
         <item itemvalue="应用程序.TestMainUIApplication" />
         <item itemvalue="应用程序.TestGameUIApplication" />
         <item itemvalue="应用程序.TestGridPanel" />
-        <item itemvalue="应用程序.GameUI" />
       </list>
     </recent_temporary>
   </component>
@@ -210,14 +211,6 @@
       <workItem from="1715442447883" duration="120000" />
       <workItem from="1715494637722" duration="18825000" />
       <workItem from="1715588042701" duration="21983000" />
-    </task>
-    <task id="LOCAL-00003" summary="upload resource img">
-      <option name="closed" value="true" />
-      <created>1713021392122</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1713021392122</updated>
     </task>
     <task id="LOCAL-00004" summary="revise Board class constructor">
       <option name="closed" value="true" />
@@ -603,7 +596,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715778154074</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Revise logic of Coordination calculation and tiles drawing">
+      <option name="closed" value="true" />
+      <created>1715781310836</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1715781310836</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -666,7 +667,8 @@
     <MESSAGE value="Revise calculation of number size on tiles" />
     <MESSAGE value="Refine code" />
     <MESSAGE value="Revise Grid and MoveAnimation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Revise Grid and MoveAnimation" />
+    <MESSAGE value="Revise logic of Coordination calculation and tiles drawing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Revise logic of Coordination calculation and tiles drawing" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -682,28 +684,18 @@
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/model/Grid.java</url>
-          <line>259</line>
-          <option name="timeStamp" value="21" />
+          <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
+          <line>612</line>
+          <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/model/Grid.java</url>
-          <line>290</line>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/model/Grid.java</url>
-          <line>320</line>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/model/Grid.java</url>
-          <line>350</line>
-          <option name="timeStamp" value="24" />
+          <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
+          <line>606</line>
+          <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/model/Grid.java</url>
-          <line>140</line>
+          <line>119</line>
           <properties class="model.Grid" method="move">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -712,12 +704,21 @@
         </line-breakpoint>
         <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/model/Grid.java</url>
-          <line>564</line>
+          <line>427</line>
           <properties class="model.Grid" method="generateRandomTile">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/controller/PopUpAnimation.java</url>
+          <line>14</line>
+          <properties class="controller.PopUpAnimation" method="&lt;init&gt;">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

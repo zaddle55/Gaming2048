@@ -117,32 +117,11 @@ public class Grid {
 
     // 读取用户操作，移动游戏板
     // 0: 上  1: 下  2: 左  3: 右
-    public void slip(Direction dir) {
-        switch (dir) {
-            case UP:
-                slipUp();
-                break; 
-            case DOWN:
-                slipDown();
-                break;
-            case LEFT:
-                slipLeft();
-                break;
-            case RIGHT:
-                slipRight();
-                break;
-            default:
-                break;
-        }
-        Random random = new Random();
-        generateRandomTile((random.nextInt(2) + 1) * 2, 1);
-    }
-
     public Map<Tile, Double> move(Direction direction) {
         Tile[][] temp = new Tile[size][size];
         copyTileGrid(tileGrid, temp, gamePane);
         Map<Tile, Double> distanceMap = new HashMap<>();
-        _slip(direction, distanceMap);
+        slip(direction, distanceMap);
         merge(direction, distanceMap);
         Random random = new Random();
         // 随机生成2或4
@@ -161,7 +140,7 @@ public class Grid {
     }
 
     // 待修改
-    public void _slip(Direction direction, Map<Tile, Double> distanceMap) {
+    public void slip(Direction direction, Map<Tile, Double> distanceMap) {
 
         switch (direction) {
             case DOWN:
@@ -374,122 +353,6 @@ public class Grid {
         }
     }
 
-    public void slipUp() {
-
-        for (int i = 0; i < size; i++) {
-            List<Integer> elementList = new ArrayList<>();
-
-            // 从每一列的读取非0元素存储到elementList中
-            for (int j = 0; j < size; j++) {
-                if (board[j][i] != 0) {
-                    elementList.add(board[j][i]);
-                }
-            }
-
-            // 从列表头部开始合并相同元素
-            for (int j = 0; j < elementList.size() - 1; j++) {
-                if (elementList.get(j).equals(elementList.get(j + 1))) {
-                    elementList.set(j, elementList.get(j) * 2);
-                    elementList.remove(j + 1);
-                }
-            }
-
-            // 将elementList中的元素写回到游戏板中
-            for (int j = 0; j < size; j++) {
-                if (j < elementList.size()) {
-                    board[j][i] = elementList.get(j);
-                } else {
-                    board[j][i] = 0;
-                }
-            }
-        }
-    }
-
-    public void slipDown() {
-
-        for (int i = 0; i < size; i++) {
-            List<Integer> elementList = new ArrayList<>();
-
-            for (int j = size - 1; j >= 0; j--) {
-                if (board[j][i] != 0) {
-                    elementList.add(board[j][i]);
-                }
-            }
-
-            for (int j = 0; j < elementList.size() - 1; j++) {
-                if (elementList.get(j).equals(elementList.get(j + 1))) {
-                    elementList.set(j, elementList.get(j) * 2);
-                    elementList.remove(j + 1);
-                }
-            }
-
-            for (int j = size - 1; j >= 0; j--) {
-                if (size - 1 - j < elementList.size()) {
-                    board[j][i] = elementList.get(size - 1 - j);
-                } else {
-                    board[j][i] = 0;
-                }
-            }
-        }
-    }
-
-    public void slipLeft() {
-
-        for (int i = 0; i < size; i++) {
-            List<Integer> elementList = new ArrayList<>();
-
-            for (int j = 0; j < size; j++) {
-                if (board[i][j] != 0) {
-                    elementList.add(board[i][j]);
-                }
-            }
-
-            for (int j = 0; j < elementList.size() - 1; j++) {
-                if (elementList.get(j).equals(elementList.get(j + 1))) {
-                    elementList.set(j, elementList.get(j) * 2);
-                    elementList.remove(j + 1);
-                }
-            }
-
-            for (int j = 0; j < size; j++) {
-                if (j < elementList.size()) {
-                    board[i][j] = elementList.get(j);
-                } else {
-                    board[i][j] = 0;
-                }
-            }
-        }
-    }
-
-    public void slipRight() {
-
-        for (int i = 0; i < size; i++) {
-            List<Integer> elementList = new ArrayList<>();
-
-            for (int j = size - 1; j >= 0; j--) {
-                if (board[i][j] != 0) {
-                    elementList.add(board[i][j]);
-                }
-            }
-
-            for (int j = 0; j < elementList.size() - 1; j++) {
-                if (elementList.get(j).equals(elementList.get(j + 1))) {
-                    elementList.set(j, elementList.get(j) * 2);
-                    elementList.remove(j + 1);
-                }
-            }
-
-            for (int j = size - 1; j >= 0; j--) {
-                if (size - 1 - j < elementList.size()) {
-                    board[i][j] = elementList.get(size - 1 - j);
-                } else {
-                    board[i][j] = 0;
-                }
-            }
-        }
-    }
-
-
     // 保存游戏板历史
     private void addToHistory() {
         history.push(new Status(board, score, step, tileGrid, gamePane));
@@ -661,6 +524,27 @@ public class Grid {
             System.arraycopy(src[i], 0, dest[i], 0, src[i].length);
         }
     }
+
+    public Boolean[][] getIsNew() {
+        Boolean[][] isNew = new Boolean[size][size];
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                isNew[i][j] = this.isNew[i][j];
+            }
+        }
+        return isNew;
+    }
+
+    public Boolean[][] getIsMerge() {
+        Boolean[][] isMerge = new Boolean[size][size];
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                isMerge[i][j] = this.isMerged[i][j];
+            }
+        }
+        return isMerge;
+    }
+
 }
 
 class Status {
