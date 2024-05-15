@@ -7,6 +7,7 @@ import javafx.animation.TranslateTransition;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import util.Direction;
+import util.GameModeFactory;
 
 import java.util.*;
 
@@ -65,14 +66,15 @@ public class Grid {
     public Grid(int[][] board) {
         this.size = board.length;
         this.board = board;
-        fillTileGrid();
+        this.tileGrid = new Tile[size][size];
+
         this.isMerged = new boolean[size][size];
         this.isNew = new boolean[size][size];
         this.history = new Stack<>();
         this.mode = 0;
     }
 
-    private void fillTileGrid() {
+    public void fillTileGrid() {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 if (board[i][j] != 0) {
@@ -99,8 +101,18 @@ public class Grid {
         this.gamePane = gamePane;
         Random random = new Random();
         generateRandomTile((random.nextInt(2) + 1) * 2, 1);
+        if (mode == GameModeFactory.CHALLENGE) {
+            generateRandomTile(3, 1);
+        }
+        updateBoard();
         addToHistory();
     } // 后改，使用GameModeFactory的map
+
+    public void load(AnchorPane gamePane) {
+        this.gamePane = gamePane;
+        fillTileGrid();
+        addToHistory();
+    }
 
     // 读取用户操作，移动游戏板
     // 0: 上  1: 下  2: 左  3: 右
@@ -180,7 +192,7 @@ public class Grid {
                         if (tile.getValue() % 2 == 1) {
                             preEndPoint = j + 1;
                         } else {
-                            distanceMap.put(tile, tile.coordinationTool.gridToLayoutY(preEndPoint) - tile.coordinationTool.gridToLayoutY(j));
+                            distanceMap.put(tile, tile.coordinationTool.gridToLayoutY(j) - tile.coordinationTool.gridToLayoutY(preEndPoint));
                             swapTile(j, i, preEndPoint, i);
                             preEndPoint++;
                         }
@@ -218,7 +230,7 @@ public class Grid {
                         if (tile.getValue() % 2 == 1) {
                             preEndPoint = j + 1;
                         } else {
-                            distanceMap.put(tile, tile.coordinationTool.gridToLayoutX(preEndPoint) - tile.coordinationTool.gridToLayoutX(j));
+                            distanceMap.put(tile, tile.coordinationTool.gridToLayoutX(j) - tile.coordinationTool.gridToLayoutX(preEndPoint));
                             swapTile(i, j, i, preEndPoint);
                             preEndPoint++;
                         }
@@ -253,7 +265,7 @@ public class Grid {
                             tileGrid[rear][i] = new Tile(tileGrid[rear][i].getValue() * 2, i, rear, gamePane, size);
                             score += tileGrid[rear][i].getValue();
                             isMerged[rear][i] = true;
-                            head++;
+
                         }
 
                         rear++;
@@ -274,16 +286,16 @@ public class Grid {
 
                         } else if (tileGrid[rear][i] == null) {
 
-                            distanceMap.put(tileGrid[head][i], distanceMap.get(tileGrid[head][i]) - tileGrid[head][i].coordinationTool.getBlockWidth() - tileGrid[head][i].coordinationTool.getSpace());
+                            distanceMap.put(tileGrid[head][i], distanceMap.get(tileGrid[head][i]) + tileGrid[head][i].coordinationTool.getBlockWidth() + tileGrid[head][i].coordinationTool.getSpace());
                             swapTile(rear, i, head, i);
 
                         } else if (tileGrid[rear][i].getValue() == tileGrid[head][i].getValue() && !isMerged[rear][i] && !isMerged[head][i]) {
                             tileGrid[rear][i] = new Tile(tileGrid[rear][i].getValue() * 2, i, rear, gamePane, size);
                             score += tileGrid[rear][i].getValue();
-                            distanceMap.put(tileGrid[head][i], distanceMap.get(tileGrid[head][i]) - tileGrid[head][i].coordinationTool.getBlockWidth() - tileGrid[head][i].coordinationTool.getSpace());
+                            distanceMap.put(tileGrid[head][i], distanceMap.get(tileGrid[head][i]) + tileGrid[head][i].coordinationTool.getBlockWidth() + tileGrid[head][i].coordinationTool.getSpace());
                             tileGrid[head][i] = null;
                             isMerged[rear][i] = true;
-                            head--;
+
                         }
 
                         rear--;
@@ -313,7 +325,7 @@ public class Grid {
                             distanceMap.put(tileGrid[i][head], distanceMap.get(tileGrid[i][head]) + tileGrid[i][head].coordinationTool.getBlockWidth() + tileGrid[i][head].coordinationTool.getSpace());
                             tileGrid[i][head] = null;
                             isMerged[i][rear] = true;
-                            head++;
+
                         }
 
                         rear++;
@@ -334,16 +346,16 @@ public class Grid {
 
                         } else if (tileGrid[i][rear] == null) {
 
-                            distanceMap.put(tileGrid[i][head], distanceMap.get(tileGrid[i][head]) - tileGrid[i][head].coordinationTool.getBlockWidth() - tileGrid[i][head].coordinationTool.getSpace());
+                            distanceMap.put(tileGrid[i][head], distanceMap.get(tileGrid[i][head]) + tileGrid[i][head].coordinationTool.getBlockWidth() + tileGrid[i][head].coordinationTool.getSpace());
                             swapTile(i, rear, i, head);
 
                         } else if (tileGrid[i][rear].getValue() == tileGrid[i][head].getValue() && !isMerged[i][rear] && !isMerged[i][head]) {
                             tileGrid[i][rear] = new Tile(tileGrid[i][rear].getValue() * 2, rear, i, gamePane, size);
                             score += tileGrid[i][rear].getValue();
-                            distanceMap.put(tileGrid[i][head], distanceMap.get(tileGrid[i][head]) - tileGrid[i][head].coordinationTool.getBlockWidth() - tileGrid[i][head].coordinationTool.getSpace());
+                            distanceMap.put(tileGrid[i][head], distanceMap.get(tileGrid[i][head]) + tileGrid[i][head].coordinationTool.getBlockWidth() + tileGrid[i][head].coordinationTool.getSpace());
                             tileGrid[i][head] = null;
                             isMerged[i][rear] = true;
-                            head--;
+
                         }
 
                         rear--;
@@ -478,18 +490,24 @@ public class Grid {
 
     // 保存游戏板历史
     private void addToHistory() {
-        history.push(new Status(board, score, step, tileGrid));
+        history.push(new Status(board, score, step, tileGrid, gamePane));
     }
 
     // 撤销上一步操作
     public void undo() {
-        history.pop();
+
         if (!history.isEmpty()) {
-            Status status = history.pop();
-            board = status.getBoard();
+            history.pop();
+            if (history.isEmpty()) {
+                return;
+            }
+            Status status = history.peek();
+            this.board = new int[size][size];
+            this.tileGrid = new Tile[size][size];
+            copyBoard(status.getBoard(), board);
             score = status.getScore();
             step = status.getStep();
-            tileGrid = status.getTileGrid();
+            copyTileGrid(status.getTileGrid(), tileGrid, gamePane);
         }
     }
 
@@ -624,6 +642,23 @@ public class Grid {
     public int getStep() {
         return step;
     }
+
+    public static void copyTileGrid(Tile[][] src, Tile[][] dest, AnchorPane parentPane) {
+
+        for (int i = 0; i < src.length; i++) {
+            for (int j = 0; j < src[0].length; j++) {
+                if (src[i][j] != null) {
+                    dest[i][j] = new Tile(src[i][j].getValue(), j, i, parentPane, src.length);
+                }
+            }
+        }
+    }
+
+    public static void copyBoard(int[][] src, int[][] dest) {
+        for (int i = 0; i < src.length; i++) {
+            System.arraycopy(src[i], 0, dest[i], 0, src[i].length);
+        }
+    }
 }
 
 class Status {
@@ -632,11 +667,13 @@ class Status {
     private final int step;
     private final Tile[][] tileGrid;
 
-    public Status(int[][] board, int score, int step, Tile[][] tileGrid) {
-        this.board = board;
+    public Status(int[][] board, int score, int step, Tile[][] tileGrid, AnchorPane parentPane) {
+        this.board = new int[board.length][board[0].length];
+        Grid.copyBoard(board, this.board);
         this.score = score;
         this.step = step;
-        this.tileGrid = tileGrid;
+        this.tileGrid = new Tile[tileGrid.length][tileGrid[0].length];
+        Grid.copyTileGrid(tileGrid, this.tileGrid, parentPane);
     }
 
     public int[][] getBoard() {

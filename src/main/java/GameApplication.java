@@ -1,4 +1,5 @@
 import controller.GameUI;
+import util.GameModeFactory;
 
 public class GameApplication{
 
@@ -6,11 +7,11 @@ public class GameApplication{
 //            GameUI.init(0, new int[][]{
 //                    // 随机生成失败2048
 //                    {2, 4, 8, 16},
-//                    {4, 8, 128, 1024},
-//                    {8, 16, 1024, 1024},
-//                    {16, 4, 1024, 1024}
+//                    {0, 0, 0, 16},
+//                    {8, 0, 8, 8},
+//                    {0, 4, 1024, 0}
 //            });
-            GameUI.init(4, 0);
+            GameUI.init(4, GameModeFactory.CLASSIC);
             GameUI.start();
         }
 }

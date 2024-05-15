@@ -35,8 +35,8 @@ public class ColorMap {
         colorMap.put(33554432, Color.rgb(237, 194, 46));
 
         // 障碍物颜色映射
-        colorMap.put(3, Color.rgb(44,102,178));
-        colorMap.put(5, Color.rgb(242, 177, 121));
+        colorMap.put(3, Color.rgb(146,137,137));
+        colorMap.put(5, Color.rgb(242, 177, 137));
     }
 
     public static Color getColor(int val) {

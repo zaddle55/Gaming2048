@@ -129,7 +129,11 @@ public class GameUI extends Application {
         if (!isLoad) {
             grid = new Grid(size, mode);
             grid.init(gamePane);
+            grid.fillTileGrid();
+        } else {
+            grid.load(gamePane);
         }
+
         curBlockPane = GameUI.draw(grid, gamePane, size);
         // 计时器
         timer = new Timer(Time.ZERO, Time.INFINITE);
@@ -191,7 +195,7 @@ public class GameUI extends Application {
         grid.undo();
         GameUI.draw(grid, gamePane, size);
         upDateScore(scoreLabel, grid);
-        step -= (step > 0) ? 1 : 0;
+
         upDateStep(stepLabel, grid);
         scene.getRoot().requestFocus();
 
@@ -208,10 +212,6 @@ public class GameUI extends Application {
             return;
         }
 
-        if (isAuto) {
-            return;
-        }
-
         Map<Tile, Double> distanceMap = grid.move(Direction.UP);
 
         if (distanceMap == null) {
@@ -220,8 +220,8 @@ public class GameUI extends Application {
         Animation slide = new MoveAnimation(Direction.UP, distanceMap);
         slide.makeTransition();
         slide.setOnFinished(event -> {
-            grid.slip(Direction.UP);
-            curBlockPane = GameUI.draw(grid, gamePane, size);
+
+            GameUI.draw(grid, gamePane, size);
             updateState();
         });
 
@@ -236,10 +236,6 @@ public class GameUI extends Application {
             return;
         }
 
-        if (isAuto) {
-            return;
-        }
-
         Map<Tile, Double> distanceMap = grid.move(Direction.DOWN);
 
         if (distanceMap == null) {
@@ -249,8 +245,8 @@ public class GameUI extends Application {
         Animation slide = new MoveAnimation(Direction.DOWN, distanceMap);
         slide.makeTransition();
         slide.setOnFinished(event -> {
-            grid.slip(Direction.DOWN);
-            curBlockPane = GameUI.draw(grid, gamePane, size);
+
+            GameUI.draw(grid, gamePane, size);
             updateState();
         });
         slide.play(CombineType.GROUP);
@@ -264,10 +260,6 @@ public class GameUI extends Application {
             return;
         }
 
-        if (isAuto) {
-            return;
-        }
-
         Map<Tile, Double> distanceMap = grid.move(Direction.LEFT);
 
         if (distanceMap == null) {
@@ -278,8 +270,8 @@ public class GameUI extends Application {
 
         slide.makeTransition();
         slide.setOnFinished(event -> {
-            grid.slip(Direction.LEFT);
-            curBlockPane = GameUI.draw(grid, gamePane, size);
+
+            GameUI.draw(grid, gamePane, size);
             updateState();
         });
         slide.play(CombineType.GROUP);
@@ -293,10 +285,6 @@ public class GameUI extends Application {
             return;
         }
 
-        if (isAuto) {
-            return;
-        }
-
         Map<Tile, Double> distanceMap = grid.move(Direction.RIGHT);
 
         if (distanceMap == null) {
@@ -307,7 +295,7 @@ public class GameUI extends Application {
         slide.makeTransition();
         slide.setOnFinished(event -> {
 
-            curBlockPane = GameUI.draw(grid, gamePane, size);
+            GameUI.draw(grid, gamePane, size);
             updateState();
         });
         slide.play(CombineType.GROUP);
@@ -576,12 +564,13 @@ public class GameUI extends Application {
         GameUI.setBoard(new Grid(size, mode));
     }
 
-//    public static void init(int mode, int[][] board) {
-//        GameUI.setSize(board.length);
-//        GameUI.setMode(mode);
-//        GameUI.setBoard(new Grid(board));
-//        GameUI.isLoad = true;
-//    }
+    public static void init(int mode, int[][] board) {
+        GameUI.setSize(board.length);
+        GameUI.setMode(mode);
+        GameUI.setBoard(new Grid(board));
+        isLoad = true;
+
+    }
 
     // 运行GameUI
     public static void run() {
