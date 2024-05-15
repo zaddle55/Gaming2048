@@ -90,7 +90,7 @@ public class Tile extends StackPane {
 
     // 计算方块大小
     protected double calcTileSize() {
-        return coordinationTool.getBlockWidth() + 6.0;
+        return coordinationTool.getBlockWidth();
     }
 
 

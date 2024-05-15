@@ -364,6 +364,8 @@ public class GameUI extends Application {
         drawBackground(gamePane);
         AnchorPane blockPane = new AnchorPane();
 
+        drawGrid(gamePane, size, 11.0, 11.0);
+
         for (Tile[] line : grid.getTileGrid()) {
             for (Tile tile : line) {
                 if (tile != null) {
@@ -377,7 +379,7 @@ public class GameUI extends Application {
 
         gamePane.getChildren().add(blockPane);
 
-        drawGrid(gamePane, size, 11.0, 11.0);
+
 
 
     }
@@ -418,15 +420,15 @@ public class GameUI extends Application {
             Line hLine = new Line();
             hLine.setStartX(space);
             hLine.setEndX(gamePane.getPrefWidth() - space);
-            hLine.setStartY(space + i * (blockWidth + space));
-            hLine.setEndY(space + i * (blockWidth + space));
+            hLine.setStartY(space * 0.5 + i * (blockWidth + space));
+            hLine.setEndY(space * 0.5 + i * (blockWidth + space));
             hLine.setStrokeWidth(strokeWidth);
             hLine.setStroke(Color.rgb(187, 173, 160));
             gamePane.getChildren().add(hLine);
 
             Line vLine = new Line();
-            vLine.setStartX(space + i * (blockWidth + space));
-            vLine.setEndX(space + i * (blockWidth + space));
+            vLine.setStartX(space * 0.5 + i * (blockWidth + space));
+            vLine.setEndX(space * 0.5 + i * (blockWidth + space));
             vLine.setStartY(space);
             vLine.setEndY(gamePane.getPrefHeight() - space);
             vLine.setStrokeWidth(strokeWidth);

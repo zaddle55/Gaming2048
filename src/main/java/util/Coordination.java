@@ -6,8 +6,8 @@ public class Coordination {
     private double blockWidth;
     private double layoutX;
     private double layoutY;
-    private double translateX = -1.0;
-    private double translateY = -1.0;
+    private double translateX = 0;
+    private double translateY = 0;
     private double space;
     private final int size;
     private int gridX;
