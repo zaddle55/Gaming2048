@@ -140,6 +140,7 @@ public class Grid {
 
     public Map<Tile, Double> move(Direction direction) {
         Tile[][] temp = new Tile[size][size];
+        copyTileGrid(tileGrid, temp, gamePane);
         Map<Tile, Double> distanceMap = new HashMap<>();
         _slip(direction, distanceMap);
         merge(direction, distanceMap);
