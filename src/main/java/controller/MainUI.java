@@ -81,7 +81,15 @@ public class MainUI {
     }
 
 
-    public void exitAction(MouseEvent mouseEvent) {
+    public void exitAction() {
+        try {
+            // Save the game
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            Stage stage = (Stage) exitButton.getScene().getWindow();
+            stage.close();
+        }
     }
 
 

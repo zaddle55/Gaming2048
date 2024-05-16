@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -140,6 +141,7 @@ public class GameUI extends Application {
 //            grid.fillTileGrid();
         } else {
             grid.load(gamePane);
+            GameUI.draw(grid, gamePane, size);
         }
 
         
@@ -254,9 +256,12 @@ public class GameUI extends Application {
     }
 
     private void extracted(Direction down, Map<Tile, Double> distanceMap) {
+//        // 移除键盘焦点
+//        scene.addEventFilter(KeyEvent.ANY, KeyEvent::consume);
+
         MoveAnimation slide = new MoveAnimation(down, distanceMap);
         slide.makeTransition();
-        slide.setOnFinished(event -> {
+        slide.setOnFinished(event1 -> {
             GameUI.draw(grid, gamePane, size);
             PopUpAnimation appear = new PopUpAnimation(grid);
             appear.makeTransition();
@@ -265,6 +270,9 @@ public class GameUI extends Application {
             ParallelTransition group1 = new ParallelTransition(bounce.getGroupTransition(), appear.getGroupTransition());
             group1.play();
             updateState();
+//            // 恢复键盘焦点
+//            scene.removeEventFilter(KeyEvent.ANY, KeyEvent::consume);
+
         });
         slide.play(CombineType.GROUP);
 
