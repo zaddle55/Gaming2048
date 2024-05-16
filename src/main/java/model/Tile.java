@@ -6,7 +6,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import util.ColorMap;
-import util.Coordination;
+import util.graphic.Coordination;
 
 public class Tile extends StackPane {
 
@@ -33,6 +33,15 @@ public class Tile extends StackPane {
         this.value = value;
         this.parentPane = parentPane;
         this.coordinationTool = new Coordination(hIndex, vIndex, parentPane, boardSize);
+        this.tileSize = calcTileSize();
+        createTile();
+    }
+
+    public Tile(int value, int hIndex, int vIndex, AnchorPane parentPane, int boardSize, double space) {
+        super();
+        this.value = value;
+        this.parentPane = parentPane;
+        this.coordinationTool = new Coordination(hIndex, vIndex, parentPane, boardSize, space);
         this.tileSize = calcTileSize();
         createTile();
     }

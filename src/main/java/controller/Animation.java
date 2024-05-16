@@ -6,7 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import model.Tile;
-import util.Coordination;
+import util.graphic.Coordination;
 
 import java.util.ArrayList;
 import java.util.List;

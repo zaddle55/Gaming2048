@@ -9,7 +9,7 @@ import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import model.Tile;
 import util.ColorMap;
-import util.Coordination;
+import util.graphic.Coordination;
 import util.Direction;
 
 
@@ -68,16 +68,8 @@ public class LoadingAnimation extends Animation{
 
         // 绘制背景
         drawBackground(stage);
-        this.tile = new Tile(5, 0, 0, stage, SIZE){
-            // 修正方块大小
-            @Override
-            protected double calcTileSize() {
-                return coordinationTool.getBlockWidth() + 12.0;
-            }
-        };
-        // 修正方块位置
-        tile.setTranslateX(-6.0);
-        tile.setTranslateY(-6.0);
+        this.tile = new Tile(5, 0, 0, stage, SIZE, 4.5);
+
         stage.getChildren().add(this.tile);
 
         // 绘制网格

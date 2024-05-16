@@ -2,14 +2,10 @@ package controller;
 
 import javafx.animation.ParallelTransition;
 import javafx.animation.TranslateTransition;
-import javafx.scene.Node;
 import javafx.util.Duration;
 import model.Tile;
-import model.Grid;
-import util.Coordination;
 import util.Direction;
 
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 

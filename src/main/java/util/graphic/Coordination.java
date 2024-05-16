@@ -1,4 +1,4 @@
-package util;
+package util.graphic;
 
 import javafx.scene.layout.AnchorPane;
 
@@ -18,6 +18,18 @@ public class Coordination {
     public Coordination(int x, int y, AnchorPane gamePane, int size) {
 
         this.space = 11.0;
+        this.size = size;
+        this.gridX = x;
+        this.gridY = y;
+        this.gamePane = gamePane;
+        this.blockWidth = getBlockWidth();
+        this.layoutX = gridToLayoutX();
+        this.layoutY = gridToLayoutY();
+    }
+
+    public Coordination(int x, int y, AnchorPane gamePane, int size, double space) {
+
+        this.space = space;
         this.size = size;
         this.gridX = x;
         this.gridY = y;
