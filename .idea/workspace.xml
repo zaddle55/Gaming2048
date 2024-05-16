@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="Implement new tile appear animation and merge effect">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GameUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GameUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Grid.java" afterDir="false" />
-    </list>
+    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="Delete Test" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -205,15 +200,7 @@
       <workItem from="1715442447883" duration="120000" />
       <workItem from="1715494637722" duration="18825000" />
       <workItem from="1715588042701" duration="21983000" />
-      <workItem from="1715825345045" duration="14012000" />
-    </task>
-    <task id="LOCAL-00006" summary="fix action of  &quot;undo&quot; button">
-      <option name="closed" value="true" />
-      <created>1713777256364</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1713777256364</updated>
+      <workItem from="1715825345045" duration="14388000" />
     </task>
     <task id="LOCAL-00007" summary="revise game logic">
       <option name="closed" value="true" />
@@ -599,7 +586,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715830876693</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="Delete Test">
+      <option name="closed" value="true" />
+      <created>1715855419027</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1715855419027</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -639,7 +634,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="update" />
     <MESSAGE value="upload resource img" />
     <MESSAGE value="revise Board class constructor" />
     <MESSAGE value="fix action of  &quot;undo&quot; button" />
@@ -664,7 +658,8 @@
     <MESSAGE value="Revise Grid and MoveAnimation" />
     <MESSAGE value="Revise logic of Coordination calculation and tiles drawing" />
     <MESSAGE value="Implement new tile appear animation and merge effect" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement new tile appear animation and merge effect" />
+    <MESSAGE value="Delete Test" />
+    <option name="LAST_COMMIT_MESSAGE" value="Delete Test" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
