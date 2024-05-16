@@ -238,6 +238,9 @@ public class Grid {
 
                             distanceMap.put(tileGrid[head][i], distanceMap.get(tileGrid[head][i]) + tileGrid[head][i].coordinationTool.getBlockWidth() + tileGrid[head][i].coordinationTool.getSpace());
                             swapTile(rear, i, head, i);
+                            // 窗口回退
+                            rear = rear - 2;
+                            head = head - 2;
 
                         } else if (tileGrid[rear][i].getValue() == tileGrid[head][i].getValue() && !isMerged[rear][i] && !isMerged[head][i]) {
 
@@ -270,6 +273,10 @@ public class Grid {
                             distanceMap.put(tileGrid[head][i], distanceMap.get(tileGrid[head][i]) + tileGrid[head][i].coordinationTool.getBlockWidth() + tileGrid[head][i].coordinationTool.getSpace());
                             swapTile(rear, i, head, i);
 
+                            // 窗口回退
+                            rear = rear + 2;
+                            head = head + 2;
+
                         } else if (tileGrid[rear][i].getValue() == tileGrid[head][i].getValue() && !isMerged[rear][i] && !isMerged[head][i]) {
                             tileGrid[rear][i] = new Tile(tileGrid[rear][i].getValue() * 2, i, rear, gamePane, size);
                             score += tileGrid[rear][i].getValue();
@@ -300,6 +307,10 @@ public class Grid {
                             distanceMap.put(tileGrid[i][head], distanceMap.get(tileGrid[i][head]) + tileGrid[i][head].coordinationTool.getBlockWidth() + tileGrid[i][head].coordinationTool.getSpace());
                             swapTile(i, rear, i, head);
 
+                            // 窗口回退
+                            rear = rear - 2;
+                            head = head - 2;
+
                         } else if (tileGrid[i][rear].getValue() == tileGrid[i][head].getValue() && !isMerged[i][rear] && !isMerged[i][head]) {
                             tileGrid[i][rear] = new Tile(tileGrid[i][rear].getValue() * 2, rear, i, gamePane, size);
                             score += tileGrid[i][rear].getValue();
@@ -329,6 +340,10 @@ public class Grid {
 
                             distanceMap.put(tileGrid[i][head], distanceMap.get(tileGrid[i][head]) + tileGrid[i][head].coordinationTool.getBlockWidth() + tileGrid[i][head].coordinationTool.getSpace());
                             swapTile(i, rear, i, head);
+
+                            // 窗口回退
+                            rear = rear + 2;
+                            head = head + 2;
 
                         } else if (tileGrid[i][rear].getValue() == tileGrid[i][head].getValue() && !isMerged[i][rear] && !isMerged[i][head]) {
                             tileGrid[i][rear] = new Tile(tileGrid[i][rear].getValue() * 2, rear, i, gamePane, size);
