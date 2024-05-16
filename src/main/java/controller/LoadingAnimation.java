@@ -24,7 +24,7 @@ import static controller.GameUI.drawGrid;
 public class LoadingAnimation extends Animation{
 
     // 动画默认持续时间
-    private static double duration = 500;
+    private static double duration = 400;
     // 动画默认延迟
     private static double delay = 600;
     // 动画默认循环次数
@@ -145,7 +145,7 @@ public class LoadingAnimation extends Animation{
 
             @Override
             public void handle(long now) {
-                if (count % 100 == 0) { // 每100帧更新一次，即每秒更新一次
+                if (count % 60 == 0) { // 每100帧更新一次，即每秒更新一次
                     Label label = (Label) text.getChildren().get(0);
                     String text = label.getText();
                     if (text.length() == 10) {
