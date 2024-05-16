@@ -101,10 +101,11 @@ public class Grid {
     public void init(AnchorPane gamePane) {
         this.gamePane = gamePane;
         Random random = new Random();
-        generateRandomTile((random.nextInt(2) + 1) * 2, 1);
+
         if (mode == GameModeFactory.CHALLENGE) {
             generateRandomTile(3, 1);
         }
+        generateRandomTile((random.nextInt(2) + 1) * 2, 1);
         updateBoard();
         addToHistory();
     } // 后改，使用GameModeFactory的map

@@ -181,6 +181,10 @@ public class GameUI extends Application {
         grid = new Grid(size, mode);
         grid.init(gamePane);
         GameUI.draw(grid, gamePane, size);
+        PopUpAnimation appear = new PopUpAnimation(grid);
+        appear.makeTransition();
+
+        appear.play(CombineType.GROUP);
         upDateScore(scoreLabel, grid);
         step = 0;
         upDateStep(stepLabel, grid);
