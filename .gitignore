@@ -36,3 +36,4 @@ logs/
 .idea/shelf/
 *.log
 *.exe
+.idea/workspace.xml
