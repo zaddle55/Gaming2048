@@ -11,31 +11,33 @@ package util;
  *     }
  */
 
+import model.Grid;
+
 import java.io.*;
 
 public class Save {
-    public static void saveBoard(Board board) {
-        try {
-            makeDir();
-            FileOutputStream fileOut = new FileOutputStream(String.format("./savedata/board%d.ser", board.getID()));
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(board);
-            out.close();
-            fileOut.close();
-            System.out.printf("Serialized data is saved in ./savedate/board%d.ser\n", board.getID());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public static void saveBoard(Grid grid) {
+//        try {
+//            makeDir();
+//            FileOutputStream fileOut = new FileOutputStream(String.format("./savedata/board%d.ser", grid.getID()));
+//            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+//            out.writeObject(grid);
+//            out.close();
+//            fileOut.close();
+//            System.out.printf("Serialized data is saved in ./savedate/board%d.ser\n", grid.getID());
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
-    public static Board loadBoard(int ID) {
+    public static Grid loadBoard(int ID) {
         try {
             FileInputStream fileIn = new FileInputStream(String.format("./savedata/board%d.ser", ID));
             ObjectInputStream in = new ObjectInputStream(fileIn);
-            Board board = (Board) in.readObject();
+            Grid grid = (Grid) in.readObject();
             in.close();
             fileIn.close();
-            return board;
+            return grid;
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
             return null;

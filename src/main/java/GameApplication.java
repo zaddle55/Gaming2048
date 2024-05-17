@@ -1,19 +1,20 @@
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import ui.Controller.GameUI;
-import util.Board;
+import controller.GameUI;
+import util.GameModeFactory;
 
 public class GameApplication{
 
         public static void main(String[] args) {
-            GameUI.init(4,0);
+//            GameUI.init(0, new int[][]{
+//                    // 在这里初始化游戏板
+//                    {2, 8, 0, 0, 0 ,8, 8},
+//                    {8, 8, 0, 0, 0 ,8, 8},
+//                    {8, 8, 0, 0, 0 ,0, 0},
+//                    {8, 8, 0, 0, 0 ,8, 8},
+//                    {8, 8, 0, 0, 0 ,8, 8},
+//                    {8, 8, 0, 0, 0 ,8, 8},
+//                    {8, 8, 0, 0, 0 ,8, 8}
+//            });
+            GameUI.init(4, GameModeFactory.CHALLENGE);
             GameUI.start();
         }
 }

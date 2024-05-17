@@ -3,6 +3,7 @@ out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 target/
+.idea/inspectionProfiles/
 
 ### Eclipse ###
 .apt_generated
@@ -35,3 +36,4 @@ logs/
 .idea/shelf/
 *.log
 *.exe
+.idea/workspace.xml

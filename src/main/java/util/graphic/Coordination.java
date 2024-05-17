@@ -1,4 +1,4 @@
-package util;
+package util.graphic;
 
 import javafx.scene.layout.AnchorPane;
 
@@ -6,6 +6,8 @@ public class Coordination {
     private double blockWidth;
     private double layoutX;
     private double layoutY;
+    private double translateX = 0;
+    private double translateY = 0;
     private double space;
     private final int size;
     private int gridX;
@@ -25,6 +27,18 @@ public class Coordination {
         this.layoutY = gridToLayoutY();
     }
 
+    public Coordination(int x, int y, AnchorPane gamePane, int size, double space) {
+
+        this.space = space;
+        this.size = size;
+        this.gridX = x;
+        this.gridY = y;
+        this.gamePane = gamePane;
+        this.blockWidth = getBlockWidth();
+        this.layoutX = gridToLayoutX();
+        this.layoutY = gridToLayoutY();
+    }
+
     public Coordination (int size, AnchorPane gamePane)
     {
         this.space = 11.0;
@@ -33,25 +47,37 @@ public class Coordination {
         this.blockWidth = getBlockWidth();
     }
 
+    public void setTranslateX(double translateX) {
+        this.translateX = translateX;
+    }
+
+    public void setTranslateY(double translateY) {
+        this.translateY = translateY;
+    }
+
+    public void setSpace(double space) {
+        this.space = space;
+    }
+
     public double getBlockWidth() {
-        double boardWidth = gamePane.getWidth();
+        double boardWidth = gamePane.getPrefWidth();
         return (boardWidth - space * (size + 1)) / size;
     }
 
     private double gridToLayoutY() {
-        return space + gridY * (blockWidth + space) - 1.0;
+        return space + gridY * (blockWidth + space) + translateY;
     }
 
     public double gridToLayoutY(int gridY) {
-        return space + gridY * (blockWidth + space) - 1.0;
+        return space + gridY * (blockWidth + space) + translateY;
     }
 
     private double gridToLayoutX() {
-        return space + gridX * (blockWidth + space) - 1.0;
+        return space + gridX * (blockWidth + space) + translateX;
     }
 
     public double gridToLayoutX(int gridX) {
-        return space + gridX * (blockWidth + space) - 1.0;
+        return space + gridX * (blockWidth + space) + translateX;
     }
 
     public double getLayoutX() {
@@ -60,5 +86,9 @@ public class Coordination {
 
     public double getLayoutY() {
         return layoutY;
+    }
+
+    public double getSpace() {
+        return space;
     }
 }

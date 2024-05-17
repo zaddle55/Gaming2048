@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="Complete move animation effect" />
+    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="Add ArchiveUI">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,8 +15,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="CSS File" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -22,10 +24,11 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="zaddle" />
+        <entry key="$PROJECT_DIR$" value="ce5df18454abc04ec3ccdcad362051d2b37231a4" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -48,7 +51,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "dev",
+    "extract.method.default.visibility": "private",
+    "git-widget-placeholder": "zaddle",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Administrator/IdeaProjects/Reach2048/target/classes/assets/buttonIcon",
     "list.type.of.created.stylesheet": "CSS",
@@ -65,10 +69,13 @@
     "应用程序.GameApplication.executor": "Run",
     "应用程序.GameUI.executor": "Run",
     "应用程序.MainApplication.executor": "Run",
+    "应用程序.MainFrame.executor": "Run",
+    "应用程序.TestArchiveUI.executor": "Run",
     "应用程序.TestGameUIApplication.executor": "Run",
     "应用程序.TestGridPanel.executor": "Run",
     "应用程序.TestJavaFXBootstrap.executor": "Run",
-    "应用程序.TestMainUIApplication.executor": "Run"
+    "应用程序.TestMainUIApplication.executor": "Run",
+    "应用程序.TestScaleTransition.executor": "Run"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -76,14 +83,14 @@
       <recent name="C:\Users\Administrator\IdeaProjects\Reach2048\target\classes\assets\buttonIcon" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\IdeaProjects\Reach2048\src\main\java\controller" />
       <recent name="C:\Users\Administrator\IdeaProjects\Reach2048\src\main\java\ui" />
       <recent name="C:\Users\Administrator\IdeaProjects\Reach2048\src\main\resources\assets\" />
       <recent name="C:\Users\Administrator\IdeaProjects\Reach2048\src\main\resources\assets\titleIcon" />
       <recent name="C:\Users\Administrator\IdeaProjects\Reach2048\src\main\resources\assets" />
-      <recent name="C:\Users\Administrator\IdeaProjects\Reach2048\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.GameApplication">
+  <component name="RunManager" selected="应用程序.TestArchiveUI">
     <configuration name="GameApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GameApplication" />
       <module name="Reach2048" />
@@ -92,16 +99,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GameUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ui.Controller.GameUI" />
+    <configuration name="TestArchiveUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TestArchiveUI" />
       <module name="Reach2048" />
       <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\lib\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ui.Controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -114,16 +115,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestGridPanel" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="TestGridPanel" />
+    <configuration name="TestMainUIApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TestMainUIApplication" />
       <module name="Reach2048" />
       <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\lib\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestMainUIApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="TestMainUIApplication" />
+    <configuration name="TestScaleTransition" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TestScaleTransition" />
       <module name="Reach2048" />
       <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\lib\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
       <method v="2">
@@ -142,19 +143,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="应用程序.TestArchiveUI" />
+      <item itemvalue="应用程序.TestScaleTransition" />
       <item itemvalue="应用程序.GameApplication" />
-      <item itemvalue="应用程序.GameUI" />
-      <item itemvalue="应用程序.TestGridPanel" />
       <item itemvalue="应用程序.TestGameUIApplication" />
       <item itemvalue="应用程序.TestMainUIApplication" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="应用程序.TestArchiveUI" />
         <item itemvalue="应用程序.TestMainUIApplication" />
-        <item itemvalue="应用程序.TestGameUIApplication" />
-        <item itemvalue="应用程序.TestGridPanel" />
-        <item itemvalue="应用程序.GameUI" />
         <item itemvalue="应用程序.GameApplication" />
+        <item itemvalue="应用程序.TestScaleTransition" />
+        <item itemvalue="应用程序.TestGameUIApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -193,70 +194,17 @@
       <workItem from="1714453673914" duration="1394000" />
       <workItem from="1714478016936" duration="3418000" />
       <workItem from="1714994600941" duration="12909000" />
-    </task>
-    <task id="LOCAL-00001" summary="update">
-      <option name="closed" value="true" />
-      <created>1713019587469</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1713019587469</updated>
-    </task>
-    <task id="LOCAL-00002" summary="update">
-      <option name="closed" value="true" />
-      <created>1713019625402</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1713019625402</updated>
-    </task>
-    <task id="LOCAL-00003" summary="upload resource img">
-      <option name="closed" value="true" />
-      <created>1713021392122</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1713021392122</updated>
-    </task>
-    <task id="LOCAL-00004" summary="revise Board class constructor">
-      <option name="closed" value="true" />
-      <created>1713100323191</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1713100323191</updated>
-    </task>
-    <task id="LOCAL-00005" summary="revise game logic">
-      <option name="closed" value="true" />
-      <created>1713275272163</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1713275272163</updated>
-    </task>
-    <task id="LOCAL-00006" summary="fix action of  &quot;undo&quot; button">
-      <option name="closed" value="true" />
-      <created>1713777256364</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1713777256364</updated>
-    </task>
-    <task id="LOCAL-00007" summary="revise game logic">
-      <option name="closed" value="true" />
-      <created>1713777845552</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1713777845552</updated>
-    </task>
-    <task id="LOCAL-00008" summary="revise game logic">
-      <option name="closed" value="true" />
-      <created>1713777952034</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1713777952034</updated>
+      <workItem from="1715081518739" duration="11684000" />
+      <workItem from="1715156301565" duration="13426000" />
+      <workItem from="1715234420593" duration="10693000" />
+      <workItem from="1715321616478" duration="6164000" />
+      <workItem from="1715352174313" duration="854000" />
+      <workItem from="1715415413619" duration="19066000" />
+      <workItem from="1715442447883" duration="120000" />
+      <workItem from="1715494637722" duration="18825000" />
+      <workItem from="1715588042701" duration="21983000" />
+      <workItem from="1715825345045" duration="23144000" />
+      <workItem from="1715937956071" duration="2371000" />
     </task>
     <task id="LOCAL-00009" summary="revise game logic">
       <option name="closed" value="true" />
@@ -466,23 +414,191 @@
       <option name="project" value="LOCAL" />
       <updated>1715011885225</updated>
     </task>
-    <task id="LOCAL-00035" summary="Complete move animation effect">
+    <task id="LOCAL-00035" summary="Some revision">
       <option name="closed" value="true" />
-      <created>1715012862252</created>
+      <created>1715266060975</created>
       <option name="number" value="00035" />
       <option name="presentableId" value="LOCAL-00035" />
       <option name="project" value="LOCAL" />
-      <updated>1715012862252</updated>
+      <updated>1715266060975</updated>
     </task>
-    <task id="LOCAL-00036" summary="Complete move animation effect">
+    <task id="LOCAL-00036" summary="Some revision">
       <option name="closed" value="true" />
-      <created>1715013065700</created>
+      <created>1715266121935</created>
       <option name="number" value="00036" />
       <option name="presentableId" value="LOCAL-00036" />
       <option name="project" value="LOCAL" />
-      <updated>1715013065700</updated>
+      <updated>1715266121935</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Some revision">
+      <option name="closed" value="true" />
+      <created>1715353727152</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1715353727152</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Implement auto function and login interface">
+      <option name="closed" value="true" />
+      <created>1715439749890</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1715439749890</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Implement auto function and login interface">
+      <option name="closed" value="true" />
+      <created>1715440787982</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1715440787982</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Implement auto function and login interface">
+      <option name="closed" value="true" />
+      <created>1715440802716</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1715440802716</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Implement auto function and login interface">
+      <option name="closed" value="true" />
+      <created>1715441102767</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1715441102767</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Implement LoadingAnimation">
+      <option name="closed" value="true" />
+      <created>1715592901353</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1715592901353</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Implement LoadingAnimation">
+      <option name="closed" value="true" />
+      <created>1715593652099</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1715593652099</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Implement LoadingAnimation">
+      <option name="closed" value="true" />
+      <created>1715594687977</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1715594687977</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Implement LoadingAnimation">
+      <option name="closed" value="true" />
+      <created>1715595894409</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1715595894409</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Implement timer">
+      <option name="closed" value="true" />
+      <created>1715612709412</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1715612709412</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Revise calculation of number size on tiles">
+      <option name="closed" value="true" />
+      <created>1715613885745</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1715613885745</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Refine code">
+      <option name="closed" value="true" />
+      <created>1715614937583</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1715614937583</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Revise Grid and MoveAnimation">
+      <option name="closed" value="true" />
+      <created>1715745099899</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1715745099899</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Revise Grid and MoveAnimation">
+      <option name="closed" value="true" />
+      <created>1715778003588</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1715778003588</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Revise Grid and MoveAnimation">
+      <option name="closed" value="true" />
+      <created>1715778154074</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1715778154074</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Revise logic of Coordination calculation and tiles drawing">
+      <option name="closed" value="true" />
+      <created>1715781310836</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1715781310836</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Implement new tile appear animation and merge effect">
+      <option name="closed" value="true" />
+      <created>1715789667298</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1715789667298</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Implement new tile appear animation and merge effect">
+      <option name="closed" value="true" />
+      <created>1715830876692</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1715830876693</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Delete Test">
+      <option name="closed" value="true" />
+      <created>1715855419027</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1715855419027</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Delete Test">
+      <option name="closed" value="true" />
+      <created>1715855470268</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1715855470268</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Add ArchiveUI">
+      <option name="closed" value="true" />
+      <created>1715873688546</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1715873688546</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -509,7 +625,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/zaddle" />
+                        <option value="zaddle" />
                       </list>
                     </value>
                   </entry>
@@ -522,8 +638,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="update" />
-    <MESSAGE value="upload resource img" />
     <MESSAGE value="revise Board class constructor" />
     <MESSAGE value="fix action of  &quot;undo&quot; button" />
     <MESSAGE value="revise game logic" />
@@ -538,9 +652,67 @@
     <MESSAGE value="add gitignore" />
     <MESSAGE value="Implement move animation effect" />
     <MESSAGE value="Complete move animation effect" />
-    <option name="LAST_COMMIT_MESSAGE" value="Complete move animation effect" />
+    <MESSAGE value="Some revision" />
+    <MESSAGE value="Implement auto function and login interface" />
+    <MESSAGE value="Implement LoadingAnimation" />
+    <MESSAGE value="Implement timer" />
+    <MESSAGE value="Revise calculation of number size on tiles" />
+    <MESSAGE value="Refine code" />
+    <MESSAGE value="Revise Grid and MoveAnimation" />
+    <MESSAGE value="Revise logic of Coordination calculation and tiles drawing" />
+    <MESSAGE value="Implement new tile appear animation and merge effect" />
+    <MESSAGE value="Delete Test" />
+    <MESSAGE value="Add ArchiveUI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add ArchiveUI" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/util/Timer.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/util/Timer.java</url>
+          <line>83</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
+          <line>620</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
+          <line>614</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
+          <line>273</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/model/Grid.java</url>
+          <line>120</line>
+          <properties class="model.Grid" method="move">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/model/Grid.java</url>
+          <line>443</line>
+          <properties class="model.Grid" method="generateRandomTile">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="coordinationTool.gridToLayoutY(preEndPoint) - coordinationTool.gridToLayoutY(j)" language="JAVA" />

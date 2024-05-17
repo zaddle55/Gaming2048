@@ -1,11 +1,12 @@
 .root {
-    -fx-background-image: url("/assets/bg2048.png");
+
     -fx-background-size: cover;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
+    -fx-background-color: rgba(255, 255, 255);
 }
 
-#tilteLabel {
+.title-label-style {
     -fx-font-size: 32px;
     -fx-text-align: center;
     -fx-background-image: url("/assets/logo.png");
@@ -33,6 +34,77 @@
     -fx-background-color: rgb(203, 191, 179);
     -fx-background-radius: 10px;
     -fx-effect: dropshadow(gaussian, #FFFFFF, 5, 1.0, 0, 0);
+}
+
+.text-field-default-style {
+    -fx-font-size: 17px;
+    -fx-font-family: 'cursive', cursive;
+    -fx-prompt-text-fill: rgba(200, 187, 176, 0.94);
+    -fx-border-color: rgb(186, 172, 159);
+    -fx-border-width: 2px;
+    -fx-border-radius: 8px;
+    -fx-background-color: rgb(248, 244, 241);
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(gaussian, #FFFFFF, 5, 1.0, 0, 0);
+}
+
+.login-button-style {
+    -fx-text-fill: rgba(255, 255, 255, 0.94);
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-font-family: 'fantasy', cursive;
+    -fx-background-color: rgb(237, 180, 55);
+    -fx-background-radius: 10px;
+    -fx-border-color: rgb(243, 223, 182);
+    -fx-border-width: 3px;
+    -fx-border-radius: 10px;
+}
+
+.login-button-style:pressed {
+    -fx-border-color: rgb(243, 223, 182);
+    -fx-background-color: rgb(239, 202, 103);
+
+}
+
+.register-button-style {
+    -fx-text-fill: rgba(255, 255, 255, 0.94);
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-font-family: 'fantasy', cursive;
+    -fx-background-color: rgb(123, 167, 180);
+    -fx-background-radius: 10px;
+    -fx-border-color: rgb(183, 213, 210);
+    -fx-border-width: 3px;
+    -fx-border-radius: 10px;
+}
+
+.register-button-style:pressed {
+    -fx-border-color: rgb(183, 213, 210);
+    -fx-background-color: rgb(139, 186, 198);
+}
+
+.guest-button-style {
+    -fx-text-fill: rgba(255, 255, 255, 0.94);
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-font-family: 'fantasy', cursive;
+    -fx-background-color: rgb(200, 103, 75);
+    -fx-background-radius: 10px;
+    -fx-border-color: rgb(227, 194, 185);
+    -fx-border-width: 3px;
+    -fx-border-radius: 10px;
+}
+
+.guest-button-style:pressed {
+    -fx-border-color: rgb(227, 194, 185);
+    -fx-background-color: rgb(210, 123, 95);
+}
+
+.font-awesome-icon {
+    -fx-font-family: "serif" !important;
+    -fx-font-size: 16px;
+    -fx-font-style: italic;
+    -fx-text-fill: rgb(114, 114, 114);
 }
 
 
