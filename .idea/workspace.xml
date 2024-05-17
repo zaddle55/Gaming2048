@@ -52,7 +52,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "extract.method.default.visibility": "private",
-    "git-widget-placeholder": "zaddle",
+    "git-widget-placeholder": "dev",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Administrator/IdeaProjects/Reach2048/target/classes/assets/buttonIcon",
     "list.type.of.created.stylesheet": "CSS",
@@ -90,7 +90,7 @@
       <recent name="C:\Users\Administrator\IdeaProjects\Reach2048\src\main\resources\assets" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.TestArchiveUI">
+  <component name="RunManager" selected="应用程序.TestMainUIApplication">
     <configuration name="GameApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GameApplication" />
       <module name="Reach2048" />
@@ -151,8 +151,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="应用程序.TestArchiveUI" />
         <item itemvalue="应用程序.TestMainUIApplication" />
+        <item itemvalue="应用程序.TestArchiveUI" />
         <item itemvalue="应用程序.GameApplication" />
         <item itemvalue="应用程序.TestScaleTransition" />
         <item itemvalue="应用程序.TestGameUIApplication" />
@@ -610,6 +610,21 @@
         <entry key="5130ff8c-4522-468b-b028-e110b136e680" value="TOOL_WINDOW" />
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="dev" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="5130ff8c-4522-468b-b028-e110b136e680">
@@ -625,7 +640,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="zaddle" />
+                        <option value="dev" />
                       </list>
                     </value>
                   </entry>
@@ -696,7 +711,7 @@
         <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/model/Grid.java</url>
           <line>120</line>
-          <properties class="model.Grid" method="move">
+          <properties class="model.Grid">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
