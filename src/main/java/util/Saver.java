@@ -15,7 +15,7 @@ import model.Grid;
 
 import java.io.*;
 
-public class Save {
+public class Saver {
     public static void saveBoard(Grid grid) {
 //        try {
 //            makeDir();

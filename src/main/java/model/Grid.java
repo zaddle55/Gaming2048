@@ -1,7 +1,7 @@
 package model;
 
 import controller.Animation;
-import controller.CombineType;
+import controller.Animation.CombineType;
 import controller.MoveAnimation;
 import javafx.animation.TranslateTransition;
 import javafx.scene.layout.AnchorPane;

@@ -11,10 +11,8 @@ import model.Tile;
 import util.ColorMap;
 import util.graphic.Coordination;
 import util.Direction;
+import util.graphic.Paint;
 
-
-import static controller.GameUI.drawBackground;
-import static controller.GameUI.drawGrid;
 
 /**
  * @Description: 加载动画类，用于显示加载动画
@@ -67,13 +65,13 @@ public class LoadingAnimation extends Animation{
         stage.setLayoutY(200);
 
         // 绘制背景
-        drawBackground(stage);
+        Paint.drawBackground(stage);
         this.tile = new Tile(5, 0, 0, stage, SIZE, 4.5);
 
         stage.getChildren().add(this.tile);
 
         // 绘制网格
-        drawGrid(stage, SIZE, 4.5, 4.5);
+        Paint.drawGrid(stage, SIZE, 4.5, 4.5);
 
         // 设置加载提示文字
         text.setPrefHeight(40);

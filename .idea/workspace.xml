@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="Add ArchiveUI">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="Complete Basic ArchiveUI">
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ArchiveUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ArchiveUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,8 +15,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="FxmlFile" />
+        <option value="CSS File" />
         <option value="Class" />
       </list>
     </option>
@@ -24,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="ce5df18454abc04ec3ccdcad362051d2b37231a4" />
+        <entry key="$PROJECT_DIR$" value="dev" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -52,7 +52,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "extract.method.default.visibility": "private",
-    "git-widget-placeholder": "dev",
+    "git-widget-placeholder": "zaddle",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Administrator/IdeaProjects/Reach2048/target/classes/assets/buttonIcon",
     "list.type.of.created.stylesheet": "CSS",
@@ -66,6 +66,7 @@
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true",
+    "应用程序.ArchiveUI.executor": "Run",
     "应用程序.GameApplication.executor": "Run",
     "应用程序.GameUI.executor": "Run",
     "应用程序.MainApplication.executor": "Run",
@@ -73,6 +74,7 @@
     "应用程序.TestArchiveUI.executor": "Run",
     "应用程序.TestGameUIApplication.executor": "Run",
     "应用程序.TestGridPanel.executor": "Run",
+    "应用程序.TestGson.executor": "Run",
     "应用程序.TestJavaFXBootstrap.executor": "Run",
     "应用程序.TestMainUIApplication.executor": "Run",
     "应用程序.TestScaleTransition.executor": "Run"
@@ -90,7 +92,21 @@
       <recent name="C:\Users\Administrator\IdeaProjects\Reach2048\src\main\resources\assets" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.TestMainUIApplication">
+  <component name="RunManager" selected="应用程序.TestArchiveUI">
+    <configuration name="ArchiveUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="controller.ArchiveUI" />
+      <module name="Reach2048" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\lib\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="GameApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GameApplication" />
       <module name="Reach2048" />
@@ -107,24 +123,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestGameUIApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="TestGameUIApplication" />
+    <configuration name="TestGson" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TestGson" />
       <module name="Reach2048" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\lib\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="TestMainUIApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="TestMainUIApplication" />
-      <module name="Reach2048" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\lib\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestScaleTransition" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="TestScaleTransition" />
       <module name="Reach2048" />
       <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\lib\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
       <method v="2">
@@ -143,19 +150,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="应用程序.ArchiveUI" />
+      <item itemvalue="应用程序.TestGson" />
       <item itemvalue="应用程序.TestArchiveUI" />
-      <item itemvalue="应用程序.TestScaleTransition" />
       <item itemvalue="应用程序.GameApplication" />
-      <item itemvalue="应用程序.TestGameUIApplication" />
       <item itemvalue="应用程序.TestMainUIApplication" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="应用程序.TestMainUIApplication" />
         <item itemvalue="应用程序.TestArchiveUI" />
+        <item itemvalue="应用程序.ArchiveUI" />
+        <item itemvalue="应用程序.TestMainUIApplication" />
         <item itemvalue="应用程序.GameApplication" />
-        <item itemvalue="应用程序.TestScaleTransition" />
-        <item itemvalue="应用程序.TestGameUIApplication" />
+        <item itemvalue="应用程序.TestGson" />
       </list>
     </recent_temporary>
   </component>
@@ -205,30 +212,8 @@
       <workItem from="1715588042701" duration="21983000" />
       <workItem from="1715825345045" duration="23144000" />
       <workItem from="1715937956071" duration="2371000" />
-    </task>
-    <task id="LOCAL-00009" summary="revise game logic">
-      <option name="closed" value="true" />
-      <created>1713778064114</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1713778064114</updated>
-    </task>
-    <task id="LOCAL-00010" summary="rebuild with maven(3.9.5) javafx(21) fxgl(21.1)">
-      <option name="closed" value="true" />
-      <created>1713783332218</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1713783332218</updated>
-    </task>
-    <task id="LOCAL-00011" summary="rebuild with maven(3.9.5) javafx(21) fxgl(21.1)">
-      <option name="closed" value="true" />
-      <created>1713783397432</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1713783397432</updated>
+      <workItem from="1715956344756" duration="850000" />
+      <workItem from="1716028971151" duration="16597000" />
     </task>
     <task id="LOCAL-00012" summary="test javafx">
       <option name="closed" value="true" />
@@ -598,7 +583,31 @@
       <option name="project" value="LOCAL" />
       <updated>1715873688546</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="Add ArchiveUI">
+      <option name="closed" value="true" />
+      <created>1715945631618</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1715945631618</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Complete Basic ArchiveUI">
+      <option name="closed" value="true" />
+      <created>1716045412497</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1716045412498</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Complete Basic ArchiveUI">
+      <option name="closed" value="true" />
+      <created>1716045429766</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1716045429766</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -608,21 +617,6 @@
     <option name="OPEN_GENERIC_TABS">
       <map>
         <entry key="5130ff8c-4522-468b-b028-e110b136e680" value="TOOL_WINDOW" />
-      </map>
-    </option>
-    <option name="RECENT_FILTERS">
-      <map>
-        <entry key="Branch">
-          <value>
-            <list>
-              <RecentGroup>
-                <option name="FILTER_VALUES">
-                  <option value="dev" />
-                </option>
-              </RecentGroup>
-            </list>
-          </value>
-        </entry>
       </map>
     </option>
     <option name="TAB_STATES">
@@ -640,7 +634,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="dev" />
+                        <option value="zaddle" />
                       </list>
                     </value>
                   </entry>
@@ -653,7 +647,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="revise Board class constructor" />
     <MESSAGE value="fix action of  &quot;undo&quot; button" />
     <MESSAGE value="revise game logic" />
     <MESSAGE value="rebuild with maven(3.9.5) javafx(21) fxgl(21.1)" />
@@ -678,7 +671,8 @@
     <MESSAGE value="Implement new tile appear animation and merge effect" />
     <MESSAGE value="Delete Test" />
     <MESSAGE value="Add ArchiveUI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add ArchiveUI" />
+    <MESSAGE value="Complete Basic ArchiveUI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Complete Basic ArchiveUI" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -695,23 +689,23 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
-          <line>620</line>
+          <line>533</line>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
-          <line>614</line>
+          <line>527</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
-          <line>273</line>
-          <option name="timeStamp" value="30" />
+          <url>file://$PROJECT_DIR$/src/main/java/controller/ArchiveUI.java</url>
+          <line>71</line>
+          <option name="timeStamp" value="36" />
         </line-breakpoint>
         <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/model/Grid.java</url>
           <line>120</line>
-          <properties class="model.Grid">
+          <properties class="model.Grid" method="move">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>

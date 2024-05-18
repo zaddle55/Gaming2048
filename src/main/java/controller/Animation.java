@@ -157,5 +157,9 @@ public abstract class Animation {
 
     }
 
+    public static enum CombineType {
+        MONO, GROUP
+    }
+
 }
 
