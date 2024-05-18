@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -25,6 +26,7 @@ import model.Grid;
 import util.Direction;
 import util.Time;
 import util.Timer;
+import util.graphic.Paint;
 
 import java.util.Map;
 import java.util.Objects;
@@ -129,15 +131,15 @@ public class GameUI extends Application {
             grid = new Grid(size, mode);
 
             grid.init(gamePane);
-            GameUI.draw(grid, gamePane, size);
+            Paint.draw(grid, gamePane, size, 11, 11);
             PopUpAnimation appear = new PopUpAnimation(grid);
             appear.makeTransition();
 
-            appear.play(CombineType.GROUP);
+            appear.play(Animation.CombineType.GROUP);
 //            grid.fillTileGrid();
         } else {
             grid.load(gamePane);
-            GameUI.draw(grid, gamePane, size);
+            Paint.draw(grid, gamePane, size, 11, 11);
         }
 
         
@@ -176,11 +178,11 @@ public class GameUI extends Application {
 
         grid = new Grid(size, mode);
         grid.init(gamePane);
-        GameUI.draw(grid, gamePane, size);
+        Paint.draw(grid, gamePane, size, 11, 11);
         PopUpAnimation appear = new PopUpAnimation(grid);
         appear.makeTransition();
 
-        appear.play(CombineType.GROUP);
+        appear.play(Animation.CombineType.GROUP);
         upDateScore(scoreLabel, grid);
         step = 0;
         upDateStep(stepLabel, grid);
@@ -203,7 +205,7 @@ public class GameUI extends Application {
         }
 
         grid.undo();
-        GameUI.draw(grid, gamePane, size);
+        Paint.draw(grid, gamePane, size, 11, 11);
         upDateScore(scoreLabel, grid);
 
         upDateStep(stepLabel, grid);
@@ -227,7 +229,7 @@ public class GameUI extends Application {
         if (distanceMap == null) {
             return;
         }
-        extracted(Direction.UP, distanceMap);
+        makeAnimation(Direction.UP, distanceMap);
 //        slide.setOnFinished(event -> {
 //
 //            GameUI.draw(grid, gamePane, size);
@@ -251,18 +253,19 @@ public class GameUI extends Application {
             return;
         }
 
-        extracted(Direction.DOWN, distanceMap);
+        makeAnimation(Direction.DOWN, distanceMap);
 
     }
 
-    private void extracted(Direction down, Map<Tile, Double> distanceMap) {
+    private void makeAnimation(Direction down, Map<Tile, Double> distanceMap) {
 //        // 移除键盘焦点
 //        scene.addEventFilter(KeyEvent.ANY, KeyEvent::consume);
 
         MoveAnimation slide = new MoveAnimation(down, distanceMap);
         slide.makeTransition();
         slide.setOnFinished(event1 -> {
-            GameUI.draw(grid, gamePane, size);
+
+            Paint.draw(grid, gamePane, size, 11, 11);
             PopUpAnimation appear = new PopUpAnimation(grid);
             appear.makeTransition();
             BounceAnimation bounce = new BounceAnimation(grid);
@@ -274,7 +277,7 @@ public class GameUI extends Application {
 //            scene.removeEventFilter(KeyEvent.ANY, KeyEvent::consume);
 
         });
-        slide.play(CombineType.GROUP);
+        slide.play(Animation.CombineType.GROUP);
 
 
 
@@ -294,7 +297,7 @@ public class GameUI extends Application {
             return;
         }
 
-        extracted(Direction.LEFT, distanceMap);
+        makeAnimation(Direction.LEFT, distanceMap);
 
     }
 
@@ -311,7 +314,7 @@ public class GameUI extends Application {
             return;
         }
 
-        extracted(Direction.RIGHT, distanceMap);
+        makeAnimation(Direction.RIGHT, distanceMap);
 
     }
 
@@ -338,8 +341,8 @@ public class GameUI extends Application {
 
         gamePane.getChildren().clear();
 
-        drawBackground(gamePane);
-        drawGrid(gamePane, size, 11.0, 11.0);
+        Paint.drawBackground(gamePane);
+        Paint.drawGrid(gamePane, size, 11.0, 11.0);
     }
 
     public void updateState() {
@@ -364,103 +367,6 @@ public class GameUI extends Application {
         }
     }
 
-    /**
-     * @description: 绘制游戏板方法
-     * @param board 游戏板
-     * @param gamePane 游戏板
-     * @param size 游戏板大小
-     * @return javafx.scene.layout.AnchorPane
-     */
-    public static void draw(Grid board, AnchorPane gamePane, int size) {
-
-        gamePane.getChildren().clear();
-
-        drawBackground(gamePane);
-        AnchorPane blockPane = new AnchorPane();
-
-        drawGrid(gamePane, size, 11.0, 11.0);
-
-        for (Tile[] line : grid.getTileGrid()) {
-            for (Tile tile : line) {
-                if (tile != null) {
-                    blockPane.getChildren().add(tile);
-                }
-            }
-        }
-
-        blockPane.setLayoutX(0);
-        blockPane.setLayoutY(0);
-
-        gamePane.getChildren().add(blockPane);
-
-
-
-
-    }
-
-
-    /**
-     * @description: 绘制游戏板背景填充方法
-     * @param gamePane 游戏板
-     * @return void
-     */
-    static void drawBackground(AnchorPane gamePane) {
-
-        Pane backgroundPane = new Pane();
-        backgroundPane.setLayoutX(0);
-        backgroundPane.setLayoutY(0);
-        backgroundPane.setPrefSize(gamePane.getPrefWidth(), gamePane.getPrefHeight());
-        backgroundPane.setStyle("""
-                -fx-background-color: #cbbfb3;
-                -fx-background-radius: 3px;
-                -fx-background-size: cover;
-                -fx-background-position: center;
-                """);
-        gamePane.getChildren().add(backgroundPane);
-
-    }
-
-    /**
-     * @description: 绘制游戏板网格方法
-     * @param gamePane 游戏板
-     * @param size 游戏板大小
-     * @return void
-     */
-    static void drawGrid(AnchorPane gamePane, int size, double space, double strokeWidth) {
-
-        double blockWidth = (gamePane.getPrefWidth() - space * (size + 1)) / size;
-
-        for (int i = 1; i < size; i++) {
-            Line hLine = new Line();
-            hLine.setStartX(space);
-            hLine.setEndX(gamePane.getPrefWidth() - space);
-            hLine.setStartY(space * 0.5 + i * (blockWidth + space));
-            hLine.setEndY(space * 0.5 + i * (blockWidth + space));
-            hLine.setStrokeWidth(strokeWidth);
-            hLine.setStroke(Color.rgb(187, 173, 160));
-            gamePane.getChildren().add(hLine);
-
-            Line vLine = new Line();
-            vLine.setStartX(space * 0.5 + i * (blockWidth + space));
-            vLine.setEndX(space * 0.5 + i * (blockWidth + space));
-            vLine.setStartY(space);
-            vLine.setEndY(gamePane.getPrefHeight() - space);
-            vLine.setStrokeWidth(strokeWidth);
-            vLine.setStroke(Color.rgb(187, 173, 160));
-            gamePane.getChildren().add(vLine);
-
-        }
-
-        Pane borderPane = new Pane();
-        borderPane.setLayoutX(0);
-        borderPane.setLayoutY(0);
-        borderPane.setPrefSize(gamePane.getPrefWidth(), gamePane.getPrefHeight());
-        borderPane.setStyle("-fx-border-color: #baac9f;\n" +
-                String.format("-fx-border-width: %fpx;\n", strokeWidth) +
-                "-fx-border-radius: 3px;");
-        gamePane.getChildren().add(borderPane);
-
-    }
 
     //
     public void simulateMove(Direction direction) {
@@ -584,6 +490,13 @@ public class GameUI extends Application {
         GameUI.setBoard(new Grid(board));
         isLoad = true;
 
+    }
+
+    public static void init(Grid grid) {
+        GameUI.setBoard(grid);
+        GameUI.setSize(grid.getSize());
+        GameUI.setMode(grid.getMode());
+        isLoad = true;
     }
 
     // 运行GameUI
