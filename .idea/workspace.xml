@@ -4,22 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="Add ArchiveUI">
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Save.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/css/archiveUI.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/TestGson.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Animation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Animation.java" afterDir="false" />
+    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="Complete Basic ArchiveUI">
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/ArchiveUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ArchiveUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CombineType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GameUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GameUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/LoadingAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/LoadingAnimation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MainUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MainUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/SwitchInterfaceAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/SwitchInterfaceAnimation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Grid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/Save.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Saver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/graphic/Paint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/graphic/Paint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/FXView/ArchiveUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXView/ArchiveUI.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,23 +213,7 @@
       <workItem from="1715825345045" duration="23144000" />
       <workItem from="1715937956071" duration="2371000" />
       <workItem from="1715956344756" duration="850000" />
-      <workItem from="1716028971151" duration="16253000" />
-    </task>
-    <task id="LOCAL-00010" summary="rebuild with maven(3.9.5) javafx(21) fxgl(21.1)">
-      <option name="closed" value="true" />
-      <created>1713783332218</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1713783332218</updated>
-    </task>
-    <task id="LOCAL-00011" summary="rebuild with maven(3.9.5) javafx(21) fxgl(21.1)">
-      <option name="closed" value="true" />
-      <created>1713783397432</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1713783397432</updated>
+      <workItem from="1716028971151" duration="16597000" />
     </task>
     <task id="LOCAL-00012" summary="test javafx">
       <option name="closed" value="true" />
@@ -621,7 +591,23 @@
       <option name="project" value="LOCAL" />
       <updated>1715945631618</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="Complete Basic ArchiveUI">
+      <option name="closed" value="true" />
+      <created>1716045412497</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1716045412498</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Complete Basic ArchiveUI">
+      <option name="closed" value="true" />
+      <created>1716045429766</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1716045429766</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -661,7 +647,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="revise Board class constructor" />
     <MESSAGE value="fix action of  &quot;undo&quot; button" />
     <MESSAGE value="revise game logic" />
     <MESSAGE value="rebuild with maven(3.9.5) javafx(21) fxgl(21.1)" />
@@ -686,7 +671,8 @@
     <MESSAGE value="Implement new tile appear animation and merge effect" />
     <MESSAGE value="Delete Test" />
     <MESSAGE value="Add ArchiveUI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add ArchiveUI" />
+    <MESSAGE value="Complete Basic ArchiveUI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Complete Basic ArchiveUI" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

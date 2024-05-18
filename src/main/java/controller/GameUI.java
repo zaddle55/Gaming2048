@@ -528,7 +528,7 @@ public class GameUI extends Application {
             aiThread.endFlag = true;
             autoButton.setText("Auto");
             scene.getRoot().requestFocus();
-            timer.stop();
+
         } else {
             isAuto = true;
             if (aiThread == null) {
@@ -538,7 +538,7 @@ public class GameUI extends Application {
             }
             autoButton.setText("Stop");
             new Thread(aiThread).start();
-            timer.reset();
+
         }
     }
 

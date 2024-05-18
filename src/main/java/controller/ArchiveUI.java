@@ -72,6 +72,13 @@ public class ArchiveUI extends Application {
         if (saveInterfaceList.size() > 1) {
             rightArrow.setVisible(true);
         }
+
+        // 初始化用户信息
+        loadUserInfo();
+    }
+
+    // 读取用户信息
+    private void loadUserInfo() {
     }
 
     private AnchorPane createSaveUnit(Save save) {
