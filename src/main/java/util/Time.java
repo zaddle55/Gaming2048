@@ -95,6 +95,11 @@ public class Time implements Comparable<Time>{
         return Long.compare(this.time, time.getTime());
     }
 
+    @Override
+    public String toString() {
+        return timeFormat;
+    }
+
     public int getHour() {
         return hour;
     }

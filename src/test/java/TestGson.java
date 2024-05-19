@@ -19,6 +19,7 @@ public class TestGson {
         String json2 = loadFromJson("test.json");
         Test load = gson.fromJson(json2, Test.class);
         System.out.println(load);
+        System.out.println(load.getAnchorPane()==null);
     }
 
     private static void saveToJson(String json) {
@@ -77,6 +78,11 @@ class Test {
     private double height;
     private boolean isStudent;
     private String[] hobbies;
+
+    public AnchorPane getAnchorPane() {
+        return anchorPane;
+    }
+
     private transient AnchorPane anchorPane;
 
     public Test(String name, int age, double height, boolean isStudent) {

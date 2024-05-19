@@ -21,6 +21,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import model.Save;
 import model.Tile;
 import model.Grid;
 import util.Direction;
@@ -59,8 +60,7 @@ public class GameUI extends Application {
     /** 运行时参数 **/
     // 分数
     private static int score = 0;
-    // 步数
-    private static int step = 0;
+
     // 是否加载
     private static boolean isLoad = false;
     // 胜利标志
@@ -74,6 +74,7 @@ public class GameUI extends Application {
     // AI线程
     private static AIThread aiThread;
     private static Timer timer;
+    private static Time startTime;
 
     public static int getSize() {
         return size;
@@ -140,11 +141,12 @@ public class GameUI extends Application {
         } else {
             grid.load(gamePane);
             Paint.draw(grid, gamePane, size, 11, 11);
+            updateState();
         }
 
         
         // 计时器
-        timer = new Timer(Time.ZERO, Time.INFINITE);
+        timer = new Timer(startTime, Time.INFINITE);
         timer.begin();
 //        timer.setEndEvent(() -> {
 //            isAuto = false;
@@ -184,7 +186,7 @@ public class GameUI extends Application {
 
         appear.play(Animation.CombineType.GROUP);
         upDateScore(scoreLabel, grid);
-        step = 0;
+
         upDateStep(stepLabel, grid);
         scene.getRoot().requestFocus();
 
@@ -477,25 +479,47 @@ public class GameUI extends Application {
         gamePane.getChildren().add(losePane);
     }
 
+    private void makeSave() {
+        // 保存存档
+        // 保存用户信息
+        Save.State state;
+        if (isWin) {
+            state = Save.State.WIN;
+        } else if (isLose) {
+            state = Save.State.LOSE;
+        } else {
+            state = Save.State.IN_PROGRESS;
+        }
+        Save save = new Save(grid, state, startTime);
+    }
+
     // 初始化GameUI
     public static void init(int size, int mode) {
         GameUI.setSize(size);
         GameUI.setMode(mode);
         GameUI.setBoard(new Grid(size, mode));
+        GameUI.setStartTime(Time.ZERO);
     }
 
-    public static void init(int mode, int[][] board) {
+    private static void setStartTime(Time startTime) {
+        GameUI.startTime = startTime;
+    }
+
+    // 读取存档时
+    public static void init(int mode, int[][] board, Time startTime) {
         GameUI.setSize(board.length);
         GameUI.setMode(mode);
-        GameUI.setBoard(new Grid(board));
+        GameUI.setBoard(new Grid(board, mode));
+        GameUI.setStartTime(startTime);
         isLoad = true;
 
     }
 
-    public static void init(Grid grid) {
+    public static void init(Grid grid, Time startTime) {
         GameUI.setBoard(grid);
         GameUI.setSize(grid.getSize());
         GameUI.setMode(grid.getMode());
+        GameUI.setStartTime(startTime);
         isLoad = true;
     }
 
@@ -545,5 +569,8 @@ public class GameUI extends Application {
     public void exitAction() {
         if (isAuto) return;
         timer.stop();
+        // 弹出对话
+//        PopUpDialog dialog = new PopUpDialog("Exit", "Are you sure to exit?", "Yes", "No");
+
     }
 }
