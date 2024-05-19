@@ -1,5 +1,6 @@
 package model;
 
+import com.google.gson.annotations.Expose;
 import controller.Animation;
 import controller.Animation.CombineType;
 import controller.MoveAnimation;
@@ -30,9 +31,12 @@ import java.util.*;
  */
 public class Grid {
 
+    @Expose
     private final int mode;
+    @Expose
     private final int size;
     private Tile[][] tileGrid;
+    @Expose
     private int[][] board;
 
     public AnchorPane getGamePane() {
@@ -44,8 +48,11 @@ public class Grid {
     }
 
     private AnchorPane gamePane;
+    @Expose
     private Stack<Status> history;
+    @Expose
     private int score;
+    @Expose
     private int step;
 
     private boolean[][] isMerged; // 用于记录格子是否已经合并过
@@ -64,7 +71,7 @@ public class Grid {
     }
 
 
-    public Grid(int[][] board) {
+    public Grid(int[][] board, int mode) {
         this.size = board.length;
         this.board = board;
         this.tileGrid = new Tile[size][size];
@@ -388,7 +395,11 @@ public class Grid {
             copyBoard(status.getBoard(), board);
             score = status.getScore();
             step = status.getStep();
-            copyTileGrid(status.getTileGrid(), tileGrid, gamePane);
+            if (status.getTileGrid() != null){
+                copyTileGrid(status.getTileGrid(), tileGrid, gamePane);
+            } else {
+                fillTileGrid();
+            }
         }
     }
 
@@ -567,7 +578,7 @@ class Status {
     private final int[][] board;
     private final int score;
     private final int step;
-    private final Tile[][] tileGrid;
+    private transient final Tile[][] tileGrid;
 
     public Status(int[][] board, int score, int step, Tile[][] tileGrid, AnchorPane parentPane) {
         this.board = new int[board.length][board[0].length];

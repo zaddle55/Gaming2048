@@ -1,3 +1,4 @@
+import controller.ArchiveUI;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,8 +24,6 @@ public class TestArchiveUI extends Application {
     }
 
     public static void main(String[] args) {
-        Executors.newSingleThreadExecutor().submit(() -> {
-            launch(args);
-        });
+        Executors.newSingleThreadExecutor().submit(ArchiveUI::run);
     }
 }

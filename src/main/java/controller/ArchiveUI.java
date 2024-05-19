@@ -2,6 +2,7 @@ package controller;
 
 import com.google.gson.annotations.Expose;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -83,17 +84,17 @@ public class ArchiveUI extends Application {
 
     private AnchorPane createSaveUnit(Save save) {
         AnchorPane saveUnit = new AnchorPane();
-        saveUnit.setPrefSize(200, 260);
+        saveUnit.setPrefSize(160, 220);
         // 设置存档背景为dropshadow
         saveUnit.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);");
         // 读取存档预览
-        AnchorPane preview = save.grid.getGamePane();
-        // 缩放预览 从700*700缩放至200*200
-        preview.setScaleX(0.2857);
-        preview.setScaleY(0.2857);
-        preview.setLayoutX(0);
-        preview.setLayoutY(0);
-        saveUnit.getChildren().add(preview);
+
+//        // 缩放预览 从700*700缩放至200*200
+//        preview.setScaleX(0.2857);
+//        preview.setScaleY(0.2857);
+//        preview.setLayoutX(0);
+//        preview.setLayoutY(0);
+//        saveUnit.getChildren().add(preview);
         // 读取存档信息
         // 存档日期
         Label date = new Label(save.getDate());
@@ -118,7 +119,7 @@ public class ArchiveUI extends Application {
     /* ****** Button Action ****** */
     public void leftSwitchAction() {
         if (curIndex > 0) {
-            SwitchInterfaceAnimation switchAnimation = new SwitchInterfaceAnimation(new ArrayList<>(){
+            SwitchInterfaceAnimation switchAnimation = new SwitchInterfaceAnimation(new ArrayList<>() {
                 {
                     add(saveInterfaceList.get(curIndex));
                     add(saveInterfaceList.get(curIndex - 1));
@@ -140,7 +141,7 @@ public class ArchiveUI extends Application {
 
     public void rightSwitchAction() {
         if (curIndex < saveInterfaceList.size() - 1) {
-            SwitchInterfaceAnimation switchAnimation = new SwitchInterfaceAnimation(new ArrayList<>(){
+            SwitchInterfaceAnimation switchAnimation = new SwitchInterfaceAnimation(new ArrayList<>() {
                 {
                     add(saveInterfaceList.get(curIndex));
                     add(saveInterfaceList.get(curIndex + 1));
@@ -193,7 +194,7 @@ public class ArchiveUI extends Application {
         rightArrow = (Label) scene.lookup("#rightArrow");
         upperPane = (AnchorPane) scene.lookup("#upperPane");
 
-        rightArrow.setVisible(true);
+//        rightArrow.setVisible(true);
 
 //        loadArchive();
         primaryStage.setScene(scene);
@@ -206,8 +207,17 @@ public class ArchiveUI extends Application {
         primaryStage.show();
     }
 
-
-    public static void main(String[] args) {
-        launch(args);
+    // 运行ArchiveUI
+    public static void run() {
+        Platform.runLater(() -> {
+            ArchiveUI archiveUI = new ArchiveUI();
+            Stage primaryStage = new Stage();
+            try {
+                archiveUI.start(primaryStage);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
     }
+
 }
