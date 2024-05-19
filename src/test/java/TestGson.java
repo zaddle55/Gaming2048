@@ -1,5 +1,6 @@
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import javafx.scene.layout.AnchorPane;
 
 import java.io.*;
 import java.util.Arrays;
@@ -76,6 +77,7 @@ class Test {
     private double height;
     private boolean isStudent;
     private String[] hobbies;
+    private transient AnchorPane anchorPane;
 
     public Test(String name, int age, double height, boolean isStudent) {
         this.name = name;
@@ -83,6 +85,11 @@ class Test {
         this.height = height;
         this.isStudent = isStudent;
         this.hobbies = new String[]{"reading", "running"};
+        this.anchorPane = new AnchorPane();
+        anchorPane.setPrefHeight(100);
+        anchorPane.setPrefWidth(100);
+        anchorPane.setLayoutX(200);
+        anchorPane.setLayoutY(200);
     }
 
     public Test(String name, int age, double height, boolean isStudent, String[] hobbies) {

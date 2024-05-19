@@ -13,6 +13,15 @@ public class Save {
     public Date saveDate;
     public Time saveTime;
 
+    // 构造器
+    public Save(Grid grid, State state) {
+        this.grid = grid;
+        this.state = state;
+        this.saveDate = new Date();
+        // 计算存档时间
+        this.saveTime = new Time(saveDate.getTime());
+    }
+
     public String getDate() {
         return saveDate.toString();
     }
