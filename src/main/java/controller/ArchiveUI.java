@@ -3,6 +3,7 @@ package controller;
 import com.google.gson.annotations.Expose;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,8 +15,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import model.Grid;
 import model.Save;
 import util.Direction;
+import util.graphic.Paint;
+import util.graphic.SaveUnitPane;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -83,31 +87,58 @@ public class ArchiveUI extends Application {
     }
 
     private AnchorPane createSaveUnit(Save save) {
-        AnchorPane saveUnit = new AnchorPane();
-        saveUnit.setPrefSize(160, 220);
-        // 设置存档背景为dropshadow
-        saveUnit.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);");
-        // 读取存档预览
+        SaveUnitPane saveUnit = new SaveUnitPane();
 
-//        // 缩放预览 从700*700缩放至200*200
-//        preview.setScaleX(0.2857);
-//        preview.setScaleY(0.2857);
-//        preview.setLayoutX(0);
-//        preview.setLayoutY(0);
-//        saveUnit.getChildren().add(preview);
+        Grid grid = save.getGrid();
+        grid.load(saveUnit.getPreviewPane());
+        // 计算线宽
+        double lineWidth = 0.5;
+        Paint.draw(grid, saveUnit.getPreviewPane(), grid.getSize(), lineWidth, lineWidth);
+
+
         // 读取存档信息
         // 存档日期
         Label date = new Label(save.getDate());
+        final String customCSS = "-fx-font-size: 10px; " +
+                "-fx-text-fill: #727272; " +
+                "-fx-font-weight: bold;" +
+                "-fx-font-family: 'Arial';";
+        date.setStyle(customCSS);
         // 存档时间
         Label time = new Label(save.getTime());
+        time.setStyle(customCSS);
         // 存档分数
         Label score = new Label("Score: " + save.grid.getScore());
+        score.setStyle(customCSS);
         // 存档步数
         Label step = new Label("Step: " + save.grid.getStep());
+        step.setStyle(customCSS);
         // 存档游戏模式
         Label mode = new Label("Mode: " + save.grid.getMode());
+        mode.setStyle(customCSS);
         // 存档游戏状态
         Label state = new Label("State: " + save.getState());
+        // 存档游戏时间
+        Label playTime = new Label("Time: " + save.getPlayTime());
+        playTime.setStyle(customCSS);
+
+        saveUnit.getInfoPane().getChildren().addAll(date, time, score, step, mode, state, playTime);
+
+
+        // 设置存档点击事件
+        saveUnit.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                // 点击存档时，存档界面变暗
+                if (saveUnit.isClicked()) {
+                    saveUnit.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);");
+                    saveUnit.reverseClicked();
+                } else { // 点击存档时，存档界面变亮
+                    saveUnit.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0), dropshadow(rgba(0,0,0,0.2), 0, 0, 0, 0);");
+                    saveUnit.reverseClicked();
+                }
+            }
+        });
         return saveUnit;
     }
 
