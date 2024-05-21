@@ -1,6 +1,7 @@
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import javafx.scene.layout.AnchorPane;
+import model.Grid;
 
 import java.io.*;
 import java.util.Arrays;
@@ -78,6 +79,7 @@ class Test {
     private double height;
     private boolean isStudent;
     private String[] hobbies;
+    private Grid grid;
 
     public AnchorPane getAnchorPane() {
         return anchorPane;
