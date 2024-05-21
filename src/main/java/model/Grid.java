@@ -31,12 +31,12 @@ import java.util.*;
  */
 public class Grid {
 
-    @Expose
+
     private final int mode;
-    @Expose
+
     private final int size;
-    private Tile[][] tileGrid;
-    @Expose
+
+
     private int[][] board;
 
     public AnchorPane getGamePane() {
@@ -47,16 +47,17 @@ public class Grid {
         this.gamePane = gamePane;
     }
 
-    private AnchorPane gamePane;
-    @Expose
+    private transient AnchorPane gamePane;
+    private transient Tile[][] tileGrid;
+
     private Stack<Status> history;
-    @Expose
+
     private int score;
-    @Expose
+
     private int step;
 
-    private boolean[][] isMerged; // 用于记录格子是否已经合并过
-    private boolean[][] isNew; // 用于记录格子是否是新生成的
+    private transient boolean[][] isMerged; // 用于记录格子是否已经合并过
+    private transient boolean[][] isNew; // 用于记录格子是否是新生成的
 
     // 通过初始ID与大小,模式初始化游戏板
     public Grid(int size, int mode) {
