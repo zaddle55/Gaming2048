@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="" />
+    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/PopUpDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ArchiveUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ArchiveUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GameUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GameUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Grid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Save.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Save.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/Time.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Time.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/FXView/ArchiveUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXView/ArchiveUI.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/TestArchiveUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestArchiveUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/TestGson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestGson.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,7 +61,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "extract.method.default.visibility": "private",
-    "git-widget-placeholder": "dev",
+    "git-widget-placeholder": "zaddle",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Administrator/IdeaProjects/Reach2048/target/classes/assets/buttonIcon",
     "list.type.of.created.stylesheet": "CSS",
@@ -77,7 +88,7 @@
     "应用程序.TestMainUIApplication.executor": "Run",
     "应用程序.TestScaleTransition.executor": "Run"
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="controller" />
@@ -93,7 +104,7 @@
       <recent name="C:\Users\Administrator\IdeaProjects\Reach2048\src\main\resources\assets" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.GameApplication">
+  <component name="RunManager" selected="应用程序.TestArchiveUI">
     <configuration name="ArchiveUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="controller.ArchiveUI" />
       <module name="Reach2048" />
@@ -159,10 +170,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="应用程序.GameApplication" />
-        <item itemvalue="应用程序.TestGson" />
         <item itemvalue="应用程序.TestArchiveUI" />
         <item itemvalue="应用程序.TestMainUIApplication" />
+        <item itemvalue="应用程序.GameApplication" />
+        <item itemvalue="应用程序.TestGson" />
         <item itemvalue="应用程序.ArchiveUI" />
       </list>
     </recent_temporary>
@@ -217,6 +228,7 @@
       <workItem from="1716028971151" duration="16597000" />
       <workItem from="1716047162570" duration="1107000" />
       <workItem from="1716095962267" duration="3773000" />
+      <workItem from="1716193424288" duration="6718000" />
     </task>
     <task id="LOCAL-00013" summary="modify project structure">
       <option name="closed" value="true" />
@@ -650,7 +662,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="revise game logic" />
     <MESSAGE value="rebuild with maven(3.9.5) javafx(21) fxgl(21.1)" />
     <MESSAGE value="test javafx" />
     <MESSAGE value="modify project structure" />
@@ -675,7 +686,8 @@
     <MESSAGE value="Add ArchiveUI" />
     <MESSAGE value="Complete Basic ArchiveUI" />
     <MESSAGE value="Update User Class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update User Class" />
+    <MESSAGE value="Revision for save data management" />
+    <option name="LAST_COMMIT_MESSAGE" value="Revision for save data management" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -699,11 +711,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
           <line>551</line>
           <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controller/ArchiveUI.java</url>
-          <line>72</line>
-          <option name="timeStamp" value="36" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/model/Grid.java</url>
