@@ -1,5 +1,6 @@
 import controller.GameUI;
 import util.GameModeFactory;
+import util.Time;
 
 public class GameApplication{
 
@@ -10,11 +11,11 @@ public class GameApplication{
 //                    {8, 8, 0, 0, 0 ,8, 8},
 //                    {8, 8, 0, 0, 0 ,0, 0},
 //                    {8, 8, 0, 0, 0 ,8, 8},
-//                    {8, 8, 0, 0, 0 ,8, 8},
+//                    {8, 8, 0, 0, 1024 ,8, 8},
 //                    {8, 8, 0, 0, 0 ,8, 8},
 //                    {8, 8, 0, 0, 0 ,8, 8}
-//            });
-            GameUI.init(4, GameModeFactory.CHALLENGE);
+//            }, Time.ZERO);
+            GameUI.init(4, GameModeFactory.CLASSIC);
             GameUI.start();
         }
 }

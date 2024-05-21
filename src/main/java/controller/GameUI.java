@@ -17,6 +17,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
@@ -31,6 +33,7 @@ import util.graphic.Paint;
 
 import java.util.Map;
 import java.util.Objects;
+import java.io.File;
 
 
 public class GameUI extends Application {
@@ -63,6 +66,7 @@ public class GameUI extends Application {
 
     // 是否加载
     private static boolean isLoad = false;
+    // private static User currentUser;
     // 胜利标志
     public static boolean isWin = false;
     // 失败标志
@@ -263,6 +267,16 @@ public class GameUI extends Application {
 //        // 移除键盘焦点
 //        scene.addEventFilter(KeyEvent.ANY, KeyEvent::consume);
 
+        // 创建一个指向音频文件的URL
+        String audioFilePath = "C:\\Users\\Administrator\\IdeaProjects\\Reach2048\\src\\main\\resources\\assets\\sound\\moveSound.mp3"; // 替换为您的音频文件路径
+        Media sound = new Media(new File(audioFilePath).toURI().toString());
+
+        // 创建MediaPlayer对象
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+
+        // 播放音效
+        mediaPlayer.play();
+
         MoveAnimation slide = new MoveAnimation(down, distanceMap);
         slide.makeTransition();
         slide.setOnFinished(event1 -> {
@@ -274,6 +288,8 @@ public class GameUI extends Application {
             bounce.makeTransition();
             ParallelTransition group1 = new ParallelTransition(bounce.getGroupTransition(), appear.getGroupTransition());
             group1.play();
+
+
             updateState();
 //            // 恢复键盘焦点
 //            scene.removeEventFilter(KeyEvent.ANY, KeyEvent::consume);

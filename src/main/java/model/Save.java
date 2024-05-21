@@ -69,7 +69,20 @@ public class Save {
     }
 
     public static enum State {
-        WIN, LOSE, IN_PROGRESS;
+        WIN("-fx-text-fill: #00ff00;" +
+                "-fx-font-size: 10px; " +
+                "-fx-font-weight: bold;" +
+                "-fx-font-family: 'Arial';"),
+        LOSE("-fx-" +
+                ""),
+        IN_PROGRESS("-fx-" +
+                "");
+
+        public String style;
+
+        private State(String style) {
+            this.style = style;
+        }
 
         @Override
         public String toString() {
