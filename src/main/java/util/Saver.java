@@ -21,4 +21,11 @@ public class Saver {
             file.mkdirs();
         }
     }
+    public void saveToJson(String json, String pathName) {
+
+    }
+    public boolean hasFile(String dir, String fileName) {
+
+    }
+
 }
