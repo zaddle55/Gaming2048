@@ -50,9 +50,6 @@ public class Timer extends Service<Void> {
                 currentTime = startTime;
                 if (mode == COUNT_UP) {
                     while (true) {
-                        if (!isRunning) {
-                            continue;
-                        }
 
                         if (currentTime > endTime) {
                             break;
@@ -60,15 +57,16 @@ public class Timer extends Service<Void> {
 
                         Time time = new Time(currentTime);
                         updateMessage(time.getTimeFormat());
+                        if (!isRunning) {
+                            continue;
+                        }
                         ++currentTime;
                         sleep(SECOND_PER_MILLIS);
                     }
                 } else {
 
                     while (true) {
-                        if (!isRunning) {
-                            continue;
-                        }
+
 
                         if (currentTime < 0) {
                             break;
@@ -76,6 +74,9 @@ public class Timer extends Service<Void> {
 
                         Time time = new Time(currentTime);
                         updateMessage(time.getTimeFormat());
+                        if (!isRunning) {
+                            continue;
+                        }
                         --currentTime;
                         sleep(SECOND_PER_MILLIS);
                     }

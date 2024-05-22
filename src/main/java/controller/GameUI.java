@@ -145,10 +145,9 @@ public class GameUI extends Application {
         } else {
             grid.load(gamePane);
             Paint.draw(grid, gamePane, size, 11, 11);
-            updateState();
+
         }
 
-        
         // 计时器
         timer = new Timer(startTime, Time.INFINITE);
         timer.begin();
@@ -158,6 +157,7 @@ public class GameUI extends Application {
 //            winAction();
 //        });
         timeLabel.textProperty().bind(timer.messageProperty());
+        updateState();
 
         // 设置键盘监听
         scene.setOnKeyPressed(event -> {

@@ -7,7 +7,6 @@ import model.Grid;
 import model.Tile;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class PopUpAnimation extends Animation{
 

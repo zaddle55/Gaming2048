@@ -5,7 +5,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="1000" prefWidth="1000" stylesheets="@../css/archiveUI.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ArchiveUI">
+<AnchorPane fx:id="archivePane" prefHeight="1000" prefWidth="1000" stylesheets="@../css/archiveUI.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ArchiveUI">
     <children>
         <!--标题-->
         <AnchorPane prefHeight="60.0" prefWidth="1000.0" styleClass="">

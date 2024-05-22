@@ -1,38 +1,64 @@
 package model;
 
-import controller.SwitchInterfaceAnimation;
 import util.Time;
+import util.Date;
 
-import java.time.LocalTime;
-import java.util.Date;
 
 public class Save {
+
+    public String saveName;
 
     public Grid grid;
 
     public State state;
 
     public Date saveDate;
-    public LocalTime saveTime;
-
+    public Time saveTime;
     public Time playTime;
 
-    // 构造器
+    // 构造器, 弃用
     public Save(Grid grid, State state, Time playTime) {
         this.grid = grid;
         this.state = state;
         this.saveDate = new Date();
-        // 计算存档时间
-        this.saveTime = LocalTime.now();
+        this.saveTime = new Time();
         this.playTime = playTime;
+    }
+
+    // 构造器
+    public Save(String saveName, Grid grid, State state, Time playTime) {
+        this.saveName = saveName;
+        this.grid = grid;
+        this.state = state;
+        this.playTime = playTime;
+        this.saveDate = new Date();
+        this.saveTime = new Time();
+    }
+
+    // 构造器
+    public Save(String saveName, Grid grid, State state, Time playTime, Date saveDate, Time saveTime) {
+        this.saveName = saveName;
+        this.grid = grid;
+        this.state = state;
+        this.playTime = playTime;
+        this.saveDate = saveDate;
+        this.saveTime = saveTime;
+    }
+
+    // 自动存档构造器
+    public Save(Grid grid, State state, Time playTime, Date saveDate, Time saveTime) {
+        this.grid = grid;
+        this.state = state;
+        this.playTime = playTime;
+        this.saveDate = saveDate;
+        this.saveTime = saveTime;
+        this.saveName = "Auto " + saveDate.getYear() + saveDate.getMonth() + saveDate.getDay()
+                        + saveTime.getHour() + saveTime.getMinute() + saveTime.getSecond();
     }
 
     // 返回格式 "yyyy-MM-dd"
     public String getDate() {
-        StringBuilder sb = new StringBuilder();
-        String[] dateArray = saveDate.toString().split(" ");
-        sb.append(dateArray[5]).append("-").append(dateArray[1]).append("-").append(dateArray[2]);
-        return sb.toString();
+        return saveDate.toString();
     }
 
     public String getTime() {
@@ -69,29 +95,45 @@ public class Save {
     }
 
     public static enum State {
-        WIN("-fx-text-fill: #00ff00;" +
-                "-fx-font-size: 10px; " +
+        WIN("-fx-text-fill: #FACE09;" +
+                "-fx-font-size: 14px; " +
                 "-fx-font-weight: bold;" +
-                "-fx-font-family: 'Arial';"),
-        LOSE("-fx-" +
-                ""),
-        IN_PROGRESS("-fx-" +
-                "");
+                "-fx-text-alignment: center;" +
+                "-fx-background-color: rgba(245, 227, 137, 0.4);" +
+                "-fx-background-radius: 8px;", 50.0),
+        LOSE("-fx-text-fill: #878684;" +
+                "-fx-font-size: 14px; " +
+                "-fx-font-weight: bold;" +
+                "-fx-text-alignment: center;" +
+                "-fx-background-color: rgba(215, 213, 200, 0.6);" +
+                "-fx-background-radius: 8px;", 55.0),
+        IN_PROGRESS("-fx-text-fill: #1582FE;" +
+                "-fx-font-size: 14px; " +
+                "-fx-font-weight: bold;" +
+                "-fx-text-alignment: center;" +
+                "-fx-background-color: rgba(183, 241, 250, 0.6);" +
+                "-fx-background-radius: 8px;", 115.0);
 
         public String style;
+        public double width;
 
-        private State(String style) {
+        private State(String style, double width) {
             this.style = style;
+            this.width = width;
         }
 
         @Override
         public String toString() {
             return switch (this) {
-                case WIN -> "Win";
-                case LOSE -> "Lose";
-                case IN_PROGRESS -> "In Progress";
-                default -> "Unknown";
+                case WIN -> "WIN";
+                case LOSE -> "LOSE";
+                case IN_PROGRESS -> "IN PROGRESS";
+                default -> "UNKNOWN";
             };
+        }
+
+        public String getStyle() {
+            return style;
         }
 
         // 各状态对应标签样式(CSS字符串)

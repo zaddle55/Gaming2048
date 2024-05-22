@@ -1,7 +1,12 @@
 package model;
 
+import javafx.scene.effect.Bloom;
+import javafx.scene.effect.BlurType;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.Effect;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -79,6 +84,10 @@ public class Tile extends StackPane {
                 blockText.setFont(font);
 
                 blockText.setFill(ColorMap.getTextColor(value)); // 设置字体颜色
+
+//                if (value == 2048) {
+//                    setEffect(new DropShadow(BlurType.GAUSSIAN, Color.YELLOW, 20, -1, 0, 0));
+//                }
 
                 getChildren().addAll(blockRect, blockText);
 

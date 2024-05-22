@@ -1,0 +1,17 @@
+
+
+
+
+.button {
+    -fx-background-color: rgba(215, 128, 91, 0.6);
+    -fx-background-radius: 5px;
+    -fx-background-size: cover;
+    -fx-background-position: center;
+}
+
+.button:pressed {
+    -fx-background-color: #dcbd80;
+    -fx-background-radius: 5px;
+    -fx-background-size: cover;
+    -fx-background-position: center;
+}
