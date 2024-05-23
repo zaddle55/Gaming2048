@@ -1,0 +1,42 @@
+.Dialog-pane {
+    -fx-background-color: #f0f0f0;
+    -fx-border-color: #d0d0d0;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+.Dialog-pane .header {
+    -fx-background-color: #f0f0f0;
+    -fx-border-color: #bfda56;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 5;
+}
+
+.Dialog-pane .content {
+    -fx-padding: 10;
+}   
+
+.Dialog-pane .footer {
+    -fx-background-color: #f0f0f0;
+    -fx-border-color: #d0d0d0;
+    -fx-border-width: 1 0 0 0;
+    -fx-padding: 5;
+}
+
+.Dialog-pane .footer .button {
+    -fx-background-color: #3aebdf;
+    -fx-border-color: #d0d0d0;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 5 10;
+}
+
+.Dialog-pane .footer .button:hover {
+    -fx-background-color: #e0e0e0;
+}
+
+.Dialog-pane .footer .button:pressed {
+    -fx-background-color: #d0d0d0;
+}
