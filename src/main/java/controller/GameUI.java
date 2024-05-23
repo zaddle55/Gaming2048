@@ -10,15 +10,23 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.Save;
@@ -28,9 +36,12 @@ import util.Direction;
 import util.Time;
 import util.Timer;
 import util.graphic.Paint;
+import model.*;
 
 import java.util.Map;
 import java.util.Objects;
+import java.io.File;
+import java.time.LocalDate;
 
 
 public class GameUI extends Application {
@@ -63,6 +74,7 @@ public class GameUI extends Application {
 
     // 是否加载
     private static boolean isLoad = false;
+    private static User currentUser;
     // 胜利标志
     public static boolean isWin = false;
     // 失败标志
@@ -71,6 +83,8 @@ public class GameUI extends Application {
     private static boolean isEnd = false;
     // AI运行标志
     public static boolean isAuto = false;
+    // 当前存档
+    private static Save currentSave;
     // AI线程
     private static AIThread aiThread;
     private static Timer timer;
@@ -141,10 +155,9 @@ public class GameUI extends Application {
         } else {
             grid.load(gamePane);
             Paint.draw(grid, gamePane, size, 11, 11);
-            updateState();
+
         }
 
-        
         // 计时器
         timer = new Timer(startTime, Time.INFINITE);
         timer.begin();
@@ -154,6 +167,7 @@ public class GameUI extends Application {
 //            winAction();
 //        });
         timeLabel.textProperty().bind(timer.messageProperty());
+        updateState();
 
         // 设置键盘监听
         scene.setOnKeyPressed(event -> {
@@ -260,8 +274,19 @@ public class GameUI extends Application {
     }
 
     private void makeAnimation(Direction down, Map<Tile, Double> distanceMap) {
-//        // 移除键盘焦点
+        // 移除键盘焦点
 //        scene.addEventFilter(KeyEvent.ANY, KeyEvent::consume);
+        isEnd = true;
+
+        // 创建一个指向音频文件的URL
+        String audioFilePath = ".\\src\\main\\resources\\assets\\sound\\moveSound.mp3"; // 替换为您的音频文件路径
+        Media sound = new Media(new File(audioFilePath).toURI().toString());
+
+        // 创建MediaPlayer对象
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+
+        // 播放音效
+        mediaPlayer.play();
 
         MoveAnimation slide = new MoveAnimation(down, distanceMap);
         slide.makeTransition();
@@ -274,9 +299,13 @@ public class GameUI extends Application {
             bounce.makeTransition();
             ParallelTransition group1 = new ParallelTransition(bounce.getGroupTransition(), appear.getGroupTransition());
             group1.play();
+
+
             updateState();
 //            // 恢复键盘焦点
 //            scene.removeEventFilter(KeyEvent.ANY, KeyEvent::consume);
+            isEnd = false;
+            
 
         });
         slide.play(Animation.CombineType.GROUP);
@@ -479,7 +508,21 @@ public class GameUI extends Application {
         gamePane.getChildren().add(losePane);
     }
 
-    private void makeSave() {
+    private void manualSave() {
+        // 弹出对话框
+        // Custom
+        AnchorPane pane = new AnchorPane();
+        Label label = new Label("Save Name:");
+        // 输入框
+        TextField textField = new TextField();
+        if (currentSave != null && isLoad) {
+            textField.setText(currentSave.saveName);
+        }
+        textField.setLayoutX(100);
+        textField.setLayoutY(50);
+        // 添加到pane
+        pane.getChildren().addAll(label, textField);
+
         // 保存存档
         // 保存用户信息
         Save.State state;
@@ -490,7 +533,30 @@ public class GameUI extends Application {
         } else {
             state = Save.State.IN_PROGRESS;
         }
-        Save save = new Save(grid, state, startTime);
+        
+        // 保存到User对应存档路径
+    }
+
+    private void autoSave() {
+        // 保存存档
+        // 保存用户信息
+        Save.State state;
+        if (isWin) {
+            state = Save.State.WIN;
+        } else if (isLose) {
+            state = Save.State.LOSE;
+        } else {
+            state = Save.State.IN_PROGRESS;
+        }
+        if (currentSave == null) {
+            String saveName = "Auto " + LocalDate.now().toString();
+            currentSave = new Save(saveName, grid, state, startTime);
+            // 保存到User对应存档路径
+            
+        } else {
+            currentSave = new Save(currentSave.saveName, grid, state, startTime);
+            // 保存到User对应存档路径
+        }
     }
 
     // 初始化GameUI
@@ -569,8 +635,33 @@ public class GameUI extends Application {
     public void exitAction() {
         if (isAuto) return;
         timer.stop();
+        isEnd = true;
         // 弹出对话
-//        PopUpDialog dialog = new PopUpDialog("Exit", "Are you sure to exit?", "Yes", "No");
+        // CustomAlert alert = new CustomAlert(CustomAlert.AlertType.CONFIRMATION, "Exit", "Do you want to save the game?", "Exit");
+        // DialogPane dialogPane = alert.getDialogPane();
+        // 替换为自定义按钮
+
+        Button saveButton = new Button("Save");
+        Button exitButton = new Button("Exit");
+        Button cancelButton = new Button("Cancel");
+        // dialogPane.setContent(new HBox(saveButton, exitButton, cancelButton));
+        // dialogPane.setPrefSize(300, 200);
+
+        saveButton.setOnAction(event -> {
+            manualSave();
+            // alert.close();
+        });
+        exitButton.setOnAction(event -> {
+            
+            // alert.close();
+            Platform.exit();
+        });
+        cancelButton.setOnAction(event -> {
+            timer.continueTimer();
+            // alert.close();
+            isEnd = false;
+        });
+        // alert.showAndWait();
 
     }
 }

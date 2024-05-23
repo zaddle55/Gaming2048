@@ -4,17 +4,39 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="">
       <change afterPath="$PROJECT_DIR$/src/main/java/controller/PopUpDialog.java" afterDir="false" />
+=======
+    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="Add move sound effect and apply custom font">
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/RandomSave.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/Date.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/comparator/CompareByScore.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/comparator/CompareByTime.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/css/optionPane.css" afterDir="false" />
+>>>>>>> zaddle
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GameApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/ArchiveUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ArchiveUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/GameUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GameUI.java" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Grid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Save.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Save.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/util/Time.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Time.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/FXView/ArchiveUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXView/ArchiveUI.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/TestArchiveUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestArchiveUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/TestGson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestGson.java" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/PopUpAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/PopUpAnimation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Grid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Save.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Save.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Tile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/Time.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Time.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/Timer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Timer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/graphic/SaveUnitPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/graphic/SaveUnitPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/FXView/ArchiveUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXView/ArchiveUI.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/TestArchiveUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestArchiveUI.java" afterDir="false" />
+>>>>>>> zaddle
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +47,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
-        <option value="CSS File" />
         <option value="Class" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -52,6 +74,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="openDirectoriesWithSingleClick" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
@@ -108,7 +131,7 @@
     <configuration name="ArchiveUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="controller.ArchiveUI" />
       <module name="Reach2048" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\lib\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\lib\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml --add-modules javafx.controls,javafx.media --add-exports javafx.graphics/com.sun.glass.utils=ALL-UNNAMED --add-exports javafx.graphics/com.sun.javafx.tk.quantum=ALL-UNNAMED" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="controller.*" />
@@ -122,7 +145,7 @@
     <configuration name="GameApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GameApplication" />
       <module name="Reach2048" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\lib\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\lib\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml --add-modules javafx.controls,javafx.media --add-exports javafx.graphics/com.sun.glass.utils=ALL-UNNAMED --add-exports javafx.graphics/com.sun.javafx.tk.quantum=ALL-UNNAMED" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -130,7 +153,7 @@
     <configuration name="TestArchiveUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="TestArchiveUI" />
       <module name="Reach2048" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\lib\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\lib\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml --add-modules javafx.controls,javafx.media --add-exports javafx.graphics/com.sun.glass.utils=ALL-UNNAMED --add-exports javafx.graphics/com.sun.javafx.tk.quantum=ALL-UNNAMED" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -145,7 +168,7 @@
     <configuration name="TestMainUIApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="TestMainUIApplication" />
       <module name="Reach2048" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\lib\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\lib\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml --add-modules javafx.controls,javafx.media --add-exports javafx.graphics/com.sun.glass.utils=ALL-UNNAMED --add-exports javafx.graphics/com.sun.javafx.tk.quantum=ALL-UNNAMED" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -172,9 +195,9 @@
       <list>
         <item itemvalue="应用程序.TestArchiveUI" />
         <item itemvalue="应用程序.TestMainUIApplication" />
+        <item itemvalue="应用程序.ArchiveUI" />
         <item itemvalue="应用程序.GameApplication" />
         <item itemvalue="应用程序.TestGson" />
-        <item itemvalue="应用程序.ArchiveUI" />
       </list>
     </recent_temporary>
   </component>
@@ -228,6 +251,7 @@
       <workItem from="1716028971151" duration="16597000" />
       <workItem from="1716047162570" duration="1107000" />
       <workItem from="1716095962267" duration="3773000" />
+<<<<<<< HEAD
       <workItem from="1716193424288" duration="6718000" />
     </task>
     <task id="LOCAL-00013" summary="modify project structure">
@@ -237,6 +261,12 @@
       <option name="presentableId" value="LOCAL-00013" />
       <option name="project" value="LOCAL" />
       <updated>1713796485610</updated>
+=======
+      <workItem from="1716193424288" duration="9123000" />
+      <workItem from="1716284815476" duration="6670000" />
+      <workItem from="1716306970474" duration="64000" />
+      <workItem from="1716366355841" duration="29227000" />
+>>>>>>> zaddle
     </task>
     <task id="LOCAL-00014" summary="modify project structure">
       <option name="closed" value="true" />
@@ -614,6 +644,7 @@
       <option name="project" value="LOCAL" />
       <updated>1716045429766</updated>
     </task>
+<<<<<<< HEAD
     <task id="LOCAL-00061" summary="Revision for save data management">
       <option name="closed" value="true" />
       <created>1716120415581</created>
@@ -623,6 +654,25 @@
       <updated>1716120415581</updated>
     </task>
     <option name="localTasksCounter" value="62" />
+=======
+    <task id="LOCAL-00061" summary="Design ArchiveUI">
+      <option name="closed" value="true" />
+      <created>1716201787309</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1716201787310</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Add move sound effect and apply custom font">
+      <option name="closed" value="true" />
+      <created>1716301959703</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1716301959703</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
+>>>>>>> zaddle
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -662,8 +712,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="rebuild with maven(3.9.5) javafx(21) fxgl(21.1)" />
-    <MESSAGE value="test javafx" />
     <MESSAGE value="modify project structure" />
     <MESSAGE value="modify mainui with fx" />
     <MESSAGE value="modify gamenui with fx" />
@@ -687,7 +735,9 @@
     <MESSAGE value="Complete Basic ArchiveUI" />
     <MESSAGE value="Update User Class" />
     <MESSAGE value="Revision for save data management" />
-    <option name="LAST_COMMIT_MESSAGE" value="Revision for save data management" />
+    <MESSAGE value="Design ArchiveUI" />
+    <MESSAGE value="Add move sound effect and apply custom font" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add move sound effect and apply custom font" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -699,27 +749,32 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/util/Timer.java</url>
-          <line>83</line>
+          <line>84</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
-          <line>557</line>
+          <line>573</line>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
-          <line>551</line>
+          <line>567</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/model/Grid.java</url>
-          <line>397</line>
+          <line>414</line>
           <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/controller/ArchiveUI.java</url>
+          <line>177</line>
+          <option name="timeStamp" value="39" />
         </line-breakpoint>
         <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/model/Grid.java</url>
-          <line>127</line>
+          <line>144</line>
           <properties class="model.Grid" method="move">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -728,7 +783,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/model/Grid.java</url>
-          <line>454</line>
+          <line>471</line>
           <properties class="model.Grid" method="generateRandomTile">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -740,6 +795,7 @@
     <watches-manager>
       <configuration name="Application">
         <watch expression="coordinationTool.gridToLayoutY(preEndPoint) - coordinationTool.gridToLayoutY(j)" language="JAVA" />
+        <watch expression="saveList.indexOf(save)" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>

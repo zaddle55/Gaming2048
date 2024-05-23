@@ -35,7 +35,16 @@
     <a href="https://download2.gluonhq.com/openjfx/21.0.2/openjfx-21.0.2_windows-x64_bin-sdk.zip">Download JavaFX SDK 21.0.2</a>
     </p>
     <p>
-    Virtual Machine Options: <code>--module-path "path/to/javafx-sdk-21.0.2/lib" --add-modules javafx.controls,javafx.fxml</code>
+    Virtual Machine Options: <code>--module-path
+"C:\Program Files\Java\lib\javafx-sdk-21.0.2\lib"
+--add-modules
+javafx.controls,javafx.fxml
+--add-modules
+javafx.controls,javafx.media
+--add-exports
+javafx.graphics/com.sun.glass.utils=ALL-UNNAMED
+--add-exports
+javafx.graphics/com.sun.javafx.tk.quantum=ALL-UNNAMED</code>
     </p>
 </div>
 
