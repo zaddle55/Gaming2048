@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<DialogPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" prefWidth="500">
+
+    <content>
+        <GridPane hgap="5" vgap="5">
+            <Label text="Адрес на хост:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <TextField fx:id="hostnameTextField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+            <Label text="База данни:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <TextField fx:id="databaseTextField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+            <Label text="Потребителско име:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <TextField fx:id="usernameTextField" prefWidth="200" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.fillWidth="false"/>
+
+            <Label text="Парола:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+            <PasswordField fx:id="passwordField" prefWidth="200" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.fillWidth="false"/>
+
+            <columnConstraints>
+                <ColumnConstraints/>
+                <ColumnConstraints hgrow="ALWAYS"/>
+            </columnConstraints>
+        </GridPane>
+    </content>
+
+    <buttonTypes>
+        <ButtonType fx:id="connectButtonType" text="Свързване" buttonData="OK_DONE"/>
+        <ButtonType text="Затвори" buttonData="CANCEL_CLOSE"/>
+    </buttonTypes>
+
+</DialogPane>

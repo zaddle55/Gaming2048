@@ -1,3 +1,4 @@
+import controller.MainUI;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -33,8 +34,6 @@ public class TestMainUIApplication extends Application {
     }
 
     public static void main(String[] args) {
-        Executors.newSingleThreadExecutor().submit(() -> {
-            launch(args);
-        });
+        MainUI.run();
     }
 }

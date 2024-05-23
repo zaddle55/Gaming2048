@@ -23,15 +23,13 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.scene.text.Font;
-import model.Grid;
-import model.RandomSave;
-import model.Save;
-import model.User;
+import model.*;
 import util.Direction;
 import util.comparator.CompareByScore;
 import util.comparator.CompareByTime;
 import util.graphic.Paint;
 import util.graphic.SaveUnitPane;
+import util.Saver;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -70,13 +68,13 @@ public class ArchiveUI extends Application {
 
     /* ****** Methods ****** */
     private void loadArchive() {
-        // saveInterfaceList = getSaveList(currentUser);
-        try {
-            saveList = RandomSave.randomSave(150);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-            return;
-        }
+        saveList = Saver.getSaveList(currentUser);
+//        try {
+//            saveList = RandomSave.randomSave(150);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//            return;
+//        }
         saveList.sort(new CompareByTime());
         saveInterfaceList = new ArrayList<>();
 
@@ -118,17 +116,37 @@ public class ArchiveUI extends Application {
     // 读取用户信息, TODO
     private void loadUserInfo() {
 
-//        userName.setText(currentUser.getUserName());
-        userScore.setText(saveList.stream().max(new CompareByScore()).get().grid.getScore() + "");
-        userTotalGameCount.setText(saveList.size() + "");
-        userTotalWinCount.setText(saveList.stream().filter(save -> save.state == Save.State.WIN).count() + "");
-        userTotalLoseCount.setText(saveList.stream().filter(save -> save.state == LOSE).count() + "");
+        userName.setText(currentUser.getName());
+        // 自适应字体大小
+        userName.setPrefWidth(userName.getText().length() * 14.0 + 20.0);
+
+        if (saveList.isEmpty()) {
+            return;
+        }
+        try {
+            currentUser.setBestScore(saveList.stream().max(new CompareByScore()).get().grid.getScore());
+            currentUser.setTotalGames(saveList.size());
+            currentUser.setTotalWins((int) saveList.stream().filter(save -> save.state == WIN).count());
+            currentUser.setTotalLoses((int) saveList.stream().filter(save -> save.state == LOSE).count());
+//            Saver.saveToJson(Saver.buildGson(userManager), "src/main/resources/general/userInfo.json");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        userScore.setText(currentUser.getBestScore() + "");
+        userTotalGameCount.setText(currentUser.getTotalGames() + "");
+        userTotalWinCount.setText(currentUser.getTotalWins() + "");
+        userTotalLoseCount.setText(currentUser.getTotalLoses() + "");
     }
 
     private AnchorPane createSaveUnit(Save save) {
         SaveUnitPane saveUnit = new SaveUnitPane(save);
 
         Grid grid = save.getGrid();
+
+        grid.setTileGrid(new Tile[grid.getSize()][grid.getSize()]);
+        grid.setIsMerged(new boolean[grid.getSize()][grid.getSize()]);
+        grid.setIsNew(new boolean[grid.getSize()][grid.getSize()]);
 
         // 计算线宽
         double lineWidth = 5.0;
@@ -239,7 +257,7 @@ public class ArchiveUI extends Application {
         load.makeTransition();
         load.setOnFinished(event -> {
             // 加载完成后进入游戏
-            GameUI.init(save.grid, save.playTime);
+            GameUI.init(save.grid, save.playTime, currentUser, save);
             try {
                 GameUI.run();
             } catch (Exception e) {
@@ -277,6 +295,11 @@ public class ArchiveUI extends Application {
         tarPane.getChildren().add(trash);
         trash.setLayoutX(31.0);
         trash.setLayoutY(61.0);
+        try {
+            Saver.deleteSave(currentUser, save);
+        } catch (Exception e) {
+            System.out.println("Delete failed"); // 后改为弹窗提示
+        }
         loadUserInfo();
     }
 
@@ -391,6 +414,10 @@ public class ArchiveUI extends Application {
                 e.printStackTrace();
             }
         });
+    }
+
+    public static void init(User user) {
+        currentUser = user;
     }
 
 }

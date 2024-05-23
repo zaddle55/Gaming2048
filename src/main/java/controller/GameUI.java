@@ -32,16 +32,16 @@ import javafx.stage.StageStyle;
 import model.Save;
 import model.Tile;
 import model.Grid;
-import util.Direction;
-import util.Time;
-import util.Timer;
+import util.*;
 import util.graphic.Paint;
 import model.*;
 
+import java.io.IOException;
 import java.util.Map;
 import java.util.Objects;
 import java.io.File;
 import java.time.LocalDate;
+import java.util.Optional;
 
 
 public class GameUI extends Application {
@@ -166,6 +166,8 @@ public class GameUI extends Application {
 //            autoButton.setText("Auto");
 //            winAction();
 //        });
+        // 若有用户登录，开启定时自动保存任务
+        // todo
         timeLabel.textProperty().bind(timer.messageProperty());
         updateState();
 
@@ -509,19 +511,28 @@ public class GameUI extends Application {
     }
 
     private void manualSave() {
-        // 弹出对话框
-        // Custom
-        AnchorPane pane = new AnchorPane();
-        Label label = new Label("Save Name:");
-        // 输入框
-        TextField textField = new TextField();
-        if (currentSave != null && isLoad) {
-            textField.setText(currentSave.saveName);
-        }
-        textField.setLayoutX(100);
-        textField.setLayoutY(50);
-        // 添加到pane
-        pane.getChildren().addAll(label, textField);
+//        // 弹出对话框
+//        Dialog<Button> dialog = new Dialog<>();
+//        dialog.setTitle("Save");
+//        dialog.setHeaderText("Do you want to save the game?");
+//        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.YES, ButtonType.NO);
+//        // Custom
+//        AnchorPane pane = new AnchorPane();
+//        Label label = new Label("Save Name:");
+//        // 输入框
+//        TextField textField = new TextField();
+//        if (currentSave != null && isLoad) {
+//            textField.setText(currentSave.saveName);
+//        }
+//        textField.setLayoutX(100);
+//        textField.setLayoutY(50);
+//        Optional<Button> result = dialog.showAndWait();
+//        if (result.isEmpty() || result.get().equals(ButtonType.NO)) {
+//            return;
+//        }
+//        // 添加到pane
+//        pane.getChildren().addAll(label, textField);
+//        dialog.getDialogPane().setContent(pane);
 
         // 保存存档
         // 保存用户信息
@@ -535,7 +546,13 @@ public class GameUI extends Application {
         }
         
         // 保存到User对应存档路径
-        Save save = new Save(textField.getText(), grid, state, new Time(timeLabel.getText()));
+        Save save = new Save(grid, state, new Time(timeLabel.getText()), new Date(), new Time());
+
+        try {
+            Saver.saveToJson(Saver.buildGson(save), currentUser.getPath() + "/" + save.saveName + ".json");
+        } catch (IOException e) {
+            throw new RuntimeException("Save failed!");
+        }
     }
 
     private void autoSave() {
@@ -568,11 +585,19 @@ public class GameUI extends Application {
         GameUI.setStartTime(Time.ZERO);
     }
 
+    public static void init(int size, int mode, User user) {
+        GameUI.setSize(size);
+        GameUI.setMode(mode);
+        GameUI.setBoard(new Grid(size, mode));
+        GameUI.setStartTime(Time.ZERO);
+        currentUser = user;
+    }
+
     private static void setStartTime(Time startTime) {
         GameUI.startTime = startTime;
     }
 
-    // 读取存档时
+
     public static void init(int mode, int[][] board, Time startTime) {
         GameUI.setSize(board.length);
         GameUI.setMode(mode);
@@ -587,6 +612,17 @@ public class GameUI extends Application {
         GameUI.setSize(grid.getSize());
         GameUI.setMode(grid.getMode());
         GameUI.setStartTime(startTime);
+        isLoad = true;
+    }
+
+    // 读取存档时
+    public static void init(Grid grid, Time startTime, User user, Save save) {
+        GameUI.setBoard(grid);
+        GameUI.setSize(grid.getSize());
+        GameUI.setMode(grid.getMode());
+        GameUI.setStartTime(startTime);
+        currentUser = user;
+        currentSave = save;
         isLoad = true;
     }
 
@@ -613,7 +649,7 @@ public class GameUI extends Application {
     }
 
     public void autoAction() {
-        if (isEnd) return;
+
         if (isAuto) {
             isAuto = false;
             aiThread.endFlag = true;
@@ -663,6 +699,12 @@ public class GameUI extends Application {
             isEnd = false;
         });
         // alert.showAndWait();
+        if (currentUser != null) {
+            manualSave();
+            Platform.exit();
+        } else {
+            Platform.exit();
+        }
 
     }
 }

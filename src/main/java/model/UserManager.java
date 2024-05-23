@@ -1,144 +1,68 @@
 package model;
 import org.jetbrains.annotations.NotNull;
+import util.Saver;
+
 import javax.swing.*;
+import java.io.IOException;
 import java.util.*;
 public class UserManager {
-    List<User> userList;
+    private List<User> userList;
+    private static final String savePath = "src/main/resources/general";
     public UserManager() {
-        List<User> userList = new List<>() {
-            @Override
-            public int size() {
-                return 0;
-            }
-            @Override
-            public boolean isEmpty() {
-                return false;
-            }
-            @Override
-            public boolean contains(Object o) {
-                return false;
-            }
-            @NotNull
-            @Override
-            public Iterator<User> iterator() {
-                return null;
-            }
-            @NotNull
-            @Override
-            public Object[] toArray() {
-                return new Object[0];
-            }
-            @NotNull
-            @Override
-            public <T> T[] toArray(@NotNull T[] a) {
-                return null;
-            }
-            @Override
-            public boolean add(User user) {
-                return false;
-            }
-            @Override
-            public boolean remove(Object o) {
-                return false;
-            }
-            @Override
-            public boolean containsAll(@NotNull Collection<?> c) {
-                return false;
-            }
-            @Override
-            public boolean addAll(@NotNull Collection<? extends User> c) {
-                return false;
-            }
-            @Override
-            public boolean addAll(int index, @NotNull Collection<? extends User> c) {
-                return false;
-            }
-            @Override
-            public boolean removeAll(@NotNull Collection<?> c) {
-                return false;
-            }
-            @Override
-            public boolean retainAll(@NotNull Collection<?> c) {
-                return false;
-            }
-            @Override
-            public void clear() {
-            }
-            @Override
-            public boolean equals(Object o) {
-                return false;
-            }
-            @Override
-            public int hashCode() {
-                return 0;
-            }
-            @Override
-            public User get(int index) {
-                return null;
-            }
-            @Override
-            public User set(int index, User element) {
-                return null;
-            }
-            @Override
-            public void add(int index, User element) {
-            }
-            @Override
-            public User remove(int index) {
-                return null;
-            }
-            @Override
-            public int indexOf(Object o) {
-                return 0;
-            }
-            @Override
-            public int lastIndexOf(Object o) {
-                return 0;
-            }
-            @NotNull
-            @Override
-            public ListIterator<User> listIterator() {
-                return null;
-            }
-            @NotNull
-            @Override
-            public ListIterator<User> listIterator(int index) {
-                return null;
-            }
-            @NotNull
-            @Override
-            public List<User> subList(int fromIndex, int toIndex) {
-                return null;
-            }
-        };
+        try {
+            Saver.makeDir(savePath); // 创建存储用户信息的文件夹
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        userList = new ArrayList<>();
     }
-    public void register(String name, String password) {
-        if (hasUser(name)) {
-            JOptionPane.showMessageDialog(null, "This user has existed!", "Register Failure", JOptionPane.ERROR_MESSAGE);
-        } else if (!isPasswordValid(password)) {
-            JOptionPane.showMessageDialog(null, "Invalid password!" + "Your password should contain at least 8 characters.", "Register Failure", JOptionPane.ERROR_MESSAGE);
+    public User register(String name, String password) throws IOException {
+        User user = null;
+        if (hasUser(name)) { // 检查用户是否已存在
+//            JOptionPane.showMessageDialog(null, "This user has existed!", "Register Failure", JOptionPane.ERROR_MESSAGE);
+            throw new IllegalArgumentException("This user has existed!");
+        } else if (!isPasswordValid(password)) { // 检查密码是否有效
+//            JOptionPane.showMessageDialog(null, "Invalid password!" + "Your password should contain at least 8 characters.", "Register Failure", JOptionPane.ERROR_MESSAGE);
+            throw new IllegalArgumentException("Invalid password!" + "Your password should contain at least 8 characters.");
+        } else if (name.equals("") || password.equals("")) { // 检查用户名和密码是否为空
+            throw new IllegalArgumentException("Username or password cannot be empty!");
         } else {
-            userList.add(new User(name, password, "src/main/resources/user/" + name + "/"));
+            user = new User(name, password, "src/main/resources/savedata/" + name);
+            Saver.makeDir(user.getPath());
+            userList.add(user);
+            // 保存用户信息
+            Saver.saveToJson(Saver.buildGson(this), savePath + "/userInfo.json");
 
         }
+        return user;
+
     }
-    public void logIn(String name, String password) {
-        if (!hasUser(name)) {
-            JOptionPane.showMessageDialog(null, "This user doesn't exist!", "Log-in Failure", JOptionPane.ERROR_MESSAGE);
+    public User login(String name, String password) {
+        if (userList.isEmpty()){
+//            JOptionPane.showMessageDialog(null, "This user doesn't exist!", "Log-in Failure", JOptionPane.ERROR_MESSAGE);
+            return null;
         } else {
             for (int i = 0; i < userList.size(); i++) {
                 if (userList.get(i).getName().equals(name)) {
                     if (!userList.get(i).getPassword().equals(password)) {
-                        JOptionPane.showMessageDialog(null, "Incorrect password!", "Log-in Failure", JOptionPane.ERROR_MESSAGE);
-                        break;
+//                        JOptionPane.showMessageDialog(null, "Incorrect password!", "Log-in Failure", JOptionPane.ERROR_MESSAGE);
+                        throw new IllegalArgumentException("Incorrect password!");
                     } else {
-                        JOptionPane.showMessageDialog(null,"Welcome," + name + "!", "Log-in Success", JOptionPane.INFORMATION_MESSAGE);
-                        break;
+//                        JOptionPane.showMessageDialog(null,"Welcome," + name + "!", "Log-in Success", JOptionPane.INFORMATION_MESSAGE);
+                        return userList.get(i);
                     }
                 }
             }
+            throw new IllegalArgumentException("This user doesn't exist!");
         }
     }
+
+    public void deleteUser(User user) throws IOException {
+        userList.remove(user);
+        Saver.saveToJson(Saver.buildGson(this), savePath);
+
+    }
+
     public boolean hasUser(String name) {
         boolean hasUser = false;
         for (int i = 0; i < userList.size(); i++) {

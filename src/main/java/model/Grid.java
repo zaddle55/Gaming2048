@@ -534,6 +534,9 @@ public class Grid {
     }
 
     private static void memSet(boolean[][] arr) {
+        if (arr == null) {
+            return;
+        }
         for (int i = 0; i < arr.length; i++) {
             Arrays.fill(arr[i], false);
         }
@@ -589,6 +592,13 @@ public class Grid {
         return isMerge;
     }
 
+    public void setIsMerged(boolean[][] booleans) {
+        this.isMerged = booleans;
+    }
+
+    public void setIsNew(boolean[][] booleans) {
+        this.isNew = booleans;
+    }
 }
 
 class Status {

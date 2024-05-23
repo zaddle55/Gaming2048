@@ -9,9 +9,9 @@ import javafx.concurrent.Task;
 import static java.lang.Thread.sleep;
 
 public class Timer extends Service<Void> {
-    private long startTime;
+    private volatile long startTime;
     private volatile long currentTime;
-    private long endTime;
+    private volatile long endTime;
     private final int mode;
     private volatile boolean isRunning;
     private static final int SECOND_PER_MILLIS = 1000;
