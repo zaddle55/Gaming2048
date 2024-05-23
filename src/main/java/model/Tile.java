@@ -1,7 +1,12 @@
 package model;
 
+import javafx.scene.effect.Bloom;
+import javafx.scene.effect.BlurType;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.Effect;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -74,9 +79,15 @@ public class Tile extends StackPane {
 
                 // 若val为小于三位，设置字体大小为方格宽度的1/3
                 // 若val超过三位，设置字体大小自适应
-                blockText.setFont(Font.font("Arial", tileSize / (value > 999 ? 0.9 * Math.floor(Math.log10(value)) : 2)));
+                Font font = Font.loadFont(getClass().getResource("/font/Kanit/Kanit-SemiBold.ttf").toExternalForm(),
+                        tileSize / (value > 999 ? 0.9 * Math.floor(Math.log10(value)) : 2));
+                blockText.setFont(font);
 
                 blockText.setFill(ColorMap.getTextColor(value)); // 设置字体颜色
+
+//                if (value == 2048) {
+//                    setEffect(new DropShadow(BlurType.GAUSSIAN, Color.YELLOW, 20, -1, 0, 0));
+//                }
 
                 getChildren().addAll(blockRect, blockText);
 

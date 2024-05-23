@@ -1,11 +1,26 @@
 package util;
 
+import java.time.LocalTime;
+
 public class Time implements Comparable<Time>{
 
     private String timeFormat;
     private long time;
     private int hour;
     private int minute;
+
+    public void setHour(int hour) {
+        this.hour = hour;
+    }
+
+    public void setMinute(int minute) {
+        this.minute = minute;
+    }
+
+    public void setSecond(int second) {
+        this.second = second;
+    }
+
     private int second;
 
     public final static Time INFINITE = new Time(Long.MAX_VALUE);
@@ -33,6 +48,14 @@ public class Time implements Comparable<Time>{
         this.hour = (int) (time / 3600);
         this.minute = (int) ((time % 3600) / 60);
         this.second = (int) (time % 60);
+        this.timeFormat = String.format("%02d:%02d:%02d", this.hour, this.minute, this.second);
+    }
+
+    public Time(int hour, int minute, int second) {
+        this.hour = hour;
+        this.minute = minute;
+        this.second = second;
+        this.time = hour * 3600 + minute * 60 + second;
         this.timeFormat = String.format("%02d:%02d:%02d", this.hour, this.minute, this.second);
     }
 
@@ -80,6 +103,16 @@ public class Time implements Comparable<Time>{
         this.minute = (int) ((this.time % 3600) / 60);
         this.second = (int) (this.time % 60);
         this.timeFormat = String.format("%02d:%02d:%02d", this.hour, this.minute, this.second);
+    }
+
+    // 无参构造器，初始化为当前时间
+    public Time() {
+        this.time = LocalTime.now().toSecondOfDay();
+        this.hour = LocalTime.now().getHour();
+        this.minute = LocalTime.now().getMinute();
+        this.second = LocalTime.now().getSecond();
+        this.timeFormat = String.format("%02d:%02d:%02d", this.hour, this.minute, this.second);
+
     }
 
     public void reset() {

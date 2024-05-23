@@ -93,6 +93,16 @@ public class Grid {
         }
     }
 
+    public void fillTileGrid(double space) {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                if (board[i][j] != 0) {
+                    tileGrid[i][j] = new Tile(board[i][j], j, i, gamePane, size, space);
+                }
+            }
+        }
+    }
+
     public Tile[][] getTileGrid() {
         return tileGrid;
     }
@@ -121,6 +131,12 @@ public class Grid {
     public void load(AnchorPane gamePane) {
         this.gamePane = gamePane;
         fillTileGrid();
+        addToHistory();
+    }
+
+    public void load(AnchorPane gamePane, double space) {
+        this.gamePane = gamePane;
+        fillTileGrid(space);
         addToHistory();
     }
 
