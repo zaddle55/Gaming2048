@@ -1,5 +1,4 @@
 package model;
-
 public class User {
     private String name;
     private String password;
@@ -8,5 +7,14 @@ public class User {
         this.name = name;
         this.password = password;
         this.path = path;
+    }
+    public String getName() {
+        return name;
+    }
+    public String getPassword() {
+        return password;
+    }
+    public String getPath() {
+        return path;
     }
 }
