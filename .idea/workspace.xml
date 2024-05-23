@@ -4,16 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/PopUpDialog.java" afterDir="false" />
+=======
     <list default="true" id="235c813a-3f97-44fc-875b-f1b109d2b6b7" name="更改" comment="Add move sound effect and apply custom font">
       <change afterPath="$PROJECT_DIR$/src/main/java/model/RandomSave.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/util/Date.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/util/comparator/CompareByScore.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/util/comparator/CompareByTime.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/resources/css/optionPane.css" afterDir="false" />
+>>>>>>> zaddle
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GameApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/ArchiveUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ArchiveUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/GameUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GameUI.java" afterDir="false" />
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Grid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Save.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Save.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/Time.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Time.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/FXView/ArchiveUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXView/ArchiveUI.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/TestArchiveUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestArchiveUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/TestGson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestGson.java" afterDir="false" />
+=======
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/PopUpAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/PopUpAnimation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Grid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Save.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Save.java" afterDir="false" />
@@ -23,6 +36,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/util/graphic/SaveUnitPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/graphic/SaveUnitPane.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/FXView/ArchiveUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXView/ArchiveUI.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/TestArchiveUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestArchiveUI.java" afterDir="false" />
+>>>>>>> zaddle
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +55,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="dev" />
+        <entry key="$PROJECT_DIR$" value="zaddle" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -63,39 +77,39 @@
     <option name="openDirectoriesWithSingleClick" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Maven.Unknown [package].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;zaddle&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Administrator/IdeaProjects/Reach2048/target/classes/assets/buttonIcon&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
-    &quot;应用程序.ArchiveUI.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.GameApplication.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.GameUI.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.MainApplication.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.MainFrame.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.TestArchiveUI.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.TestGameUIApplication.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.TestGridPanel.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.TestGson.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.TestJavaFXBootstrap.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.TestMainUIApplication.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.TestScaleTransition.executor&quot;: &quot;Run&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven.Unknown [package].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "extract.method.default.visibility": "private",
+    "git-widget-placeholder": "zaddle",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Administrator/IdeaProjects/Reach2048/target/classes/assets/buttonIcon",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "模块",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true",
+    "应用程序.ArchiveUI.executor": "Run",
+    "应用程序.GameApplication.executor": "Run",
+    "应用程序.GameUI.executor": "Run",
+    "应用程序.MainApplication.executor": "Run",
+    "应用程序.MainFrame.executor": "Run",
+    "应用程序.TestArchiveUI.executor": "Run",
+    "应用程序.TestGameUIApplication.executor": "Run",
+    "应用程序.TestGridPanel.executor": "Run",
+    "应用程序.TestGson.executor": "Run",
+    "应用程序.TestJavaFXBootstrap.executor": "Run",
+    "应用程序.TestMainUIApplication.executor": "Run",
+    "应用程序.TestScaleTransition.executor": "Run"
   }
 }</component>
   <component name="RecentsManager">
@@ -237,10 +251,22 @@
       <workItem from="1716028971151" duration="16597000" />
       <workItem from="1716047162570" duration="1107000" />
       <workItem from="1716095962267" duration="3773000" />
+<<<<<<< HEAD
+      <workItem from="1716193424288" duration="6718000" />
+    </task>
+    <task id="LOCAL-00013" summary="modify project structure">
+      <option name="closed" value="true" />
+      <created>1713796485610</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1713796485610</updated>
+=======
       <workItem from="1716193424288" duration="9123000" />
       <workItem from="1716284815476" duration="6670000" />
       <workItem from="1716306970474" duration="64000" />
       <workItem from="1716366355841" duration="29227000" />
+>>>>>>> zaddle
     </task>
     <task id="LOCAL-00014" summary="modify project structure">
       <option name="closed" value="true" />
@@ -618,6 +644,17 @@
       <option name="project" value="LOCAL" />
       <updated>1716045429766</updated>
     </task>
+<<<<<<< HEAD
+    <task id="LOCAL-00061" summary="Revision for save data management">
+      <option name="closed" value="true" />
+      <created>1716120415581</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1716120415581</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
+=======
     <task id="LOCAL-00061" summary="Design ArchiveUI">
       <option name="closed" value="true" />
       <created>1716201787309</created>
@@ -635,6 +672,7 @@
       <updated>1716301959703</updated>
     </task>
     <option name="localTasksCounter" value="63" />
+>>>>>>> zaddle
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -10,15 +10,28 @@ package util;
  */
 
 import model.Grid;
-
 import java.io.*;
-
 public class Saver {
-
     public static void makeDir() {
         File file = new File("./savedata");
         if (!file.exists()) {
             file.mkdirs();
         }
+    }
+    public boolean hasFile(String dir, String fileName) {
+        boolean hasFile = false;
+        return hasFile;
+    }
+    public void saveToJson(String json, String pathName) throws IOException {
+
+    }
+    public String loadFromJson(String pathName) throws IOException {
+        return ;
+    }
+    public boolean changeFileName(String oldName, String newName) {
+        return true;
+    }
+    public boolean isPathNameValid(String pathName) {
+        return true;
     }
 }
