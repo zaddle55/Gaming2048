@@ -535,6 +535,7 @@ public class GameUI extends Application {
         }
         
         // 保存到User对应存档路径
+        Save save = new Save(textField.getText(), grid, state, new Time(timeLabel.getText()));
     }
 
     private void autoSave() {
@@ -554,7 +555,7 @@ public class GameUI extends Application {
             // 保存到User对应存档路径
             
         } else {
-            currentSave = new Save(currentSave.saveName, grid, state, startTime);
+            currentSave = new Save(currentSave.saveName, grid, state, new Time(timeLabel.getText()));
             // 保存到User对应存档路径
         }
     }

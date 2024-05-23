@@ -12,7 +12,7 @@ public class GameApplication{
 //                    {0, 2048, 64, 16},
 //                    {2, 128, 2, 0}
 //            }, Time.ZERO);
-            GameUI.init(4, GameModeFactory.CLASSIC);
+            GameUI.init(4, GameModeFactory.CHALLENGE);
             GameUI.start();
         }
 }
