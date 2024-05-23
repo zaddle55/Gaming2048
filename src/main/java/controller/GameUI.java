@@ -268,7 +268,7 @@ public class GameUI extends Application {
 //        scene.addEventFilter(KeyEvent.ANY, KeyEvent::consume);
 
         // 创建一个指向音频文件的URL
-        String audioFilePath = "C:\\Users\\Administrator\\IdeaProjects\\Reach2048\\src\\main\\resources\\assets\\sound\\moveSound.mp3"; // 替换为您的音频文件路径
+        String audioFilePath = ".\\src\\main\\resources\\assets\\sound\\moveSound.mp3"; // 替换为您的音频文件路径
         Media sound = new Media(new File(audioFilePath).toURI().toString());
 
         // 创建MediaPlayer对象
