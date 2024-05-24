@@ -700,7 +700,13 @@ public class GameUI extends Application {
         });
         // alert.showAndWait();
         if (currentUser != null) {
-            manualSave();
+            try {
+                manualSave();
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                System.out.println(e.getMessage());
+                e.printStackTrace();
+            }
             Platform.exit();
         } else {
             Platform.exit();

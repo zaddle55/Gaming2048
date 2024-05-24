@@ -100,6 +100,19 @@ public class MainUI extends Application {
     }
 
     public void loadAction(MouseEvent mouseEvent) {
+        if (user != null){
+            ArchiveUI.init(user);
+            ArchiveUI.run();
+            Stage stage = (Stage) achieveButton.getScene().getWindow();
+            stage.close();
+        } else {
+            // 提示用户登录, 后改
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText("Please login first");
+            alert.setContentText("You need to login to view your achievements");
+            alert.showAndWait();
+        }
     }
 
 
@@ -120,19 +133,7 @@ public class MainUI extends Application {
 
 
     public void achieveAction() {
-        if (user != null){
-            ArchiveUI.init(user);
-            ArchiveUI.run();
-            Stage stage = (Stage) achieveButton.getScene().getWindow();
-            stage.close();
-        } else {
-            // 提示用户登录, 后改
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information");
-            alert.setHeaderText("Please login first");
-            alert.setContentText("You need to login to view your achievements");
-            alert.showAndWait();
-        }
+
     }
 
     public void enterStartAction(MouseEvent mouseEvent) {
