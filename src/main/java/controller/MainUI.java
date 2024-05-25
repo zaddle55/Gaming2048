@@ -296,10 +296,10 @@ public class MainUI extends Application {
         // 若无JavaFX线程，启动JavaFX线程
         if (Platform.isFxApplicationThread()) {
             Platform.runLater(() -> {
-                ArchiveUI archiveUI = new ArchiveUI();
+                MainUI mainUI = new MainUI();
                 Stage primaryStage = new Stage();
                 try {
-                    archiveUI.start(primaryStage);
+                    mainUI.start(primaryStage);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

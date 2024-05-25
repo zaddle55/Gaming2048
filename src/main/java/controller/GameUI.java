@@ -15,8 +15,11 @@ import javafx.scene.control.Dialog;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -261,10 +264,6 @@ public class GameUI extends Application {
     @FXML
     public void downAction() {
 
-        if (isEnd) {
-            return;
-        }
-
         Map<Tile, Double> distanceMap = grid.move(Direction.DOWN);
 
         if (distanceMap == null) {
@@ -302,11 +301,12 @@ public class GameUI extends Application {
             ParallelTransition group1 = new ParallelTransition(bounce.getGroupTransition(), appear.getGroupTransition());
             group1.play();
 
+            isEnd = false;
 
             updateState();
 //            // 恢复键盘焦点
 //            scene.removeEventFilter(KeyEvent.ANY, KeyEvent::consume);
-            isEnd = false;
+
             
 
         });
@@ -387,14 +387,14 @@ public class GameUI extends Application {
             isWin = true;
 
             isAuto = false;
-            autoButton.setText("Auto");
+            autoButton.setGraphic(new ImageView(new Image("/assets/buttonIcon/auto.png", 22.0, 22.0, false, false)));
             timer.stop();
             winAction();
         } else if (grid.isOver()) {
             isLose = true;
 
             isAuto = false;
-            autoButton.setText("Auto");
+            autoButton.setGraphic(new ImageView(new Image("/assets/buttonIcon/auto.png", 22.0, 22.0, false, false)));
             timer.stop();
             loseAction();
         }
@@ -653,7 +653,7 @@ public class GameUI extends Application {
         if (isAuto) {
             isAuto = false;
             aiThread.endFlag = true;
-            autoButton.setText("Auto");
+            autoButton.setGraphic(new ImageView(new Image("/assets/buttonIcon/auto.png", 22.0, 22.0, false, false)));
             scene.getRoot().requestFocus();
 
         } else {
@@ -663,7 +663,7 @@ public class GameUI extends Application {
             } else {
                 aiThread.endFlag = false;
             }
-            autoButton.setText("Stop");
+            autoButton.setGraphic(new ImageView(new Image("/assets/buttonIcon/pause.png", 22.0, 22.0, false, false)));
             new Thread(aiThread).start();
 
         }
@@ -712,5 +712,8 @@ public class GameUI extends Application {
             Platform.exit();
         }
 
+    }
+
+    public void saveAction(MouseEvent mouseEvent) {
     }
 }

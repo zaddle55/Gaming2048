@@ -27,8 +27,8 @@
 }
 
 .button {
-    -fx-background-color: #8e7965;
-    -fx-background-radius: 3px;
+    -fx-background-color: #eccc82;
+    -fx-background-radius: 5px;
     -fx-background-size: cover;
     -fx-background-position: center;
     -fx-font-size: 16px;
@@ -49,7 +49,7 @@
 }
 
 .button:pressed {
-    -fx-background-color: #baafa2;
+    -fx-background-color: #f1d7bb;
     -fx-background-radius: 4px;
     -fx-background-size: cover;
     -fx-background-position: center;
@@ -67,6 +67,18 @@
     -fx-border-color: #baac9f;
     -fx-border-width: 11px;
     -fx-border-radius: 3px;
+}
+
+.control-panel-style {
+    -fx-background-color: rgba(255, 224, 123, 0.20);
+    -fx-background-radius: 12px;
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-border-style: dashed;
+    -fx-border-color: #eccc82;
+    -fx-border-width: 2px;
+    -fx-border-radius: 12px;
+
 }
 
 #upButton {

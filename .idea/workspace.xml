@@ -4,23 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0e72e034-aaa7-4046-b7f9-bbfb7b65012a" name="更改" comment="Add move sound effect and apply custom font">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/Administrator.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/FXView/CustomDialog.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="0e72e034-aaa7-4046-b7f9-bbfb7b65012a" name="更改" comment="Implement multiple player management and save function">
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/SlipToSidebarAnimation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/ArchiveUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ArchiveUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/GameUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GameUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/MainUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MainUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Grid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/UserManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/Saver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Saver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/util/Timer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Timer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/FXView/ArchiveUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXView/ArchiveUI.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/FXView/MainUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXView/MainUI.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/TestMainUIApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestMainUIApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/FXView/GameUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXView/GameUI.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/css/gameUI.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/gameUI.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,19 +24,52 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2gtu7oicMVlC4ncjClqNBKWrEOa" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="openDirectoriesWithSingleClick" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "zaddle",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true",
+    "应用程序.GameApplication.executor": "Run",
     "应用程序.TestMainUIApplication.executor": "Run"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="应用程序.TestMainUIApplication">
+    <configuration name="GameApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GameApplication" />
+      <module name="Reach2048" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\lib\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml --add-modules javafx.controls,javafx.media --add-exports javafx.graphics/com.sun.glass.utils=ALL-UNNAMED --add-exports javafx.graphics/com.sun.javafx.tk.quantum=ALL-UNNAMED" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TestMainUIApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="TestMainUIApplication" />
       <module name="Reach2048" />
@@ -52,18 +78,59 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="应用程序.GameApplication" />
+      <item itemvalue="应用程序.TestMainUIApplication" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="应用程序.TestMainUIApplication" />
+        <item itemvalue="应用程序.GameApplication" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="项目级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task id="LOCAL-00001" summary="Implement multiple player management and save function">
+      <option name="closed" value="true" />
+      <created>1716480870818</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1716480870818</updated>
+    </task>
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="0e72e034-aaa7-4046-b7f9-bbfb7b65012a" name="更改" comment="Implement multiple player management and save function" />
+      <created>1716529031291</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1716529031291</updated>
+      <workItem from="1716529033750" duration="10429000" />
+      <workItem from="1716611936691" duration="178000" />
+      <workItem from="1716612124380" duration="4331000" />
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="Merge branch 'dev' into zaddle" />
     <MESSAGE value="Add move sound effect and apply custom font" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add move sound effect and apply custom font" />
+    <MESSAGE value="Implement multiple player management and save function" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement multiple player management and save function" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -86,15 +153,6 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="47" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/util/Timer.java</url>
-          <line>25</line>
-          <properties class="util.Timer" method="&lt;init&gt;">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="51" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -94,7 +94,7 @@ public class Timer extends Service<Void> {
             return;
         }
         this.isRunning = true;
-        this.restart();
+        this.start();
     }
 
     public void reset() {

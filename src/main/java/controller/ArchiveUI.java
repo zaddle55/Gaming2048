@@ -68,7 +68,12 @@ public class ArchiveUI extends Application {
 
     /* ****** Methods ****** */
     private void loadArchive() {
-        saveList = Saver.getSaveList(currentUser);
+        try {
+            saveList = Saver.getSaveList(currentUser);
+        } catch (Exception e) {
+            System.out.println(e.getMessage()); // 后改为弹窗提示
+            return;
+        }
 //        try {
 //            saveList = RandomSave.randomSave(150);
 //        } catch (InterruptedException e) {
