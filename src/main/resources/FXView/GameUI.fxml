@@ -4,9 +4,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane fx:id="gameInterface" prefHeight="1000.0" prefWidth="1000.0" stylesheets="@../css/gameUI.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GameUI">
-<children>
+    <AnchorPane fx:id="mainPane" prefHeight="1000.0" prefWidth="1000.0" styleClass="panel-style">
+    <children>
     <!--显示板-->
     <AnchorPane fx:id="displayPane" layoutY="51.0" maxHeight="400.0" maxWidth="300.0" minHeight="400.0" prefHeight="400.0" prefWidth="300.0">
     <children>
@@ -127,5 +129,56 @@
     </AnchorPane>
     <!--游戏板-->
     <AnchorPane fx:id="gamePane" layoutX="320.0" layoutY="192.0" maxHeight="650.0" maxWidth="650.0" prefHeight="650.0" prefWidth="650.0" />
-</children>
+    </children>
+    </AnchorPane>
+    <AnchorPane fx:id="sidebarPane" layoutX="1000.0" prefHeight="1000.0" prefWidth="300.0" styleClass="sidebar-pane">
+        <children>
+            <!--存档询问-->
+            <GridPane fx:id="savePane" alignment="CENTER" layoutY="288.0" prefHeight="136.0" prefWidth="300.0" styleClass="" vgap="20.0" visible="false">
+                <children>
+                    <Text fx:id="saveText" fill="gray" lineSpacing="3.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sidebar-custom-text-style" text=" Save the game ?" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                    <TextField fx:id="saveName" prefWidth="230.0" promptText="Input your save name" styleClass="text-field-style" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                    <Button fx:id="saveConfirm" mnemonicParsing="false" prefHeight="34.0" styleClass="save-button-style" text="Save" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                </children>
+            <columnConstraints>
+               <ColumnConstraints />
+            </columnConstraints>
+            <rowConstraints>
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+            </rowConstraints>
+            </GridPane>
+            <!--游戏结束询问-->
+            <GridPane fx:id="exitPane" alignment="CENTER" layoutY="288.0" prefHeight="136.0" prefWidth="300.0" styleClass="" vgap="20.0" visible="true">
+                <children>
+                    <Text fx:id="exitText" fill="gray" lineSpacing="3.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sidebar-custom-text-style" text=" Sure to exit?                                          Any unsaved progress will be wasted. " wrappingWidth="249.0517578125" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                    <Button fx:id="rtmConfirm" mnemonicParsing="false" prefHeight="34.0" styleClass="save-button-style" text="Return to Main Page" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                        <graphic>
+                            <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../assets/buttonIcon/home.png" />
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Button fx:id="exitConfirm" mnemonicParsing="false" prefHeight="34.0" styleClass="save-button-style" text="Exit Game" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                        <graphic>
+                            <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../assets/buttonIcon/exit_game.png" />
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                </children>
+                <columnConstraints>
+                    <ColumnConstraints />
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints />
+                    <RowConstraints />
+                    <RowConstraints />
+                    <RowConstraints />
+                </rowConstraints>
+            </GridPane>
+        </children>
+    </AnchorPane>
+
 </AnchorPane>

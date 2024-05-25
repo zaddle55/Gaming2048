@@ -128,3 +128,63 @@
     -fx-background-position: center;
     -fx-background-size: cover;
 }
+
+.sidebar-pane {
+    -fx-background-color: #484747;
+    -fx-background-size: cover;
+    -fx-background-position: center;
+}
+
+.sidebar-custom-text-style {
+    -fx-font-size: 18px;
+    -fx-text-fill: #ece2d8;
+    -fx-font-family: "Lilita One";
+}
+
+.text-field-style {
+    -fx-font-size: 16px;
+    -fx-font-family: "Lilita One";
+
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #565252;
+    -fx-border-width: 2px;
+    -fx-border-radius: 8px;
+    -fx-background-color: #a7a7a2;
+    -fx-background-radius: 10px;
+}
+
+.save-button-style {
+    -fx-background-color: #6f6b65;
+    -fx-background-radius: 5px;
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-font-size: 18px;
+    -fx-font-family: "Lilita One";
+    -fx-text-fill: #ece2d8;
+    -fx-text-alignment: center;
+
+}
+
+.save-button-style:hover {
+    -fx-background-color: rgba(146, 137, 137, 0.82);
+    -fx-background-radius: 5px;
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-font-size: 18px;
+    -fx-font-family: "Lilita One";
+    -fx-text-fill: #ece2d8;
+    -fx-text-alignment: center;
+
+}
+
+.arrow-style {
+    -fx-graphic: url("/assets/buttonIcon/arrow.png");
+}
+
+.arrow-style:hover {
+    -fx-graphic: url("/assets/buttonIcon/arrow-hover.png");
+}
+
+.arrow-style:pressed {
+    -fx-graphic: url("/assets/buttonIcon/arrow.png");
+}

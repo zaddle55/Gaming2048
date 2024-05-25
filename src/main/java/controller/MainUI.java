@@ -27,6 +27,7 @@ import util.comparator.CompareByScore;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.Executors;
 
 import static model.Save.State.LOSE;
@@ -247,7 +248,7 @@ public class MainUI extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        Parent root = FXMLLoader.load(getClass().getResource("/FXView/MainUI.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/FXView/MainUI.fxml")));
 
 //        primaryStage.setTitle("Reach 2048");
         Scene scene = new Scene(root, 700, 500);

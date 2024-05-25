@@ -15,20 +15,19 @@ import javafx.scene.control.Dialog;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.BoxBlur;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -49,9 +48,15 @@ import java.util.Optional;
 
 public class GameUI extends Application {
 
+
+    public TextField saveName;
+    public AnchorPane sidebarPane;
+    public GridPane savePane;
+    public GridPane exitPane;
     // 节点域
     @FXML
     private AnchorPane gamePane;
+    public AnchorPane mainPane;
     @FXML
     private Button restartButton;
     @FXML
@@ -77,7 +82,6 @@ public class GameUI extends Application {
 
     // 是否加载
     private static boolean isLoad = false;
-    private static User currentUser;
     // 胜利标志
     public static boolean isWin = false;
     // 失败标志
@@ -92,6 +96,10 @@ public class GameUI extends Application {
     private static AIThread aiThread;
     private static Timer timer;
     private static Time startTime;
+
+    // 游戏资源
+    private static User currentUser;
+    private static UserManager userManager;
 
     public static int getSize() {
         return size;
@@ -141,6 +149,7 @@ public class GameUI extends Application {
         stepLabel = (Label) scene.lookup("#stepLabel");
         timeLabel = (Label) scene.lookup("#timeLabel");
         autoButton = (Button) scene.lookup("#autoButton");
+        saveName = (TextField) scene.lookup("#saveName");
 
         GameUI.initGamePane(gamePane, size);
 
@@ -264,6 +273,10 @@ public class GameUI extends Application {
     @FXML
     public void downAction() {
 
+        if (isEnd) {
+            return;
+        }
+
         Map<Tile, Double> distanceMap = grid.move(Direction.DOWN);
 
         if (distanceMap == null) {
@@ -281,10 +294,10 @@ public class GameUI extends Application {
 
         // 创建一个指向音频文件的URL
         String audioFilePath = ".\\src\\main\\resources\\assets\\sound\\moveSound.mp3"; // 替换为您的音频文件路径
-        Media sound = new Media(new File(audioFilePath).toURI().toString());
+        Media moveSound = new Media(new File(audioFilePath).toURI().toString());
 
         // 创建MediaPlayer对象
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        MediaPlayer mediaPlayer = new MediaPlayer(moveSound);
 
         // 播放音效
         mediaPlayer.play();
@@ -306,6 +319,7 @@ public class GameUI extends Application {
             updateState();
 //            // 恢复键盘焦点
 //            scene.removeEventFilter(KeyEvent.ANY, KeyEvent::consume);
+            scene.getRoot().requestFocus();
 
             
 
@@ -510,6 +524,7 @@ public class GameUI extends Application {
         gamePane.getChildren().add(losePane);
     }
 
+    @FXML
     private void manualSave() {
 //        // 弹出对话框
 //        Dialog<Button> dialog = new Dialog<>();
@@ -650,6 +665,10 @@ public class GameUI extends Application {
 
     public void autoAction() {
 
+        if (isWin || isLose) {
+            return;
+        }
+
         if (isAuto) {
             isAuto = false;
             aiThread.endFlag = true;
@@ -673,45 +692,47 @@ public class GameUI extends Application {
         if (isAuto) return;
         timer.stop();
         isEnd = true;
-        // 弹出对话
-        // CustomAlert alert = new CustomAlert(CustomAlert.AlertType.CONFIRMATION, "Exit", "Do you want to save the game?", "Exit");
-        // DialogPane dialogPane = alert.getDialogPane();
-        // 替换为自定义按钮
+        SlipToSidebarAnimation slip = new SlipToSidebarAnimation(mainPane,sidebarPane);
+        slip.makeTransition();
+        slip.play(Animation.CombineType.GROUP);
+        // 为mainPane添加毛玻璃效果
+        BoxBlur blur = new BoxBlur(5, 5, 3);
+        mainPane.setEffect(blur);
 
-        Button saveButton = new Button("Save");
-        Button exitButton = new Button("Exit");
-        Button cancelButton = new Button("Cancel");
-        // dialogPane.setContent(new HBox(saveButton, exitButton, cancelButton));
-        // dialogPane.setPrefSize(300, 200);
-
-        saveButton.setOnAction(event -> {
-            manualSave();
-            // alert.close();
-        });
-        exitButton.setOnAction(event -> {
-            
-            // alert.close();
-            Platform.exit();
-        });
-        cancelButton.setOnAction(event -> {
-            timer.continueTimer();
-            // alert.close();
-            isEnd = false;
-        });
-        // alert.showAndWait();
-        if (currentUser != null) {
-            try {
-                manualSave();
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                System.out.println(e.getMessage());
-                e.printStackTrace();
-            }
-            Platform.exit();
-        } else {
-            Platform.exit();
+        exitPane.setVisible(true);
+        try {
+            AnchorPane mask = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/FXView/MaskPane.fxml")));
+            gameInterface.getChildren().add(mask);
+            scene.lookup("#arrow").setOnMousePressed(event -> {
+                slipReform();
+                gameInterface.getChildren().remove(mask);
+            });
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+//        if (currentUser != null) {
+//            try {
+//                manualSave();
+//            } catch (Exception e) {
+//                // TODO Auto-generated catch block
+//                System.out.println(e.getMessage());
+//                e.printStackTrace();
+//            }
+//            Platform.exit();
+//        } else {
+//            Platform.exit();
+//        }
 
+    }
+
+    public void slipReform() {
+        SlipToSidebarAnimation slip = new SlipToSidebarAnimation(mainPane,sidebarPane,true);
+        slip.makeTransition();
+        slip.play(Animation.CombineType.GROUP);
+        mainPane.setEffect(null);
+        exitPane.setVisible(false);
+        isEnd = false;
+        if (!isWin && !isLose) timer.continueTimer();
     }
 
     public void saveAction(MouseEvent mouseEvent) {
