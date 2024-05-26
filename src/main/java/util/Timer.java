@@ -66,10 +66,10 @@ public class Timer extends Service<Void> {
 
                         Time time = new Time(currentTime);
                         updateMessage(time.getTimeFormat());
+                        sleep(SECOND_PER_MILLIS);
                         if (!isRunning) {
                             continue;
                         }
-                        sleep(SECOND_PER_MILLIS);
                         ++currentTime;
 
                         if (timingSession != null && (currentTime - startTime) % interval == 0) {
@@ -87,10 +87,11 @@ public class Timer extends Service<Void> {
 
                         Time time = new Time(currentTime);
                         updateMessage(time.getTimeFormat());
+                        sleep(SECOND_PER_MILLIS);
                         if (!isRunning) {
                             continue;
                         }
-                        sleep(SECOND_PER_MILLIS);
+
                         --currentTime;
                         if (timingSession != null && (currentTime - startTime) % interval == 0) {
                             Platform.runLater(timingSession);
