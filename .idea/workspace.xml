@@ -5,27 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0e72e034-aaa7-4046-b7f9-bbfb7b65012a" name="更改" comment="Version:1.0.0">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Administrator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Administrator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ArchiveUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ArchiveUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GameUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GameUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MainUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MainUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/UserManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/font/Kanit/Kanit-Black.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/font/Kanit/Kanit-BlackItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/font/Kanit/Kanit-Bold.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/font/Kanit/Kanit-BoldItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/font/Kanit/Kanit-ExtraBold.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/font/Kanit/Kanit-ExtraBoldItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/font/Kanit/Kanit-ExtraLight.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/font/Kanit/Kanit-ExtraLightItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/font/Kanit/Kanit-Italic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/font/Kanit/Kanit-Light.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/font/Kanit/Kanit-LightItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/font/Kanit/Kanit-Medium.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/font/Kanit/Kanit-MediumItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/font/Kanit/Kanit-Thin.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/font/Kanit/Kanit-ThinItalic.ttf" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,8 +17,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -57,26 +38,35 @@
     <option name="openDirectoriesWithSingleClick" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;zaddle&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
-    &quot;应用程序.GameApplication.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.TestMainUIApplication.executor&quot;: &quot;Run&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "zaddle",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true",
+    "应用程序.GameApplication.executor": "Run",
+    "应用程序.Main.executor": "Run",
+    "应用程序.TestMainUIApplication.executor": "Run"
   }
-}</component>
-  <component name="RunManager" selected="应用程序.TestMainUIApplication">
+}]]></component>
+  <component name="RunManager" selected="应用程序.Main">
     <configuration name="GameApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GameApplication" />
+      <module name="Reach2048" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\lib\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml --add-modules javafx.controls,javafx.media --add-exports javafx.graphics/com.sun.glass.utils=ALL-UNNAMED --add-exports javafx.graphics/com.sun.javafx.tk.quantum=ALL-UNNAMED" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Reach2048" />
       <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\lib\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml --add-modules javafx.controls,javafx.media --add-exports javafx.graphics/com.sun.glass.utils=ALL-UNNAMED --add-exports javafx.graphics/com.sun.javafx.tk.quantum=ALL-UNNAMED" />
       <method v="2">
@@ -92,11 +82,13 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="应用程序.Main" />
       <item itemvalue="应用程序.GameApplication" />
       <item itemvalue="应用程序.TestMainUIApplication" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="应用程序.Main" />
         <item itemvalue="应用程序.TestMainUIApplication" />
         <item itemvalue="应用程序.GameApplication" />
       </list>
@@ -123,7 +115,7 @@
       <workItem from="1716612124380" duration="25412000" />
       <workItem from="1716702297487" duration="11293000" />
       <workItem from="1716713611578" duration="244000" />
-      <workItem from="1716717775841" duration="3835000" />
+      <workItem from="1716717775841" duration="4053000" />
     </task>
     <task id="LOCAL-00002" summary="Modify GameUI">
       <option name="closed" value="true" />
@@ -165,7 +157,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716717860221</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Version:1.0.0">
+      <option name="closed" value="true" />
+      <created>1716721663720</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1716721663720</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
