@@ -160,8 +160,8 @@ public class GameUI extends Application {
             moveSound = new MediaPlayer(new Media(audioResource.toString()));
         }
         // 字体初始化
-        final Font LILITA_18 = Font.loadFont(getClass().getResourceAsStream("/assets/font/LilitaOne-Regular.ttf"), 18);
-        final Font LILITA_16 = Font.loadFont(getClass().getResourceAsStream("/assets/font/LilitaOne-Regular.ttf"), 16);
+        final Font LILITA_18 = Font.loadFont(getClass().getResourceAsStream("/font/Lilita_One/LilitaOne-Regular.ttf"), 18);
+        final Font LILITA_16 = Font.loadFont(getClass().getResourceAsStream("/font/Lilita_One/LilitaOne-Regular.ttf"), 16);
         saveText.setFont(LILITA_18);
         saveName.setFont(LILITA_16);
         saveConfirm.setFont(LILITA_18);
