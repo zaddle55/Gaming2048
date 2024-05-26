@@ -132,7 +132,7 @@ public class ArchiveUI extends Application {
             currentUser.setTotalGames(saveList.size());
             currentUser.setTotalWins((int) saveList.stream().filter(save -> save.state == WIN).count());
             currentUser.setTotalLoses((int) saveList.stream().filter(save -> save.state == LOSE).count());
-            Saver.saveToJson(Saver.buildGson(userManager), "src/main/resources/general/userInfo.json");
+            Saver.saveToJson(Saver.buildGson(userManager), "general/userInfo.json");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

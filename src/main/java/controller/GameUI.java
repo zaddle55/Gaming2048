@@ -11,17 +11,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.effect.BoxBlur;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -35,11 +30,11 @@ import util.graphic.Paint;
 import model.*;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Map;
 import java.util.Objects;
 import java.io.File;
 import java.time.LocalDate;
-import java.util.Optional;
 
 
 public class GameUI extends Application {
@@ -49,6 +44,11 @@ public class GameUI extends Application {
     public AnchorPane sidebarPane;
     public GridPane savePane;
     public GridPane exitPane;
+    public Text saveText;
+    public Button saveConfirm;
+    public Text exitText;
+    public Button rtmConfirm;
+    public Button exitConfirm;
     // 节点域
     @FXML
     private AnchorPane gamePane;
@@ -95,7 +95,7 @@ public class GameUI extends Application {
 
     // 游戏资源
     private static User currentUser;
-    private static UserManager userManager;
+    private static MediaPlayer moveSound;
 
     public static int getSize() {
         return size;
@@ -146,20 +146,38 @@ public class GameUI extends Application {
         timeLabel = (Label) scene.lookup("#timeLabel");
         autoButton = (Button) scene.lookup("#autoButton");
         saveName = (TextField) scene.lookup("#saveName");
+        saveText = (Text) scene.lookup("#saveText");
+        saveConfirm = (Button) scene.lookup("#saveConfirm");
+        exitText = (Text) scene.lookup("#exitText");
+        rtmConfirm = (Button) scene.lookup("#rtmConfirm");
+        exitConfirm = (Button) scene.lookup("#exitConfirm");
+        sidebarPane = (AnchorPane) scene.lookup("#sidebarPane");
 
-        GameUI.initGamePane(gamePane, size);
+        // 资源初始化
+        // 音效初始化
+        URL audioResource = getClass().getResource("/assets/sound/moveSound.mp3");
+        if (audioResource != null) {
+            moveSound = new MediaPlayer(new Media(audioResource.toString()));
+        }
+        // 字体初始化
+        final Font LILITA_18 = Font.loadFont(getClass().getResourceAsStream("/assets/font/LilitaOne-Regular.ttf"), 18);
+        final Font LILITA_16 = Font.loadFont(getClass().getResourceAsStream("/assets/font/LilitaOne-Regular.ttf"), 16);
+        saveText.setFont(LILITA_18);
+        saveName.setFont(LILITA_16);
+        saveConfirm.setFont(LILITA_18);
+        exitText.setFont(LILITA_18);
+        rtmConfirm.setFont(LILITA_18);
+        exitConfirm.setFont(LILITA_18);
 
         // 游戏板初始化
+        GameUI.initGamePane(gamePane, size);
         if (!isLoad) {
             grid = new Grid(size, mode);
-
             grid.init(gamePane);
             Paint.draw(grid, gamePane, size, 11, 11);
             PopUpAnimation appear = new PopUpAnimation(grid);
             appear.makeTransition();
-
             appear.play(Animation.CombineType.GROUP);
-//            grid.fillTileGrid();
         } else {
             grid.load(gamePane);
             Paint.draw(grid, gamePane, size, 11, 11);
@@ -169,6 +187,7 @@ public class GameUI extends Application {
         // 计时器
         timer = new Timer(startTime, Time.INFINITE);
         timer.begin();
+        // 设置定时器结束事件
 //        timer.setEndEvent(() -> {
 //            isAuto = false;
 //            autoButton.setText("Auto");
@@ -250,6 +269,10 @@ public class GameUI extends Application {
         isEnd = false;
         isWin = false;
         isLose = false;
+        // 计时器继续
+        if (timer != null) {
+            timer.continueTimer();
+        }
     }
 
     // 按键事件
@@ -295,18 +318,11 @@ public class GameUI extends Application {
 
     private void makeAnimation(Direction down, Map<Tile, Double> distanceMap) {
         // 移除键盘焦点
-//        scene.addEventFilter(KeyEvent.ANY, KeyEvent::consume);
         isEnd = true;
 
-        // 创建一个指向音频文件的URL
-        String audioFilePath = ".\\src\\main\\resources\\assets\\sound\\moveSound.mp3"; // 替换为您的音频文件路径
-        Media moveSound = new Media(new File(audioFilePath).toURI().toString());
-
-        // 创建MediaPlayer对象
-        MediaPlayer mediaPlayer = new MediaPlayer(moveSound);
-
         // 播放音效
-        mediaPlayer.play();
+        moveSound.stop();
+        moveSound.play();
 
         MoveAnimation slide = new MoveAnimation(down, distanceMap);
         slide.makeTransition();
@@ -320,20 +336,15 @@ public class GameUI extends Application {
             ParallelTransition group1 = new ParallelTransition(bounce.getGroupTransition(), appear.getGroupTransition());
             group1.play();
 
+            // 恢复键盘焦点
             isEnd = false;
 
             updateState();
-//            // 恢复键盘焦点
-//            scene.removeEventFilter(KeyEvent.ANY, KeyEvent::consume);
             scene.getRoot().requestFocus();
 
-            
 
         });
         slide.play(Animation.CombineType.GROUP);
-
-
-
 
     }
 
@@ -575,7 +586,7 @@ public class GameUI extends Application {
             state = Save.State.IN_PROGRESS;
         }
         if (currentSave == null) {
-            String saveName = "Auto " + LocalDate.now().toString();
+            String saveName = "Auto " + LocalDate.now();
             currentSave = new Save(saveName, grid, state, startTime);
             // 保存到User对应存档路径
             try {

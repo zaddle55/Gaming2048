@@ -182,7 +182,7 @@ public class MainUI extends Application {
                 user.setTotalGames(saveList.size());
                 user.setTotalWins((int) saveList.stream().filter(save -> save.state == WIN).count());
                 user.setTotalLoses((int) saveList.stream().filter(save -> save.state == LOSE).count());
-                Saver.saveToJson(Saver.buildGson(userManager), "src/main/resources/general/userInfo.json");
+                Saver.saveToJson(Saver.buildGson(userManager), "general/userInfo.json");
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
@@ -300,9 +300,9 @@ public class MainUI extends Application {
             MainUI.user = PublicResource.getLoginUser();
             return;
         }
-        if (Saver.hasFile("src/main/resources/general", "userInfo.json")){
+        if (Saver.hasFile("general", "userInfo.json")){
             try {
-                String json = Saver.loadFromJson("src/main/resources/general/userInfo.json");
+                String json = Saver.loadFromJson("general/userInfo.json");
                 userManager = new GsonBuilder().create().fromJson(json, UserManager.class);
                 // 加载到公共资源
                 PublicResource.init(userManager);
