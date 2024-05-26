@@ -58,6 +58,8 @@ public class MainUI extends Application {
 
     private static User user;
     private static UserManager userManager;
+    private static int currentIndex = 0;
+    private List<AnchorPane> downPanes = new ArrayList<>();
 
     @FXML
     public void startAction() {
@@ -71,7 +73,6 @@ public class MainUI extends Application {
 //            stage.close();
 //        }
         Animation switchAnimation = new SwitchInterfaceAnimation(new ArrayList<>(){{
-            add(loginInterface);
             add(mainInterface);
             add(optionInterface);
         }}, Direction.LEFT);
@@ -91,6 +92,8 @@ public class MainUI extends Application {
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
+                    // 移除加载动画
+
                     Stage stage = (Stage) startButton.getScene().getWindow();
                     stage.close();
                 }
@@ -102,7 +105,7 @@ public class MainUI extends Application {
 
     public void loadAction(MouseEvent mouseEvent) {
         if (user != null){
-            ArchiveUI.init(user);
+            ArchiveUI.init(null);
             ArchiveUI.run();
             Stage stage = (Stage) achieveButton.getScene().getWindow();
             stage.close();
@@ -173,6 +176,7 @@ public class MainUI extends Application {
         if (user != null) {
             // 初始化user信息
             try {
+                PublicResource.init(user); // 将用户信息存入公共资源
                 List<Save> saveList = Saver.getSaveList(user);
                 user.setBestScore(saveList.stream().max(new CompareByScore()).get().grid.getScore());
                 user.setTotalGames(saveList.size());
@@ -186,12 +190,12 @@ public class MainUI extends Application {
         Animation switchAnimation = new SwitchInterfaceAnimation(new ArrayList<>(){{
             add(loginInterface);
             add(mainInterface);
-            add(optionInterface);
         }}, Direction.LEFT);
         switchAnimation.makeTransition();
         switchAnimation.setOnFinished(event -> {
             loginInterface.setVisible(false);
             mainInterface.setVisible(true);
+            currentIndex = 1;
         });
         switchAnimation.play(Animation.CombineType.GROUP);
     }
@@ -269,18 +273,39 @@ public class MainUI extends Application {
         passwordField = (PasswordField) scene.lookup("#passwordField");
         startButton = (Label) scene.lookup("#startButton");
         loadButton = (Label) scene.lookup("#loadButton");
+        settingButton = (Label) scene.lookup("#settingButton");
+        achieveButton = (Label) scene.lookup("#achieveButton");
+        exitButton = (Label) scene.lookup("#exitButton");
+        loginInterface = (AnchorPane) scene.lookup("#loginInterface");
+        mainInterface = (AnchorPane) scene.lookup("#mainInterface");
+        optionInterface = (AnchorPane) scene.lookup("#optionInterface");
+        loadingPane = (StackPane) scene.lookup("#loadingPane");
+
+        // 加入界面组
+        if (downPanes.isEmpty()) {
+            downPanes.add(loginInterface);
+            downPanes.add(mainInterface);
+            downPanes.add(optionInterface);
+        }
 
         primaryStage.show();
         MainUI.init(null);
+        onInterfaceChange(currentIndex);
     }
 
-    public static void init(User user) {
-        // 如果用户已登录，直接进入游戏
-        if (user != null) {MainUI.user = user; return; }
+    public static void init(User u) {
+        // 如果公共资源中已有用户信息，直接使用
+        if (!PublicResource.isEmpty()) {
+            MainUI.userManager = PublicResource.getUserManager();
+            MainUI.user = PublicResource.getLoginUser();
+            return;
+        }
         if (Saver.hasFile("src/main/resources/general", "userInfo.json")){
             try {
                 String json = Saver.loadFromJson("src/main/resources/general/userInfo.json");
                 userManager = new GsonBuilder().create().fromJson(json, UserManager.class);
+                // 加载到公共资源
+                PublicResource.init(userManager);
             } catch (Exception e) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
@@ -290,8 +315,10 @@ public class MainUI extends Application {
             }
         } else {
             userManager = new UserManager();
+            PublicResource.init(userManager);
         }
     }
+
 
     public static void run() {
         // 若无JavaFX线程，启动JavaFX线程
@@ -308,6 +335,21 @@ public class MainUI extends Application {
         } else { //
             Executors.newSingleThreadExecutor().execute(Application::launch);
 
+        }
+    }
+
+    public void onInterfaceChange(Object newValue) {
+
+        if (newValue instanceof Integer) {
+            if (downPanes.isEmpty()) return;
+            downPanes.get((Integer) newValue).setLayoutX(0);
+            for (int i = 0; i < downPanes.size(); i++) {
+                if (i > (Integer) newValue) {
+                    downPanes.get(i).setLayoutX(700);
+                } else if (i < (Integer) newValue) {
+                    downPanes.get(i).setLayoutX(-700);
+                }
+            }
         }
     }
 

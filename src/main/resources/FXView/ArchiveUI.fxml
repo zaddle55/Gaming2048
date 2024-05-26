@@ -131,7 +131,7 @@
                     <Label fx:id="pathCheckOutput" text="Please choose a valid path" visible="false" />
                 </VBox>
                 <!--退出按钮-->
-                <Button fx:id="exitButton" layoutX="825.0" layoutY="204.0" styleClass="button-default-style" text="⬅ Exit" />
+                <Button fx:id="exitButton" onMousePressed="#returnToMain" layoutX="825.0" layoutY="204.0" styleClass="button-default-style" text="⬅ Exit" />
             </children>
         </AnchorPane>
     </children>

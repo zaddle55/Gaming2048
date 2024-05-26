@@ -4,17 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0e72e034-aaa7-4046-b7f9-bbfb7b65012a" name="更改" comment="Modify GameUI">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/FXView/MaskPane.fxml" afterDir="false" />
+    <list default="true" id="0e72e034-aaa7-4046-b7f9-bbfb7b65012a" name="更改" comment="Modify GameUI with sidebar">
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/PublicResource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Administrator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Administrator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Animation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Animation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ArchiveUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ArchiveUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/GameUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GameUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/LoadingAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/LoadingAnimation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/MainUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MainUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/SlipToSidebarAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/SlipToSidebarAnimation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/Timer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Timer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/FXView/ArchiveUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXView/ArchiveUI.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/FXView/GameUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXView/GameUI.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/css/gameUI.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/gameUI.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/FXView/MainUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXView/MainUI.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +24,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -58,11 +59,11 @@
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true",
-    "应用程序.GameApplication.executor": "Debug",
+    "应用程序.GameApplication.executor": "Run",
     "应用程序.TestMainUIApplication.executor": "Run"
   }
 }]]></component>
-  <component name="RunManager" selected="应用程序.GameApplication">
+  <component name="RunManager" selected="应用程序.TestMainUIApplication">
     <configuration name="GameApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GameApplication" />
       <module name="Reach2048" />
@@ -85,8 +86,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="应用程序.GameApplication" />
         <item itemvalue="应用程序.TestMainUIApplication" />
+        <item itemvalue="应用程序.GameApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -108,7 +109,8 @@
       <updated>1716529031291</updated>
       <workItem from="1716529033750" duration="10429000" />
       <workItem from="1716611936691" duration="178000" />
-      <workItem from="1716612124380" duration="22077000" />
+      <workItem from="1716612124380" duration="25412000" />
+      <workItem from="1716702297487" duration="9264000" />
     </task>
     <task id="LOCAL-00002" summary="Modify GameUI">
       <option name="closed" value="true" />
@@ -118,7 +120,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716632335331</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Modify GameUI with sidebar">
+      <option name="closed" value="true" />
+      <created>1716650344770</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1716650344770</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -140,7 +150,8 @@
     <MESSAGE value="Add move sound effect and apply custom font" />
     <MESSAGE value="Implement multiple player management and save function" />
     <MESSAGE value="Modify GameUI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modify GameUI" />
+    <MESSAGE value="Modify GameUI with sidebar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modify GameUI with sidebar" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -155,29 +166,57 @@
           <line>33</line>
           <option name="timeStamp" value="44" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
+          <line>193</line>
+          <option name="timeStamp" value="58" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
+          <line>191</line>
+          <option name="timeStamp" value="59" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
+          <line>189</line>
+          <option name="timeStamp" value="60" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
+          <line>187</line>
+          <option name="timeStamp" value="61" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
+          <line>534</line>
+          <option name="timeStamp" value="62" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
+          <line>308</line>
+          <option name="timeStamp" value="66" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/controller/LoadingAnimation.java</url>
+          <line>132</line>
+          <option name="timeStamp" value="68" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/controller/MainUI.java</url>
-          <line>62</line>
+          <line>64</line>
           <properties class="controller.MainUI" method="startAction">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="47" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
-          <line>273</line>
-          <properties class="controller.GameUI" method="downAction">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="57" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="Saver.makeDir(savePath)" language="JAVA" />
+        <watch expression="currentIndex" language="JAVA" />
+        <watch expression="MainUI.downPanes" language="JAVA" custom="controller.MainUI" />
       </configuration>
     </watches-manager>
   </component>

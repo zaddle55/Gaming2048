@@ -104,7 +104,7 @@
         </children>
     </AnchorPane>
     <!--**************************选项界面**************************-->
-    <AnchorPane fx:id="optionInterface" layoutX="1400.0" layoutY="100.0" prefHeight="400.0" prefWidth="700.0">
+    <AnchorPane fx:id="optionInterface" layoutX="700.0" layoutY="100.0" prefHeight="400.0" prefWidth="700.0">
         <children>
             <StackPane fx:id="loadingPane" layoutX="0.0" layoutY="0.0" prefHeight="500.0" prefWidth="700.0">
             </StackPane>
