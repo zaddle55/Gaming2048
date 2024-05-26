@@ -4,17 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0e72e034-aaa7-4046-b7f9-bbfb7b65012a" name="更改" comment="Modify GameUI with sidebar">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/PublicResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Administrator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Administrator.xml" afterDir="false" />
+    <list default="true" id="0e72e034-aaa7-4046-b7f9-bbfb7b65012a" name="更改" comment="Modify Game Runtime logic">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ArchiveUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ArchiveUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/GameUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GameUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/LoadingAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/LoadingAnimation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MainUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MainUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/FXView/ArchiveUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXView/ArchiveUI.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/FXView/GameUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXView/GameUI.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/FXView/MainUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXView/MainUI.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/PublicResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/PublicResource.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +103,7 @@
       <workItem from="1716529033750" duration="10429000" />
       <workItem from="1716611936691" duration="178000" />
       <workItem from="1716612124380" duration="25412000" />
-      <workItem from="1716702297487" duration="9264000" />
+      <workItem from="1716702297487" duration="11293000" />
     </task>
     <task id="LOCAL-00002" summary="Modify GameUI">
       <option name="closed" value="true" />
@@ -128,7 +121,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716650344770</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Modify Game Runtime logic">
+      <option name="closed" value="true" />
+      <created>1716711603420</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1716711603420</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -151,7 +152,8 @@
     <MESSAGE value="Implement multiple player management and save function" />
     <MESSAGE value="Modify GameUI" />
     <MESSAGE value="Modify GameUI with sidebar" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modify GameUI with sidebar" />
+    <MESSAGE value="Modify Game Runtime logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modify Game Runtime logic" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -168,32 +170,32 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
-          <line>193</line>
+          <line>199</line>
           <option name="timeStamp" value="58" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
-          <line>191</line>
+          <line>197</line>
           <option name="timeStamp" value="59" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
-          <line>189</line>
+          <line>195</line>
           <option name="timeStamp" value="60" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
-          <line>187</line>
+          <line>193</line>
           <option name="timeStamp" value="61" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
-          <line>534</line>
+          <line>540</line>
           <option name="timeStamp" value="62" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
-          <line>308</line>
+          <line>314</line>
           <option name="timeStamp" value="66" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

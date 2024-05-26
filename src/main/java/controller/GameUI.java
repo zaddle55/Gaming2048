@@ -26,6 +26,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
 import model.Save;
 import model.Tile;
 import model.Grid;
@@ -174,7 +175,12 @@ public class GameUI extends Application {
 //            winAction();
 //        });
         // 若有用户登录，开启定时自动保存任务
-        // todo
+        if (currentUser != null) {
+            timer.setTimingSession(() -> {
+                autoSave();
+                System.out.println("Auto save");
+            }, Duration.seconds(10));
+        }
         timeLabel.textProperty().bind(timer.messageProperty());
         updateState();
 
@@ -606,6 +612,7 @@ public class GameUI extends Application {
         GameUI.setBoard(new Grid(size, mode));
         GameUI.setStartTime(Time.ZERO);
         currentUser = user;
+        currentSave = null;
         isLoad = false;
         isEnd = false;
         isWin = false;
@@ -644,7 +651,6 @@ public class GameUI extends Application {
         GameUI.setStartTime(startTime);
         if (!PublicResource.isEmpty()) {
             currentUser = PublicResource.getLoginUser();
-            userManager = PublicResource.getUserManager();
         }
         GameUI.currentSave = save;
         isLoad = true;
@@ -759,6 +765,9 @@ public class GameUI extends Application {
         try {
             AnchorPane mask = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/FXView/MaskPane.fxml")));
             gameInterface.getChildren().add(mask);
+            if (currentSave != null) {
+                saveName.setText(currentSave.saveName);
+            }
             scene.lookup("#arrow").setOnMousePressed(event -> {
                 slipReform();
                 gameInterface.getChildren().remove(mask);

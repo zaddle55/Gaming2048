@@ -4,6 +4,11 @@ package controller;
 import model.User;
 import model.UserManager;
 
+import java.util.Collections;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+
 /**
  * @Description: 公共资源类，用于储存运行时的共享资源
  * @Author: Zaddle
@@ -15,6 +20,8 @@ public class PublicResource {
     // 共享资源域
     private User loginUser;
     private UserManager userManager;
+
+    private Map<String, Object> resourcePool = Collections.synchronizedMap(new java.util.HashMap<>()); // “资源名”-“资源”映射
 
     private PublicResource() {
     }
