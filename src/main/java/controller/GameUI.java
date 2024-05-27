@@ -28,6 +28,7 @@ import model.Grid;
 import util.*;
 import util.graphic.Paint;
 import model.*;
+import util.music.BackgroundMusic;
 
 import java.io.IOException;
 import java.net.URL;
@@ -49,6 +50,7 @@ public class GameUI extends Application {
     public Text exitText;
     public Button rtmConfirm;
     public Button exitConfirm;
+    public GridPane musicPane;
     // 节点域
     @FXML
     private AnchorPane gamePane;
@@ -152,12 +154,19 @@ public class GameUI extends Application {
         rtmConfirm = (Button) scene.lookup("#rtmConfirm");
         exitConfirm = (Button) scene.lookup("#exitConfirm");
         sidebarPane = (AnchorPane) scene.lookup("#sidebarPane");
+        musicPane = (GridPane) scene.lookup("#musicPane");
 
-        // 资源初始化
+        // 背景音乐初始化
+        BackgroundMusic.initMusicList();
+        BackgroundMusic.initMusicView();
+        musicPane.add(BackgroundMusic.getMusicView(), 0, 0);
+        BackgroundMusic.play();
         // 音效初始化
-        URL audioResource = getClass().getResource("/assets/sound/moveSound.mp3");
-        if (audioResource != null) {
-            moveSound = new MediaPlayer(new Media(audioResource.toString()));
+        if (PublicResource.getResource("MoveSound") == null) {
+            System.out.println("No sound resource");
+
+        } else {
+            moveSound = (MediaPlayer) PublicResource.getResource("MoveSound");
         }
         // 字体初始化
         final Font LILITA_18 = Font.loadFont(getClass().getResourceAsStream("/font/Lilita_One/LilitaOne-Regular.ttf"), 18);
@@ -745,6 +754,7 @@ public class GameUI extends Application {
     }
 
     public void exitGame() {
+        BackgroundMusic.pause();
         // 弹出确认窗口 TODO
         Stage stage = (Stage) gamePane.getScene().getWindow();
         stage.close();

@@ -4,6 +4,7 @@ import com.google.gson.GsonBuilder;
 import com.jfoenix.controls.JFXSlider;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -372,7 +373,7 @@ public class MainUI extends Application {
 
         // 检查是否做出选择
         if (currentOptionIndex == 0) {
-            // 提示用户选择游戏模式
+            // 提示用户选择游戏模式 TODO: 替换为UI显示
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
             alert.setHeaderText("Please select a game mode");
@@ -408,6 +409,19 @@ public class MainUI extends Application {
                 }
             });
             loadingAnimation.play();
+            // 加载各类资源
+            Task<Void> task = new Task<Void>() {
+                @Override
+                protected Void call() throws Exception {
+                    // 在这里执行你的耗时任务
+                    Platform.runLater(PublicResource::loadSoundResource);
+                    Platform.runLater(PublicResource::loadMusicResource);
+                    return null;
+                }
+            };
+
+            // 启动新的线程来执行任务
+            new Thread(task).start();
         });
         switchAnimation.play(Animation.CombineType.GROUP);
     }

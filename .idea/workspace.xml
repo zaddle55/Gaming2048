@@ -4,19 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0e72e034-aaa7-4046-b7f9-bbfb7b65012a" name="更改" comment="Update README">
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/logger/LogType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/logger/Logger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/logger/MoeLoggerBar.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/logger/ShowUpOption.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/JFXSliderExample.java" afterDir="false" />
+    <list default="true" id="0e72e034-aaa7-4046-b7f9-bbfb7b65012a" name="更改" comment="Implement option select interface">
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/music/MusicList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/music/MusicView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/FXView/MusicPlayer.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/css/Music.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GameUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GameUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/MainUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MainUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/SwitchInterfaceAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/SwitchInterfaceAnimation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/FXView/MainUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXView/MainUI.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/css/mainUI.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/mainUI.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/PublicResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/PublicResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/FXView/GameUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXView/GameUI.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/JFXSliderExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/JFXSliderExample.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,10 +24,11 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
+        <option value="FxmlFile" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -54,26 +53,27 @@
     <option name="openDirectoriesWithSingleClick" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;zaddle&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
-    &quot;应用程序.CustomSlider.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.GameApplication.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.JFXSliderExample.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.Main.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.TestMainUIApplication.executor&quot;: &quot;Run&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "zaddle",
+    "kotlin-language-version-configured": "true",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true",
+    "应用程序.CustomSlider.executor": "Run",
+    "应用程序.GameApplication.executor": "Run",
+    "应用程序.JFXSliderExample.executor": "Run",
+    "应用程序.Main.executor": "Run",
+    "应用程序.TestMainUIApplication.executor": "Run"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="应用程序.Main">
     <configuration name="CustomSlider" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="CustomSlider" />
@@ -125,9 +125,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="应用程序.Main" />
+        <item itemvalue="应用程序.GameApplication" />
         <item itemvalue="应用程序.JFXSliderExample" />
         <item itemvalue="应用程序.CustomSlider" />
-        <item itemvalue="应用程序.GameApplication" />
         <item itemvalue="应用程序.TestMainUIApplication" />
       </list>
     </recent_temporary>
@@ -155,7 +155,7 @@
       <workItem from="1716713611578" duration="244000" />
       <workItem from="1716717775841" duration="4053000" />
       <workItem from="1716804344466" duration="17496000" />
-      <workItem from="1716821940316" duration="2871000" />
+      <workItem from="1716821940316" duration="11583000" />
     </task>
     <task id="LOCAL-00002" summary="Modify GameUI">
       <option name="closed" value="true" />
@@ -221,7 +221,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716735923229</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Implement option select interface">
+      <option name="closed" value="true" />
+      <created>1716824960123</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1716824960123</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -249,7 +257,8 @@
     <MESSAGE value="Version:1.0.0" />
     <MESSAGE value="Version:1.0.1" />
     <MESSAGE value="Update README" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update README" />
+    <MESSAGE value="Implement option select interface" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement option select interface" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -266,43 +275,52 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
-          <line>218</line>
+          <line>227</line>
           <option name="timeStamp" value="58" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
-          <line>216</line>
+          <line>225</line>
           <option name="timeStamp" value="59" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
-          <line>214</line>
+          <line>223</line>
           <option name="timeStamp" value="60" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
-          <line>212</line>
+          <line>221</line>
           <option name="timeStamp" value="61" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
-          <line>551</line>
+          <line>560</line>
           <option name="timeStamp" value="62" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
-          <line>330</line>
+          <line>339</line>
           <option name="timeStamp" value="66" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controller/LoadingAnimation.java</url>
-          <line>132</line>
-          <option name="timeStamp" value="68" />
+          <url>file://$PROJECT_DIR$/src/main/java/controller/MainUI.java</url>
+          <line>472</line>
+          <option name="timeStamp" value="70" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controller/MainUI.java</url>
-          <line>458</line>
-          <option name="timeStamp" value="70" />
+          <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
+          <line>164</line>
+          <option name="timeStamp" value="74" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/controller/PublicResource.java</url>
+          <line>70</line>
+          <properties class="controller.PublicResource" method="loadSoundResource">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="71" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -311,6 +329,7 @@
         <watch expression="Saver.makeDir(savePath)" language="JAVA" />
         <watch expression="currentIndex" language="JAVA" />
         <watch expression="MainUI.downPanes" language="JAVA" custom="controller.MainUI" />
+        <watch expression="PublicResource.getResource(&quot;moveSound&quot;)" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>

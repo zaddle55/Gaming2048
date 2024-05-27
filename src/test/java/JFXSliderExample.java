@@ -1,13 +1,18 @@
 import com.jfoenix.controls.JFXSlider;
 import javafx.application.Application;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class JFXSliderExample extends Application {
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws IOException {
         JFXSlider slider = new JFXSlider();
 
         // 设置滑动条的最小值、最大值和当前值
@@ -35,6 +40,9 @@ public class JFXSliderExample extends Application {
         VBox vbox = new VBox(slider);
         Scene scene = new Scene(vbox, 200, 100);
         scene.getStylesheets().add("/css/MainUI.css");
+
+        AnchorPane musicView = FXMLLoader.load(getClass().getResource("/FXView/MusicPlayer.fxml"));
+        vbox.getChildren().add(musicView);
 
         primaryStage.setScene(scene);
         primaryStage.show();
