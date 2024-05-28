@@ -3,56 +3,21 @@ package ai;
 import controller.GameUI;
 import model.Grid;
 import util.Direction;
+
+import static ai.AlphaDuo.directionNum;
 import static java.lang.Thread.sleep;
 
 public class AIThread implements Runnable {
     protected Grid grid;
     protected GameUI gameThread;
     public boolean endFlag = false;
-    private double evaluationScore = 0;
-    private final double monoWeight = 0.4; // 单调性权重
-    private final double smoothWeight = 1.0; // 平滑性权重
-    private final double emptyWeight = 0.7; // 总空格数权重
-    private final double islandWeight = 0.1; // 孤立空格数权重
 
     public AIThread(Grid grid, GameUI gameThread) {
         this.grid = grid;
         this.gameThread = gameThread;
     }
 
-    protected double evaluate(Direction d) {
-
-
-
-        int emptyTile = 0;
-        for (int i=0; i < grid.getSize(); i++) {
-            for (int j=0; j < grid.getSize(); j++) {
-                if (grid.getTileGrid()[i][j] == null) {
-                    emptyTile += 1;
-                }
-            }
-        }
-        evaluationScore += emptyTile * emptyWeight;
-
-
-
-
-        return evaluationScore;
-    }
     protected Direction getDirection() {
-        Direction direction = Direction.UP;
-        int directionNum = 0;
-        if (evaluate(Direction.DOWN) > evaluate(direction)) {
-            direction = Direction.DOWN;
-            directionNum = 1;
-        }
-        if (evaluate(Direction.LEFT) > evaluate(direction)) {
-            direction = Direction.LEFT;
-            directionNum = 2;
-        }
-        if (evaluate(Direction.RIGHT) > evaluate(direction)) {
-            directionNum = 3;
-        }
         if (directionNum == 0) {
             return Direction.UP;
         } else if (directionNum == 1) {
