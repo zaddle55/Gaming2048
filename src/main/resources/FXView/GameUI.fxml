@@ -27,7 +27,7 @@
         </children>
         </VBox>
         <!--时间显示-->
-        <HBox fx:id="timePane" alignment="CENTER" layoutX="14.0" layoutY="161.0" prefHeight="100.0" prefWidth="273.0">
+        <HBox fx:id="timePane" alignment="CENTER" layoutX="14.0" layoutY="141.0" prefHeight="100.0" prefWidth="273.0">
         <children>
             <Label fx:id="timeTitle" prefHeight="20.0" prefWidth="20.0" styleClass="timer-style">
             <graphic>
@@ -42,12 +42,20 @@
         </children>
         </HBox>
         <!--胜利/失败显示-->
-        <Pane fx:id="statePane" layoutY="310.0" prefHeight="100.0" prefWidth="300.0" visible="true" />
+        <AnchorPane fx:id="statePane" layoutY="251.0" prefHeight="159.0" prefWidth="300.0" visible="false">
+            <ImageView fx:id="moeState" fitHeight="110.0" fitWidth="300.0" layoutX="113.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../assets/moeState/default.png" />
+                </image>
+            </ImageView>
+        </AnchorPane>
     </children>
     </AnchorPane>
     <!--控制板-->
     <AnchorPane fx:id="controlPane" layoutY="454.0" maxWidth="300.0" prefHeight="533.0" prefWidth="300.0">
     <children>
+        <GridPane fx:id="musicPane" alignment="CENTER" hgap="20.0" layoutX="129.0" layoutY="14.0" prefHeight="50.0" prefWidth="50.0" styleClass="control-panel-style" vgap="15.0">
+        </GridPane>
         <GridPane fx:id="upControlPane" alignment="CENTER" hgap="20.0" layoutX="44.0" layoutY="80.0" prefHeight="143.0" prefWidth="220.0" styleClass="control-panel-style" vgap="15.0">
             <padding>
                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -138,7 +146,7 @@
                 <children>
                     <Text fx:id="saveText" fill="gray" lineSpacing="3.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sidebar-custom-text-style" text=" Save the game ?" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                     <TextField fx:id="saveName" prefWidth="230.0" promptText="Input your save name" styleClass="text-field-style" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                    <Button fx:id="saveConfirm" onMousePressed="#manualSave" mnemonicParsing="false" prefHeight="34.0" styleClass="save-button-style" text="Save" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                    <Button fx:id="saveConfirm" mnemonicParsing="false" onMousePressed="#manualSave" prefHeight="34.0" styleClass="save-button-style" text="Save" GridPane.columnIndex="0" GridPane.rowIndex="2" />
                 </children>
             <columnConstraints>
                <ColumnConstraints />
@@ -153,14 +161,14 @@
             <GridPane fx:id="exitPane" alignment="CENTER" layoutY="288.0" prefHeight="136.0" prefWidth="300.0" styleClass="" vgap="20.0" visible="false">
                 <children>
                     <Text fx:id="exitText" fill="gray" lineSpacing="3.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sidebar-custom-text-style" text="Sure to exit?                                          Any unsaved progress will be wasted. " wrappingWidth="249.0517578125" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                    <Button fx:id="rtmConfirm" onMousePressed="#returnToMain" mnemonicParsing="false" prefHeight="34.0" styleClass="save-button-style" text="Return to Main Page" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                    <Button fx:id="rtmConfirm" mnemonicParsing="false" onMousePressed="#returnToMain" prefHeight="34.0" styleClass="save-button-style" text="Return to Main Page" GridPane.columnIndex="0" GridPane.rowIndex="2">
                         <graphic>
                             <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                 <Image url="@../assets/buttonIcon/home.png" />
                             </ImageView>
                         </graphic>
                     </Button>
-                    <Button fx:id="exitConfirm" onMousePressed="#exitGame" mnemonicParsing="false" prefHeight="34.0" styleClass="save-button-style" text="Exit Game" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                    <Button fx:id="exitConfirm" mnemonicParsing="false" onMousePressed="#exitGame" prefHeight="34.0" styleClass="save-button-style" text="Exit Game" GridPane.columnIndex="0" GridPane.rowIndex="3">
                         <graphic>
                             <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                 <Image url="@../assets/buttonIcon/exit_game.png" />

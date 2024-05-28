@@ -1,8 +1,10 @@
 package controller;
 
 import com.google.gson.GsonBuilder;
+import com.jfoenix.controls.JFXSlider;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,9 +16,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import model.Grid;
 import model.Save;
 import model.User;
 import model.UserManager;
@@ -24,7 +28,11 @@ import util.Direction;
 import util.GameModeFactory;
 import util.Saver;
 import util.comparator.CompareByScore;
+import util.graphic.Paint;
+import util.logger.*;
+import util.logger.Logger;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -37,6 +45,12 @@ public class MainUI extends Application {
 
     public TextField usernameField;
     public PasswordField passwordField;
+    public VBox classicOption;
+    public AnchorPane previewClassic;
+    public VBox challengeOption;
+    public AnchorPane previewChallenge;
+    public JFXSlider sizeSlider;
+    public AnchorPane transitionInterface;
     @FXML
     private Label startButton;
     @FXML
@@ -63,43 +77,13 @@ public class MainUI extends Application {
 
     @FXML
     public void startAction() {
-//        try {
-//            GameUI.init(4, GameModeFactory.CLASSIC);
-//            GameUI.run();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        } finally {
-//            Stage stage = (Stage) startButton.getScene().getWindow();
-//            stage.close();
-//        }
+
         Animation switchAnimation = new SwitchInterfaceAnimation(new ArrayList<>(){{
             add(mainInterface);
             add(optionInterface);
-        }}, Direction.LEFT);
+        }}, Direction.LEFT, 700);
         switchAnimation.makeTransition();
-        switchAnimation.setOnFinished(event -> {
-            loginInterface.setVisible(false);
-            optionInterface.setVisible(true);
-            loadingPane.setVisible(true);
-            LoadingAnimation loadingAnimation = new LoadingAnimation();
-            optionInterface.getChildren().add(loadingAnimation.getNode());
-            loadingAnimation.makeTransition();
 
-            loadingAnimation.setOnFinished(event1 -> {
-                try {
-                    GameUI.init(4, GameModeFactory.CLASSIC, user);
-                    GameUI.run();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    // 移除加载动画
-
-                    Stage stage = (Stage) startButton.getScene().getWindow();
-                    stage.close();
-                }
-            });
-            loadingAnimation.play();
-        });
         switchAnimation.play(Animation.CombineType.GROUP);
     }
 
@@ -107,15 +91,11 @@ public class MainUI extends Application {
         if (user != null){
             ArchiveUI.init(null);
             ArchiveUI.run();
-            Stage stage = (Stage) achieveButton.getScene().getWindow();
+            Stage stage = (Stage) startButton.getScene().getWindow();
             stage.close();
         } else {
-            // 提示用户登录, 后改
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information");
-            alert.setHeaderText("Please login first");
-            alert.setContentText("You need to login to view your achievements");
-            alert.showAndWait();
+            // 提示用户登录
+            new Logger(mainInterface, "Please login first", LogType.info).show();
         }
     }
 
@@ -184,7 +164,7 @@ public class MainUI extends Application {
                 user.setTotalLoses((int) saveList.stream().filter(save -> save.state == LOSE).count());
                 Saver.saveToJson(Saver.buildGson(userManager), "general/userInfo.json");
             } catch (Exception e) {
-                System.out.println(e.getMessage());
+                new Logger(loginInterface, e, LogType.error).show();
             }
         }
         Animation switchAnimation = new SwitchInterfaceAnimation(new ArrayList<>(){{
@@ -207,19 +187,20 @@ public class MainUI extends Application {
             user = userManager.login(username, password);
         } catch (Exception e) {
             if (e instanceof IllegalArgumentException) {
-                System.out.println(e.getMessage()); // 替换为UI显示
+                new Logger(loginInterface, e, LogType.warn).show();
             } else {
-                System.out.println(e.getMessage());
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText("An error occurred");
-                alert.setContentText("Please try again later");
-                alert.showAndWait();
+                new Logger(loginInterface, e, LogType.error).show();
             }
         } finally {
             if (user != null) {
+                Logger logger = new Logger(loginInterface, "Welcome, " + user.getName() + "!", LogType.success);
+                logger.setOnEnd(() -> {
+                    enterAction();
+                });
+
+                logger.show();
                 // 登录成功
-                enterAction();
+
             }
         }
     }
@@ -231,19 +212,18 @@ public class MainUI extends Application {
             user = userManager.register(username, password);
         } catch (Exception e) {
             if (e instanceof IllegalArgumentException) {
-                System.out.println(e.getMessage()); // 替换为UI显示
+                new Logger(loginInterface, e, LogType.warn).show();
             } else {
-                System.out.println(e.getMessage());
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText("An error occurred");
-                alert.setContentText("Please try again later");
-                alert.showAndWait();
+                new Logger(loginInterface, e, LogType.error).show();
             }
         } finally {
             if (user != null) {
                 // 注册成功
-                enterAction();
+                Logger logger = new Logger(loginInterface, "Welcome, " + user.getName() + "!", LogType.success);
+                logger.setOnEnd(() -> {
+                    enterAction();
+                });
+                logger.show();
             }
         }
     }
@@ -280,6 +260,37 @@ public class MainUI extends Application {
         mainInterface = (AnchorPane) scene.lookup("#mainInterface");
         optionInterface = (AnchorPane) scene.lookup("#optionInterface");
         loadingPane = (StackPane) scene.lookup("#loadingPane");
+        classicOption = (VBox) scene.lookup("#classicOption");
+        previewClassic = (AnchorPane) scene.lookup("#previewClassic");
+        challengeOption = (VBox) scene.lookup("#challengeOption");
+        previewChallenge = (AnchorPane) scene.lookup("#previewChallenge");
+        sizeSlider = (JFXSlider) scene.lookup("#sizeSlider");
+        transitionInterface = (AnchorPane) scene.lookup("#transitionInterface");
+
+        // 加载选项界面
+        Grid classicGrid = new Grid(new int[][]{
+                {2, 4},
+                {8, 16}
+        }, GameModeFactory.CLASSIC
+        );
+        classicGrid.load(previewClassic, 3.0);
+        Paint.draw(classicGrid, previewClassic,2, 3.0, 3.0);
+        Grid challengeGrid = new Grid(new int[][]{
+                {2, 4},
+                {8, 3}
+        }, GameModeFactory.CHALLENGE
+        );
+        challengeGrid.load(previewChallenge, 3.0);
+        Paint.draw(challengeGrid, previewChallenge,2, 3.0, 3.0);
+
+        // 设置选项监听
+        classicOption.setOnMousePressed(event -> {
+            setCurrentOptionIndex(1);
+        });
+        challengeOption.setOnMousePressed(event -> {
+            setCurrentOptionIndex(2);
+        });
+
 
         // 加入界面组
         if (downPanes.isEmpty()) {
@@ -307,16 +318,13 @@ public class MainUI extends Application {
                 // 加载到公共资源
                 PublicResource.init(userManager);
             } catch (Exception e) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText("Failed to load user information");
-                alert.setContentText("Please try to handle it");
-                alert.showAndWait();
+                System.out.println("Failed to load user information");
             }
         } else {
             userManager = new UserManager();
             PublicResource.init(userManager);
         }
+        currentOptionIndex = 0;
     }
 
 
@@ -353,4 +361,110 @@ public class MainUI extends Application {
         }
     }
 
+    /*************************** 选项页面 ************************** */
+    private static int currentOptionIndex = 0;
+    public void newGameAction(MouseEvent mouseEvent) {
+
+        // 检查是否做出选择
+        if (currentOptionIndex == 0) {
+            new Logger(optionInterface, "Please choose a game mode", LogType.warn).show();
+            return;
+        }
+        Animation switchAnimation = new SwitchInterfaceAnimation(new ArrayList<>(){{
+            add(optionInterface);
+            add(transitionInterface);
+        }}, Direction.LEFT);
+        switchAnimation.makeTransition();
+        switchAnimation.setOnFinished(event -> {
+
+            loadingPane.setVisible(true);
+            LoadingAnimation loadingAnimation = new LoadingAnimation();
+            transitionInterface.getChildren().add(loadingAnimation.getNode());
+            loadingAnimation.makeTransition();
+
+            loadingAnimation.setOnFinished(event1 -> {
+                try {
+                    GameUI.init((int) sizeSlider.getValue(),
+                            (currentOptionIndex == 1) ? GameModeFactory.CLASSIC :GameModeFactory.CHALLENGE,
+                            user);
+                    GameUI.run();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    // 移除加载动画
+
+                    Stage stage = (Stage) startButton.getScene().getWindow();
+                    stage.close();
+                }
+            });
+            loadingAnimation.play();
+            // 加载各类资源
+            Task<Void> task = new Task<Void>() {
+                @Override
+                protected Void call() throws Exception {
+                    // 在这里执行你的耗时任务
+                    Platform.runLater(PublicResource::loadSoundResource);
+                    Platform.runLater(PublicResource::loadMusicResource);
+                    return null;
+                }
+            };
+
+            // 启动新的线程来执行任务
+            new Thread(task).start();
+        });
+        switchAnimation.play(Animation.CombineType.GROUP);
+    }
+
+    private void setCurrentOptionIndex(int index) {
+        currentOptionIndex = index;
+        if (currentOptionIndex == 1) {
+            // 经典模式
+            classicOption.setStyle("-fx-background-color: rgba(255, 249, 232, 0.98);" +
+                    "-fx-background-radius: 5px;" +
+                    "-fx-background-size: cover;" +
+                    "-fx-background-position: center;" +
+                    "-fx-border-radius: 5px;" +
+                    "-fx-border-color: rgb(248, 219, 43);" +
+                    "-fx-border-width: 1px;" +
+                    "-fx-effect: dropshadow(three-pass-box, rgba(17, 184, 244, 0.8), 10, 0, 0, 0);");
+            challengeOption.setStyle("-fx-background-color: rgba(240, 232, 255, 0.98);" +
+                    "-fx-background-radius: 5px;" +
+                    "-fx-background-size: cover;" +
+                    "-fx-background-position: center;" +
+                    "-fx-border-radius: 5px;" +
+                    "-fx-border-color: rgba(164, 107, 239, 0.68);" +
+                    "-fx-border-width: 1px;" +
+                    "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);");
+        } else if (currentOptionIndex == 2) {
+            // 挑战模式
+            classicOption.setStyle("-fx-background-color: rgba(255, 249, 232, 0.98);" +
+                    "-fx-background-radius: 5px;" +
+                    "-fx-background-size: cover;" +
+                    "-fx-background-position: center;" +
+                    "-fx-border-radius: 5px;" +
+                    "-fx-border-color: rgb(186, 172, 159);" +
+                    "-fx-border-width: 1px;" +
+                    "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);");
+
+            challengeOption.setStyle("-fx-background-color: rgba(240, 232, 255, 0.98);" +
+                    "-fx-background-radius: 5px;" +
+                    "-fx-background-size: cover;" +
+                    "-fx-background-position: center;" +
+                    "-fx-border-radius: 5px;" +
+                    "-fx-border-color: rgba(164, 107, 239, 0.68);" +
+                    "-fx-border-width: 1px;" +
+                    "-fx-effect: dropshadow(three-pass-box, rgba(17, 184, 244, 0.8), 10, 0, 0, 0);");
+        }
+
+    }
+
+    public void backAction() {
+        SwitchInterfaceAnimation switchAnimation = new SwitchInterfaceAnimation(new ArrayList<>(){{
+            add(optionInterface);
+            add(mainInterface);
+        }}, Direction.LEFT, -700);
+        switchAnimation.makeTransition();
+
+        switchAnimation.play(Animation.CombineType.GROUP);
+    }
 }

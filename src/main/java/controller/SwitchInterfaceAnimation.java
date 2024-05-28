@@ -31,6 +31,13 @@ public class SwitchInterfaceAnimation extends Animation{
         this.distance = distance;
     }
 
+    public SwitchInterfaceAnimation(List<Node> nodes, Direction direction, double distance) {
+        super();
+        this.nodes = nodes;
+        this.direction = direction;
+        this.distance = distance;
+    }
+
     @Override
     public void makeTransition() {
         for (Node node : nodes) {

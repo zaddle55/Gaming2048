@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.effect.Blend?>
+<AnchorPane prefHeight="50.0" prefWidth="50.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" stylesheets="@../css/Music.css">
+    <Circle fx:id="circle" layoutX="25.0" layoutY="25.0" radius="20.0" stroke="darkgray" strokeWidth="0.5" strokeType="INSIDE" fill="lightgoldenrodyellow" styleClass="circle">
+        <effect>
+            <DropShadow color="#727272" radius="2.0" spread="0.1" />
+        </effect>
+    </Circle>
+    <ImageView fx:id="playButton" fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@../assets/musicIcon.png" />
+        </image>
+    </ImageView>
+    <effect>
+        <Blend mode="SOFT_LIGHT" />
+    </effect>
+</AnchorPane>
