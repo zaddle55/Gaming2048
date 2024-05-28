@@ -21,6 +21,9 @@ public class AIThread implements Runnable {
     }
 
     protected double evaluate(Direction d) {
+
+
+
         int emptyTile = 0;
         for (int i=0; i < grid.getSize(); i++) {
             for (int j=0; j < grid.getSize(); j++) {
@@ -30,17 +33,24 @@ public class AIThread implements Runnable {
             }
         }
         evaluationScore += emptyTile * emptyWeight;
+
+
+
+
         return evaluationScore;
     }
     protected Direction getDirection() {
+        Direction direction = Direction.UP;
         int directionNum = 0;
-        if (evaluate(Direction.UP) < evaluate(Direction.DOWN)) {
+        if (evaluate(Direction.DOWN) > evaluate(direction)) {
+            direction = Direction.DOWN;
             directionNum = 1;
         }
-        if (evaluate(Direction.DOWN) < evaluate(Direction.LEFT)) {
+        if (evaluate(Direction.LEFT) > evaluate(direction)) {
+            direction = Direction.LEFT;
             directionNum = 2;
         }
-        if (evaluate(Direction.LEFT) < evaluate(Direction.RIGHT)) {
+        if (evaluate(Direction.RIGHT) > evaluate(direction)) {
             directionNum = 3;
         }
         if (directionNum == 0) {
@@ -57,30 +67,23 @@ public class AIThread implements Runnable {
     protected void move(Direction direction) {
         gameThread.simulateMove(direction);
     }
-
     protected void updateGrid() {
         grid = gameThread.getGrid();
     }
-
     protected void updateEndFlag() {
         endFlag = !GameUI.isAuto || GameUI.isWin || GameUI.isLose;
     }
-
     @Override
     public void run() {
-
         while (!endFlag) {
-
             try {
                 sleep(100);
                 updateGrid();
                 updateEndFlag();
                 move(getDirection());
-
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-
         }
     }
 }
