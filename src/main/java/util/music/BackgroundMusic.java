@@ -7,6 +7,7 @@ import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.MediaException;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
@@ -94,6 +95,17 @@ public class BackgroundMusic {
         instance.isPlaying = true;
         if (instance.currentPlayer == null) {
             instance.currentPlayer = instance.musicList.next();
+            instance.currentPlayer.setVolume(0.5);
+            instance.currentPlayer.setOnError(() -> {
+                MediaException error = instance.currentPlayer.getError();
+                if (error != null) {
+                    System.out.println("Error: " + error.getMessage());
+                    if (error.getCause() != null) {
+                        System.out.println("Cause: " + error.getCause().getMessage());
+                    }
+                }
+            });
+
         }
         instance.currentPlayer.play();
         // 自动循环
