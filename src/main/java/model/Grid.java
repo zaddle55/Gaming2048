@@ -131,7 +131,7 @@ public class Grid {
     public void load(AnchorPane gamePane) {
         this.gamePane = gamePane;
         fillTileGrid();
-        addToHistory();
+//        addToHistory();
     }
 
     public void load(AnchorPane gamePane, double space) {

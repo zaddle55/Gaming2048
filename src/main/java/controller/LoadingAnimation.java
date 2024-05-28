@@ -32,9 +32,9 @@ public class LoadingAnimation extends Animation{
     private AnimationTimer textAnimation;
 
     // 加载图形舞台
-    private static AnchorPane stage = new AnchorPane();
+    private AnchorPane stage = new AnchorPane();
     // 加载文字区域
-    private static StackPane text = new StackPane();
+    private StackPane text = new StackPane();
     private VBox node;
     private final static int SIZE = 2;
 

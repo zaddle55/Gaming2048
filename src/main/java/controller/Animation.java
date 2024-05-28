@@ -9,6 +9,7 @@ import model.Tile;
 import util.graphic.Coordination;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -53,6 +54,12 @@ public abstract class Animation {
         this.nodes = nodes;
         this.tiles = nodesToTiles(nodes);
         this.coordinationTool = coordinationTool;
+        this.transitions = new ArrayList<>();
+    }
+
+    public Animation(Node... nodes) {
+        this.nodes = new ArrayList<>();
+        this.nodes.addAll(Arrays.asList(nodes));
         this.transitions = new ArrayList<>();
     }
 

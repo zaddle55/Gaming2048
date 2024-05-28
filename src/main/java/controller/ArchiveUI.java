@@ -15,10 +15,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -60,6 +58,7 @@ public class ArchiveUI extends Application {
     private String savePath; // 存档路径, 可被序列化
 
     private static User currentUser;
+    private static UserManager userManager;
 
     private static List<GridPane> saveInterfaceList;
     private List<Save> saveList;
@@ -68,7 +67,12 @@ public class ArchiveUI extends Application {
 
     /* ****** Methods ****** */
     private void loadArchive() {
-        saveList = Saver.getSaveList(currentUser);
+        try {
+            saveList = Saver.getSaveList(currentUser);
+        } catch (Exception e) {
+            System.out.println(e.getMessage()); // 后改为弹窗提示
+            return;
+        }
 //        try {
 //            saveList = RandomSave.randomSave(150);
 //        } catch (InterruptedException e) {
@@ -128,7 +132,7 @@ public class ArchiveUI extends Application {
             currentUser.setTotalGames(saveList.size());
             currentUser.setTotalWins((int) saveList.stream().filter(save -> save.state == WIN).count());
             currentUser.setTotalLoses((int) saveList.stream().filter(save -> save.state == LOSE).count());
-//            Saver.saveToJson(Saver.buildGson(userManager), "src/main/resources/general/userInfo.json");
+            Saver.saveToJson(Saver.buildGson(userManager), "general/userInfo.json");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -246,7 +250,7 @@ public class ArchiveUI extends Application {
 
         // archivePane中原有组件全不可见
         archivePane.getChildren().forEach(node -> node.setVisible(false));
-        Animation load = new LoadingAnimation();
+        LoadingAnimation load = new LoadingAnimation();
         AnchorPane loadArea = new AnchorPane();
         loadArea.getChildren().add(load.getNode());
         loadArea.setPrefHeight(400);
@@ -257,7 +261,7 @@ public class ArchiveUI extends Application {
         load.makeTransition();
         load.setOnFinished(event -> {
             // 加载完成后进入游戏
-            GameUI.init(save.grid, save.playTime, currentUser, save);
+            GameUI.init(save.grid, save.playTime, save);
             try {
                 GameUI.run();
             } catch (Exception e) {
@@ -265,6 +269,7 @@ public class ArchiveUI extends Application {
             } finally {
                 // 关闭存档界面
                 Platform.runLater(() -> {
+                    // 移除加载动画
                     Stage stage = (Stage) upperPane.getScene().getWindow();
                     stage.close();
                 });
@@ -272,7 +277,7 @@ public class ArchiveUI extends Application {
             ;
         });
 
-        load.play(Animation.CombineType.MONO);
+        load.play();
 
 
     }
@@ -374,6 +379,13 @@ public class ArchiveUI extends Application {
         }
     }
 
+    @FXML
+    public void returnToMain() {
+        MainUI.init(null);
+        MainUI.run();
+        ((Stage) upperPane.getScene().getWindow()).close();
+    }
+
     /* ****** Starting ****** */
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -416,8 +428,13 @@ public class ArchiveUI extends Application {
         });
     }
 
-    public static void init(User user) {
-        currentUser = user;
+    public static void init(User u) {
+        if (PublicResource.isEmpty()) {
+            throw new RuntimeException("PublicResource is empty");
+        } else {
+            currentUser = PublicResource.getLoginUser();
+            userManager = PublicResource.getUserManager();
+        }
     }
 
 }

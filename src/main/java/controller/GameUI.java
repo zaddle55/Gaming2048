@@ -9,26 +9,19 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
-import javafx.scene.control.DialogPane;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.effect.BoxBlur;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Line;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
 import model.Save;
 import model.Tile;
 import model.Grid;
@@ -37,18 +30,29 @@ import util.graphic.Paint;
 import model.*;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Map;
 import java.util.Objects;
 import java.io.File;
 import java.time.LocalDate;
-import java.util.Optional;
 
 
 public class GameUI extends Application {
 
+
+    public TextField saveName;
+    public AnchorPane sidebarPane;
+    public GridPane savePane;
+    public GridPane exitPane;
+    public Text saveText;
+    public Button saveConfirm;
+    public Text exitText;
+    public Button rtmConfirm;
+    public Button exitConfirm;
     // 节点域
     @FXML
     private AnchorPane gamePane;
+    public AnchorPane mainPane;
     @FXML
     private Button restartButton;
     @FXML
@@ -74,7 +78,6 @@ public class GameUI extends Application {
 
     // 是否加载
     private static boolean isLoad = false;
-    private static User currentUser;
     // 胜利标志
     public static boolean isWin = false;
     // 失败标志
@@ -89,6 +92,10 @@ public class GameUI extends Application {
     private static AIThread aiThread;
     private static Timer timer;
     private static Time startTime;
+
+    // 游戏资源
+    private static User currentUser;
+    private static MediaPlayer moveSound;
 
     public static int getSize() {
         return size;
@@ -138,20 +145,39 @@ public class GameUI extends Application {
         stepLabel = (Label) scene.lookup("#stepLabel");
         timeLabel = (Label) scene.lookup("#timeLabel");
         autoButton = (Button) scene.lookup("#autoButton");
+        saveName = (TextField) scene.lookup("#saveName");
+        saveText = (Text) scene.lookup("#saveText");
+        saveConfirm = (Button) scene.lookup("#saveConfirm");
+        exitText = (Text) scene.lookup("#exitText");
+        rtmConfirm = (Button) scene.lookup("#rtmConfirm");
+        exitConfirm = (Button) scene.lookup("#exitConfirm");
+        sidebarPane = (AnchorPane) scene.lookup("#sidebarPane");
 
-        GameUI.initGamePane(gamePane, size);
+        // 资源初始化
+        // 音效初始化
+        URL audioResource = getClass().getResource("/assets/sound/moveSound.mp3");
+        if (audioResource != null) {
+            moveSound = new MediaPlayer(new Media(audioResource.toString()));
+        }
+        // 字体初始化
+        final Font LILITA_18 = Font.loadFont(getClass().getResourceAsStream("/font/Lilita_One/LilitaOne-Regular.ttf"), 18);
+        final Font LILITA_16 = Font.loadFont(getClass().getResourceAsStream("/font/Lilita_One/LilitaOne-Regular.ttf"), 16);
+        saveText.setFont(LILITA_18);
+        saveName.setFont(LILITA_16);
+        saveConfirm.setFont(LILITA_18);
+        exitText.setFont(LILITA_18);
+        rtmConfirm.setFont(LILITA_18);
+        exitConfirm.setFont(LILITA_18);
 
         // 游戏板初始化
+        GameUI.initGamePane(gamePane, size);
         if (!isLoad) {
             grid = new Grid(size, mode);
-
             grid.init(gamePane);
             Paint.draw(grid, gamePane, size, 11, 11);
             PopUpAnimation appear = new PopUpAnimation(grid);
             appear.makeTransition();
-
             appear.play(Animation.CombineType.GROUP);
-//            grid.fillTileGrid();
         } else {
             grid.load(gamePane);
             Paint.draw(grid, gamePane, size, 11, 11);
@@ -161,15 +187,26 @@ public class GameUI extends Application {
         // 计时器
         timer = new Timer(startTime, Time.INFINITE);
         timer.begin();
+        // 设置定时器结束事件
 //        timer.setEndEvent(() -> {
 //            isAuto = false;
 //            autoButton.setText("Auto");
 //            winAction();
 //        });
         // 若有用户登录，开启定时自动保存任务
-        // todo
+        if (currentUser != null) {
+            timer.setTimingSession(() -> {
+                autoSave();
+                System.out.println("Auto save");
+            }, Duration.seconds(10));
+        }
         timeLabel.textProperty().bind(timer.messageProperty());
         updateState();
+
+        // 初始化输入框
+        if (currentSave != null) {
+            saveName.setText(currentSave.saveName);
+        }
 
         // 设置键盘监听
         scene.setOnKeyPressed(event -> {
@@ -232,6 +269,10 @@ public class GameUI extends Application {
         isEnd = false;
         isWin = false;
         isLose = false;
+        // 计时器继续
+        if (timer != null) {
+            timer.continueTimer();
+        }
     }
 
     // 按键事件
@@ -277,18 +318,11 @@ public class GameUI extends Application {
 
     private void makeAnimation(Direction down, Map<Tile, Double> distanceMap) {
         // 移除键盘焦点
-//        scene.addEventFilter(KeyEvent.ANY, KeyEvent::consume);
         isEnd = true;
 
-        // 创建一个指向音频文件的URL
-        String audioFilePath = ".\\src\\main\\resources\\assets\\sound\\moveSound.mp3"; // 替换为您的音频文件路径
-        Media sound = new Media(new File(audioFilePath).toURI().toString());
-
-        // 创建MediaPlayer对象
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
-
         // 播放音效
-        mediaPlayer.play();
+        moveSound.stop();
+        moveSound.play();
 
         MoveAnimation slide = new MoveAnimation(down, distanceMap);
         slide.makeTransition();
@@ -302,18 +336,15 @@ public class GameUI extends Application {
             ParallelTransition group1 = new ParallelTransition(bounce.getGroupTransition(), appear.getGroupTransition());
             group1.play();
 
+            // 恢复键盘焦点
+            isEnd = false;
 
             updateState();
-//            // 恢复键盘焦点
-//            scene.removeEventFilter(KeyEvent.ANY, KeyEvent::consume);
-            isEnd = false;
-            
+            scene.getRoot().requestFocus();
+
 
         });
         slide.play(Animation.CombineType.GROUP);
-
-
-
 
     }
 
@@ -387,14 +418,14 @@ public class GameUI extends Application {
             isWin = true;
 
             isAuto = false;
-            autoButton.setText("Auto");
+            autoButton.setGraphic(new ImageView(new Image("/assets/buttonIcon/auto.png", 22.0, 22.0, false, false)));
             timer.stop();
             winAction();
         } else if (grid.isOver()) {
             isLose = true;
 
             isAuto = false;
-            autoButton.setText("Auto");
+            autoButton.setGraphic(new ImageView(new Image("/assets/buttonIcon/auto.png", 22.0, 22.0, false, false)));
             timer.stop();
             loseAction();
         }
@@ -510,29 +541,17 @@ public class GameUI extends Application {
         gamePane.getChildren().add(losePane);
     }
 
+    @FXML
     private void manualSave() {
-//        // 弹出对话框
-//        Dialog<Button> dialog = new Dialog<>();
-//        dialog.setTitle("Save");
-//        dialog.setHeaderText("Do you want to save the game?");
-//        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.YES, ButtonType.NO);
-//        // Custom
-//        AnchorPane pane = new AnchorPane();
-//        Label label = new Label("Save Name:");
-//        // 输入框
-//        TextField textField = new TextField();
-//        if (currentSave != null && isLoad) {
-//            textField.setText(currentSave.saveName);
-//        }
-//        textField.setLayoutX(100);
-//        textField.setLayoutY(50);
-//        Optional<Button> result = dialog.showAndWait();
-//        if (result.isEmpty() || result.get().equals(ButtonType.NO)) {
-//            return;
-//        }
-//        // 添加到pane
-//        pane.getChildren().addAll(label, textField);
-//        dialog.getDialogPane().setContent(pane);
+
+        if (saveName.getText().isEmpty()) {
+            Tooltip tooltip = new Tooltip("Please enter a save name!");
+            tooltip.setFont(Font.font("Arial", 12));
+            tooltip.setShowDuration(javafx.util.Duration.millis(2000));
+            tooltip.setAutoHide(true);
+            tooltip.show(saveName, 1620, 500);
+            return;
+        }
 
         // 保存存档
         // 保存用户信息
@@ -546,10 +565,10 @@ public class GameUI extends Application {
         }
         
         // 保存到User对应存档路径
-        Save save = new Save(grid, state, new Time(timeLabel.getText()), new Date(), new Time());
+        currentSave = new Save(saveName.getText(), grid, state, new Time(timeLabel.getText()), new Date(), new Time());
 
         try {
-            Saver.saveToJson(Saver.buildGson(save), currentUser.getPath() + "/" + save.saveName + ".json");
+            Saver.saveToJson(Saver.buildGson(currentSave), currentUser.getPath() + "/" + currentSave.saveName + ".json");
         } catch (IOException e) {
             throw new RuntimeException("Save failed!");
         }
@@ -567,13 +586,23 @@ public class GameUI extends Application {
             state = Save.State.IN_PROGRESS;
         }
         if (currentSave == null) {
-            String saveName = "Auto " + LocalDate.now().toString();
+            String saveName = "Auto " + LocalDate.now();
             currentSave = new Save(saveName, grid, state, startTime);
             // 保存到User对应存档路径
+            try {
+                Saver.saveToJson(Saver.buildGson(currentSave), currentUser.getPath() + "/" + currentSave.saveName + ".json");
+            } catch (IOException e) {
+                throw new RuntimeException("Save failed!"); // 后改
+            }
             
         } else {
             currentSave = new Save(currentSave.saveName, grid, state, new Time(timeLabel.getText()));
             // 保存到User对应存档路径
+            try {
+                Saver.saveToJson(Saver.buildGson(currentSave), currentUser.getPath() + "/" + currentSave.saveName + ".json");
+            } catch (IOException e) {
+                throw new RuntimeException("Save failed!"); // 后改
+            }
         }
     }
 
@@ -583,6 +612,9 @@ public class GameUI extends Application {
         GameUI.setMode(mode);
         GameUI.setBoard(new Grid(size, mode));
         GameUI.setStartTime(Time.ZERO);
+        isEnd = false;
+        isWin = false;
+        isLose = false;
     }
 
     public static void init(int size, int mode, User user) {
@@ -591,6 +623,11 @@ public class GameUI extends Application {
         GameUI.setBoard(new Grid(size, mode));
         GameUI.setStartTime(Time.ZERO);
         currentUser = user;
+        currentSave = null;
+        isLoad = false;
+        isEnd = false;
+        isWin = false;
+        isLose = false;
     }
 
     private static void setStartTime(Time startTime) {
@@ -604,6 +641,8 @@ public class GameUI extends Application {
         GameUI.setBoard(new Grid(board, mode));
         GameUI.setStartTime(startTime);
         isLoad = true;
+        isEnd = false;
+
 
     }
 
@@ -616,14 +655,20 @@ public class GameUI extends Application {
     }
 
     // 读取存档时
-    public static void init(Grid grid, Time startTime, User user, Save save) {
+    public static void init(Grid grid, Time startTime, Save save) {
         GameUI.setBoard(grid);
         GameUI.setSize(grid.getSize());
         GameUI.setMode(grid.getMode());
         GameUI.setStartTime(startTime);
-        currentUser = user;
-        currentSave = save;
+        if (!PublicResource.isEmpty()) {
+            currentUser = PublicResource.getLoginUser();
+        }
+        GameUI.currentSave = save;
         isLoad = true;
+        isEnd = false;
+
+        isWin = false;
+        isLose = false;
     }
 
     // 运行GameUI
@@ -650,20 +695,20 @@ public class GameUI extends Application {
 
     public void autoAction() {
 
+        if (isWin || isLose) {
+            return;
+        }
+
         if (isAuto) {
             isAuto = false;
             aiThread.endFlag = true;
-            autoButton.setText("Auto");
+            autoButton.setGraphic(new ImageView(new Image("/assets/buttonIcon/auto.png", 22.0, 22.0, false, false)));
             scene.getRoot().requestFocus();
 
         } else {
             isAuto = true;
-            if (aiThread == null) {
-                aiThread = new AIThread(grid, this);
-            } else {
-                aiThread.endFlag = false;
-            }
-            autoButton.setText("Stop");
+            aiThread = new AIThread(grid, this);
+            autoButton.setGraphic(new ImageView(new Image("/assets/buttonIcon/pause.png", 22.0, 22.0, false, false)));
             new Thread(aiThread).start();
 
         }
@@ -673,44 +718,73 @@ public class GameUI extends Application {
         if (isAuto) return;
         timer.stop();
         isEnd = true;
-        // 弹出对话
-        // CustomAlert alert = new CustomAlert(CustomAlert.AlertType.CONFIRMATION, "Exit", "Do you want to save the game?", "Exit");
-        // DialogPane dialogPane = alert.getDialogPane();
-        // 替换为自定义按钮
+        SlipToSidebarAnimation slip = new SlipToSidebarAnimation(mainPane,sidebarPane);
+        slip.makeTransition();
+        slip.play(Animation.CombineType.GROUP);
+        // 为mainPane添加毛玻璃效果
+        BoxBlur blur = new BoxBlur(10, 10, 3);
+        mainPane.setEffect(blur);
 
-        Button saveButton = new Button("Save");
-        Button exitButton = new Button("Exit");
-        Button cancelButton = new Button("Cancel");
-        // dialogPane.setContent(new HBox(saveButton, exitButton, cancelButton));
-        // dialogPane.setPrefSize(300, 200);
-
-        saveButton.setOnAction(event -> {
-            manualSave();
-            // alert.close();
-        });
-        exitButton.setOnAction(event -> {
-            
-            // alert.close();
-            Platform.exit();
-        });
-        cancelButton.setOnAction(event -> {
-            timer.continueTimer();
-            // alert.close();
-            isEnd = false;
-        });
-        // alert.showAndWait();
-        if (currentUser != null) {
-            try {
-                manualSave();
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                System.out.println(e.getMessage());
-                e.printStackTrace();
-            }
-            Platform.exit();
-        } else {
-            Platform.exit();
+        exitPane.setVisible(true);
+        try {
+            AnchorPane mask = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/FXView/MaskPane.fxml")));
+            gameInterface.getChildren().add(mask);
+            scene.lookup("#arrow").setOnMousePressed(event -> {
+                slipReform();
+                gameInterface.getChildren().remove(mask);
+            });
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+    }
 
+    public void returnToMain() {
+        MainUI.init(null);
+        MainUI.run();
+        exitGame();
+    }
+
+    public void exitGame() {
+        // 弹出确认窗口 TODO
+        Stage stage = (Stage) gamePane.getScene().getWindow();
+        stage.close();
+    }
+
+    public void slipReform() {
+        SlipToSidebarAnimation slip = new SlipToSidebarAnimation(mainPane,sidebarPane,true);
+        slip.makeTransition();
+        slip.play(Animation.CombineType.GROUP);
+        mainPane.setEffect(null);
+        exitPane.setVisible(false);
+        savePane.setVisible(false);
+        isEnd = false;
+        if (!isWin && !isLose) timer.continueTimer();
+    }
+
+    public void saveAction() {
+        if (isAuto || currentUser == null) return;
+        timer.stop();
+        isEnd = true;
+        SlipToSidebarAnimation slip = new SlipToSidebarAnimation(mainPane,sidebarPane);
+        slip.makeTransition();
+        slip.play(Animation.CombineType.GROUP);
+        // 为mainPane添加毛玻璃效果
+        BoxBlur blur = new BoxBlur(10, 10, 3);
+        mainPane.setEffect(blur);
+
+        savePane.setVisible(true);
+        try {
+            AnchorPane mask = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/FXView/MaskPane.fxml")));
+            gameInterface.getChildren().add(mask);
+            if (currentSave != null) {
+                saveName.setText(currentSave.saveName);
+            }
+            scene.lookup("#arrow").setOnMousePressed(event -> {
+                slipReform();
+                gameInterface.getChildren().remove(mask);
+            });
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
