@@ -89,7 +89,11 @@ public class PublicResource {
                 PublicResource.getInstance().resourcePool.put("MusicList", new MusicList(      
                         new MediaPlayer(new Media(PublicResource.class.getResource("/assets/music/夢の歩みを見上げて.mp3").toString())),
                         new MediaPlayer(new Media(PublicResource.class.getResource("/assets/music/STAR BEAT!.mp3").toString())),
-                        new MediaPlayer(new Media(PublicResource.class.getResource("/assets/music/sakura.mp3").toString()))
+                        new MediaPlayer(new Media(PublicResource.class.getResource("/assets/music/さくら、もゆ。 -orgel Arrange-.mp3").toString())),
+                        new MediaPlayer(new Media(PublicResource.class.getResource("/assets/music/刻ト詩-Piano ver.mp3").toString())),
+                        new MediaPlayer(new Media(PublicResource.class.getResource("/assets/music/散花.mp3").toString())),
+                        new MediaPlayer(new Media(PublicResource.class.getResource("/assets/music/月に叢雲華に風(Instrumental).mp3").toString())),
+                        new MediaPlayer(new Media(PublicResource.class.getResource("/assets/music/Life Will Change -instrumental version-.mp3").toString()))
 //                        new MediaPlayer(new Media(PublicResource.class.getResource("/assets/music/3.mp3").toString())),
 //                        new MediaPlayer(new Media(PublicResource.class.getResource("/assets/music/4.mp3").toString())),
 //                        new MediaPlayer(new Media(PublicResource.class.getResource("/assets/music/5.mp3").toString())),

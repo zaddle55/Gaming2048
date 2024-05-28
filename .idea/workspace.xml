@@ -4,38 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0e72e034-aaa7-4046-b7f9-bbfb7b65012a" name="更改" comment="Add music player checker">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/FXView/info.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/FXView/success.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/FXView/warn.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/logger/default.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/logger/error.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/logger/info.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/logger/lose.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/logger/success.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/logger/tanoshi.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/logger/warn.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/logger/win.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/css/error.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/css/success.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/css/warn.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/TestInfo.java" afterDir="false" />
+    <list default="true" id="0e72e034-aaa7-4046-b7f9-bbfb7b65012a" name="更改" comment="Implement custom logger">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ArchiveUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ArchiveUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GameUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GameUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MainUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MainUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/PublicResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/PublicResource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/UserManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/logger/LogType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/logger/LogType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/logger/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/logger/Logger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/logger/MoeLoggerBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/logger/MoeLoggerBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/music/BackgroundMusic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/music/BackgroundMusic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/FXView/GameUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXView/GameUI.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/FXView/MainUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXView/MainUI.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/logger/photo_6242540106820992640_x.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/logger/photo_6242540106820992641_x.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/logger/photo_6242540106820992642_x.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/logger/photo_6242540106820992643_x.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/logger/photo_6242540106820992644_x.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/music/sakura.mp3" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,7 +152,7 @@
       <workItem from="1716804344466" duration="17496000" />
       <workItem from="1716821940316" duration="11904000" />
       <workItem from="1716866871303" duration="3876000" />
-      <workItem from="1716884075284" duration="15989000" />
+      <workItem from="1716884075284" duration="19466000" />
     </task>
     <task id="LOCAL-00002" summary="Modify GameUI">
       <option name="closed" value="true" />
@@ -277,7 +250,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716886394746</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Implement custom logger">
+      <option name="closed" value="true" />
+      <created>1716900512984</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1716900512984</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -308,7 +289,8 @@
     <MESSAGE value="Implement option select interface" />
     <MESSAGE value="Implement music player" />
     <MESSAGE value="Add music player checker" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add music player checker" />
+    <MESSAGE value="Implement custom logger" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement custom logger" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

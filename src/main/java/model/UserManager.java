@@ -27,7 +27,7 @@ public class UserManager {
             throw new IllegalArgumentException("Invalid username!" + "Your username should not contain \\ / : * ? \" < > |");
         } else if (!isPasswordValid(password)) { // 检查密码是否有效
 //            JOptionPane.showMessageDialog(null, "Invalid password!" + "Your password should contain at least 8 characters.", "Register Failure", JOptionPane.ERROR_MESSAGE);
-            throw new IllegalArgumentException("Invalid password!" + "Your password should contain at least 8 characters.");
+            throw new IllegalArgumentException("Your password should contain at least 8 characters.");
         } else if (name.equals("") || password.equals("")) { // 检查用户名和密码是否为空
             throw new IllegalArgumentException("Username or password cannot be empty!");
         } else {
