@@ -115,6 +115,7 @@ public class BackgroundMusic {
         // 自动循环
         instance.currentPlayer.setOnEndOfMedia(() -> {
             instance.currentPlayer.stop();
+            instance.currentPlayer = null;
             instance.isPlaying = false;
             play();
         });
