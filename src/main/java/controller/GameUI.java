@@ -330,8 +330,10 @@ public class GameUI extends Application {
         isEnd = true;
 
         // 播放音效
-        moveSound.stop();
-        moveSound.play();
+        if (moveSound != null) {
+            moveSound.stop();
+            moveSound.play();
+        }
 
         MoveAnimation slide = new MoveAnimation(down, distanceMap);
         slide.makeTransition();

@@ -40,6 +40,7 @@ public class BackgroundMusic {
         instance = getInstance();
         if (PublicResource.getResource("MusicList") == null) {
             System.out.println("MusicList is null");
+            instance.isPlaying = true;
         } else {
             instance.musicList = (MusicList) PublicResource.getResource("MusicList");
         }
