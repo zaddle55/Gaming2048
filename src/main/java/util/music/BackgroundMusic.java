@@ -69,6 +69,8 @@ public class BackgroundMusic {
                 MenuItem play = new MenuItem("Play");
                 MenuItem pause = new MenuItem("Pause");
                 MenuItem next = new MenuItem("Next");
+                MenuItem singlePlay = new MenuItem("Single Play");
+                MenuItem listPlay = new MenuItem("List Play");
                 ContextMenu contextMenu = new ContextMenu();
                 play.setOnAction(actionEvent -> play());
                 pause.setOnAction(actionEvent -> pause());
@@ -78,7 +80,9 @@ public class BackgroundMusic {
                     instance.isPlaying = false;
                     play();
                 });
-                contextMenu.getItems().addAll(play, pause, next);
+                singlePlay.setOnAction(actionEvent -> singlePlay());
+                listPlay.setOnAction(actionEvent -> listPlay());
+                contextMenu.getItems().addAll(play, pause, next, singlePlay, listPlay);
                 contextMenu.show(instance.musicView.getPlayButton(), mouseEvent.getScreenX(), mouseEvent.getScreenY());
             }
         });
@@ -124,5 +128,22 @@ public class BackgroundMusic {
         instance.isPlaying = false;
         instance.currentPlayer.pause();
         instance.rotateTransition.pause();
+    }
+
+    public static void singlePlay(){
+        if (instance.currentPlayer != null) {
+            instance.currentPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        }
+    }
+
+    public static void listPlay(){
+        if (instance.currentPlayer != null) {
+            instance.currentPlayer.setCycleCount(1);
+            instance.currentPlayer.setOnEndOfMedia(() -> {
+                instance.currentPlayer.stop();
+                instance.isPlaying = false;
+                play();
+            });
+        }
     }
 }

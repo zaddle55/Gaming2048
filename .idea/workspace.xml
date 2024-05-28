@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0e72e034-aaa7-4046-b7f9-bbfb7b65012a" name="更改" comment="Implement music player">
+    <list default="true" id="0e72e034-aaa7-4046-b7f9-bbfb7b65012a" name="更改" comment="Add music player checker">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/util/music/BackgroundMusic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/music/BackgroundMusic.java" afterDir="false" />
     </list>
@@ -45,27 +45,27 @@
     <option name="openDirectoriesWithSingleClick" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "zaddle",
-    "kotlin-language-version-configured": "true",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true",
-    "应用程序.CustomSlider.executor": "Run",
-    "应用程序.GameApplication.executor": "Run",
-    "应用程序.JFXSliderExample.executor": "Run",
-    "应用程序.Main.executor": "Run",
-    "应用程序.TestMainUIApplication.executor": "Run"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;zaddle&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
+    &quot;应用程序.CustomSlider.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.GameApplication.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.JFXSliderExample.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.Main.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.TestMainUIApplication.executor&quot;: &quot;Run&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="应用程序.Main">
     <configuration name="CustomSlider" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="CustomSlider" />
@@ -148,7 +148,8 @@
       <workItem from="1716717775841" duration="4053000" />
       <workItem from="1716804344466" duration="17496000" />
       <workItem from="1716821940316" duration="11904000" />
-      <workItem from="1716866871303" duration="1360000" />
+      <workItem from="1716866871303" duration="3876000" />
+      <workItem from="1716884075284" duration="1785000" />
     </task>
     <task id="LOCAL-00002" summary="Modify GameUI">
       <option name="closed" value="true" />
@@ -230,7 +231,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716835910670</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Add music player checker">
+      <option name="closed" value="true" />
+      <created>1716868997927</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1716868997927</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -260,7 +269,8 @@
     <MESSAGE value="Update README" />
     <MESSAGE value="Implement option select interface" />
     <MESSAGE value="Implement music player" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement music player" />
+    <MESSAGE value="Add music player checker" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add music player checker" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -298,15 +308,6 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="71" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/util/music/MusicList.java</url>
-          <line>22</line>
-          <properties class="util.music.MusicList" method="next">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="75" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
