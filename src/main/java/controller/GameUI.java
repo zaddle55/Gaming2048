@@ -689,7 +689,7 @@ public class GameUI extends Application {
     }
 
 
-    public Grid getGrid() {
+    public static Grid getGrid() {
         return grid;
     }
 
