@@ -28,6 +28,8 @@ import model.Grid;
 import util.*;
 import util.graphic.Paint;
 import model.*;
+import util.logger.LogType;
+import util.logger.Logger;
 import util.music.BackgroundMusic;
 
 import java.io.IOException;
@@ -94,6 +96,7 @@ public class GameUI extends Application {
     private static AIThread aiThread;
     private static Timer timer;
     private static Time startTime;
+    private static final Duration SAVE_DURATION = Duration.seconds(60); // 自动保存间隔
 
     // 游戏资源
     private static User currentUser;
@@ -155,6 +158,7 @@ public class GameUI extends Application {
         exitConfirm = (Button) scene.lookup("#exitConfirm");
         sidebarPane = (AnchorPane) scene.lookup("#sidebarPane");
         musicPane = (GridPane) scene.lookup("#musicPane");
+        mainPane = (AnchorPane) scene.lookup("#mainPane");
 
         // 背景音乐初始化
         BackgroundMusic.initMusicList();
@@ -163,8 +167,7 @@ public class GameUI extends Application {
         BackgroundMusic.play();
         // 音效初始化
         if (PublicResource.getResource("MoveSound") == null) {
-            System.out.println("No sound resource");
-
+            new Logger(mainPane, "Failed to sound resources", 720.0, 9.0, LogType.info).show();
         } else {
             moveSound = (MediaPlayer) PublicResource.getResource("MoveSound");
         }
@@ -207,7 +210,7 @@ public class GameUI extends Application {
             timer.setTimingSession(() -> {
                 autoSave();
                 System.out.println("Auto save");
-            }, Duration.seconds(10));
+            }, SAVE_DURATION);
         }
         timeLabel.textProperty().bind(timer.messageProperty());
         updateState();
@@ -580,8 +583,9 @@ public class GameUI extends Application {
 
         try {
             Saver.saveToJson(Saver.buildGson(currentSave), currentUser.getPath() + "/" + currentSave.saveName + ".json");
+            new Logger(sidebarPane, "Save successful! At ", currentUser.getPath() + "/" + currentSave.saveName + ".json", LogType.success).show();
         } catch (IOException e) {
-            throw new RuntimeException("Save failed!");
+            new Logger(sidebarPane, "Save failed!" + e.getMessage(), LogType.error).show();
         }
     }
 
@@ -602,8 +606,9 @@ public class GameUI extends Application {
             // 保存到User对应存档路径
             try {
                 Saver.saveToJson(Saver.buildGson(currentSave), currentUser.getPath() + "/" + currentSave.saveName + ".json");
+                new Logger(mainPane, "Save successful! At ", currentUser.getPath() + "/" + currentSave.saveName + ".json", 720.0, 9.0, LogType.success).show();
             } catch (IOException e) {
-                throw new RuntimeException("Save failed!"); // 后改
+                new Logger(mainPane, "Save failed!" + e.getMessage(),720.0, 9.0 ,LogType.error).show();
             }
             
         } else {
@@ -611,8 +616,9 @@ public class GameUI extends Application {
             // 保存到User对应存档路径
             try {
                 Saver.saveToJson(Saver.buildGson(currentSave), currentUser.getPath() + "/" + currentSave.saveName + ".json");
+                new Logger(mainPane, "Save successful! At ", currentUser.getPath() + "/" + currentSave.saveName + ".json", 720.0, 9.0, LogType.success).show();
             } catch (IOException e) {
-                throw new RuntimeException("Save failed!"); // 后改
+                new Logger(mainPane, "Save failed!" + e.getMessage(),720.0, 9.0 ,LogType.error).show();
             }
         }
     }
@@ -774,7 +780,11 @@ public class GameUI extends Application {
     }
 
     public void saveAction() {
-        if (isAuto || currentUser == null) return;
+        if (isAuto) return;
+        if (currentUser == null) {
+            new Logger(mainPane, "Please login first!",720.0,9.0,LogType.warn).show();
+            return;
+        }
         timer.stop();
         isEnd = true;
         SlipToSidebarAnimation slip = new SlipToSidebarAnimation(mainPane,sidebarPane);
@@ -796,7 +806,7 @@ public class GameUI extends Application {
                 gameInterface.getChildren().remove(mask);
             });
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            new Logger(mainPane, e.getMessage(),720.0, 9.0, LogType.error).show();
         }
     }
 }

@@ -11,8 +11,6 @@ import javafx.scene.media.MediaException;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
-import java.awt.event.MouseEvent;
-
 public class BackgroundMusic {
 
     private static BackgroundMusic instance;

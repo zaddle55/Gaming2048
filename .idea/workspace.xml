@@ -5,8 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0e72e034-aaa7-4046-b7f9-bbfb7b65012a" name="更改" comment="Add music player checker">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/FXView/info.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/FXView/success.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/FXView/warn.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/logger/default.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/logger/error.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/logger/info.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/logger/lose.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/logger/success.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/logger/tanoshi.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/logger/warn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/logger/win.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/css/error.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/css/success.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/css/warn.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/TestInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ArchiveUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ArchiveUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GameUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GameUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MainUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MainUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/UserManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/logger/LogType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/logger/LogType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/logger/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/logger/Logger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/logger/MoeLoggerBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/logger/MoeLoggerBar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/util/music/BackgroundMusic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/music/BackgroundMusic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/FXView/GameUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXView/GameUI.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/FXView/MainUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXView/MainUI.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/logger/photo_6242540106820992640_x.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/logger/photo_6242540106820992641_x.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/logger/photo_6242540106820992642_x.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/logger/photo_6242540106820992643_x.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/logger/photo_6242540106820992644_x.jpg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,9 +47,9 @@
       <list>
         <option value="Interface" />
         <option value="Enum" />
+        <option value="CSS File" />
         <option value="Class" />
         <option value="FxmlFile" />
-        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -45,27 +74,28 @@
     <option name="openDirectoriesWithSingleClick" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;zaddle&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
-    &quot;应用程序.CustomSlider.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.GameApplication.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.JFXSliderExample.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.Main.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.TestMainUIApplication.executor&quot;: &quot;Run&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "zaddle",
+    "kotlin-language-version-configured": "true",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true",
+    "应用程序.CustomSlider.executor": "Run",
+    "应用程序.GameApplication.executor": "Run",
+    "应用程序.JFXSliderExample.executor": "Run",
+    "应用程序.Main.executor": "Run",
+    "应用程序.TestInfo.executor": "Run",
+    "应用程序.TestMainUIApplication.executor": "Run"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="应用程序.Main">
     <configuration name="CustomSlider" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="CustomSlider" />
@@ -99,8 +129,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestMainUIApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="TestMainUIApplication" />
+    <configuration name="TestInfo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TestInfo" />
       <module name="Reach2048" />
       <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\lib\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml --add-modules javafx.controls,javafx.media --add-exports javafx.graphics/com.sun.glass.utils=ALL-UNNAMED --add-exports javafx.graphics/com.sun.javafx.tk.quantum=ALL-UNNAMED" />
       <method v="2">
@@ -108,19 +138,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="应用程序.TestInfo" />
       <item itemvalue="应用程序.JFXSliderExample" />
       <item itemvalue="应用程序.CustomSlider" />
       <item itemvalue="应用程序.Main" />
       <item itemvalue="应用程序.GameApplication" />
-      <item itemvalue="应用程序.TestMainUIApplication" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="应用程序.Main" />
+        <item itemvalue="应用程序.TestInfo" />
         <item itemvalue="应用程序.GameApplication" />
         <item itemvalue="应用程序.JFXSliderExample" />
         <item itemvalue="应用程序.CustomSlider" />
-        <item itemvalue="应用程序.TestMainUIApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -149,7 +179,7 @@
       <workItem from="1716804344466" duration="17496000" />
       <workItem from="1716821940316" duration="11904000" />
       <workItem from="1716866871303" duration="3876000" />
-      <workItem from="1716884075284" duration="1785000" />
+      <workItem from="1716884075284" duration="15989000" />
     </task>
     <task id="LOCAL-00002" summary="Modify GameUI">
       <option name="closed" value="true" />
@@ -239,7 +269,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716868997927</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Add music player checker">
+      <option name="closed" value="true" />
+      <created>1716886394746</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1716886394746</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -287,18 +325,28 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
-          <line>562</line>
+          <line>565</line>
           <option name="timeStamp" value="62" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/controller/MainUI.java</url>
-          <line>472</line>
+          <line>461</line>
           <option name="timeStamp" value="70" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
-          <line>164</line>
+          <line>168</line>
           <option name="timeStamp" value="74" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/util/logger/Logger.java</url>
+          <line>60</line>
+          <option name="timeStamp" value="77" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
+          <line>585</line>
+          <option name="timeStamp" value="79" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/controller/PublicResource.java</url>
@@ -308,6 +356,15 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="71" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/util/logger/Logger.java</url>
+          <line>129</line>
+          <properties class="util.logger.Logger" method="show">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="76" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -1,16 +1,17 @@
 package util.logger;
 
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
-//public enum LogType {
-//
-//    private String prefix;
-//
-//    private ImageView moe;
-//
-//    private ImageView icon;
-//
-//    error, warning, info;
-//
-//}
+public enum LogType {
+
+    success("/FXView/success.fxml"), error("/FXView/error.fxml"), warn("/FXView/warn.fxml"), info("/FXView/info.fxml");
+    private String fxViewPath;
+
+    private LogType(String fxViewPath) {
+        this.fxViewPath = fxViewPath;
+    }
+
+    public String getFxViewPath() {
+        return fxViewPath;
+    }
+
+}

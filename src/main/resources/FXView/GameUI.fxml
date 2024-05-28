@@ -27,7 +27,7 @@
         </children>
         </VBox>
         <!--时间显示-->
-        <HBox fx:id="timePane" alignment="CENTER" layoutX="14.0" layoutY="161.0" prefHeight="100.0" prefWidth="273.0">
+        <HBox fx:id="timePane" alignment="CENTER" layoutX="14.0" layoutY="141.0" prefHeight="100.0" prefWidth="273.0">
         <children>
             <Label fx:id="timeTitle" prefHeight="20.0" prefWidth="20.0" styleClass="timer-style">
             <graphic>
@@ -42,7 +42,13 @@
         </children>
         </HBox>
         <!--胜利/失败显示-->
-        <Pane fx:id="statePane" layoutY="310.0" prefHeight="100.0" prefWidth="300.0" visible="true" />
+        <AnchorPane fx:id="statePane" layoutY="251.0" prefHeight="159.0" prefWidth="300.0" visible="false">
+            <ImageView fx:id="moeState" fitHeight="110.0" fitWidth="300.0" layoutX="113.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../assets/moeState/default.png" />
+                </image>
+            </ImageView>
+        </AnchorPane>
     </children>
     </AnchorPane>
     <!--控制板-->

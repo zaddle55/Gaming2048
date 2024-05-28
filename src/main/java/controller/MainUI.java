@@ -27,10 +27,12 @@ import model.UserManager;
 import util.Direction;
 import util.GameModeFactory;
 import util.Saver;
-import util.Time;
 import util.comparator.CompareByScore;
 import util.graphic.Paint;
+import util.logger.*;
+import util.logger.Logger;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -92,12 +94,8 @@ public class MainUI extends Application {
             Stage stage = (Stage) startButton.getScene().getWindow();
             stage.close();
         } else {
-            // 提示用户登录, 后改
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information");
-            alert.setHeaderText("Please login first");
-            alert.setContentText("You need to login to view your achievements");
-            alert.showAndWait();
+            // 提示用户登录
+            new Logger(mainInterface, "Please login first", LogType.info).show();
         }
     }
 
@@ -166,7 +164,7 @@ public class MainUI extends Application {
                 user.setTotalLoses((int) saveList.stream().filter(save -> save.state == LOSE).count());
                 Saver.saveToJson(Saver.buildGson(userManager), "general/userInfo.json");
             } catch (Exception e) {
-                System.out.println(e.getMessage());
+                new Logger(loginInterface, e, LogType.error).show();
             }
         }
         Animation switchAnimation = new SwitchInterfaceAnimation(new ArrayList<>(){{
@@ -189,19 +187,20 @@ public class MainUI extends Application {
             user = userManager.login(username, password);
         } catch (Exception e) {
             if (e instanceof IllegalArgumentException) {
-                System.out.println(e.getMessage()); // 替换为UI显示
+                new Logger(loginInterface, e, LogType.warn).show();
             } else {
-                System.out.println(e.getMessage());
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText("An error occurred");
-                alert.setContentText("Please try again later");
-                alert.showAndWait();
+                new Logger(loginInterface, e, LogType.error).show();
             }
         } finally {
             if (user != null) {
+                Logger logger = new Logger(loginInterface, "Welcome, " + user.getName() + "!", LogType.success);
+                logger.setOnEnd(() -> {
+                    enterAction();
+                });
+
+                logger.show();
                 // 登录成功
-                enterAction();
+
             }
         }
     }
@@ -213,19 +212,18 @@ public class MainUI extends Application {
             user = userManager.register(username, password);
         } catch (Exception e) {
             if (e instanceof IllegalArgumentException) {
-                System.out.println(e.getMessage()); // 替换为UI显示
+                new Logger(loginInterface, e, LogType.warn).show();
             } else {
-                System.out.println(e.getMessage());
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText("An error occurred");
-                alert.setContentText("Please try again later");
-                alert.showAndWait();
+                new Logger(loginInterface, e, LogType.error).show();
             }
         } finally {
             if (user != null) {
                 // 注册成功
-                enterAction();
+                Logger logger = new Logger(loginInterface, "Welcome, " + user.getName() + "!", LogType.success);
+                logger.setOnEnd(() -> {
+                    enterAction();
+                });
+                logger.show();
             }
         }
     }
@@ -320,11 +318,7 @@ public class MainUI extends Application {
                 // 加载到公共资源
                 PublicResource.init(userManager);
             } catch (Exception e) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText("Failed to load user information");
-                alert.setContentText("Please try to handle it");
-                alert.showAndWait();
+                System.out.println("Failed to load user information");
             }
         } else {
             userManager = new UserManager();
@@ -373,12 +367,7 @@ public class MainUI extends Application {
 
         // 检查是否做出选择
         if (currentOptionIndex == 0) {
-            // 提示用户选择游戏模式 TODO: 替换为UI显示
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information");
-            alert.setHeaderText("Please select a game mode");
-            alert.setContentText("You need to select a game mode to start the game");
-            alert.showAndWait();
+            new Logger(optionInterface, "Please choose a game mode", LogType.warn).show();
             return;
         }
         Animation switchAnimation = new SwitchInterfaceAnimation(new ArrayList<>(){{

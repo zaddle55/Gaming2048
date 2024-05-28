@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            stylesheets="@../css/info.css"
+            prefHeight="70.0" prefWidth="220.0" styleClass="info-pane">
+    <GridPane prefWidth="60.0" prefHeight="60.0" alignment="CENTER">
+        <ImageView fx:id="infoIcon" GridPane.columnIndex="0" GridPane.rowIndex="0" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../assets/logger/info.png"/>
+            </image>
+        </ImageView>
+    </GridPane>
+    <HBox layoutX="60.0" layoutY="5.0" prefHeight="15.0" maxWidth="160.0" alignment="CENTER_LEFT" spacing="5.0">
+        <ImageView fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../assets/logger/icon/info.png"/>
+            </image>
+        </ImageView>
+        <Text fx:id="infoText" text="Info" fill="Gray" />
+    </HBox>
+    <GridPane layoutY="20.0" layoutX="60.0" prefHeight="50.0" maxWidth="140.0">
+        <TextFlow fx:id="textFlow" maxWidth="160.0" GridPane.rowIndex="0" GridPane.columnIndex="0">
+            <Text fx:id="message"  wrappingWidth="150.0" />
+        </TextFlow>
+    </GridPane>
+</AnchorPane>

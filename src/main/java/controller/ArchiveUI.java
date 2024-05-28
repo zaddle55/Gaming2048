@@ -29,6 +29,8 @@ import util.comparator.CompareByTime;
 import util.graphic.Paint;
 import util.graphic.SaveUnitPane;
 import util.Saver;
+import util.logger.Logger;
+import util.logger.LogType;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -71,8 +73,7 @@ public class ArchiveUI extends Application {
         try {
             saveList = Saver.getSaveList(currentUser);
         } catch (Exception e) {
-            System.out.println(e.getMessage()); // 后改为弹窗提示
-            return;
+            new Logger(archivePane, "Failed to load archive! " + e, LogType.error).show();
         }
 //        try {
 //            saveList = RandomSave.randomSave(150);
@@ -135,7 +136,7 @@ public class ArchiveUI extends Application {
             currentUser.setTotalLoses((int) saveList.stream().filter(save -> save.state == LOSE).count());
             Saver.saveToJson(Saver.buildGson(userManager), "general/userInfo.json");
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            new Logger(archivePane, "Failed to load user info! " + e, LogType.error).show();
         }
 
         userScore.setText(currentUser.getBestScore() + "");
@@ -315,8 +316,9 @@ public class ArchiveUI extends Application {
         trash.setLayoutY(61.0);
         try {
             Saver.deleteSave(currentUser, save);
+            new Logger(archivePane, "Delete successfully!", LogType.info).show();
         } catch (Exception e) {
-            System.out.println("Delete failed"); // 后改为弹窗提示
+            new Logger(archivePane, "Delete failed! " + e, LogType.error).show();
         }
         loadUserInfo();
     }
