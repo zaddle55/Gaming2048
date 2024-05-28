@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0e72e034-aaa7-4046-b7f9-bbfb7b65012a" name="更改" comment="Implement custom logger">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/PublicResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/PublicResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/UserManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/music/sakura.mp3" beforeDir="false" />
-    </list>
+    <list default="true" id="0e72e034-aaa7-4046-b7f9-bbfb7b65012a" name="更改" comment="Version 1.0.2" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -152,7 +147,7 @@
       <workItem from="1716804344466" duration="17496000" />
       <workItem from="1716821940316" duration="11904000" />
       <workItem from="1716866871303" duration="3876000" />
-      <workItem from="1716884075284" duration="19466000" />
+      <workItem from="1716884075284" duration="19854000" />
     </task>
     <task id="LOCAL-00002" summary="Modify GameUI">
       <option name="closed" value="true" />
@@ -258,7 +253,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716900512984</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Version 1.0.2">
+      <option name="closed" value="true" />
+      <created>1716906520315</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1716906520315</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -290,7 +293,8 @@
     <MESSAGE value="Implement music player" />
     <MESSAGE value="Add music player checker" />
     <MESSAGE value="Implement custom logger" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement custom logger" />
+    <MESSAGE value="Version 1.0.2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 1.0.2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
