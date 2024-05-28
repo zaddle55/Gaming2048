@@ -87,8 +87,8 @@ public class PublicResource {
             if (Platform.isFxApplicationThread()) {
                 // 加载音乐资源
                 PublicResource.getInstance().resourcePool.put("MusicList", new MusicList(
-                        new MediaPlayer(new Media(PublicResource.class.getResource("/assets/music/夢の歩みを見上げて.mp3").toString())),
                         new MediaPlayer(new Media(PublicResource.class.getResource("/assets/music/STAR BEAT!.mp3").toString())),
+                        new MediaPlayer(new Media(PublicResource.class.getResource("/assets/music/夢の歩みを見上げて.mp3").toString())),
                         new MediaPlayer(new Media(PublicResource.class.getResource("/assets/music/sakura.mp3").toString()))
 //                        new MediaPlayer(new Media(PublicResource.class.getResource("/assets/music/3.mp3").toString())),
 //                        new MediaPlayer(new Media(PublicResource.class.getResource("/assets/music/4.mp3").toString())),

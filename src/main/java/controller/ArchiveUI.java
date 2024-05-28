@@ -3,6 +3,7 @@ package controller;
 import com.google.gson.annotations.Expose;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -278,7 +279,19 @@ public class ArchiveUI extends Application {
         });
 
         load.play();
+        // 加载各类资源
+        Task<Void> task = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                // 在这里执行你的耗时任务
+                Platform.runLater(PublicResource::loadSoundResource);
+                Platform.runLater(PublicResource::loadMusicResource);
+                return null;
+            }
+        };
 
+        // 启动新的线程来执行任务
+        new Thread(task).start();
 
     }
 
