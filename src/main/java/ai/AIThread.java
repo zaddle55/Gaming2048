@@ -65,7 +65,7 @@ public class AIThread implements Runnable {
             updateGrid();
             updateEndFlag();
             try {
-                move(AIsolver.findBestMove(grid, 4));
+                move(AIsolver.findBestMove(grid, 5));
             } catch (CloneNotSupportedException e) {
                 throw new RuntimeException(e);
             }
