@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -32,6 +33,8 @@ import util.Saver;
 import util.logger.Logger;
 import util.logger.LogType;
 
+import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +50,7 @@ public class ArchiveUI extends Application {
     public Label userTotalGameCount;
     public Label userTotalWinCount;
     public Label userTotalLoseCount;
+    public Hyperlink archivePath;
     @FXML
     private AnchorPane upperPane;
     @FXML
@@ -69,6 +73,18 @@ public class ArchiveUI extends Application {
 
     /* ****** Methods ****** */
     private void loadArchive() {
+        // 初始化存档路径提示
+        archivePath.setText(getProjectPath() + "\\" + currentUser.getPath().replace("/", "\\") + "\\");
+        archivePath.setUnderline(true);
+        archivePath.setOnAction(event -> {
+            // 点击路径提示时，打开存档文件夹
+            try {
+//                Runtime.getRuntime().exec("explorer.exe /select," + archivePath.getText());
+                Desktop.getDesktop().open(new File(archivePath.getText()));
+            } catch (IOException e) {
+                new Logger(archivePane, "Failed to open archive path! " + e, LogType.error).show();
+            }
+        });
         try {
             saveList = Saver.getSaveList(currentUser);
         } catch (Exception e) {
@@ -415,6 +431,7 @@ public class ArchiveUI extends Application {
         userTotalGameCount = (Label) scene.lookup("#userTotalGameCount");
         userTotalWinCount = (Label) scene.lookup("#userTotalWinCount");
         userTotalLoseCount = (Label) scene.lookup("#userTotalLoseCount");
+        archivePath = (Hyperlink) scene.lookup("#archivePath");
 
 //        rightArrow.setVisible(true);
 
@@ -449,6 +466,11 @@ public class ArchiveUI extends Application {
             currentUser = PublicResource.getLoginUser();
             userManager = PublicResource.getUserManager();
         }
+    }
+
+    // 获取项目所在路径
+    public static String getProjectPath() {
+        return System.getProperty("user.dir");
     }
 
 }
