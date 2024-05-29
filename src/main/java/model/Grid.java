@@ -169,7 +169,7 @@ public class Grid implements Cloneable{
         if (!isMatrixEqual(temp, tileGrid)) {
             step++;
             updateBoard();
-            addToHistory();
+
         }
         return score - preScore; // 返回分数变化
 
@@ -644,6 +644,9 @@ public class Grid implements Cloneable{
             copyBoard(board, clone.board);
             clone.tileGrid = new Tile[size][size];
             copyTileGrid(tileGrid, clone.tileGrid, gamePane);
+            clone.isNew = new boolean[size][size];
+            clone.isMerged = new boolean[size][size];
+            
             return clone;
         } catch (CloneNotSupportedException e) {
             throw new AssertionError();
