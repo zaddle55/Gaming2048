@@ -81,7 +81,7 @@
                 </graphic>
             </Button>
             <!--提示按钮-->
-            <Button fx:id="hintButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="25.0" GridPane.columnIndex="2" GridPane.rowIndex="0">
+            <Button fx:id="hintButton" mnemonicParsing="false" onMousePressed="#hintAction" prefHeight="40.0" prefWidth="25.0" GridPane.columnIndex="2" GridPane.rowIndex="0">
                 <graphic>
                     <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                         <Image url="@../assets/buttonIcon/hint.png" />

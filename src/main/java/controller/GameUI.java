@@ -32,6 +32,7 @@ import model.*;
 import util.logger.LogType;
 import util.logger.Logger;
 import util.music.BackgroundMusic;
+import ai.AIsolver;
 
 import java.io.IOException;
 import java.util.Map;
@@ -403,6 +404,21 @@ public class GameUI extends Application {
 
     }
 
+    @FXML
+    public void hintAction() {
+        if (isAuto) {
+            return;
+        }
+        try {
+
+            Direction direction = AIsolver.findBestMove(grid, 5);
+            simulateMove(direction);
+            new Logger(mainPane, direction + " !", 720.0, 9.0, LogType.success).show();
+        } catch (CloneNotSupportedException e) {
+            new Logger(mainPane, "AI failed to find the best move!", 720.0, 9.0, LogType.error).show();
+        }
+    }
+
     // 获取gamePane参数
     public double getGamePaneWidth() {
         return gamePane.getWidth();
@@ -467,6 +483,8 @@ public class GameUI extends Application {
                 break;
             case RIGHT:
                 rightAction();
+                break;
+            default:
                 break;
         }
     }
@@ -744,7 +762,7 @@ public class GameUI extends Application {
     }
 
 
-    public Grid getGrid() {
+    public static Grid getGrid() {
         return grid;
     }
 
