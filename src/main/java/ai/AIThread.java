@@ -42,16 +42,18 @@ public class AIThread implements Runnable {
     }
     @Override
     public void run() {
-        Random random = new Random();
-        int randomNum = random.nextInt(4);
-        if (randomNum == 0) {
-            move(Direction.UP);
-        } else if (randomNum == 1) {
-            move(Direction.DOWN);
-        } else if (randomNum == 2) {
-            move(Direction.LEFT);
-        } else {
-            move(Direction.RIGHT);
+        if (!endFlag) {
+            Random random = new Random();
+            int randomNum = random.nextInt(4);
+            if (randomNum == 0) {
+                move(Direction.UP);
+            } else if (randomNum == 1) {
+                move(Direction.DOWN);
+            } else if (randomNum == 2) {
+                move(Direction.LEFT);
+            } else {
+                move(Direction.RIGHT);
+            }
         }
         while (!endFlag) {
             try {
