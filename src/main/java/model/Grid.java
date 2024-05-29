@@ -23,7 +23,7 @@ import java.util.*;
  * }
  * @History:
  */
-public class Grid {
+public class Grid implements Cloneable{
 
 
     private final int mode;
@@ -520,7 +520,7 @@ public class Grid {
         }
     }
 
-    private boolean isMatrixEqual(Tile[][] g1, Tile[][] g2) {
+    public boolean isMatrixEqual(Tile[][] g1, Tile[][] g2) {
         for (int i = 0; i < g1.length; i++) {
             for (int j = 0; j < g1[0].length; j++) {
                 if (g1[i][j] == null && g2[i][j] != null) {
@@ -619,6 +619,71 @@ public class Grid {
 
     public void setIsNew(boolean[][] booleans) {
         this.isNew = booleans;
+    }
+
+    // 获取空格子的数量
+    public int getNumberOfEmptyCells() {
+        int count = 0;
+        for (int[] ints : board) {
+            for (int j = 0; j < board[0].length; j++) {
+                if (ints[j] == 0) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    @Override
+    public Grid clone() {
+        try {
+            Grid clone = (Grid) super.clone();
+            // TODO: 复制此处的可变状态，这样此克隆就不能更改初始克隆的内部项
+            // only clone int[][] board
+            clone.board = new int[size][size];
+            copyBoard(board, clone.board);
+            clone.tileGrid = new Tile[size][size];
+            copyTileGrid(tileGrid, clone.tileGrid, gamePane);
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
+    }
+
+    public boolean isEqual(int[][] board, int[][] board1) {
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                if (board[i][j] != board1[i][j]) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Returns the Ids of the empty cells. The cells are numbered by row.
+     *
+     * @return
+     */
+    public List<Integer> getEmptyCellIds() {
+        List<Integer> cellList = new ArrayList<>();
+
+        for(int i=0;i<size;++i) {
+            for(int j=0;j<size;++j) {
+                if(board[i][j]==0) {
+                    cellList.add(size*i+j);
+                }
+            }
+        }
+
+        return cellList;
+    }
+
+    public void setEmptyCell(int i, int j, int value) {
+        if (board[i][j] == 0) {
+            board[i][j] = value;
+        }
     }
 }
 

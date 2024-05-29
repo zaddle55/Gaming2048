@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0e72e034-aaa7-4046-b7f9-bbfb7b65012a" name="更改" comment="package ai;&#10;&#10;import controller.GameUI;&#10;import model.Grid;&#10;import util.Direction;&#10;import java.util.Random;&#10;&#10;import static ai.AlphaDuo.*;&#10;import static java.lang.Thread.sleep;&#10;&#10;public class AIThread implements Runnable {&#10;    protected Grid grid;&#10;    protected GameUI gameThread;&#10;    public boolean endFlag = false;&#10;&#10;    public AIThread(Grid grid, GameUI gameThread) {&#10;        this.grid = grid;&#10;        this.gameThread = gameThread;&#10;    }&#10;&#10;    protected Direction getDirection() {&#10;        if (setDirection() == 0) {&#10;            return Direction.UP;&#10;        } else if (setDirection() == 1) {&#10;            return Direction.DOWN;&#10;        } else if (setDirection() == 2) {&#10;            return Direction.LEFT;&#10;        } else if (setDirection() == 3) {&#10;            return Direction.RIGHT;&#10;        } else {&#10;            return null;&#10;        }&#10;    }&#10;    protected void move(Direction direction) {&#10;        gameThread.simulateMove(direction);&#10;    }&#10;    protected void updateGrid() {&#10;        grid = gameThread.getGrid();&#10;    }&#10;    protected void updateEndFlag() {&#10;        endFlag = !GameUI.isAuto || GameUI.isWin || GameUI.isLose;&#10;    }&#10;    @Override&#10;    public void run() {&#10;        if (!endFlag) {&#10;            Random random = new Random();&#10;            int randomNum = random.nextInt(4);&#10;            if (randomNum == 0) {&#10;                move(Direction.UP);&#10;            } else if (randomNum == 1) {&#10;                move(Direction.DOWN);&#10;            } else if (randomNum == 2) {&#10;                move(Direction.LEFT);&#10;            } else {&#10;                move(Direction.RIGHT);&#10;            }&#10;        }&#10;        while (!endFlag) {&#10;            try {&#10;                sleep(1000);&#10;                updateGrid();&#10;                updateEndFlag();&#10;                evaluate();&#10;                move(getDirection());&#10;                upEvaluationScore = 0;&#10;                downEvaluationScore = 0;&#10;                leftEvaluationScore = 0;&#10;                rightEvaluationScore = 0;&#10;            } catch (InterruptedException e) {&#10;                throw new RuntimeException(e);&#10;            }&#10;        }&#10;    }&#10;}">
+    <list default="true" id="0e72e034-aaa7-4046-b7f9-bbfb7b65012a" name="更改" comment="Version 1.0.5(Implement savedata info hover preview)">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ai/AISolver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ai/AIThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ai/AIThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ai/AlphaDuo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ai/AlphaDuo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Grid.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,34 +44,47 @@
     <option name="openDirectoriesWithSingleClick" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;CJKProject__202405&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
-    &quot;应用程序.GameApplication.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.Main.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.TestMainUIApplication.executor&quot;: &quot;Run&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "CJKProject__202405",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true",
+    "应用程序.GameApplication.executor": "Run",
+    "应用程序.Main.executor": "Run",
+    "应用程序.TestMainUIApplication.executor": "Run",
+    "应用程序.未命名.executor": "Run"
   }
-}</component>
-  <component name="RunManager">
-    <configuration name="TestMainUIApplication" type="Application" factoryName="Application">
-      <option name="ALTERNATIVE_JRE_PATH" value="21" />
+}]]></component>
+  <component name="RunManager" selected="应用程序.未命名">
+    <configuration name="未命名" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Reach2048" />
-      <option name="PROGRAM_PARAMETERS" value="--module-path     &quot;C:\Program Files\Java\lib\javafx-sdk-21.0.2\lib&quot;     --add-modules     javafx.controls,javafx.fxml     --add-modules     javafx.controls,javafx.media     --add-exports     javafx.graphics/com.sun.glass.utils=ALL-UNNAMED     --add-exports     javafx.graphics/com.sun.javafx.tk.quantum=ALL-UNNAMED" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\lib\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml --add-modules javafx.controls,javafx.media --add-exports javafx.graphics/com.sun.glass.utils=ALL-UNNAMED --add-exports javafx.graphics/com.sun.javafx.tk.quantum=ALL-UNNAMED" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestMainUIApplication" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="21" />
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="Reach2048" />
+      <option name="PROGRAM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\lib\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml --add-modules javafx.controls,javafx.media --add-exports javafx.graphics/com.sun.glass.utils=ALL-UNNAMED --add-exports javafx.graphics/com.sun.javafx.tk.quantum=ALL-UNNAMED" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="应用程序.TestMainUIApplication" />
+      <item itemvalue="应用程序.未命名" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="应用程序.TestMainUIApplication" />
@@ -242,7 +259,8 @@
     <MESSAGE value="package ai;&#10;&#10;import controller.GameUI;&#10;import model.Grid;&#10;import util.Direction;&#10;import java.util.Random;&#10;&#10;import static ai.AlphaDuo.setDirection;&#10;import static java.lang.Thread.sleep;&#10;&#10;public class AIThread implements Runnable {&#10;    protected Grid grid;&#10;    protected GameUI gameThread;&#10;    public boolean endFlag = false;&#10;&#10;    public AIThread(Grid grid, GameUI gameThread) {&#10;        this.grid = grid;&#10;        this.gameThread = gameThread;&#10;    }&#10;&#10;    protected Direction getDirection() {&#10;        if (setDirection() == 0) {&#10;            return Direction.UP;&#10;        } else if (setDirection() == 1) {&#10;            return Direction.DOWN;&#10;        } else if (setDirection() == 2) {&#10;            return Direction.LEFT;&#10;        } else if (setDirection() == 3) {&#10;            return Direction.RIGHT;&#10;        } else {&#10;            return null;&#10;        }&#10;    }&#10;    protected void move(Direction direction) {&#10;        gameThread.simulateMove(direction);&#10;    }&#10;    protected void updateGrid() {&#10;        grid = gameThread.getGrid();&#10;    }&#10;    protected void updateEndFlag() {&#10;        endFlag = !GameUI.isAuto || GameUI.isWin || GameUI.isLose;&#10;    }&#10;    @Override&#10;    public void run() {&#10;        if (!endFlag) {&#10;            Random random = new Random();&#10;            int randomNum = random.nextInt(4);&#10;            if (randomNum == 0) {&#10;                move(Direction.UP);&#10;            } else if (randomNum == 1) {&#10;                move(Direction.DOWN);&#10;            } else if (randomNum == 2) {&#10;                move(Direction.LEFT);&#10;            } else {&#10;                move(Direction.RIGHT);&#10;            }&#10;        }&#10;        while (!endFlag) {&#10;            try {&#10;                sleep(200);&#10;                updateGrid();&#10;                updateEndFlag();&#10;                move(getDirection());&#10;            } catch (InterruptedException e) {&#10;                throw new RuntimeException(e);&#10;            }&#10;        }&#10;    }&#10;}" />
     <MESSAGE value="package ai;&#10;&#10;import controller.GameUI;&#10;import model.Grid;&#10;import util.Direction;&#10;import java.util.Random;&#10;&#10;import static ai.AlphaDuo.*;&#10;import static java.lang.Thread.sleep;&#10;&#10;public class AIThread implements Runnable {&#10;    protected Grid grid;&#10;    protected GameUI gameThread;&#10;    public boolean endFlag = false;&#10;&#10;    public AIThread(Grid grid, GameUI gameThread) {&#10;        this.grid = grid;&#10;        this.gameThread = gameThread;&#10;    }&#10;&#10;    protected Direction getDirection() {&#10;        if (setDirection() == 0) {&#10;            return Direction.UP;&#10;        } else if (setDirection() == 1) {&#10;            return Direction.DOWN;&#10;        } else if (setDirection() == 2) {&#10;            return Direction.LEFT;&#10;        } else if (setDirection() == 3) {&#10;            return Direction.RIGHT;&#10;        } else {&#10;            return null;&#10;        }&#10;    }&#10;    protected void move(Direction direction) {&#10;        gameThread.simulateMove(direction);&#10;    }&#10;    protected void updateGrid() {&#10;        grid = gameThread.getGrid();&#10;    }&#10;    protected void updateEndFlag() {&#10;        endFlag = !GameUI.isAuto || GameUI.isWin || GameUI.isLose;&#10;    }&#10;    @Override&#10;    public void run() {&#10;        if (!endFlag) {&#10;            Random random = new Random();&#10;            int randomNum = random.nextInt(4);&#10;            if (randomNum == 0) {&#10;                move(Direction.UP);&#10;            } else if (randomNum == 1) {&#10;                move(Direction.DOWN);&#10;            } else if (randomNum == 2) {&#10;                move(Direction.LEFT);&#10;            } else {&#10;                move(Direction.RIGHT);&#10;            }&#10;        }&#10;        while (!endFlag) {&#10;            try {&#10;                sleep(200);&#10;                updateGrid();&#10;                updateEndFlag();&#10;                move(getDirection());&#10;                upEvaluationScore = 0;&#10;                downEvaluationScore = 0;&#10;                leftEvaluationScore = 0;&#10;                rightEvaluationScore = 0;&#10;            } catch (InterruptedException e) {&#10;                throw new RuntimeException(e);&#10;            }&#10;        }&#10;    }&#10;}" />
     <MESSAGE value="package ai;&#10;&#10;import controller.GameUI;&#10;import model.Grid;&#10;import util.Direction;&#10;import java.util.Random;&#10;&#10;import static ai.AlphaDuo.*;&#10;import static java.lang.Thread.sleep;&#10;&#10;public class AIThread implements Runnable {&#10;    protected Grid grid;&#10;    protected GameUI gameThread;&#10;    public boolean endFlag = false;&#10;&#10;    public AIThread(Grid grid, GameUI gameThread) {&#10;        this.grid = grid;&#10;        this.gameThread = gameThread;&#10;    }&#10;&#10;    protected Direction getDirection() {&#10;        if (setDirection() == 0) {&#10;            return Direction.UP;&#10;        } else if (setDirection() == 1) {&#10;            return Direction.DOWN;&#10;        } else if (setDirection() == 2) {&#10;            return Direction.LEFT;&#10;        } else if (setDirection() == 3) {&#10;            return Direction.RIGHT;&#10;        } else {&#10;            return null;&#10;        }&#10;    }&#10;    protected void move(Direction direction) {&#10;        gameThread.simulateMove(direction);&#10;    }&#10;    protected void updateGrid() {&#10;        grid = gameThread.getGrid();&#10;    }&#10;    protected void updateEndFlag() {&#10;        endFlag = !GameUI.isAuto || GameUI.isWin || GameUI.isLose;&#10;    }&#10;    @Override&#10;    public void run() {&#10;        if (!endFlag) {&#10;            Random random = new Random();&#10;            int randomNum = random.nextInt(4);&#10;            if (randomNum == 0) {&#10;                move(Direction.UP);&#10;            } else if (randomNum == 1) {&#10;                move(Direction.DOWN);&#10;            } else if (randomNum == 2) {&#10;                move(Direction.LEFT);&#10;            } else {&#10;                move(Direction.RIGHT);&#10;            }&#10;        }&#10;        while (!endFlag) {&#10;            try {&#10;                sleep(1000);&#10;                updateGrid();&#10;                updateEndFlag();&#10;                evaluate();&#10;                move(getDirection());&#10;                upEvaluationScore = 0;&#10;                downEvaluationScore = 0;&#10;                leftEvaluationScore = 0;&#10;                rightEvaluationScore = 0;&#10;            } catch (InterruptedException e) {&#10;                throw new RuntimeException(e);&#10;            }&#10;        }&#10;    }&#10;}" />
-    <option name="LAST_COMMIT_MESSAGE" value="package ai;&#10;&#10;import controller.GameUI;&#10;import model.Grid;&#10;import util.Direction;&#10;import java.util.Random;&#10;&#10;import static ai.AlphaDuo.*;&#10;import static java.lang.Thread.sleep;&#10;&#10;public class AIThread implements Runnable {&#10;    protected Grid grid;&#10;    protected GameUI gameThread;&#10;    public boolean endFlag = false;&#10;&#10;    public AIThread(Grid grid, GameUI gameThread) {&#10;        this.grid = grid;&#10;        this.gameThread = gameThread;&#10;    }&#10;&#10;    protected Direction getDirection() {&#10;        if (setDirection() == 0) {&#10;            return Direction.UP;&#10;        } else if (setDirection() == 1) {&#10;            return Direction.DOWN;&#10;        } else if (setDirection() == 2) {&#10;            return Direction.LEFT;&#10;        } else if (setDirection() == 3) {&#10;            return Direction.RIGHT;&#10;        } else {&#10;            return null;&#10;        }&#10;    }&#10;    protected void move(Direction direction) {&#10;        gameThread.simulateMove(direction);&#10;    }&#10;    protected void updateGrid() {&#10;        grid = gameThread.getGrid();&#10;    }&#10;    protected void updateEndFlag() {&#10;        endFlag = !GameUI.isAuto || GameUI.isWin || GameUI.isLose;&#10;    }&#10;    @Override&#10;    public void run() {&#10;        if (!endFlag) {&#10;            Random random = new Random();&#10;            int randomNum = random.nextInt(4);&#10;            if (randomNum == 0) {&#10;                move(Direction.UP);&#10;            } else if (randomNum == 1) {&#10;                move(Direction.DOWN);&#10;            } else if (randomNum == 2) {&#10;                move(Direction.LEFT);&#10;            } else {&#10;                move(Direction.RIGHT);&#10;            }&#10;        }&#10;        while (!endFlag) {&#10;            try {&#10;                sleep(1000);&#10;                updateGrid();&#10;                updateEndFlag();&#10;                evaluate();&#10;                move(getDirection());&#10;                upEvaluationScore = 0;&#10;                downEvaluationScore = 0;&#10;                leftEvaluationScore = 0;&#10;                rightEvaluationScore = 0;&#10;            } catch (InterruptedException e) {&#10;                throw new RuntimeException(e);&#10;            }&#10;        }&#10;    }&#10;}" />
+    <MESSAGE value="Version 1.0.5(Implement savedata info hover preview)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 1.0.5(Implement savedata info hover preview)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -259,18 +277,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
-          <line>216</line>
-          <option name="timeStamp" value="59" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
           <line>214</line>
           <option name="timeStamp" value="60" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
-          <line>212</line>
-          <option name="timeStamp" value="61" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
@@ -278,14 +286,9 @@
           <option name="timeStamp" value="62" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
-          <line>330</line>
-          <option name="timeStamp" value="66" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controller/LoadingAnimation.java</url>
-          <line>132</line>
-          <option name="timeStamp" value="68" />
+          <url>file://$PROJECT_DIR$/src/main/java/ai/AIThread.java</url>
+          <line>71</line>
+          <option name="timeStamp" value="83" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/controller/MainUI.java</url>
@@ -296,6 +299,15 @@
           </properties>
           <option name="timeStamp" value="47" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/ai/AlphaDuo.java</url>
+          <line>210</line>
+          <properties class="ai.AlphaDuo" method="setDirection">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="81" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
@@ -303,6 +315,8 @@
         <watch expression="Saver.makeDir(savePath)" language="JAVA" />
         <watch expression="currentIndex" language="JAVA" />
         <watch expression="MainUI.downPanes" language="JAVA" custom="controller.MainUI" />
+        <watch expression="evaluateDirection(direction)" language="JAVA" />
+        <watch expression="getDirection()" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
