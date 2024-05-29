@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0e72e034-aaa7-4046-b7f9-bbfb7b65012a" name="更改" comment="Version:1.0.0">
+    <list default="true" id="0e72e034-aaa7-4046-b7f9-bbfb7b65012a" name="更改" comment="package model;&#10;&#10;import util.Saver;&#10;import java.io.IOException;&#10;import java.util.*;&#10;&#10;public class UserManager {&#10;    private List&lt;User&gt; userList;&#10;    private static final String savePath = &quot;src/main/resources/general&quot;;&#10;&#10;    public UserManager() {&#10;        try {&#10;            Saver.makeDir(savePath); // 创建存储用户信息的文件夹&#10;        } catch (Exception e) {&#10;            e.printStackTrace();&#10;        }&#10;        userList = new ArrayList&lt;&gt;();&#10;    }&#10;&#10;    public User register(String name, String password) throws IOException {&#10;        User user = null;&#10;        if (hasUser(name)) { // 检查用户是否已存在&#10;            throw new IllegalArgumentException(&quot;This user has existed!&quot;);&#10;        } else if (!isPasswordValid(password)) { // 检查密码是否有效&#10;            throw new IllegalArgumentException(&quot;Invalid password! Your password should contain at least 8 characters.&quot;);&#10;        } else if (name.equals(&quot;&quot;) || password.equals(&quot;&quot;)) { // 检查用户名和密码是否为空&#10;            throw new IllegalArgumentException(&quot;Username or password cannot be empty!&quot;);&#10;        } else {&#10;            user = new User(name, password, &quot;src/main/resources/savedata/&quot; + name);&#10;            Saver.makeDir(user.getPath());&#10;            userList.add(user);&#10;            // 保存用户信息&#10;            Saver.saveToJson(Saver.buildGson(this), savePath + &quot;/userInfo.json&quot;);&#10;        }&#10;        return user;&#10;    }&#10;    public User login(String name, String password) {&#10;        if (userList.isEmpty()) {&#10;            throw new IllegalArgumentException(&quot;This user doesn't exist!&quot;);&#10;        } else {&#10;            for (int i = 0; i &lt; userList.size(); i++) {&#10;                if (userList.get(i).getName().equals(name)) {&#10;                    if (!userList.get(i).getPassword().equals(password)) {&#10;                        throw new IllegalArgumentException(&quot;Incorrect password!&quot;);&#10;                    } else {&#10;                        return userList.get(i);&#10;                    }&#10;                }&#10;            }&#10;            throw new IllegalArgumentException(&quot;This user doesn't exist!&quot;);&#10;        }&#10;    }&#10;    public void deleteUser(User user) throws IOException {&#10;        userList.remove(user);&#10;        Saver.saveToJson(Saver.buildGson(this), savePath);&#10;    }&#10;    public boolean hasUser(String name) {&#10;        boolean hasUser = false;&#10;        for (int i = 0; i &lt; userList.size(); i++) {&#10;            if (userList.get(i).getName().equals(name)) {&#10;                hasUser = true;&#10;                break;&#10;            }&#10;        }&#10;        return hasUser;&#10;    }&#10;    public boolean isPasswordValid(String password) {&#10;        boolean isPasswordValid = false;&#10;        if (password.length() &gt;= 8) {&#10;            isPasswordValid = true;&#10;        }&#10;        return isPasswordValid;&#10;    }&#10;}">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ai/AlphaDuo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ai/AlphaDuo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,30 +32,32 @@
   &quot;associatedIndex&quot;: 3
 }</component>
   <component name="ProjectId" id="2gtu7oicMVlC4ncjClqNBKWrEOa" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="openDirectoriesWithSingleClick" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "dev",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true",
-    "应用程序.GameApplication.executor": "Run",
-    "应用程序.Main.executor": "Run",
-    "应用程序.TestMainUIApplication.executor": "Run"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;CJKProject__202405&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
+    &quot;应用程序.GameApplication.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.Main.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.TestMainUIApplication.executor&quot;: &quot;Run&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="应用程序.TestMainUIApplication">
     <configuration name="GameApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GameApplication" />
@@ -75,7 +78,7 @@
     <configuration name="TestMainUIApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="TestMainUIApplication" />
       <module name="Reach2048" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\lib\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml --add-modules javafx.controls,javafx.media --add-exports javafx.graphics/com.sun.glass.utils=ALL-UNNAMED --add-exports javafx.graphics/com.sun.javafx.tk.quantum=ALL-UNNAMED" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml --add-modules javafx.controls,javafx.media --add-exports javafx.graphics/com.sun.glass.utils=ALL-UNNAMED --add-exports javafx.graphics/com.sun.javafx.tk.quantum=ALL-UNNAMED" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -164,7 +167,23 @@
       <option name="project" value="LOCAL" />
       <updated>1716721663720</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Version:1.0.0">
+      <option name="closed" value="true" />
+      <created>1716983228635</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1716983228635</updated>
+    </task>
+    <task id="LOCAL-00009" summary="package model;&#10;&#10;import util.Saver;&#10;import java.io.IOException;&#10;import java.util.*;&#10;&#10;public class UserManager {&#10;    private List&lt;User&gt; userList;&#10;    private static final String savePath = &quot;src/main/resources/general&quot;;&#10;&#10;    public UserManager() {&#10;        try {&#10;            Saver.makeDir(savePath); // 创建存储用户信息的文件夹&#10;        } catch (Exception e) {&#10;            e.printStackTrace();&#10;        }&#10;        userList = new ArrayList&lt;&gt;();&#10;    }&#10;&#10;    public User register(String name, String password) throws IOException {&#10;        User user = null;&#10;        if (hasUser(name)) { // 检查用户是否已存在&#10;            throw new IllegalArgumentException(&quot;This user has existed!&quot;);&#10;        } else if (!isPasswordValid(password)) { // 检查密码是否有效&#10;            throw new IllegalArgumentException(&quot;Invalid password! Your password should contain at least 8 characters.&quot;);&#10;        } else if (name.equals(&quot;&quot;) || password.equals(&quot;&quot;)) { // 检查用户名和密码是否为空&#10;            throw new IllegalArgumentException(&quot;Username or password cannot be empty!&quot;);&#10;        } else {&#10;            user = new User(name, password, &quot;src/main/resources/savedata/&quot; + name);&#10;            Saver.makeDir(user.getPath());&#10;            userList.add(user);&#10;            // 保存用户信息&#10;            Saver.saveToJson(Saver.buildGson(this), savePath + &quot;/userInfo.json&quot;);&#10;        }&#10;        return user;&#10;    }&#10;    public User login(String name, String password) {&#10;        if (userList.isEmpty()) {&#10;            throw new IllegalArgumentException(&quot;This user doesn't exist!&quot;);&#10;        } else {&#10;            for (int i = 0; i &lt; userList.size(); i++) {&#10;                if (userList.get(i).getName().equals(name)) {&#10;                    if (!userList.get(i).getPassword().equals(password)) {&#10;                        throw new IllegalArgumentException(&quot;Incorrect password!&quot;);&#10;                    } else {&#10;                        return userList.get(i);&#10;                    }&#10;                }&#10;            }&#10;            throw new IllegalArgumentException(&quot;This user doesn't exist!&quot;);&#10;        }&#10;    }&#10;    public void deleteUser(User user) throws IOException {&#10;        userList.remove(user);&#10;        Saver.saveToJson(Saver.buildGson(this), savePath);&#10;    }&#10;    public boolean hasUser(String name) {&#10;        boolean hasUser = false;&#10;        for (int i = 0; i &lt; userList.size(); i++) {&#10;            if (userList.get(i).getName().equals(name)) {&#10;                hasUser = true;&#10;                break;&#10;            }&#10;        }&#10;        return hasUser;&#10;    }&#10;    public boolean isPasswordValid(String password) {&#10;        boolean isPasswordValid = false;&#10;        if (password.length() &gt;= 8) {&#10;            isPasswordValid = true;&#10;        }&#10;        return isPasswordValid;&#10;    }&#10;}">
+      <option name="closed" value="true" />
+      <created>1716983259273</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1716983259273</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,7 +209,8 @@
     <MESSAGE value="Modify Game Runtime logic" />
     <MESSAGE value="Apply auto save func" />
     <MESSAGE value="Version:1.0.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="Version:1.0.0" />
+    <MESSAGE value="package model;&#10;&#10;import util.Saver;&#10;import java.io.IOException;&#10;import java.util.*;&#10;&#10;public class UserManager {&#10;    private List&lt;User&gt; userList;&#10;    private static final String savePath = &quot;src/main/resources/general&quot;;&#10;&#10;    public UserManager() {&#10;        try {&#10;            Saver.makeDir(savePath); // 创建存储用户信息的文件夹&#10;        } catch (Exception e) {&#10;            e.printStackTrace();&#10;        }&#10;        userList = new ArrayList&lt;&gt;();&#10;    }&#10;&#10;    public User register(String name, String password) throws IOException {&#10;        User user = null;&#10;        if (hasUser(name)) { // 检查用户是否已存在&#10;            throw new IllegalArgumentException(&quot;This user has existed!&quot;);&#10;        } else if (!isPasswordValid(password)) { // 检查密码是否有效&#10;            throw new IllegalArgumentException(&quot;Invalid password! Your password should contain at least 8 characters.&quot;);&#10;        } else if (name.equals(&quot;&quot;) || password.equals(&quot;&quot;)) { // 检查用户名和密码是否为空&#10;            throw new IllegalArgumentException(&quot;Username or password cannot be empty!&quot;);&#10;        } else {&#10;            user = new User(name, password, &quot;src/main/resources/savedata/&quot; + name);&#10;            Saver.makeDir(user.getPath());&#10;            userList.add(user);&#10;            // 保存用户信息&#10;            Saver.saveToJson(Saver.buildGson(this), savePath + &quot;/userInfo.json&quot;);&#10;        }&#10;        return user;&#10;    }&#10;    public User login(String name, String password) {&#10;        if (userList.isEmpty()) {&#10;            throw new IllegalArgumentException(&quot;This user doesn't exist!&quot;);&#10;        } else {&#10;            for (int i = 0; i &lt; userList.size(); i++) {&#10;                if (userList.get(i).getName().equals(name)) {&#10;                    if (!userList.get(i).getPassword().equals(password)) {&#10;                        throw new IllegalArgumentException(&quot;Incorrect password!&quot;);&#10;                    } else {&#10;                        return userList.get(i);&#10;                    }&#10;                }&#10;            }&#10;            throw new IllegalArgumentException(&quot;This user doesn't exist!&quot;);&#10;        }&#10;    }&#10;    public void deleteUser(User user) throws IOException {&#10;        userList.remove(user);&#10;        Saver.saveToJson(Saver.buildGson(this), savePath);&#10;    }&#10;    public boolean hasUser(String name) {&#10;        boolean hasUser = false;&#10;        for (int i = 0; i &lt; userList.size(); i++) {&#10;            if (userList.get(i).getName().equals(name)) {&#10;                hasUser = true;&#10;                break;&#10;            }&#10;        }&#10;        return hasUser;&#10;    }&#10;    public boolean isPasswordValid(String password) {&#10;        boolean isPasswordValid = false;&#10;        if (password.length() &gt;= 8) {&#10;            isPasswordValid = true;&#10;        }&#10;        return isPasswordValid;&#10;    }&#10;}" />
+    <option name="LAST_COMMIT_MESSAGE" value="package model;&#10;&#10;import util.Saver;&#10;import java.io.IOException;&#10;import java.util.*;&#10;&#10;public class UserManager {&#10;    private List&lt;User&gt; userList;&#10;    private static final String savePath = &quot;src/main/resources/general&quot;;&#10;&#10;    public UserManager() {&#10;        try {&#10;            Saver.makeDir(savePath); // 创建存储用户信息的文件夹&#10;        } catch (Exception e) {&#10;            e.printStackTrace();&#10;        }&#10;        userList = new ArrayList&lt;&gt;();&#10;    }&#10;&#10;    public User register(String name, String password) throws IOException {&#10;        User user = null;&#10;        if (hasUser(name)) { // 检查用户是否已存在&#10;            throw new IllegalArgumentException(&quot;This user has existed!&quot;);&#10;        } else if (!isPasswordValid(password)) { // 检查密码是否有效&#10;            throw new IllegalArgumentException(&quot;Invalid password! Your password should contain at least 8 characters.&quot;);&#10;        } else if (name.equals(&quot;&quot;) || password.equals(&quot;&quot;)) { // 检查用户名和密码是否为空&#10;            throw new IllegalArgumentException(&quot;Username or password cannot be empty!&quot;);&#10;        } else {&#10;            user = new User(name, password, &quot;src/main/resources/savedata/&quot; + name);&#10;            Saver.makeDir(user.getPath());&#10;            userList.add(user);&#10;            // 保存用户信息&#10;            Saver.saveToJson(Saver.buildGson(this), savePath + &quot;/userInfo.json&quot;);&#10;        }&#10;        return user;&#10;    }&#10;    public User login(String name, String password) {&#10;        if (userList.isEmpty()) {&#10;            throw new IllegalArgumentException(&quot;This user doesn't exist!&quot;);&#10;        } else {&#10;            for (int i = 0; i &lt; userList.size(); i++) {&#10;                if (userList.get(i).getName().equals(name)) {&#10;                    if (!userList.get(i).getPassword().equals(password)) {&#10;                        throw new IllegalArgumentException(&quot;Incorrect password!&quot;);&#10;                    } else {&#10;                        return userList.get(i);&#10;                    }&#10;                }&#10;            }&#10;            throw new IllegalArgumentException(&quot;This user doesn't exist!&quot;);&#10;        }&#10;    }&#10;    public void deleteUser(User user) throws IOException {&#10;        userList.remove(user);&#10;        Saver.saveToJson(Saver.buildGson(this), savePath);&#10;    }&#10;    public boolean hasUser(String name) {&#10;        boolean hasUser = false;&#10;        for (int i = 0; i &lt; userList.size(); i++) {&#10;            if (userList.get(i).getName().equals(name)) {&#10;                hasUser = true;&#10;                break;&#10;            }&#10;        }&#10;        return hasUser;&#10;    }&#10;    public boolean isPasswordValid(String password) {&#10;        boolean isPasswordValid = false;&#10;        if (password.length() &gt;= 8) {&#10;            isPasswordValid = true;&#10;        }&#10;        return isPasswordValid;&#10;    }&#10;}" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -199,11 +219,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/util/Saver.java</url>
           <line>34</line>
           <option name="timeStamp" value="42" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/model/UserManager.java</url>
-          <line>37</line>
-          <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/controller/GameUI.java</url>
@@ -243,7 +258,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/controller/MainUI.java</url>
           <line>64</line>
-          <properties class="controller.MainUI" method="startAction">
+          <properties class="controller.MainUI">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
