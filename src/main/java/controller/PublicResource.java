@@ -1,8 +1,12 @@
 package controller;
 
 
+import javafx.application.Platform;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import model.User;
 import model.UserManager;
+import util.music.MusicList;
 
 import java.util.Collections;
 import java.util.Map;
@@ -61,5 +65,50 @@ public class PublicResource {
 
     public static UserManager getUserManager() {
         return PublicResource.getInstance().userManager;
+    }
+
+    // 加载音效资源
+    public static void loadSoundResource() {
+        // 判断当前进程是否有声音资源
+        if (PublicResource.getInstance().resourcePool.get("MoveSound") == null) {
+            // 判断当前进程是否为javafx进程
+            if (Platform.isFxApplicationThread()) {
+                // 加载声音资源
+                PublicResource.getInstance().resourcePool.put("MoveSound", new MediaPlayer(new Media(PublicResource.class.getResource("/assets/sound/moveSound.mp3").toString())));
+            }
+        }
+    }
+
+    // 加载音乐资源
+    public static void loadMusicResource() {
+        // 判断当前进程是否有音乐资源
+        if (PublicResource.getInstance().resourcePool.get("MusicList") == null) {
+            // 判断当前进程是否为javafx进程
+            if (Platform.isFxApplicationThread()) {
+                // 加载音乐资源
+                PublicResource.getInstance().resourcePool.put("MusicList", new MusicList(      
+                        new MediaPlayer(new Media(PublicResource.class.getResource("/assets/music/夢の歩みを見上げて.mp3").toString())),
+                        new MediaPlayer(new Media(PublicResource.class.getResource("/assets/music/STAR BEAT!.mp3").toString())),
+                        new MediaPlayer(new Media(PublicResource.class.getResource("/assets/music/さくら、もゆ。 -orgel Arrange-.mp3").toString())),
+                        new MediaPlayer(new Media(PublicResource.class.getResource("/assets/music/刻ト詩-Piano ver.mp3").toString())),
+                        new MediaPlayer(new Media(PublicResource.class.getResource("/assets/music/散花.mp3").toString())),
+                        new MediaPlayer(new Media(PublicResource.class.getResource("/assets/music/月に叢雲華に風(Instrumental).mp3").toString())),
+                        new MediaPlayer(new Media(PublicResource.class.getResource("/assets/music/Life Will Change -instrumental version-.mp3").toString()))
+//                        new MediaPlayer(new Media(PublicResource.class.getResource("/assets/music/3.mp3").toString())),
+//                        new MediaPlayer(new Media(PublicResource.class.getResource("/assets/music/4.mp3").toString())),
+//                        new MediaPlayer(new Media(PublicResource.class.getResource("/assets/music/5.mp3").toString())),
+//                        new MediaPlayer(new Media(PublicResource.class.getResource("/assets/music/6.mp3").toString())),
+//                        new MediaPlayer(new Media(PublicResource.class.getResource("/assets/music/7.mp3").toString())),
+//                        new MediaPlayer(new Media(PublicResource.class.getResource("/assets/music/8.mp3").toString())),
+//                        new MediaPlayer(new Media(PublicResource.class.getResource("/assets/music/9.mp3").toString())),
+//                        new MediaPlayer(new Media(PublicResource.class.getResource("/assets/music/10.mp3").toString()))
+                ));
+            }
+        }
+    }
+
+    // 按资源名获取资源
+    public static Object getResource(String resourceName) {
+        return PublicResource.getInstance().resourcePool.get(resourceName);
     }
 }

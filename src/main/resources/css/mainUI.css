@@ -107,5 +107,83 @@
     -fx-text-fill: rgb(114, 114, 114);
 }
 
+.desc-label-style {
+    -fx-font-size: 10px;
+    -fx-text-align: center;
+    -fx-text-fill: rgb(199, 131, 43);
+    -fx-font-family: 'fantasy', cursive;
+}
 
 
+
+/* Styling the slider track */
+.jfx-slider > .track {
+    -fx-background-color: #f1dac9;
+    -fx-pref-height: 7px;
+}
+
+/* Styling the slider thumb */
+.jfx-slider > .thumb {
+    -fx-background-color: #da6e23;
+}
+
+/* Styling the filled track */
+.jfx-slider > .colored-track {
+    -fx-background-color: #da6e23;
+}
+
+/* Styling the animated thumb */
+.jfx-slider > .animated-thumb {
+    -fx-background-color: #da6e23;
+}
+
+/* Styling the slider value text inside animated thumb */
+.jfx-slider .slider-value {
+    -fx-fill: white;
+    -fx-stroke: white;
+}
+
+
+.classic-style {
+-fx-background-color: rgba(255, 249, 232, 0.98);
+ -fx-background-radius: 5px;
+-fx-background-size: cover;
+-fx-background-position: center;
+    -fx-border-radius: 5px;
+    -fx-border-color: rgb(186, 172, 159);
+    -fx-border-width: 1px;
+-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);
+}
+
+.classic-style:hover {
+    -fx-background-color: rgba(255, 249, 232, 0.98);
+    -fx-background-radius: 5px;
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-border-radius: 5px;
+    -fx-border-color: rgb(248, 219, 43);
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);
+}
+
+.challenge-style {
+    -fx-background-color: rgba(240, 232, 255, 0.98);
+    -fx-background-radius: 5px;
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-border-radius: 5px;
+    -fx-border-color: rgba(164, 107, 239, 0.68);
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);
+}
+
+.challenge-style:hover {
+    -fx-background-color: rgba(240, 232, 255, 0.98);
+    -fx-background-radius: 5px;
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-border-radius: 5px;
+    -fx-border-color: rgb(175, 61, 250);
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);
+}

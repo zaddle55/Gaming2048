@@ -1,0 +1,6 @@
+.warn-pane {
+    -fx-background-color: rgb(251, 246, 230);
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.5), 10, 0, 0, 0);
+}

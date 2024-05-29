@@ -12,8 +12,11 @@
 </div> 
 
 <!-------------------Put tag here------------------->
-<div>
-    <!-------------------Several tags here...------------------->
+<div align="center">
+    <p>
+    <img src="https://img.shields.io/badge/JavaFX-21.0.2-orange?style=flat&link=https%3A%2F%2Fopenjfx.io%2F" />&emsp;
+    <img src="https://img.shields.io/badge/Maven-3.8.5-blue?style=flat&logo=apache%20maven&color=%23C71A36&link=https%3A%2F%2Fmaven.apache.org%2F"/>
+    </p>
 </div>
 
 <!-------------------Put introduction here------------------->
@@ -66,3 +69,21 @@ javafx.graphics/com.sun.javafx.tk.quantum=ALL-UNNAMED</code>
 <!--
     -----------------Put star graph here-----------------
 -->
+<picture>
+  <source
+    media="(prefers-color-scheme: dark)"
+    srcset="
+      https://api.star-history.com/svg?repos=zaddle55/Gaming2048&type=Date&theme=dark
+    "
+  />
+  <source
+    media="(prefers-color-scheme: light)"
+    srcset="
+      https://api.star-history.com/svg?repos=zaddle55/Gaming2048&type=Date&theme=light
+    "
+  />
+  <img
+    alt="Star History Chart"
+    src="https://api.star-history.com/svg?repos=zaddle55/Gaming2048&type=Date"
+  />
+</picture>
