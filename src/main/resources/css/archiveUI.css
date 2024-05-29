@@ -1,0 +1,70 @@
+.title-style {
+    -fx-font-size: 34px;
+    -fx-text-align: center;
+    -fx-text-fill: radial-gradient(
+        focus-angle 45deg,
+        focus-distance 50%,
+        center 25% 25%,
+        radius 75%,
+        reflect,
+        #c3722c,
+        #d7926a
+    );
+    -fx-font-smoothing-type: gray;
+    -fx-font-weight: bold;
+    -fx-font-family: "serif", sans-serif;
+}
+
+.info-pane-style {
+    -fx-background-color: linear-gradient(to bottom right, #cfd782, #fdc185);
+    -fx-background-radius: 6px;
+}
+
+.tag-style {
+    -fx-font-size: 14px;
+    -fx-background-color: linear-gradient(to right, #eaf48f, #fba535);
+    -fx-background-insets: 0;
+    -fx-background-radius: 15px;
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-text-fill: #484747;
+    -fx-font-family: "JetBrains Mono Medium", sans-serif;
+}
+
+.label-in-style {
+    -fx-font: 16px "JetBrains Mono Medium";
+}
+
+.text-field-default-style {
+    -fx-font-size: 14px;
+    -fx-font-family: 'cursive', cursive;
+    -fx-prompt-text-fill: rgba(200, 187, 176, 0.94);
+    -fx-border-color: rgb(186, 172, 159);
+    -fx-border-width: 2px;
+    -fx-border-radius: 8px;
+    -fx-background-color: rgb(248, 244, 241);
+    -fx-effect: dropshadow(gaussian, #FFFFFF, 5, 1.0, 0, 0);
+}
+
+.button {
+    -fx-background-color: #8e7965;
+    -fx-background-radius: 3px;
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-font-size: 16px;
+    -fx-font-family: "JetBrains Mono Medium", sans-serif;
+    -fx-text-fill: #f7f4e7;
+    -fx-text-alignment: center;
+}
+
+.font-awesome-icon {
+    -fx-font-family: "serif" !important;
+    -fx-font-size: 18px;
+    -fx-font-style: italic;
+    -fx-text-fill: rgb(114, 114, 114);
+}
+
+.path-text-style {
+    -fx-text-fill: #0370be;
+    -fx-underline: true;
+}
