@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0e72e034-aaa7-4046-b7f9-bbfb7b65012a" name="更改" comment="Version 1.0.3(Implement scoring effect)">
+    <list default="true" id="0e72e034-aaa7-4046-b7f9-bbfb7b65012a" name="更改" comment="Version 1.0.4(Add save data direction hyperlink)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ArchiveUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ArchiveUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/FXView/ArchiveUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXView/ArchiveUI.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/css/archiveUI.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/archiveUI.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/graphic/SaveUnitPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/graphic/SaveUnitPane.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,7 +152,7 @@
       <workItem from="1716866871303" duration="3876000" />
       <workItem from="1716884075284" duration="19854000" />
       <workItem from="1716943203575" duration="3849000" />
-      <workItem from="1716986212801" duration="1152000" />
+      <workItem from="1716986212801" duration="3548000" />
     </task>
     <task id="LOCAL-00002" summary="Modify GameUI">
       <option name="closed" value="true" />
@@ -268,7 +266,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716906520315</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Version 1.0.4(Add save data direction hyperlink)">
+      <option name="closed" value="true" />
+      <created>1716987686466</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1716987686466</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -302,7 +308,8 @@
     <MESSAGE value="Implement custom logger" />
     <MESSAGE value="Version 1.0.2" />
     <MESSAGE value="Version 1.0.3(Implement scoring effect)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Version 1.0.3(Implement scoring effect)" />
+    <MESSAGE value="Version 1.0.4(Add save data direction hyperlink)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 1.0.4(Add save data direction hyperlink)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
