@@ -3,8 +3,9 @@ package ai;
 import controller.GameUI;
 import model.Grid;
 import util.Direction;
+import java.util.Random;
 
-import static ai.AlphaDuo.directionNum;
+import static ai.AlphaDuo.setDirection;
 import static java.lang.Thread.sleep;
 
 public class AIThread implements Runnable {
@@ -18,16 +19,17 @@ public class AIThread implements Runnable {
     }
 
     protected Direction getDirection() {
-        if (directionNum == 0) {
+        if (setDirection() == 0) {
             return Direction.UP;
-        } else if (directionNum == 1) {
+        } else if (setDirection() == 1) {
             return Direction.DOWN;
-        } else if (directionNum == 2) {
+        } else if (setDirection() == 2) {
             return Direction.LEFT;
-        } else if (directionNum == 3) {
+        } else if (setDirection() == 3) {
             return Direction.RIGHT;
+        } else {
+            return null;
         }
-        return null;
     }
     protected void move(Direction direction) {
         gameThread.simulateMove(direction);
@@ -40,9 +42,20 @@ public class AIThread implements Runnable {
     }
     @Override
     public void run() {
+        Random random = new Random();
+        int randomNum = random.nextInt(4);
+        if (randomNum == 0) {
+            move(Direction.UP);
+        } else if (randomNum == 1) {
+            move(Direction.DOWN);
+        } else if (randomNum == 2) {
+            move(Direction.LEFT);
+        } else {
+            move(Direction.RIGHT);
+        }
         while (!endFlag) {
             try {
-                sleep(100);
+                sleep(200);
                 updateGrid();
                 updateEndFlag();
                 move(getDirection());
