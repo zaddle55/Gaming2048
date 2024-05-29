@@ -7,7 +7,6 @@ import javafx.util.Duration;
 import model.Grid;
 import model.Tile;
 
-import java.util.List;
 
 public class BounceAnimation extends Animation{
 

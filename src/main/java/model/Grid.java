@@ -1,12 +1,6 @@
 package model;
 
-import com.google.gson.annotations.Expose;
-import controller.Animation;
-import controller.Animation.CombineType;
-import controller.MoveAnimation;
-import javafx.animation.TranslateTransition;
 import javafx.scene.layout.AnchorPane;
-import javafx.util.Duration;
 import util.Direction;
 import util.GameModeFactory;
 
@@ -161,6 +155,33 @@ public class Grid {
 
             return distanceMap;
         }
+
+    }
+
+    // AI用
+    public int moveGrid(Direction direction) {
+        Tile[][] temp = new Tile[size][size];
+        int preScore = score;
+        copyTileGrid(tileGrid, temp, gamePane);
+        Map<Tile, Double> distanceMap = new HashMap<>();
+        slip(direction, distanceMap);
+        merge(direction, distanceMap);
+        if (!isMatrixEqual(temp, tileGrid)) {
+            step++;
+            updateBoard();
+            addToHistory();
+        }
+        return score - preScore; // 返回分数变化
+
+    }
+
+    // AI用
+    public void generateExactTile(int tarNum, int x, int y) {
+        if (tileGrid[x][y] != null) {
+            return;
+        }
+        tileGrid[x][y] = new Tile(tarNum, y, x, gamePane, size);
+        updateBoard();
 
     }
 

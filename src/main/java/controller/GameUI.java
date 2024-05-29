@@ -2,7 +2,9 @@ package controller;
 
 
 import ai.AIThread;
+import javafx.animation.FadeTransition;
 import javafx.animation.ParallelTransition;
+import javafx.animation.TranslateTransition;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -15,7 +17,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
-import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -33,10 +34,8 @@ import util.logger.Logger;
 import util.music.BackgroundMusic;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.Map;
 import java.util.Objects;
-import java.io.File;
 import java.time.LocalDate;
 
 
@@ -53,6 +52,7 @@ public class GameUI extends Application {
     public Button rtmConfirm;
     public Button exitConfirm;
     public GridPane musicPane;
+    public ImageView moeState;
     // 节点域
     @FXML
     private AnchorPane gamePane;
@@ -159,6 +159,7 @@ public class GameUI extends Application {
         sidebarPane = (AnchorPane) scene.lookup("#sidebarPane");
         musicPane = (GridPane) scene.lookup("#musicPane");
         mainPane = (AnchorPane) scene.lookup("#mainPane");
+        moeState = (ImageView) scene.lookup("#moeState");
 
         // 背景音乐初始化
         BackgroundMusic.initMusicList();
@@ -261,6 +262,9 @@ public class GameUI extends Application {
         timeLabel.textProperty().bind(timer.messageProperty());
         timer.reset();
 
+        /* 更新组件 */
+        moeState.setImage(new Image("/assets/moeState/default.png", 74.33, 110, false, false));
+
     }
 
     // undo按钮事件
@@ -285,6 +289,9 @@ public class GameUI extends Application {
         if (timer != null) {
             timer.continueTimer();
         }
+
+        /* 更新组件 */
+        moeState.setImage(new Image("/assets/moeState/default.png", 74.33, 110, false, false));
     }
 
     // 按键事件
@@ -465,10 +472,52 @@ public class GameUI extends Application {
     }
 
     // 更新分数
-    private static void upDateScore(Label scoreLabel, Grid grid) {
-        // int incScore = grid.getScore() - score;
+    private void upDateScore(Label scoreLabel, Grid grid) {
+        scoreIncrease(grid.getScore() - score);
         score = grid.getScore();
         scoreLabel.setText("" + score);
+    }
+
+    // 分数增加事件
+    public void scoreIncrease(int incScore) {
+        if (incScore <= 0) return;
+        /* 分数增加动画 */
+        Text text = new Text("+" + incScore);
+        text.setFont(Font.font("Arial", 20));
+        text.setFill(javafx.scene.paint.Color.rgb(119, 110, 101));
+        // 设置位置, x轴自适应居中
+        text.setLayoutX(scoreLabel.getLayoutX() + 120 - text.getLayoutBounds().getWidth() / 2);
+        text.setLayoutY(scoreLabel.getLayoutY() + 90);
+        // 设置动画
+        TranslateTransition transition = new TranslateTransition(Duration.millis(500), text);
+        transition.setByY(-50);
+        // 设置淡出效果
+        FadeTransition fade = new FadeTransition(Duration.millis(500), text);
+        fade.setFromValue(1.0);
+        fade.setToValue(0.0);
+        // 串联动画
+        ParallelTransition group = new ParallelTransition(transition, fade);
+        group.setOnFinished(event -> {
+            mainPane.getChildren().remove(text);
+        });
+        mainPane.getChildren().add(text);
+        group.play();
+
+//        /* 分数增加组件更新 */
+//        moeState.setImage(new Image("/assets/logger/tanoshi.png", 96.68, 110, false, false));
+//        // 记录moeState的默认X坐标
+//        double defaultY = moeState.getLayoutY();
+//        // 弹跳动画
+//        TranslateTransition bounce = new TranslateTransition(Duration.millis(100), moeState);
+//        bounce.setByY(-10);
+//        bounce.setAutoReverse(true);
+//        bounce.setCycleCount(2);
+//
+//        bounce.setOnFinished(event -> {
+//            moeState.setImage(new Image("/assets/moeState/default.png", 74.33, 110, false, false));
+//            moeState.setLayoutY(defaultY);
+//        });
+//        bounce.play();
     }
 
     // 更新步数
@@ -513,6 +562,9 @@ public class GameUI extends Application {
         winPane.getChildren().add(winBox);
 
         gamePane.getChildren().add(winPane);
+
+        /* 更新组件 */
+        moeState.setImage(new Image("/assets/logger/win.png", 96.68, 110, false, false));
     }
 
     private void loseAction() {
@@ -553,6 +605,9 @@ public class GameUI extends Application {
         losePane.getChildren().add(loseBox);
 
         gamePane.getChildren().add(losePane);
+
+        /* 更新组件 */
+        moeState.setImage(new Image("/assets/logger/lose.png", 96.68, 110, false, false));
     }
 
     @FXML
@@ -624,16 +679,6 @@ public class GameUI extends Application {
     }
 
     // 初始化GameUI
-    public static void init(int size, int mode) {
-        GameUI.setSize(size);
-        GameUI.setMode(mode);
-        GameUI.setBoard(new Grid(size, mode));
-        GameUI.setStartTime(Time.ZERO);
-        isEnd = false;
-        isWin = false;
-        isLose = false;
-    }
-
     public static void init(int size, int mode, User user) {
         GameUI.setSize(size);
         GameUI.setMode(mode);
@@ -663,13 +708,6 @@ public class GameUI extends Application {
 
     }
 
-    public static void init(Grid grid, Time startTime) {
-        GameUI.setBoard(grid);
-        GameUI.setSize(grid.getSize());
-        GameUI.setMode(grid.getMode());
-        GameUI.setStartTime(startTime);
-        isLoad = true;
-    }
 
     // 读取存档时
     public static void init(Grid grid, Time startTime, Save save) {

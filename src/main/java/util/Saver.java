@@ -11,8 +11,6 @@ package util;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import javafx.scene.layout.GridPane;
-import model.Grid;
 import model.Save;
 import model.User;
 

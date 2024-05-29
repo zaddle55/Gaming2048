@@ -5,7 +5,6 @@ import javafx.application.Platform;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
-import java.io.IOException;
 
 public class Logger {
 

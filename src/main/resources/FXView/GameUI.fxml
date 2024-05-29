@@ -42,13 +42,13 @@
         </children>
         </HBox>
         <!--胜利/失败显示-->
-        <AnchorPane fx:id="statePane" layoutY="251.0" prefHeight="159.0" prefWidth="300.0" visible="false">
-            <ImageView fx:id="moeState" fitHeight="110.0" fitWidth="300.0" layoutX="113.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+        <GridPane fx:id="statePane" layoutY="251.0" prefHeight="159.0" prefWidth="300.0" alignment="CENTER" >
+            <ImageView fx:id="moeState" fitHeight="110.0" fitWidth="300.0" GridPane.columnIndex="0" GridPane.rowIndex="0" pickOnBounds="true" preserveRatio="true">
                 <image>
                     <Image url="@../assets/moeState/default.png" />
                 </image>
             </ImageView>
-        </AnchorPane>
+        </GridPane>
     </children>
     </AnchorPane>
     <!--控制板-->

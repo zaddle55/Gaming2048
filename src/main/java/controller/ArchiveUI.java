@@ -37,7 +37,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import static java.lang.Thread.sleep;
 import static model.Save.State.*;
 
 public class ArchiveUI extends Application {
