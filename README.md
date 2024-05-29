@@ -64,6 +64,10 @@
 
 <br/>
 
+<div>
+  <h2>🌟 About this repo</h2>
+</div>
+
 <!--
     -----------------Put MoeCounter here-----------------
 -->
