@@ -57,9 +57,10 @@ public class AIThread implements Runnable {
         }
         while (!endFlag) {
             try {
-                sleep(200);
+                sleep(1000);
                 updateGrid();
                 updateEndFlag();
+                evaluate();
                 move(getDirection());
                 upEvaluationScore = 0;
                 downEvaluationScore = 0;
