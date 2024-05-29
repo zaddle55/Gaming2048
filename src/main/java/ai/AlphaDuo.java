@@ -3,8 +3,6 @@ package ai;
 import controller.GameUI;
 import util.*;
 
-import java.util.Random;
-
 /**
  * AlphaDuo
  * @version: 1.0.0
