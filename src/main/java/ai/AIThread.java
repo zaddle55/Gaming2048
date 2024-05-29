@@ -5,7 +5,7 @@ import model.Grid;
 import util.Direction;
 import java.util.Random;
 
-import static ai.AlphaDuo.setDirection;
+import static ai.AlphaDuo.*;
 import static java.lang.Thread.sleep;
 
 public class AIThread implements Runnable {
@@ -61,6 +61,10 @@ public class AIThread implements Runnable {
                 updateGrid();
                 updateEndFlag();
                 move(getDirection());
+                upEvaluationScore = 0;
+                downEvaluationScore = 0;
+                leftEvaluationScore = 0;
+                rightEvaluationScore = 0;
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
