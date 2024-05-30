@@ -17,7 +17,7 @@ public class AlphaDuo {
     protected static double leftEvaluationScore = 0;
     protected static double rightEvaluationScore = 0;
     protected static final double monotonyWeight = 0.5; // 单调性权重
-    protected static final double smoothWeight = -0.2; // 平滑性权重
+    protected static final double smoothWeight = -0.1; // 平滑性权重
     protected static final double emptyWeight = 0.5; // 总空格数权重
     protected static int directionNum = 0;
 
@@ -166,8 +166,8 @@ public class AlphaDuo {
                 }
             }
         }
-        leftEvaluationScore += (equalL * smoothWeight * (-10));
-        rightEvaluationScore += (equalR * smoothWeight * (-10));
+        leftEvaluationScore += (equalL * smoothWeight * (-100));
+        rightEvaluationScore += (equalR * smoothWeight * (-100));
         for (int j = 0; j < GameUI.getGrid().getSize(); j++) {
             for (int i = 0; i < GameUI.getGrid().getSize(); i += numOfEqualTiles) {
                 numOfEqualTiles = 0;
@@ -185,8 +185,8 @@ public class AlphaDuo {
                 }
             }
         }
-        upEvaluationScore += (equalU * smoothWeight * (-10));
-        downEvaluationScore += (equalD * smoothWeight * (-10));
+        upEvaluationScore += (equalU * smoothWeight * (-100));
+        downEvaluationScore += (equalD * smoothWeight * (-100));
 
         // 3. 总空格数评估
         int numOfEmptyTiles;
