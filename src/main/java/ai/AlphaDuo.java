@@ -166,8 +166,8 @@ public class AlphaDuo {
                 }
             }
         }
-        leftEvaluationScore += (equalL * smoothWeight * (-100));
-        rightEvaluationScore += (equalR * smoothWeight * (-100));
+        leftEvaluationScore += (equalL * smoothWeight * (-1000));
+        rightEvaluationScore += (equalR * smoothWeight * (-1000));
         for (int j = 0; j < GameUI.getGrid().getSize(); j++) {
             for (int i = 0; i < GameUI.getGrid().getSize(); i += numOfEqualTiles) {
                 numOfEqualTiles = 0;
@@ -185,8 +185,8 @@ public class AlphaDuo {
                 }
             }
         }
-        upEvaluationScore += (equalU * smoothWeight * (-100));
-        downEvaluationScore += (equalD * smoothWeight * (-100));
+        upEvaluationScore += (equalU * smoothWeight * (-1000));
+        downEvaluationScore += (equalD * smoothWeight * (-1000));
 
         // 3. 总空格数评估
         int numOfEmptyTiles;
