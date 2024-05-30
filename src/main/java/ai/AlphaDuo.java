@@ -143,11 +143,50 @@ public class AlphaDuo {
         downEvaluationScore += smoothD * smoothWeight;
         leftEvaluationScore += smoothL * smoothWeight;
         rightEvaluationScore += smoothR * smoothWeight;
+        // 找连续的同数值格子个数
+        int numOfEqualTiles;
         int equalU = 0;
         int equalD = 0;
         int equalL = 0;
         int equalR = 0;
-
+        for (int i = 0; i < GameUI.getGrid().getSize(); i++) {
+            for (int j = 0; j < GameUI.getGrid().getSize(); j += numOfEqualTiles) {
+                numOfEqualTiles = 0;
+                for (int a = 0; j+a+1 < GameUI.getGrid().getSize(); a++) {
+                    if ((GameUI.getGrid().getBoard()[i][j+a] != 0) && (GameUI.getGrid().getBoard()[i][j+a+1] == GameUI.getGrid().getBoard()[i][j+a])) {
+                        numOfEqualTiles += 1;
+                        equalL += 1;
+                        equalR += 1;
+                    } else {
+                        break;
+                    }
+                }
+                if (numOfEqualTiles == 0) {
+                    numOfEqualTiles += 1;
+                }
+            }
+        }
+        leftEvaluationScore += (equalL * smoothWeight * (-10));
+        rightEvaluationScore += (equalR * smoothWeight * (-10));
+        for (int j = 0; j < GameUI.getGrid().getSize(); j++) {
+            for (int i = 0; i < GameUI.getGrid().getSize(); i += numOfEqualTiles) {
+                numOfEqualTiles = 0;
+                for (int a = 0; i+a+1 < GameUI.getGrid().getSize(); a++) {
+                    if ((GameUI.getGrid().getBoard()[i+a][j] != 0) && (GameUI.getGrid().getBoard()[i+a+1][j] == GameUI.getGrid().getBoard()[i+a][j])) {
+                        numOfEqualTiles += 1;
+                        equalU += 1;
+                        equalD += 1;
+                    } else {
+                        break;
+                    }
+                }
+                if (numOfEqualTiles == 0) {
+                    numOfEqualTiles += 1;
+                }
+            }
+        }
+        upEvaluationScore += (equalU * smoothWeight * (-10));
+        downEvaluationScore += (equalD * smoothWeight * (-10));
 
         // 3. 总空格数评估
         int numOfEmptyTiles;
