@@ -7,6 +7,7 @@ import java.util.Random;
 
 import static ai.AlphaDuo.*;
 import static java.lang.Thread.sleep;
+import static util.Direction.*;
 
 public class AIThread implements Runnable {
     protected Grid grid;
@@ -57,18 +58,23 @@ public class AIThread implements Runnable {
         }
         while (!endFlag) {
             try {
-                sleep(200);
-                updateGrid();
-                updateEndFlag();
-                evaluate();
-                move(getDirection());
-                upEvaluationScore = 0;
-                downEvaluationScore = 0;
-                leftEvaluationScore = 0;
-                rightEvaluationScore = 0;
+                sleep(100);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
+            updateGrid();
+            updateEndFlag();
+            try {
+                move(AIsolver.findBestMove(grid, 5));
+            } catch (CloneNotSupportedException e) {
+                throw new RuntimeException(e);
+            }
+//            evaluate();
+//            move(getDirection());
+//            upEvaluationScore = 0;
+//            downEvaluationScore = 0;
+//            leftEvaluationScore = 0;
+//            rightEvaluationScore = 0;
         }
     }
 }

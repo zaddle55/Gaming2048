@@ -63,3 +63,8 @@
     -fx-font-style: italic;
     -fx-text-fill: rgb(114, 114, 114);
 }
+
+.path-text-style {
+    -fx-text-fill: #0370be;
+    -fx-underline: true;
+}

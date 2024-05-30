@@ -17,7 +17,7 @@ public class AlphaDuo {
     protected static double leftEvaluationScore = 0;
     protected static double rightEvaluationScore = 0;
     protected static final double monotonyWeight = 0.5; // 单调性权重
-    protected static final double smoothWeight = -1.0; // 平滑性权重
+    protected static final double smoothWeight = -0.2; // 平滑性权重
     protected static final double emptyWeight = 0.5; // 总空格数权重
     protected static int directionNum = 0;
 
