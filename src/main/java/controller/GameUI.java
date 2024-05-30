@@ -410,7 +410,6 @@ public class GameUI extends Application {
             return;
         }
         try {
-
             Direction direction = AIsolver.findBestMove(grid, 5);
             simulateMove(direction);
             new Logger(mainPane, direction + " !", 720.0, 9.0, LogType.success).show();
