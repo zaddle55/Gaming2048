@@ -1,5 +1,6 @@
 package util.graphic;
 
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -18,6 +19,7 @@ public class SaveUnitPane extends AnchorPane {
 
     private Button playButton;
     private Button deleteButton;
+    private Tooltip infoTooltip;
 
     public Save getSave() {
         return save;
@@ -63,6 +65,17 @@ public class SaveUnitPane extends AnchorPane {
         optionPane.setPrefSize(160, 160);
         optionPane.setStyle("-fx-background-color: rgba(255,224,147,0.6);");
         optionPane.getStylesheets().add("/css/optionPane.css");
+
+        // 设置悬浮提示
+        infoTooltip = new Tooltip(
+                save.saveName + "\n" +
+                        "State: " + save.getState() + "\n" +
+                        "Play Time: " + save.getPlayTime() + "\n" +
+                        "Mode: " + save.getMode() + "\n" +
+                        "Score: " + save.getScore() + "\n" +
+                        "Step: " + save.getStep() + "\n"
+        );
+        Tooltip.install(this, infoTooltip);
 
         // 设置选项按钮
         VBox optionBox = new VBox();
