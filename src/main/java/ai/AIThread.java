@@ -57,7 +57,7 @@ public class AIThread implements Runnable {
         }
         while (!endFlag) {
             try {
-                sleep(1000);
+                sleep(200);
                 updateGrid();
                 updateEndFlag();
                 evaluate();
