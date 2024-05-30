@@ -2,6 +2,7 @@ package ai;
 
 import controller.GameUI;
 import model.Grid;
+import org.jetbrains.annotations.Nullable;
 import util.Direction;
 import java.util.Random;
 
@@ -18,7 +19,8 @@ public class AIThread implements Runnable {
         this.gameThread = gameThread;
     }
 
-    protected Direction getDirection() {
+    @Nullable
+    public static Direction getDirection() {
         if (setDirection() == 0) {
             return Direction.UP;
         } else if (setDirection() == 1) {
