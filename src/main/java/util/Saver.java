@@ -18,6 +18,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -111,13 +112,17 @@ public class Saver {
         if (files == null || files.isEmpty()) {
             return Collections.emptyList();
         } else {
-            return files.stream().map(file -> {
+            List<Save> saveList = new ArrayList<>();
+            for (File file : files) {
                 try {
-                    return new GsonBuilder().create().fromJson(loadFromJson(file.getAbsolutePath()), Save.class);
-                } catch (IOException e) {
-                    throw new RuntimeException("Failed to load save file");
+                    String json = loadFromJson(file.getPath());
+                    Save save = new Gson().fromJson(json, Save.class);
+                    saveList.add(save);
+                } catch (Exception e) {
+                    saveList.add(Save.ERROR_SAVE);
                 }
-            }).collect(Collectors.toList());
+            }
+            return saveList;
         }
     }
 

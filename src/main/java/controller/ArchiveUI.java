@@ -89,6 +89,11 @@ public class ArchiveUI extends Application {
             saveList = Saver.getSaveList(currentUser);
         } catch (Exception e) {
             new Logger(archivePane, "Failed to load archive! " + e, LogType.error).show();
+            return;
+        } finally {
+            if (saveList.contains(Save.ERROR_SAVE)) {
+                new Logger(archivePane, "Some saves are corrupted! Please check it.", LogType.error).show();
+            }
         }
 //        try {
 //            saveList = RandomSave.randomSave(150);
@@ -134,7 +139,7 @@ public class ArchiveUI extends Application {
         upperPane.getChildren().addAll(saveInterfaceList);
     }
 
-    // 读取用户信息, TODO
+    // 读取用户信息
     private void loadUserInfo() {
 
         userName.setText(currentUser.getName());
@@ -161,6 +166,9 @@ public class ArchiveUI extends Application {
     }
 
     private AnchorPane createSaveUnit(Save save) {
+        if (save.isEquals(Save.ERROR_SAVE)) {
+            return new SaveUnitPane(SaveUnitPane.SAVE_ERROR);
+        }
         SaveUnitPane saveUnit = new SaveUnitPane(save);
 
         Grid grid = save.getGrid();
