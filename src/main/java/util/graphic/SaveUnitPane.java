@@ -41,6 +41,8 @@ public class SaveUnitPane extends AnchorPane {
 
     private AnchorPane optionPane = new AnchorPane();
 
+    public static final boolean SAVE_ERROR = true;
+
 
     public SaveUnitPane(Save save) {
         super();
@@ -97,6 +99,22 @@ public class SaveUnitPane extends AnchorPane {
 
         optionBox.getChildren().addAll(playButton, deleteButton);
         optionPane.getChildren().add(optionBox);
+
+    }
+
+    // 错误存档样式
+    public SaveUnitPane(boolean isError) {
+        super();
+        setPrefSize(162, 221);
+        setStyle("-fx-background-color: #f6dddd;" +
+                " -fx-background-radius: 5px; " +
+                "-fx-background-size: cover; " +
+                "-fx-background-position: center; " +
+                "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);");
+        ImageView errorIcon = new ImageView(new Image("/assets/archiveIcon/error.png", 62, 62, true, true));
+        errorIcon.setLayoutX(50);
+        errorIcon.setLayoutY(60);
+        getChildren().add(errorIcon);
 
     }
 

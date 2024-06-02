@@ -1,5 +1,6 @@
 package model;
 
+import util.GameModeFactory;
 import util.Time;
 import util.Date;
 
@@ -15,6 +16,8 @@ public class Save {
     public Date saveDate;
     public Time saveTime;
     public Time playTime;
+    // 定义错误存档常量
+    public static final Save ERROR_SAVE = new Save("ERROR", new Grid(4, GameModeFactory.CLASSIC), State.IN_PROGRESS, new Time(0, 0, 0), new Date(0, 0, 0), new Time(0, 0, 0));
 
     // 构造器, 弃用
     public Save(Grid grid, State state, Time playTime) {
@@ -138,5 +141,17 @@ public class Save {
 
         // 各状态对应标签样式(CSS字符串)
 
+    }
+
+    public boolean isEquals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+        Save save = (Save) obj;
+        return saveName.equals(save.saveName) && grid.equals(save.grid) && state.equals(save.state)
+                && saveDate.equals(save.saveDate) && saveTime.equals(save.saveTime) && playTime.equals(save.playTime);
     }
 }

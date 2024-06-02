@@ -1,226 +1,282 @@
 package ai;
 
-import controller.GameUI;
-import util.*;
+import model.Grid;
+import util.Direction;
 
-/**
- * AlphaDuo
- * @version: 1.0.0
- * @description: AlphaDuo is a class that represents the AI of the game, "duo" means two, which means that the AI is designed for 2048 which uses "2" grids to make larger binary numbers.
- * @function: Used to play the game automatically or to provide hints to the player.
- * @Implementation: AlphaDuo uses the Minimax and Alpha-Beta algorithms to simulate the game and make decisions.
- */
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class AlphaDuo {
-    // 为每种移动方向“评分”，哪种方向评分最高，采取哪种方向移动
-    protected static double upEvaluationScore = 0;
-    protected static double downEvaluationScore = 0;
-    protected static double leftEvaluationScore = 0;
-    protected static double rightEvaluationScore = 0;
-    protected static final double monotonyWeight = 0.5; // 单调性权重
-    protected static final double smoothWeight = -0.2; // 平滑性权重
-    protected static final double emptyWeight = 0.5; // 总空格数权重
-    protected static int directionNum = 0;
 
-    protected static void evaluate() {
-        upEvaluationScore = 0;
-        downEvaluationScore = 0;
-        leftEvaluationScore = 0;
-        rightEvaluationScore = 0;
-        // 1. 单调性评估
-        boolean isIncrease = false;
-        int numOfMonotonyTiles;
-        int monotonyL = 0;
-        int monotonyR = 0;
-        int monotonyU = 0;
-        int monotonyD = 0;
-        for (int i = 0; i < GameUI.getGrid().getSize(); i++) {
-            for (int j = 0; j+1 < GameUI.getGrid().getSize(); j += numOfMonotonyTiles) {
-                numOfMonotonyTiles = 0;
-                if ((GameUI.getGrid().getBoard()[i][j] != 0) && (GameUI.getGrid().getBoard()[i][j] < GameUI.getGrid().getBoard()[i][j+1])) {
-                    isIncrease = true;
-                } else if ((GameUI.getGrid().getBoard()[i][j+1] != 0) && (GameUI.getGrid().getBoard()[i][j] > GameUI.getGrid().getBoard()[i][j+1])) {
-                    isIncrease = false;
-                }
-                if (isIncrease) {
-                    for (int a = 1; j+a+1 < GameUI.getGrid().getSize(); a++) {
-                        if ((GameUI.getGrid().getBoard()[i][j+a] != 0) && (GameUI.getGrid().getBoard()[i][j+a] < GameUI.getGrid().getBoard()[i][j+a+1])) {
-                            numOfMonotonyTiles += 1;
-                            monotonyR += 1;
-                        } else {
-                            isIncrease = false;
-                            break;
-                        }
-                    }
-                } else if (!isIncrease) {
-                    for (int a = 1; j+a+1 < GameUI.getGrid().getSize(); a++) {
-                        if ((GameUI.getGrid().getBoard()[i][j+a+1] != 0) && (GameUI.getGrid().getBoard()[i][j+a] > GameUI.getGrid().getBoard()[i][j+a+1])) {
-                            numOfMonotonyTiles += 1;
-                            monotonyL += 1;
-                        } else {
-                            isIncrease = true;
-                            break;
-                        }
-                    }
-                }
-                if (numOfMonotonyTiles == 0) {
-                    numOfMonotonyTiles += 1;
-                }
-            }
-        }
-        leftEvaluationScore += (monotonyL * monotonyWeight);
-        rightEvaluationScore += (monotonyR * monotonyWeight);
-        for (int j = 0; j < GameUI.getGrid().getSize(); j++) {
-            for (int i = 0; i+1 < GameUI.getGrid().getSize(); i += numOfMonotonyTiles) {
-                numOfMonotonyTiles = 0;
-                if ((GameUI.getGrid().getBoard()[i][j] != 0) && (GameUI.getGrid().getBoard()[i][j] < GameUI.getGrid().getBoard()[i+1][j])) {
-                    isIncrease = true;
-                } else if ((GameUI.getGrid().getBoard()[i+1][j] != 0) && (GameUI.getGrid().getBoard()[i][j] > GameUI.getGrid().getBoard()[i+1][j])) {
-                    isIncrease = false;
-                }
-                if (isIncrease) {
-                    for (int a = 1; i+a+1 < GameUI.getGrid().getSize(); a++) {
-                        if ((GameUI.getGrid().getBoard()[i+a][j] != 0) && (GameUI.getGrid().getBoard()[i+a][j] < GameUI.getGrid().getBoard()[i+a+1][j])) {
-                            numOfMonotonyTiles += 1;
-                            monotonyD += 1;
-                        } else {
-                            isIncrease = false;
-                            break;
-                        }
-                    }
-                } else if (!isIncrease) {
-                    for (int a = 1; i+a+1 < GameUI.getGrid().getSize(); a++) {
-                        if ((GameUI.getGrid().getBoard()[i+a+1][j] != 0) && (GameUI.getGrid().getBoard()[i+a][j] > GameUI.getGrid().getBoard()[i+a+1][j])) {
-                            numOfMonotonyTiles += 1;
-                            monotonyU += 1;
-                        } else {
-                            isIncrease = true;
-                            break;
-                        }
-                    }
-                }
-                if (numOfMonotonyTiles == 0) {
-                    numOfMonotonyTiles += 1;
-                }
-            }
-        }
-        upEvaluationScore += (monotonyU * monotonyWeight);
-        downEvaluationScore += (monotonyD * monotonyWeight);
+    /**
+     * Player vs Computer enum class
+     */
+    public enum Player {
+        /**
+         * Computer
+         */
+        COMPUTER,
 
-        // 2. 平滑性评估
-        int smoothU = 0;
-        int smoothD = 0;
-        int smoothL = 0;
-        int smoothR = 0;
-        for (int i=1; i < GameUI.getGrid().getSize(); i++) {
-            for (int j=0; j < GameUI.getGrid().getSize(); j++) {
-                if ((GameUI.getGrid().getBoard()[i][j] != 0) && (GameUI.getGrid().getBoard()[i-1][j] != 0)) {
-                    smoothU += (Math.abs(GameUI.getGrid().getBoard()[i][j] - GameUI.getGrid().getBoard()[i-1][j]) * Math.abs(GameUI.getGrid().getBoard()[i][j] - GameUI.getGrid().getBoard()[i-1][j]) / GameUI.getGrid().getSize());
-                }
-            }
-        }
-        for (int i=0; i < GameUI.getGrid().getSize() - 1; i++) {
-            for (int j=0; j < GameUI.getGrid().getSize(); j++) {
-                if ((GameUI.getGrid().getBoard()[i][j] != 0) && (GameUI.getGrid().getBoard()[i+1][j] != 0)) {
-                    smoothD += (Math.abs(GameUI.getGrid().getBoard()[i][j] - GameUI.getGrid().getBoard()[i+1][j]) * Math.abs(GameUI.getGrid().getBoard()[i][j] - GameUI.getGrid().getBoard()[i+1][j]) / GameUI.getGrid().getSize());
-                }
-            }
-        }
-        for (int i=0; i < GameUI.getGrid().getSize(); i++) {
-            for (int j=1; j < GameUI.getGrid().getSize(); j++) {
-                if ((GameUI.getGrid().getBoard()[i][j] != 0) && (GameUI.getGrid().getBoard()[i][j-1] != 0)) {
-                    smoothL += (Math.abs(GameUI.getGrid().getBoard()[i][j] - GameUI.getGrid().getBoard()[i][j-1]) * Math.abs(GameUI.getGrid().getBoard()[i][j] - GameUI.getGrid().getBoard()[i][j-1]) / GameUI.getGrid().getSize());
-                }
-            }
-        }
-        for (int i=0; i < GameUI.getGrid().getSize(); i++) {
-            for (int j=0; j < GameUI.getGrid().getSize() - 1; j++) {
-                if ((GameUI.getGrid().getBoard()[i][j] != 0) && (GameUI.getGrid().getBoard()[i][j+1] != 0)) {
-                    smoothR += (Math.abs(GameUI.getGrid().getBoard()[i][j] - GameUI.getGrid().getBoard()[i][j+1]) * Math.abs(GameUI.getGrid().getBoard()[i][j] - GameUI.getGrid().getBoard()[i][j+1]) / GameUI.getGrid().getSize());
-                }
-            }
-        }
-        upEvaluationScore += smoothU * smoothWeight;
-        downEvaluationScore += smoothD * smoothWeight;
-        leftEvaluationScore += smoothL * smoothWeight;
-        rightEvaluationScore += smoothR * smoothWeight;
-        int equalU = 0;
-        int equalD = 0;
-        int equalL = 0;
-        int equalR = 0;
-
-
-        // 3. 总空格数评估
-        int numOfEmptyTiles;
-        int emptyRow = 0;
-        int emptyColumn = 0;
-        for (int i = 0; i < GameUI.getGrid().getSize(); i++) {
-            for (int j = 0; j < GameUI.getGrid().getSize(); j += numOfEmptyTiles) {
-                numOfEmptyTiles = 0;
-                for (int a = 0; j+a < GameUI.getGrid().getSize(); a++) {
-                    if (GameUI.getGrid().getBoard()[i][j+a] == 0) {
-                        numOfEmptyTiles += 1;
-                        emptyRow += 1;
-                    } else {
-                        break;
-                    }
-                }
-                if (numOfEmptyTiles == 0) {
-                    numOfEmptyTiles += 1;
-                }
-            }
-        }
-        leftEvaluationScore += (emptyRow * emptyWeight);
-        rightEvaluationScore += (emptyRow * emptyWeight);
-        for (int j = 0; j < GameUI.getGrid().getSize(); j++) {
-            for (int i = 0; i < GameUI.getGrid().getSize(); i += numOfEmptyTiles) {
-                numOfEmptyTiles = 0;
-                for (int a = 0; i+a < GameUI.getGrid().getSize(); a++) {
-                    if (GameUI.getGrid().getBoard()[i+a][j] == 0) {
-                        numOfEmptyTiles += 1;
-                        emptyColumn += 1;
-                    } else {
-                        break;
-                    }
-                }
-                if (numOfEmptyTiles == 0) {
-                    numOfEmptyTiles += 1;
-                }
-            }
-        }
-        upEvaluationScore += (emptyColumn * emptyWeight);
-        downEvaluationScore += (emptyColumn * emptyWeight);
+        /**
+         * User
+         */
+        USER
     }
-    protected static double evaluateDirection(Direction d) {
-        upEvaluationScore = 0;
-        downEvaluationScore = 0;
-        leftEvaluationScore = 0;
-        rightEvaluationScore = 0;
-        evaluate();
-        if (d == Direction.UP) {
-            return upEvaluationScore;
-        } else if (d == Direction.DOWN) {
-            return downEvaluationScore;
-        } else if (d == Direction.LEFT) {
-            return leftEvaluationScore;
-        } else if (d == Direction.RIGHT) {
-            return rightEvaluationScore;
-        } else {
+
+    /**
+     * Method that finds the best next move.
+     *
+     * @param theBoard
+     * @param depth
+     * @return
+     * @throws CloneNotSupportedException
+     */
+    public static Direction findBestMove(Grid theBoard, int depth) throws CloneNotSupportedException {
+        //Map<String, Object> result = minimax(theBoard, depth, Player.USER);
+
+        Map<String, Object> result = alphabeta(theBoard, depth, Integer.MIN_VALUE, Integer.MAX_VALUE, Player.USER);
+
+        System.out.println("Score: "+result.get("Score"));
+
+        return (Direction)result.get("Direction");
+    }
+
+    /**
+     * Finds the best move by using the Minimax algorithm.
+     *
+     * @param theBoard
+     * @param depth
+     * @param player
+     * @return
+     * @throws CloneNotSupportedException
+     */
+    private static Map<String, Object> minimax(Grid theBoard, int depth, Player player) throws CloneNotSupportedException {
+        Map<String, Object> result = new HashMap<>();
+
+        Direction bestDirection = null;
+        int bestScore;
+
+        if(depth==0 || theBoard.isOver()) {
+            bestScore=heuristicScore(theBoard.getScore(),theBoard.getNumberOfEmptyCells(),calculateClusteringScore(theBoard.getBoard()));
+        }
+        else {
+            if(player == Player.USER) {
+                bestScore = Integer.MIN_VALUE;
+
+                for(Direction direction : Direction.values()) {
+                    Grid newBoard = (Grid) theBoard.clone();
+
+                    int points=newBoard.moveGrid(direction);
+
+                    if(points==0 && newBoard.isEqual(theBoard.getBoard(), newBoard.getBoard())) {
+                        continue;
+                    }
+
+                    Map<String, Object> currentResult = minimax(newBoard, depth-1, Player.COMPUTER);
+                    int currentScore=((Number)currentResult.get("Score")).intValue();
+                    if(currentScore>bestScore) { //maximize score
+                        bestScore=currentScore;
+                        bestDirection=direction;
+                    }
+                }
+            }
+            else {
+                bestScore = Integer.MAX_VALUE;
+
+                List<Integer> moves = theBoard.getEmptyCellIds();
+                if(moves.isEmpty()) {
+                    bestScore=0;
+                }
+                int[] possibleValues = {2, 4};
+
+                int i,j;
+                int[][] boardArray;
+                for(Integer cellId : moves) {
+                    i = cellId/theBoard.getSize();
+                    j = cellId%theBoard.getSize();
+
+                    for(int value : possibleValues) {
+                        Grid newBoard = (Grid) theBoard.clone();
+                        newBoard.setEmptyCell(i, j, value);
+
+                        Map<String, Object> currentResult = minimax(newBoard, depth-1, Player.USER);
+                        int currentScore=((Number)currentResult.get("Score")).intValue();
+                        if(currentScore<bestScore) { //minimize best score
+                            bestScore=currentScore;
+                        }
+                    }
+                }
+            }
+        }
+
+        result.put("Score", bestScore);
+        result.put("Direction", bestDirection);
+
+        return result;
+    }
+
+    /**
+     * Finds the best move bay using the Alpha-Beta pruning algorithm.
+     *
+     * @param theBoard
+     * @param depth
+     * @param alpha
+     * @param beta
+     * @param player
+     * @return
+     * @throws CloneNotSupportedException
+     */
+    private static Map<String, Object> alphabeta(Grid theBoard, int depth, int alpha, int beta, Player player) throws CloneNotSupportedException {
+        Map<String, Object> result = new HashMap<>();
+
+        Direction bestDirection = null;
+        int bestScore;
+
+        if(theBoard.isOver()) {
+            if(theBoard.isWin()) {
+                bestScore=Integer.MAX_VALUE; //highest possible score
+            }
+            else {
+                bestScore=Math.min(theBoard.getScore(), 1); //lowest possible score
+            }
+        }
+        else if(depth==0) {
+            bestScore=heuristicScore(theBoard.getScore(),theBoard.getNumberOfEmptyCells(),calculateClusteringScore(theBoard.getBoard()));
+        }
+        else {
+            if(player == Player.USER) {
+                for(Direction direction : Direction.values()) {
+                    Grid newBoard = (Grid) theBoard.clone();
+
+                    int points=newBoard.moveGrid(direction);
+
+                    if(points==0 && newBoard.isEqual(theBoard.getBoard(), newBoard.getBoard())) {
+                        continue;
+                    }
+
+                    Map<String, Object> currentResult = alphabeta(newBoard, depth-1, alpha, beta, Player.COMPUTER);
+                    int currentScore=((Number)currentResult.get("Score")).intValue();
+
+                    if(currentScore>alpha) { //maximize score
+                        alpha=currentScore;
+                        bestDirection=direction;
+                    }
+
+                    if(beta<=alpha) {
+                        break; //beta cutoff
+                    }
+                }
+
+                bestScore = alpha;
+            }
+            else {
+                List<Integer> moves = theBoard.getEmptyCellIds();
+                int[] possibleValues = {2, 4};
+
+                int i,j;
+                abloop: for(Integer cellId : moves) {
+                    i = cellId/theBoard.getSize();
+                    j = cellId%theBoard.getSize();
+
+                    for(int value : possibleValues) {
+                        Grid newBoard = (Grid) theBoard.clone();
+                        newBoard.setEmptyCell(i, j, value);
+
+                        Map<String, Object> currentResult = alphabeta(newBoard, depth-1, alpha, beta, Player.USER);
+                        int currentScore=((Number)currentResult.get("Score")).intValue();
+                        if(currentScore<beta) { //minimize best score
+                            beta=currentScore;
+                        }
+
+                        if(beta<=alpha) {
+                            break abloop; //alpha cutoff
+                        }
+                    }
+                }
+
+                bestScore = beta;
+
+                if(moves.isEmpty()) {
+                    bestScore=0;
+                }
+            }
+        }
+
+        result.put("Score", bestScore);
+        result.put("Direction", bestDirection);
+
+        return result;
+    }
+
+    /**
+     * Estimates a heuristic score by taking into account the real score, the
+     * number of empty cells and the clustering score of the board.
+     *
+     * @param actualScore
+     * @param numberOfEmptyCells
+     * @param clusteringScore
+     * @return
+     */
+    private static int heuristicScore(int actualScore, int numberOfEmptyCells, double clusteringScore) {
+        int score = (int) (actualScore*4+Math.log(actualScore)*numberOfEmptyCells*numberOfEmptyCells*20 -clusteringScore*64);
+        return Math.max(score, Math.min(actualScore, 1));
+    }
+
+    /**
+     * Calculates a heuristic variance-like score that measures how clustered the
+     * board is.
+     *
+     * @param boardArray
+     * @return
+     */
+    private static double calculateClusteringScore(int[][] boardArray) {
+        double clusteringScore=0;
+
+        int[] neighbors = {-1,0,1};
+
+        for(int i=0;i<boardArray.length;++i) {
+            for(int j=0;j<boardArray.length;++j) {
+                if(boardArray[i][j]==0) {
+                    continue; //ignore empty cells
+                }
+
+                //clusteringScore-=boardArray[i][j];
+
+                //for every pixel find the distance from each neightbors
+                int numOfNeighbors=0;
+                int sum=0;
+                for(int k : neighbors) {
+                    int x=i+k;
+                    if(x<0 || x>=boardArray.length) {
+                        continue;
+                    }
+                    for(int l : neighbors) {
+                        int y = j+l;
+                        if(y<0 || y>=boardArray.length) {
+                            continue;
+                        }
+
+                        if(boardArray[x][y]>0) {
+                            ++numOfNeighbors;
+                            sum+=Math.abs(calcLog2(boardArray[i][j])-calcLog2(boardArray[x][y]));
+                        }
+
+                    }
+                }
+
+                clusteringScore+= (double) sum /numOfNeighbors;
+            }
+        }
+
+        return clusteringScore;
+    }
+
+    private static int calcLog2(int value) {
+        if (value == 0) {
             return 0;
         }
+        return (int) (Math.log(value)/Math.log(2));
     }
-    protected static int setDirection() {
-        Direction direction = Direction.UP;
-        if (evaluateDirection(Direction.DOWN) >= evaluateDirection(direction)) {
-            direction = Direction.DOWN;
-            directionNum = 1;
-        }
-        if (evaluateDirection(Direction.LEFT) >= evaluateDirection(direction)) {
-            direction = Direction.LEFT;
-            directionNum = 2;
-        }
-        if (evaluateDirection(Direction.RIGHT) >= evaluateDirection(direction)) {
-            directionNum = 3;
-        }
-        return directionNum;
-    }
+
 }
