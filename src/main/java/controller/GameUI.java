@@ -32,7 +32,7 @@ import model.*;
 import util.logger.LogType;
 import util.logger.Logger;
 import util.music.BackgroundMusic;
-import ai.AIsolver;
+import ai.AlphaDuo;
 
 import java.io.IOException;
 import java.util.Map;
@@ -411,7 +411,7 @@ public class GameUI extends Application {
         }
         try {
 
-            Direction direction = AIsolver.findBestMove(grid, 5);
+            Direction direction = AlphaDuo.findBestMove(grid, 5);
             simulateMove(direction);
             new Logger(mainPane, direction + " !", 720.0, 9.0, LogType.success).show();
         } catch (CloneNotSupportedException e) {
@@ -471,6 +471,7 @@ public class GameUI extends Application {
 
     //
     public void simulateMove(Direction direction) {
+        if (direction == null) return;
         switch (direction) {
             case UP:
                 upAction();
