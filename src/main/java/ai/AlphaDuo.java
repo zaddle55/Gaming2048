@@ -219,7 +219,7 @@ public class AlphaDuo {
      * @return
      */
     private static int heuristicScore(int actualScore, int numberOfEmptyCells, double clusteringScore, int monoticScore, int maxval) {
-        int score = (int) (actualScore*6+Math.log(actualScore)*Math.pow(numberOfEmptyCells, 2)*28-clusteringScore*25+monoticScore*112+Math.log(maxval)*maxval);
+        int score = (int) (actualScore*2.5+Math.log(actualScore)*Math.pow(numberOfEmptyCells, 2)*20-Math.log(actualScore*0.5)*clusteringScore*(16-numberOfEmptyCells)+monoticScore*84+Math.log(maxval)*Math.pow(maxval, 2));
         return Math.max(score, Math.min(actualScore, 1));
     }
 
