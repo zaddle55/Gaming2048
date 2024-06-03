@@ -688,6 +688,27 @@ public class Grid implements Cloneable{
             board[i][j] = value;
         }
     }
+
+    public static int[][] getTranspose(int[][] src) {
+        int[][] res = new int[src.length][src.length];
+        // 逆时针旋转数组90度
+        for (int j = 0; j < src.length; j++) {
+            for (int i = 0; i < src.length; i++) {
+                res[j][i] = src[i][j];
+            }
+        }
+        return res;
+    }
+
+    public static int getMaxValue(int[][] src) {
+        int res = 0;
+        for (int j = 0; j < src.length; j++) {
+            for (int i = 0; i < src.length; i++) {
+                res = Math.max(res, src[i][j]);
+            }
+        }
+        return res;
+    }
 }
 
 class Status {
@@ -720,4 +741,6 @@ class Status {
     public Tile[][] getTileGrid() {
         return tileGrid;
     }
+
+    
 }

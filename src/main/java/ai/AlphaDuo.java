@@ -58,7 +58,7 @@ public class AlphaDuo {
         int bestScore;
 
         if(depth==0 || theBoard.isOver()) {
-            bestScore=heuristicScore(theBoard.getScore(),theBoard.getNumberOfEmptyCells(),calculateClusteringScore(theBoard.getBoard()));
+            bestScore=heuristicScore(theBoard.getScore(),theBoard.getNumberOfEmptyCells(),calculateClusteringScore(theBoard.getBoard()),calcMonoticScore(theBoard.getBoard()),Grid.getMaxValue(theBoard.getBoard()));
         }
         else {
             if(player == Player.USER) {
@@ -142,7 +142,7 @@ public class AlphaDuo {
             }
         }
         else if(depth==0) {
-            bestScore=heuristicScore(theBoard.getScore(),theBoard.getNumberOfEmptyCells(),calculateClusteringScore(theBoard.getBoard()));
+            bestScore=heuristicScore(theBoard.getScore(),theBoard.getNumberOfEmptyCells(),calculateClusteringScore(theBoard.getBoard()),calcMonoticScore(theBoard.getBoard()),Grid.getMaxValue(theBoard.getBoard()));
         }
         else {
             if(player == Player.USER) {
@@ -218,8 +218,8 @@ public class AlphaDuo {
      * @param clusteringScore
      * @return
      */
-    private static int heuristicScore(int actualScore, int numberOfEmptyCells, double clusteringScore) {
-        int score = (int) (actualScore*4+Math.log(actualScore)*numberOfEmptyCells*numberOfEmptyCells*20 -clusteringScore*64);
+    private static int heuristicScore(int actualScore, int numberOfEmptyCells, double clusteringScore, int monoticScore, int maxval) {
+        int score = (int) (actualScore*8+Math.log(actualScore)*Math.pow(numberOfEmptyCells, 3)*24-clusteringScore*128+(16-numberOfEmptyCells)*monoticScore+10*maxval);
         return Math.max(score, Math.min(actualScore, 1));
     }
 
@@ -277,6 +277,47 @@ public class AlphaDuo {
             return 0;
         }
         return (int) (Math.log(value)/Math.log(2));
+    }
+
+    private static int calcMonoticScore(int[][] boardArray) {
+        int count = 0;
+        int monoticScore = 0;
+        int[][] board = Grid.getTranspose(boardArray);
+        // 向右计算
+        while (count < 4) {
+            for (int i = 0; i < boardArray.length; i++) {
+                int inc = lengthOfLIS(board[i]);
+                if (inc == 4) {
+                    monoticScore += 100;
+                } else if (inc == 3) {
+                    monoticScore += 50;
+                } else if (inc == 2) {
+                    monoticScore += 10;
+                }
+            }
+            if (++count != 4) board = Grid.getTranspose(board);
+        }
+        return monoticScore;
+    }
+
+    public static int lengthOfLIS(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        int[] dp = new int[nums.length];
+        dp[0] = 1;
+        int maxans = 1;
+        for (int i = 1; i < dp.length; i++) {
+            int maxval = 0;
+            for (int j = 0; j < i; j++) {
+                if (nums[i] >= nums[j]) {
+                    maxval = Math.max(maxval, dp[j]);
+                }
+            }
+            dp[i] = maxval + 1;
+            maxans = Math.max(maxans, dp[i]);
+        }
+        return maxans;
     }
 
 }
