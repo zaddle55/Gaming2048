@@ -646,6 +646,7 @@ public class Grid implements Cloneable{
             copyTileGrid(tileGrid, clone.tileGrid, gamePane);
             clone.isNew = new boolean[size][size];
             clone.isMerged = new boolean[size][size];
+            clone.score = score;
             
             return clone;
         } catch (CloneNotSupportedException e) {

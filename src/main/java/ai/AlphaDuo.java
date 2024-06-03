@@ -219,7 +219,7 @@ public class AlphaDuo {
      * @return
      */
     private static int heuristicScore(int actualScore, int numberOfEmptyCells, double clusteringScore, int monoticScore, int maxval) {
-        int score = (int) (actualScore*8+Math.log(actualScore)*Math.pow(numberOfEmptyCells, 3)*24-clusteringScore*128+(16-numberOfEmptyCells)*monoticScore+10*maxval);
+        int score = (int) (actualScore*6+Math.log(actualScore)*Math.pow(numberOfEmptyCells, 2)*28-clusteringScore*25+monoticScore*112+Math.log(maxval)*maxval);
         return Math.max(score, Math.min(actualScore, 1));
     }
 
@@ -259,7 +259,7 @@ public class AlphaDuo {
 
                         if(boardArray[x][y]>0) {
                             ++numOfNeighbors;
-                            sum+=Math.abs(calcLog2(boardArray[i][j])-calcLog2(boardArray[x][y]));
+                            sum+=Math.abs(boardArray[i][j]-boardArray[x][y]);
                         }
 
                     }
@@ -288,11 +288,11 @@ public class AlphaDuo {
             for (int i = 0; i < boardArray.length; i++) {
                 int inc = lengthOfLIS(board[i]);
                 if (inc == 4) {
-                    monoticScore += 100;
+                    monoticScore += 15;
                 } else if (inc == 3) {
-                    monoticScore += 50;
+                    monoticScore += 5;
                 } else if (inc == 2) {
-                    monoticScore += 10;
+                    monoticScore += 1;
                 }
             }
             if (++count != 4) board = Grid.getTranspose(board);
