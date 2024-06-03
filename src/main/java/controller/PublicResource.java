@@ -90,6 +90,7 @@ public class PublicResource {
                         new MediaPlayer(new Media(PublicResource.class.getResource("/assets/music/夢の歩みを見上げて.mp3").toString())),
                         new MediaPlayer(new Media(PublicResource.class.getResource("/assets/music/STAR BEAT!.mp3").toString())),
                         new MediaPlayer(new Media(PublicResource.class.getResource("/assets/music/さくら、もゆ。 -orgel Arrange-.mp3").toString())),
+                        new MediaPlayer(new Media(PublicResource.class.getResource("/assets/music/flame of hope (instrumental).mp3").toString())),
                         new MediaPlayer(new Media(PublicResource.class.getResource("/assets/music/刻ト詩-Piano ver.mp3").toString())),
                         new MediaPlayer(new Media(PublicResource.class.getResource("/assets/music/散花.mp3").toString())),
                         new MediaPlayer(new Media(PublicResource.class.getResource("/assets/music/月に叢雲華に風(Instrumental).mp3").toString())),
