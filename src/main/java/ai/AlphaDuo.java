@@ -310,7 +310,7 @@ public class AlphaDuo {
         for (int i = 1; i < dp.length; i++) {
             int maxval = 0;
             for (int j = 0; j < i; j++) {
-                if (nums[i] >= nums[j]) {
+                if (nums[i] <= nums[j]) {
                     maxval = Math.max(maxval, dp[j]);
                 }
             }
