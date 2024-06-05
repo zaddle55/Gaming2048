@@ -22,13 +22,24 @@
 <!-------------------Put introduction here------------------->
 <div>
     <h2>📕 Project Introduction</h2>
-    <p></p>
+    <p>The project "2048" for 2024 Spring Java A course.</p>
+    <p>Use <b><i>maven</i></b> for requirement management, <b><i>JavaFX</i></b> to construct gui, <b><i>Gson</i></b> for data serialization.</p>
+    <p>Frame, game logic from @zaddle55; AI, user management from @SUSTechCJK2023</p>
+    <p>Points: 100/100</p>
 </div>
 
 <!-------------------Put running demo here------------------->
 <div>
     <h2>🎮 Sample Runtime Screenshot</h2>
     <!-------------------Several images here...------------------->
+    <h3>1. Register and login</h3>
+    <img src="./assets/Register.png" alt="Register and login" width="500px"/>
+    <h3>2. Archive</h3>
+    <img src="./assets/Archive.png" alt="Archive" width="500px"/>
+    <h3>3. Game</h3>
+    <img src="./assets/Game.png" alt="Game" width="500px"/>
+    <h3>4. Save the game</h3>
+    <img src="./assets/Save.png" alt="Save" width="500px"/>
 </div>
 
 <!-------------------Put how to run on local here------------------->
