@@ -25,7 +25,7 @@
     <p>The project "2048" for 2024 Spring Java A course.</p>
     <p>Use <b><i>maven</i></b> for requirement management, <b><i>JavaFX</i></b> to construct gui, <b><i>Gson</i></b> for data serialization.</p>
     <p>Frame, game logic from @zaddle55; AI, user management from @SUSTechCJK2023</p>
-    <p>Points: 100/100</p>
+    <p>Points: 110/110</p>
 </div>
 
 <!-------------------Put running demo here------------------->
